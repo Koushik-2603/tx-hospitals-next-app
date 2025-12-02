@@ -1,0 +1,239 @@
+"use client";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import CONFIG from "@/config";
+import Image from "next/image";
+import useIsMobile from "@/hooks/useIsMobile";
+import WhenToSeekSecondOpinion from "@/components/SecondOpinion/WhenToSeekSecondOpinion";
+
+export default function SOLandingPage() {
+
+    const isMobile = useIsMobile();
+    const [surgeryOptions, setSurgeryOptions] = useState([]);
+    const [selectedSurgery, setSelectedSurgery] = useState(null);
+    const [showAll, setShowAll] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo({ left: document.body.scrollWidth, top: 0, behavior: "smooth" });
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const endpoint = `${CONFIG.API_BASE_URL}/secondopinion/getAllSecondOpinion`;
+                const response = await axios.get(endpoint);
+
+                const options = response.data.Items.map((item) => {
+                    const raw = item.url.replace(/\//g, "").replace(/-/g, " ");
+                    const name = raw
+                        .split(" ")
+                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(" ");
+                    return {
+                        id: item.soId,
+                        name,
+                        image: item.soImage,
+                    };
+                }).sort((a, b) => a.name.localeCompare(b.name));
+
+                setSurgeryOptions(options);
+                setSelectedSurgery(options[0]?.name || "");
+                const map = {};
+                response.data.Items.forEach(option => {
+                    map[option.url] = { id: option.soId, type: 'surgery' };
+                });
+                localStorage.setItem('slugMap', JSON.stringify(map));
+            } catch (error) {
+                console.error("Error fetching packages: ", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    return (
+        <>
+            {isMobile ? (
+                <></>
+            ) : (
+                <section className="w-full">
+                    <div className="bg-gray-50 pl-16 text-center mt-8 mb-4">
+                        <h2 className="text-4xl font-semibold text-pink-700">Second Opinion</h2>
+                    </div>
+                    <section className="relative w-full h-full px-6">
+                        <div className="absolute inset-0 -z-10">
+                            <Image
+                                src="/assets/SO/Banner _.webp"
+                                alt="Second Opinion Background"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                            <div className="absolute inset-0 bg-blue-900/60"></div>
+                        </div>
+                        <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 gap-5 text-white">
+                            <div className="flex flex-col justify-center">
+                                <h1 className="text-3xl md:text-4xl font-bold leading-snug mb-6">
+                                    Get a Second Opinion from <br />
+                                    India’s Leading Surgeons
+                                </h1>
+                                <p className="text-lg leading-relaxed">
+                                    Whether you’re uncertain about a diagnosis or
+                                    planning a major surgery, our senior specialists
+                                    help you make informed and confident healthcare decisions
+                                </p>
+                            </div>
+                            <div className="relative bg-white/10 backdrop-blur-sm border border-blue-300/40 rounded-3xl p-8">
+                                {/* <button className="absolute top-4 right-6 text-2xl font-bold text-white hover:text-gray-200">
+                                    X
+                                </button> */}
+                                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+                                    Book Appointment
+                                </h2>
+                                <form className="space-y-2">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label className="block mb-2 text-lg">Enter your Full Name</label>
+                                            <input
+                                                type="text"
+                                                className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-5 py-2 outline-none"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block mb-2 text-lg">Mobile Number</label>
+                                            <div className="relative">
+                                                <input
+                                                    type="text"
+                                                    className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-5 py-2 pr-20 outline-none"
+                                                />
+                                                <button
+                                                    type="button"
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400 text-sm font-semibold"
+                                                >
+                                                    Send OTP
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block mb-2 text-lg">Select Surgery</label>
+                                        <input
+                                            type="text"
+                                            className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-5 py-2 outline-none"
+                                        />
+                                    </div>
+                                    <div className="flex justify-center">
+                                        <button
+                                            type="submit"
+                                            className="bg-pink-700 text-white px-10 py-2 rounded-full text-xl font-semibold"
+                                        >
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                    <section className="w-full px-6 bg-white">
+                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 gap-5">
+                            <div className="flex flex-col justify-center">
+                                <h2 className="text-2xl font-bold text-pink-700 mb-3">
+                                    Why Choose TX Hospitals for a Second Opinion?
+                                </h2>
+
+                                <p className="text-base leading-relaxed text-gray-700 mb-6">
+                                    TX Hospitals stands among India’s most trusted names in
+                                    advanced surgical and diagnostic excellence. With NABH
+                                    accreditation, robotic technology and highly experienced
+                                    specialists, we offer trusted second opinions that help
+                                    patients avoid unnecessary procedures and choose the
+                                    safest, most effective path to recovery.
+                                </p>
+                                <ul className="text-base text-gray-800">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-red-600 text-2xl">✓</span>
+                                        Senior Consultants in Every Specialty
+                                    </li>
+
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-red-600 text-2xl">✓</span>
+                                        Robotic & Minimally Invasive Surgery Experts
+                                    </li>
+
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-red-600 text-2xl">✓</span>
+                                        Accurate, Transparent and Honest Guidance
+                                    </li>
+
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-red-600 text-2xl">✓</span>
+                                        24×7 Critical & Emergency Care
+                                    </li>
+
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-red-600 text-2xl">✓</span>
+                                        Fast, Secure Report Review within 24–48 Hours
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="flex justify-center md:justify-end">
+                                <Image
+                                    src="/assets/SO/Why Choose TX Hospitals image.webp"
+                                    alt="Doctor Consultation"
+                                    width={700}
+                                    height={550}
+                                    className="object-contain"
+                                    priority
+                                />
+                            </div>
+                        </div>
+                        <div className="max-w-4xl mx-auto px-6 text-center">
+                            <h2 className="text-2xl font-bold text-pink-700 mb-2">
+                                Get a Second Opinion Before Your Surgery
+                            </h2>
+
+                            <p className="text-base leading-relaxed text-gray-700 mb-3">
+                                Not sure if surgery is the right step? We’re here to help.
+                                At TX Hospitals, our expert surgeons from diverse special es carefully assess your
+                                medical reports and scans to provide a clear, unbiased second opinion
+                            </p>
+                        </div>
+                        <div className="max-w-7xl mx-auto">
+                            <div className="grid grid-cols-4 gap-2">
+                                {(showAll ? surgeryOptions : surgeryOptions.slice(0, 8)).map((option, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105"
+                                    // onClick={() => handleViewDetails(option.id)}
+                                    >
+                                        <div className="w-36 h-36 rounded-full border-pink-700 flex items-center justify-center p-2">
+                                            <img loading="lazy"
+                                                src={option.image}
+                                                alt={option.name}
+                                                className="w-36 h-36 object-contain"
+                                            />
+                                        </div>
+                                        <p className="text-center mt-2 text-base font-medium">{option.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            {surgeryOptions.length > 8 && (
+                                <div className="flex justify-center mt-4">
+                                    <button
+                                        onClick={() => setShowAll(!showAll)}
+                                        className="text-pink-700 font-semibold text-lg underline hover:text-pink-900 transition"
+                                    >
+                                        {showAll ? "Show Less" : "Show More"}
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                        <div className="max-w-6xl mx-auto">
+                            <WhenToSeekSecondOpinion />
+                        </div>
+                    </section>
+                </section>
+            )}
+        </>
+    );
+}

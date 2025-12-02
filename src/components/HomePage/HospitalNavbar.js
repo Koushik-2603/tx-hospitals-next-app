@@ -8,7 +8,7 @@ import { MdPhoneInTalk } from "react-icons/md";
 import Image from "next/image";
 import LanguageDropdown from "@/components/HomePage/LanguageDropdown";
 import useIsMobile from "@/hooks/useIsMobile";
-import { dropdowns, quickLinks, managementNames, directorsNames, departments, healthConditions, treatmetnAndProcedures, diagnosticsGuide, symptomsGuide, medicineGuide,  medicalTechnology, secondOpinion, healthPackages } from "@/utils/dropdownValues";
+import { dropdowns, quickLinks, managementNames, directorsNames, departments, healthConditions, treatmetnAndProcedures, diagnosticsGuide, symptomsGuide, medicineGuide, medicalTechnology, secondOpinion, healthPackages } from "@/utils/dropdownValues";
 
 export default function HospitalNavbar({ variant = "primary", forceSecondary = false, setForceSecondary }) {
 
@@ -33,7 +33,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
         after:w-0 after:h-[2px] after:bg-pink-700 after:transition-all after:duration-300
         hover:after:w-full
     `;
-    
+
     useEffect(() => {
         if (navRef.current) setNavHeight(navRef.current.offsetHeight);
     }, [isSecondary]);
@@ -87,7 +87,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
             className="fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4"
             style={{ top: navHeight }}
         >
-            <div className="max-w-6xl mx-auto flex justify-between text-black text-sm">
+            <div className="max-w-6xl mx-auto flex justify-between text-black text-xs">
                 {/* Left: About items with Management names */}
                 <div className="flex gap-4 font-semibold min-w-[400px]">
                     <div className="flex flex-col gap-2 cursor-pointer">
@@ -124,7 +124,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                 <button
                                     key={i}
                                     onClick={() => handleMenuClick("/management", `management-${i}`)}
-                                    className="text-sm font-medium text-black text-left hover:text-pink-700 transition py-2"
+                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
                                 >
                                     {name}
                                 </button>
@@ -137,7 +137,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                 <button
                                     key={i}
                                     onClick={() => handleMenuClick("/board-of-directors", `director-${i}`)}
-                                    className="text-sm font-medium text-black text-left hover:text-pink-700 transition py-2"
+                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
                                 >
                                     {name}
                                 </button>
@@ -187,19 +187,22 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
             className="fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4"
             style={{ top: navHeight }}
         >
-            <div className="max-w-6xl mx-auto flex justify-between text-black text-sm">
+            <div className="max-w-6xl mx-auto flex justify-between text-black text-xs">
                 <div className="flex gap-4 font-semibold min-w-[400px]">
                     <div className="flex flex-col gap-2 cursor-pointer">
                         {dropdowns.library.map((item, idx) => (
                             <div
                                 key={idx}
-                                className={`flex items-center justify-between py-2 relative cursor-pointer min-w-[200px] 
-                                    ${hoveredLibraryItem === item ? "text-pink-700" : "text-gray-800"}`}
-                                onMouseEnter={() => setHoveredLibraryItem(item)}
-                                onClick={() => setHoveredLibraryItem(item)}
+                                className={`flex items-center justify-between py-2 relative text-xs cursor-pointer min-w-[200px] 
+                                    ${hoveredLibraryItem === item?.name ? "text-pink-700" : "text-gray-800"}`}
+                                onMouseEnter={() => setHoveredLibraryItem(item?.name)}
+                                onClick={() => {
+                                    handleNavigate(item?.path)
+                                    setHoveredLibraryItem(item?.name);
+                                }}
                             >
-                                <span>{item}</span>
-                                {item !== "News & Media" && <FiChevronRight />}
+                                <span>{item?.name}</span>
+                                {item?.name !== "News & Media" && <FiChevronRight />}
                             </div>
                         ))}
                     </div>
@@ -323,7 +326,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                         {quickLinks.map((link, idx) => (
                             <button
                                 key={idx}
-                                className="flex items-center justify-between bg-pink-700 text-white text-left font-semibold p-2 rounded hover:bg-yellow-500 transition"
+                                className="flex items-center justify-between bg-pink-700 text-white text-left font-semibold p-2 rounded hover:bg-pink-800 transition"
                                 onClick={() => handleNavigate(link.path)}
                             >
                                 {link.name} <FiArrowRight />
@@ -346,7 +349,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                 className={`fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4`}
                 style={{ top: navHeight }}
             >
-                <div className="max-w-6xl mx-auto flex justify-between text-black text-sm">
+                <div className="max-w-6xl mx-auto flex justify-between text-black text-xs">
                     <div
                         className={`${title === "specialties" ? "grid grid-cols-3" : "flex flex-col ml-40"
                             } cursor-pointer gap-x-12 gap-y-4 font-semibold`}
@@ -477,7 +480,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                             {departments.map((dept) => (
                                                 <li key={dept.name}>
                                                     <button
-                                                        className="text-sm text-gray-600 hover:text-pink-500 text-left w-full"
+                                                        className="text-xs text-gray-600 hover:text-pink-500 text-left w-full"
                                                         onClick={() => handleNavigate(dept.path)}
                                                     >
                                                         {dept.name}

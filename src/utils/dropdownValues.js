@@ -38,15 +38,15 @@ export const dropdowns = {
         { name: "Rheumatology", path: "/specialities/rheumatology" }
     ],
     library: [
-        "Health Conditions",
-        "Treatments & Procedures",
-        "Diagnostics Guide",
-        "Medicine Guide",
-        "Symptoms Guide",
-        "Medical Technology",
-        "Second Opinion",
-        "Health Packages",
-        "News & Media",
+        { name: "Health Conditions", path: "" },
+        { name: "Treatments & Procedures", path: "" },
+        { name: "Diagnostics Guide", path: "" },
+        { name: "Medicine Guide", path: "" },
+        { name: "Symptoms Guide", path: "" },
+        { name: "Medical Technology", path: "" },
+        { name: "Second Opinion", path: "/surgery-care" },
+        { name: "Health Packages", path: "/health-package" },
+        { name: "News & Media", path: "" },
     ],
 };
 
