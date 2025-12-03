@@ -5,6 +5,7 @@ import CONFIG from "@/config";
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import WhenToSeekSecondOpinion from "@/components/SecondOpinion/WhenToSeekSecondOpinion";
+import WhatToExpectCard from "@/components/SecondOpinion/WhatToExpectCard";
 
 export default function SOLandingPage() {
 
@@ -230,6 +231,55 @@ export default function SOLandingPage() {
                         </div>
                         <div className="max-w-6xl mx-auto">
                             <WhenToSeekSecondOpinion />
+                        </div>
+                    </section>
+                    <section className="w-full px-6 py-2">
+                        <div className="bg-pink-300 max-w-6xl mx-auto py-6 flex justify-center items-center">
+                            <p className="text-black text-xl font-semibold mr-4">
+                                Need an Appointment?
+                            </p>
+                            <button className="bg-pink-700 text-white text-lg font-semibold px-6 py-2 rounded-md hover:bg-pink-700 transition">
+                                Click here
+                            </button>
+                        </div>
+                        <div className="max-w-xl mx-auto px-6 text-center">
+                            <h2 className="text-2xl font-bold text-pink-700 mb-2">
+                                Expert Consulta on for a Confident Decision
+                            </h2>
+
+                            <p className="text-base leading-relaxed text-gray-700 mb-3">
+                                When you come to TX Hospitals for a second opinion, our specialists go
+                                beyond just reviewing reports — they truly understand you.<br />
+                                Here’s what to expect:
+                            </p>
+                        </div>
+                        <div className="mt-16 max-w-6xl mx-auto px-6">
+                            <WhatToExpectCard />
+                            <p className="text-base text-center leading-relaxed text-gray-700 my-4">
+                                At TX Hospitals, we combine precision, exper se and empathy —
+                                empowering you to make informed choices with confidence.
+                            </p>
+                        </div>
+                        <div className="max-w-6xl mx-auto bg-[#f8f0e7] rounded-xl py-2 px-5 text-center">
+                            <h2 className="text-[#b01640] text-2xl md:text-3xl font-bold mb-4">
+                                Book Your Second Opinion Today
+                            </h2>
+                            <p className="text-gray-900 text-lg leading-relaxed max-w-6xl mx-auto">
+                                You deserve clarity, confidence and care that goes beyond a single
+                                opinion. <br />
+                                At TX Hospitals, we help you make informed health decisions backed by
+                                advanced <br />
+                                diagnostics and experienced specialists. <br />
+                                Call us at <span className="font-bold">9144514459</span> or by
+                                visiting TX Hospitals website to book your consultation now
+                            </p>
+                            <div className="mt-6">
+                                <a href="tel:9144514459">
+                                    <button className="bg-pink-700 text-white text-lg font-semibold px-4 py-2 rounded-md hover:bg-pink-800 transition">
+                                        Call us Today
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </section>
                 </section>

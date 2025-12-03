@@ -27,7 +27,7 @@ export default function WhenToSeekSecondOpinion() {
     ];
 
     return (
-        <section className="w-full bg-gray-200 mt-4 px-12 rounded-3xl">
+        <section className="w-full bg-gray-200 mt-4 pb-2 px-12 rounded-3xl">
             <h2 className="text-center text-4xl font-bold text-pink-700 mb-5">
                 When Should You Seek a Second Opinion?
             </h2>

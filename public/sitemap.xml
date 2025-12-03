@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <sitemap>
+    <loc>https://txhospitals.in/static.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://txhospitals.in/coe.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://txhospitals.in/doctors.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://txhospitals.in/blogs.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://txhospitals.in/healthPackages.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://txhospitals.in/secondOpinion.xml</loc>
+  </sitemap>
+</sitemapindex>
