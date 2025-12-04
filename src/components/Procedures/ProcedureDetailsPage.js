@@ -9,10 +9,8 @@ import useIsMobile from "@/hooks/useIsMobile";
 import AppointmentForm from "@/components/DiseaseAndTreatment/AppointmentForm";
 import FAQSchema from "@/utils/FAQSchema";
 
-export default function ProcedureDetailsPage() {
-
-    const router = useRouter();
-    const { department, url } = router.query;
+export default function ProcedureDetailsPage({ department, url }) {
+    
     const isMobile = useIsMobile();
     const [loading, setLoading] = useState(true);
     const [procedureData, setProcedureData] = useState(null);

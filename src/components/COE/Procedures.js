@@ -16,8 +16,9 @@ import countryOptions from "@/utils/countryOptions";
 export default function Procedures() {
     const router = useRouter();
     const contentRef = useRef(null);
-    const { department, tab } = router.query;
-
+    const { slug } = router.query;
+    const department = slug?.[0] || null;
+    const tab = slug?.[1] || "";
     const isMobile = useIsMobile();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);

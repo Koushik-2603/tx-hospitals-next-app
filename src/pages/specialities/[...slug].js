@@ -11,26 +11,62 @@ import Procedures from "@/components/COE/Procedures";
 import Doctors from "@/components/COE/Doctors";
 import { getDepartmentDetails } from "@/utils/departmentUtils";
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import DTDDetailsPage from "@/components/DiseaseAndTreatment/DTDDetailsPage";
+import ProcedureDetailsPage from "@/components/Procedures/ProcedureDetailsPage";
 
 export default function CenterOfExcellencePage() {
     const router = useRouter();
-    const { department, tab } = router.query;
-    const { title, image } = getDepartmentDetails(department);
-    const currentTab = Array.isArray(tab) ? tab[0] : "";
-
+    const { slug } = router.query;
+    const [routeType, setRouteType] = useState(null);
+    const [department, setDepartment] = useState(null);
+    const [tab, setTab] = useState(null);
+    const [url, setUrl] = useState(null);
     const isMobile = useIsMobile();
-    const [selectedTab, setSelectedTab] = useState("");
 
     useEffect(() => {
-        if (!router.isReady) return;
-        const current = Array.isArray(router.query.tab) ? router.query.tab[0] : router.query.tab || "";
-        setSelectedTab(current);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }, [router.isReady, router.query.tab]);
+        if (!slug) return;
 
+        const dep = slug[0] || null;
+        const second = slug[1] || null;
+        const third = slug[2] || null;
+
+        setDepartment(dep);
+
+        if (!second) {
+            setRouteType("coe-main");
+            setTab("");
+            return;
+        }
+
+        const validTabs = [
+            "disease-and-treatment",
+            "diagnostics",
+            "procedures",
+            "our-clinical-team",
+        ];
+
+        if (validTabs.includes(second) && !third) {
+            setRouteType("coe-tab");
+            setTab(second);
+            return;
+        }
+
+        if (second === "disease-and-treatment" && third) {
+            setRouteType("dat-detail");
+            setUrl(third);
+            return;
+        }
+
+        if (second === "procedures" && third) {
+            setRouteType("procedure-detail");
+            setUrl(third);
+            return;
+        }
+
+    }, [slug]);
 
     const handleTabClick = (key) => {
-        setSelectedTab(key);
+        setTab(key);
         router.push(`/specialities/${department}/${key ? `${key}/` : ""}`);
     };
 
@@ -42,11 +78,38 @@ export default function CenterOfExcellencePage() {
         { name: "Doctors", key: "our-clinical-team" },
     ];
 
+    const { title, image } = getDepartmentDetails(department);
+
     const breadcrumbItems = [
         { label: "Home", href: "/" },
         { label: "Specialities", href: "/specialities" },
         { label: title },
     ];
+
+    if (!routeType) return (
+        <div className="flex flex-row justify-center items-center mt-20 mb-4 gap-2">
+            <div className="w-8 h-8 border-2 border-pink-700 border-t-transparent rounded-full animate-spin"></div>
+            <div className="text-pink-700 text-lg font-medium animate-pulse">
+                Loading...
+            </div>
+        </div>
+    );
+
+    if (routeType === "dat-detail") {
+        return (
+            <SecondaryLayout>
+                <DTDDetailsPage department={department} url={url} />
+            </SecondaryLayout>
+        );
+    }
+
+    if (routeType === "procedure-detail") {
+        return (
+            <SecondaryLayout>
+                <ProcedureDetailsPage department={department} url={url} />
+            </SecondaryLayout>
+        );
+    }
 
     return (
         <SecondaryLayout>
@@ -72,7 +135,7 @@ export default function CenterOfExcellencePage() {
                                 initial={{ x: index % 2 === 0 ? -200 : 200, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                             >
-                                {selectedTab === key && (
+                                {tab === key && (
                                     <motion.div
                                         className="absolute inset-0 bg-pink-700"
                                         initial={{ x: "-100%" }}
@@ -81,7 +144,7 @@ export default function CenterOfExcellencePage() {
                                     />
                                 )}
                                 <motion.span
-                                    className={`relative text-lg ${selectedTab === key ? "text-white" : "text-black"
+                                    className={`relative text-lg ${tab === key ? "text-white" : "text-black"
                                         }`}
                                 >
                                     {name}
@@ -90,11 +153,11 @@ export default function CenterOfExcellencePage() {
                         ))}
                     </motion.div>
                     <AnimatePresence mode="wait">
-                        {selectedTab === "" && <COEOverview />}
-                        {selectedTab === "disease-and-treatment" && <DiseasesTreatments />}
-                        {selectedTab === "diagnostics" && <Diagnosties />}
-                        {selectedTab === "procedures" && <Procedures />}
-                        {selectedTab === "our-clinical-team" && <Doctors />}
+                        {tab === "" && <COEOverview />}
+                        {tab === "disease-and-treatment" && <DiseasesTreatments />}
+                        {tab === "diagnostics" && <Diagnosties />}
+                        {tab === "procedures" && <Procedures />}
+                        {tab === "our-clinical-team" && <Doctors />}
                     </AnimatePresence>
                 </div>
             ) : (
@@ -116,7 +179,7 @@ export default function CenterOfExcellencePage() {
                                 key={key}
                                 onClick={() => handleTabClick(key)}
                                 className={`relative border border-gray-800 font-semibold text-black text-sm px-1 py-1 rounded-2xl overflow-hidden 
-                ${selectedTab === key ? "bg-pink-700 text-white" : ""}
+                ${tab === key ? "bg-pink-700 text-white" : ""}
                 ${index === tabs.length - 1 && tabs.length % 2 !== 0 ? "col-span-2 justify-self-center w-1/2" : ""}
             `}
                                 initial={{ x: index % 2 === 0 ? -100 : 100, opacity: 0 }}
@@ -124,7 +187,7 @@ export default function CenterOfExcellencePage() {
                                 transition={{ type: "spring", stiffness: 120, damping: 15 }}
                             >
                                 <motion.span
-                                    className={`relative ${selectedTab === key ? "text-white" : "text-black"
+                                    className={`relative ${tab === key ? "text-white" : "text-black"
                                         }`}
                                 >
                                     {name}
@@ -133,11 +196,11 @@ export default function CenterOfExcellencePage() {
                         ))}
                     </motion.div>
                     <AnimatePresence mode="wait">
-                        {selectedTab === "" && <COEOverview />}
-                        {selectedTab === "disease-and-treatment" && <DiseasesTreatments />}
-                        {selectedTab === "diagnostics" && <Diagnosties />}
-                        {selectedTab === "procedures" && <Procedures />}
-                        {selectedTab === "our-clinical-team" && <Doctors />}
+                        {tab === "" && <COEOverview />}
+                        {tab === "disease-and-treatment" && <DiseasesTreatments />}
+                        {tab === "diagnostics" && <Diagnosties />}
+                        {tab === "procedures" && <Procedures />}
+                        {tab === "our-clinical-team" && <Doctors />}
                     </AnimatePresence>
                 </div>
             )}

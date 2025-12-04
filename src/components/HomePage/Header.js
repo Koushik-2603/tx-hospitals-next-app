@@ -3,16 +3,18 @@ import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import HospitalNavbar from "@/components/HomePage/HospitalNavbar";
 import useIsMobile from "@/hooks/useIsMobile";
+import { useRouter } from "next/router";
 
 const labels = [
-    "Request Appointment",
-    "Online Consultation",
-    "Health Checkup",
-    "View Report",
+    { title: "Request Appointment", path: "/find-doctor" },
+    { title: "Online Consultation", path: "" },
+    { title: "Health Checkup", path: "" },
+    { title: "View Report", path: "" },
 ];
 
 export default function HospitalHero() {
 
+    const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
     const [forceSecondary, setForceSecondary] = useState(false);
     const isMobile = useIsMobile();
@@ -52,8 +54,9 @@ export default function HospitalHero() {
                                 <button
                                     key={idx}
                                     className="flex items-center justify-center bg-pink-700 text-white rounded-full gap-2 py-2 font-semibold hover:bg-pink-800 transition"
+                                    onClick={() => router.push(label?.path)}
                                 >
-                                    <span className="text-xs">{label}</span>
+                                    <span className="text-xs">{label?.title}</span>
                                     <FiArrowRight size={16} />
                                 </button>
                             ))}
@@ -121,8 +124,9 @@ export default function HospitalHero() {
                                     <button
                                         key={idx}
                                         className='flex items-center justify-center bg-pink-700 border rounded-full border-gray-200 gap-2 font-bold py-2 flex-1 transition hover:bg-pink-800'
+                                        onClick={() => router.push(label?.path)}
                                     >
-                                        {label}
+                                        {label?.title}
                                         <FiArrowRight size={16} />
                                     </button>
                                 ))}

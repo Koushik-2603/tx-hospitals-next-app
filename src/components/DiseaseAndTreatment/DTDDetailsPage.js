@@ -9,10 +9,8 @@ import useIsMobile from "@/hooks/useIsMobile";
 import AppointmentForm from "@/components/DiseaseAndTreatment/AppointmentForm";
 import FAQSchema from "@/utils/FAQSchema";
 
-export default function DTDDetailsPage() {
+export default function DTDDetailsPage({ department, url }) {
 
-    const router = useRouter();
-    const { department, url } = router.query;
     const isMobile = useIsMobile();
     const [loading, setLoading] = useState(true);
     const [procedureData, setProcedureData] = useState(null);

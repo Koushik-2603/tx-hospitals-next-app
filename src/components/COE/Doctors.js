@@ -16,8 +16,9 @@ import AppointmentModal from "@/components/Doctors/AppointmentModal";
 export default function Doctors() {
     const router = useRouter();
     const contentRef = useRef(null);
-    const { department, tab } = router.query;
-
+    const { slug } = router.query;
+    const department = slug?.[0] || null;
+    const tab = slug?.[1] || "";
     const isMobile = useIsMobile();
     const [data, setData] = useState(null);
     const [doctorsData, setDoctorsData] = useState([]);
