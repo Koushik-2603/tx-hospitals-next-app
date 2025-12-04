@@ -546,9 +546,9 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                     >
                         {/* Left */}
                         <div className="flex items-center gap-8">
-                            <a href="tel:9144451449">
+                            <a href="tel:9144514459">
                                 <div className="flex items-center gap-3 text-white bg-pink-700 rounded-full px-2 py-1 cursor-pointer">
-                                    <MdPhoneInTalk size={18} /> 9144451449
+                                    <MdPhoneInTalk size={18} /> 9144514459
                                 </div>
                             </a>
 
