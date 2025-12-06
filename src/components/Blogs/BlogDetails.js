@@ -4,9 +4,11 @@ import Head from "next/head";
 import useIsMobile from "@/hooks/useIsMobile";
 import { FaTags } from "react-icons/fa";
 import { IoPlay, IoPause, IoStop, IoPlaySkipForward } from "react-icons/io5";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { franc } from "franc";
 import { motion } from "framer-motion";
 import DOMPurify from "dompurify";
+import ActionButtons from "@/components/Common/ActionButtons";
 import AppointmentForm from "@/components/Common/AppointmentForm";
 import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 
@@ -18,6 +20,7 @@ export default function BlogDetails({ blogData, departments }) {
     const [showModal, setShowModal] = useState(false);
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -211,7 +214,199 @@ export default function BlogDetails({ blogData, departments }) {
                 <meta name="keywords" content={blogData?.metaDescription} />
             </Head>
             {isMobile ? (
-                <></>
+                <div className="-mt-8 px-2 font-inter">
+                    <h1 className="text-xl text-pink-700 font-bold mt-4">{blogData?.blogTitle}</h1>
+                    <div className="flex flex-col gap-2 p-1">
+                        <div>
+                            <h2 className="text-lg mt-1 font-bold mb-2 border-b-2 border-pink-600 inline-block">
+                                Share this
+                            </h2>
+                            <div className="flex space-x-3 mb-2 flex-wrap">
+                                <a
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img loading="lazy" src="/assets/Blogs/TXHospitalsFacebook.webp" alt="Facebook" className="w-8 h-8 cursor-pointer" />
+                                </a>
+                                <a
+                                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=Check this out!`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img loading="lazy" src="/assets/Blogs/txhospitalstwitter-68879ef165ce9.webp" alt="Twitter" className="w-8 h-8 cursor-pointer" />
+                                </a>
+                                <a
+                                    href="https://www.instagram.com/txhospitals/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img loading="lazy" src="/assets/Blogs/TXHospitalsInstagram.webp" alt="Instagram" className="w-8 h-8 cursor-pointer" />
+                                </a>
+                                <a
+                                    href="https://www.youtube.com/channel/UCuHZd4Yi3wTHciJoMz7mq2A"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img loading="lazy" src="/assets/Blogs/TXHospitalsYoutub.webp" alt="YouTube" className="w-8 h-8 cursor-pointer" />
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/company/tx-hospitals/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img loading="lazy" src="/assets/Blogs/TXHospitalsLinkidin.webp" alt="LinkedIn" className="w-8 h-8 cursor-pointer" />
+                                </a>
+                                <a
+                                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(currentUrl)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img loading="lazy" src="/assets/Blogs/TXHospitalsWhatsup.webp" alt="WhatsApp" className="w-8 h-8 cursor-pointer" />
+                                </a>
+                            </div>
+                        </div>
+                        {/* <ActionButtons onBookNow={() => setShowModal(true)} />
+                        {showModal && (
+                            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                                <div className="w-full max-w-lg relative p-6">
+                                    <button
+                                        onClick={() => setShowModal(false)}
+                                        className="absolute top-2 right-2 text-white hover:text-pink-700 text-2xl font-bold"
+                                    >
+                                        &times;
+                                    </button>
+                                    <AppointmentForm />
+                                </div>
+                            </div>
+                        )} */}
+                        <div
+                            onClick={() => setOpen(!open)}
+                            className="flex items-center gap-2 cursor-pointer"
+                        >
+                            <h2 className="text-lg font-bold text-black border-b-2 border-pink-600">Categories</h2>
+                            {open ? (
+                                <FaChevronUp className="text-pink-600 text-sm" />
+                            ) : (
+                                <FaChevronDown className="text-pink-600 text-sm" />
+                            )}
+                        </div>
+                        {open && (
+                            <ul className="mt-2 divide-y divide-gray-200 bg-white rounded-md shadow-sm">
+                                {departments.map((dept, index) => (
+                                    <li
+                                        key={index}
+                                        onClick={() => handleCategoryClick(dept)}
+                                        className="py-2 px-2 hover:text-pink-600 text-xs cursor-pointer transition-colors"
+                                    >
+                                        {dept}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                        <div className="relative w-full">
+                            <div className="relative">
+                                <motion.img
+                                    src={blogData?.blogImage}
+                                    alt={blogData?.blogTitle}
+                                    className="w-full h-full object-cover rounded-md shadow-lg"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                />
+                            </div>
+                            <div className="mt-2 flex gap-2 items-center">
+                                {!isSpeaking ? (
+                                    <button
+                                        onClick={handlePlay}
+                                        className="bg-pink-600 text-white px-2 py-1 rounded flex items-center gap-2"
+                                    >
+                                        <IoPlay size={18} />
+                                        Play
+                                    </button>
+                                ) : isPaused ? (
+                                    <button
+                                        onClick={handleResume}
+                                        className="bg-pink-600 text-white px-2 py-1 rounded flex items-center gap-2"
+                                    >
+                                        <IoPlaySkipForward size={18} />
+                                        Resume
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={handlePause}
+                                        className="bg-pink-600 text-white px-2 py-1 rounded flex items-center gap-2"
+                                    >
+                                        <IoPause size={18} />
+                                        Pause
+                                    </button>
+                                )}
+
+                                {isSpeaking && (
+                                    <button
+                                        onClick={handleStop}
+                                        className="bg-pink-600 text-white px-4 py-2 rounded flex items-center gap-2"
+                                    >
+                                        <IoStop size={20} />
+                                        Stop
+                                    </button>
+                                )}
+                            </div>
+                            {blogData?.extraFields?.map((field, index) => {
+                                const getHeadingTag = () => {
+                                    if (index === 0 || index === 1) return 'h2';
+                                    return 'h3';
+                                };
+
+                                const HeadingTag = getHeadingTag();
+                                return (
+                                    <div key={index}>
+                                        <HeadingTag className={`${index <= 1 ? 'text-xl' : 'text-lg'} font-bold text-pink-700 mb-1`}>{field.heading}</HeadingTag>
+                                        {(() => {
+                                            let html = field.description;
+
+                                            html = html
+                                                .replace(/<ul>/g, '<ul class="list-disc ml-6">')
+                                                .replace(/<ol>/g, '<ol class="list-decimal ml-6">');
+
+                                            html = fixOrderedListNumbering(html);
+
+                                            const sanitized = DOMPurify.sanitize(html);
+
+                                            return (
+                                                <div
+                                                    className="text-gray-700 text-sm leading-relaxed"
+                                                    dangerouslySetInnerHTML={{ __html: sanitized }}
+                                                ></div>
+                                            );
+                                        })()}
+                                        {index === 1 && (
+                                            <ActionButtons onBookNow={() => setShowModal(true)} />
+                                        )}
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    {blogData?.tags && blogData.tags.length > 0 && (
+                        <div className="flex flex-wrap w-full gap-2 mt-2 mb-2">
+                            <FaTags className="text-pink-700 w-5 h-5 mt-1" />
+                            <p className="text-gray-600 text-sm">
+                                {blogData.tags.map((tag, index) => (
+                                    <span key={index}>
+                                        <button
+                                            onClick={() => handleTagClick(tag.name)}
+                                            className="hover:text-pink-700 transition-colors"
+                                        >
+                                            {tag.name}
+                                        </button>
+                                        {index < blogData.tags.length - 1 && ', '}
+                                    </span>
+                                ))}
+                            </p>
+                        </div>
+                    )}
+                </div>
             ) : (
                 <div className="mt-7 px-4 font-inter">
                     <h1 className="text-4xl text-pink-700 font-bold pl-6 mt-4">{blogData?.blogTitle}</h1>
@@ -296,20 +491,9 @@ export default function BlogDetails({ blogData, departments }) {
                                                 })()}
                                                 {/* Show appointment CTA after every 2 fields */}
                                                 {index === 1 && (
-                                                    <motion.div
-                                                        initial={{ opacity: 0, y: 20 }}
-                                                        animate={{ opacity: 1, y: 0 }}
-                                                        transition={{ duration: 0.5 }}
-                                                        className="bg-pink-100 flex items-center justify-center gap-6 border-l-4 border-pink-600 p-4 mt-6 rounded-md shadow-md animate-zoomBlink"
-                                                    >
-                                                        <p className="text-lg m-0 font-semibold text-pink-700">Need an Appointment?</p>
-                                                        <button
-                                                            onClick={() => setShowModal(true)}
-                                                            className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition"
-                                                        >
-                                                            Click here
-                                                        </button>
-                                                    </motion.div>
+                                                    <div className="flex justify-center">
+                                                        <ActionButtons onBookNow={() => setShowModal(true)} />
+                                                    </div>
                                                 )}
                                             </div>
                                         )

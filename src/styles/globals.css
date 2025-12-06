@@ -31,3 +31,77 @@ nextjs-portal {
   display: none;
   /* Chrome, Safari, Opera */
 }
+
+/* Hide the Google Translate top banner */
+body .goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Hide the iframe that Google Translate injects */
+iframe.skiptranslate {
+  display: none !important;
+}
+
+/* Remove padding or margins added by Translate */
+body {
+  top: 0 !important;
+  overflow: auto !important;
+  padding-right: 0 !important;
+}
+
+/* Optional: Hide the Google Translate popup panel */
+.goog-te-menu-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Optional: Hide the tooltip or mini banner */
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* === Hide Google Translate tooltip popup and feedback UI === */
+#goog-gt-tt,
+#goog-gt-tt *,
+#goog-gt-votingHiddenPane,
+#goog-gt-thumbUpButton,
+#goog-gt-thumbDownButton,
+.VIpgJd-yAWNEb-hvhgNd,
+.VIpgJd-yAWNEb-hvhgNd-N7Eqid,
+.VIpgJd-yAWNEb-hvhgNd-xgov5 {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* === Prevent selection that triggers Google Translate === */
+body,
+body * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+.notranslate {
+  translate: no;
+  /* modern browsers */
+}
+
+.gtranslate .notranslate {
+  all: unset;
+}
+
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+  display: none !important;
+}

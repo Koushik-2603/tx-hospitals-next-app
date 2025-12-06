@@ -359,7 +359,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                 <button
                                     key={idx}
                                     onClick={() => { handleMenuClick(item.path); setOpenMenu(null); }}
-                                    className="text-left text-gray-800 hover:text-pink-700"
+                                    className={`text-left text-gray-800 hover:text-pink-700 ${item.name === 'ENT' ? 'notranslate' : ''}`}
                                 >
                                     {item.name}
                                 </button>
@@ -608,7 +608,8 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                 </a>
                             </div>
                             <LanguageDropdown
-                                languages={["English", "Telugu", "Hindi", "Bengali", "French"]}
+                                setForceSecondary={setForceSecondary}
+                                languages={["English", "Telugu", "Hindi", "Bengali", "French", "Arabic"]}
                             />
                         </div>
                     </nav>

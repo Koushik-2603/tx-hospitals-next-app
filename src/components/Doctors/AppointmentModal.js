@@ -134,7 +134,10 @@ export default function AppointmentModal({ closeModal, doctorData }) {
         setSelectedDate(null);
     };
 
-    const isSunday = (index) => index % 7 === 0;
+    const isSundayDate = (year, month, day) => {
+        const date = new Date(year, month, day);
+        return date.getDay() === 0;
+    };
 
     const today = new Date();
     const isToday = (day) =>
@@ -274,15 +277,13 @@ export default function AppointmentModal({ closeModal, doctorData }) {
                                         disabled={isPastDate}
                                         onClick={() => !isPastDate && setSelectedDate(day)}
                                         className={`py-2 rounded-md border text-center font-semibold
-                                    ${isPastDate
+                                    ${(isPastDate || isSundayDate(year, month, day))
                                                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                                                 : isSelected
                                                     ? "bg-pink-500 text-white"
                                                     : todayCheck
                                                         ? "border-pink-600 text-pink-700 bg-pink-100"
-                                                        : isSunday(index)
-                                                            ? "text-pink-600 bg-gray-200"
-                                                            : "text-gray-700 bg-gray-200"
+                                                        : "text-gray-700 bg-gray-200"
                                             }
                                 `}
                                     >
@@ -291,50 +292,65 @@ export default function AppointmentModal({ closeModal, doctorData }) {
                                 );
                             })}
                         </div>
-                        {selectedDate && (
-                            <>
-                                <p className="text-xl font-semibold mt-6">
-                                    {new Date(year, month, selectedDate).toLocaleDateString("en-US", {
-                                        weekday: "short",
-                                        day: "numeric",
-                                        month: "short",
-                                        year: "numeric"
-                                    })}
-                                </p>
-                                <div className="grid grid-cols-2 gap-3 mt-4">
-                                    {slots.map((slot) => {
-                                        const available = isSlotAvailable(slot);
+                        {selectedDate && (() => {
+                            const dateObj = new Date(year, month, selectedDate);
 
-                                        return (
-                                            <button
-                                                key={slot}
-                                                disabled={!available}
-                                                onClick={() => available && setSelectedSlot(slot)}
-                                                className={`border rounded-xl py-3 text-lg font-semibold
-                                                    ${selectedSlot === slot
-                                                        ? "bg-pink-700 text-white hover:bg-pink-800"
-                                                        : available
-                                                            ? "text-gray-800 hover:bg-gray-100"
-                                                            : "bg-gray-400 text-gray-500 cursor-not-allowed"
-                                                    }
-                                                `}
-                                            >
-                                                {slot}
-                                            </button>
-                                        );
-                                    })}
-                                </div>
-                                {selectedSlot && (
-                                    <button
-                                        ref={nextButtonRef}
-                                        className="bg-pink-700 hover:bg-pink-800 text-white w-full mt-6 py-3 rounded-full text-xl font-semibold"
-                                        onClick={() => setStep(2)}
-                                    >
-                                        Next
-                                    </button>
-                                )}
-                            </>
-                        )}
+                            const isPastDate =
+                                dateObj < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+                            const isSunday = dateObj.getDay() === 0;
+
+                            return (
+                                <>
+                                    <p className="text-xl font-semibold mt-6">
+                                        {dateObj.toLocaleDateString("en-US", {
+                                            weekday: "short",
+                                            day: "numeric",
+                                            month: "short",
+                                            year: "numeric",
+                                        })}
+                                    </p>
+
+                                    {/* Show slots only if NOT past date and NOT Sunday */}
+                                    {!isPastDate && !isSunday && (
+                                        <div className="grid grid-cols-2 gap-3 mt-4">
+                                            {slots.map((slot) => {
+                                                const available = isSlotAvailable(slot);
+
+                                                return (
+                                                    <button
+                                                        key={slot}
+                                                        disabled={!available}
+                                                        onClick={() => available && setSelectedSlot(slot)}
+                                                        className={`border rounded-xl py-3 text-lg font-semibold
+                                    ${selectedSlot === slot
+                                                                ? "bg-pink-700 text-white hover:bg-pink-800"
+                                                                : available
+                                                                    ? "text-gray-800 hover:bg-gray-100"
+                                                                    : "bg-gray-400 text-gray-500 cursor-not-allowed"
+                                                            }
+                                `}
+                                                    >
+                                                        {slot}
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
+
+                                    {/* Next button */}
+                                    {selectedSlot && (
+                                        <button
+                                            ref={nextButtonRef}
+                                            className="bg-pink-700 hover:bg-pink-800 text-white w-full mt-6 py-3 rounded-full text-xl font-semibold"
+                                            onClick={() => setStep(2)}
+                                        >
+                                            Next
+                                        </button>
+                                    )}
+                                </>
+                            );
+                        })()}
                     </>
                 )}
                 {step === 2 && (

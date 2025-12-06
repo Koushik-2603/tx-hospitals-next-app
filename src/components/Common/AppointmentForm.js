@@ -66,7 +66,7 @@ export default function AppointmentForm({ department, doctorName }) {
                 </p>
             )}
             <div className="p-4">
-                <div className="flex px-6 gap-6">
+                <div className={`flex gap-6 ${isMobile ? "px-2" : "px-6"}`}>
                     <label className="flex items-center gap-2 cursor-pointer">
                         <input
                             type="radio"

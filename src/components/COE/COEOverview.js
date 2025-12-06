@@ -12,13 +12,14 @@ import useIsMobile from "@/hooks/useIsMobile";
 import DetailsForm from "@/components/COE/DetailsForm";
 import BacklinkSection from "@/components/COE/BacklinkSection";
 import countryOptions from "@/utils/countryOptions";
+import ActionButtons from "@/components/Common/ActionButtons";
 
 export default function COEOverview() {
     const router = useRouter();
     const contentRef = useRef(null);
     const { slug } = router.query;
     const department = slug?.[0] || null;
-    const tab = slug?.[1] || ""; 
+    const tab = slug?.[1] || "";
     const isMobile = useIsMobile();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -362,20 +363,7 @@ export default function COEOverview() {
                                 </div>
                             )
                         })}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="flex items-center justify-between bg-pink-100 border-l-4 border-pink-600 p-2 mt-4 mb-2 rounded-md shadow-md animate-zoomBlink"
-                        >
-                            <p className="text-base font-semibold text-pink-700">Need an Appointment?</p>
-                            <button
-                                onClick={() => setShowModal(true)}
-                                className="mt-2 bg-pink-600 text-white px-2 py-1 rounded hover:bg-pink-700 transition"
-                            >
-                                Click here
-                            </button>
-                        </motion.div>
+                        <ActionButtons onBookNow={() => setShowModal(true)} />
                         {/* Modal */}
                         {showModal && (
                             <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">

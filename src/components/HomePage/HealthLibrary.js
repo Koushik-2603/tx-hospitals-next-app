@@ -27,6 +27,14 @@ export default function HealthLibrary() {
         fetchBlogs();
     }, []);
 
+    const handleReadMore = async (blog) => {
+        try {
+            router.push(`/${blog.url.replace(/^\/|\/$/g, '')}/`);
+        } catch (err) {
+            console.error("Error fetching blog details:", err);
+        }
+    };
+
     return (
         <>
             {isMobile ? (
@@ -53,6 +61,7 @@ export default function HealthLibrary() {
                                         width={400}
                                         height={250}
                                         className="w-full h-full object-cover"
+                                        onClick={() => { handleReadMore(blog) }}
                                     />
                                 </div>
                             </div>
@@ -94,6 +103,7 @@ export default function HealthLibrary() {
                                             width={400}
                                             height={250}
                                             className="w-full h-full object-cover"
+                                            onClick={() => { handleReadMore(blog) }}
                                         />
                                     </div>
                                 </div>
