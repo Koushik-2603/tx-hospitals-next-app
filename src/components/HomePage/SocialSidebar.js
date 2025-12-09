@@ -7,11 +7,11 @@ export default function SocialSidebar() {
     const isMobile = useIsMobile();
 
     const icons = [
-        { src: "/assets/FixedIcons/Whatsup Logo.png", alt: "WhatsApp", link: "https://wa.me/1234567890" },
-        { src: "/assets/FixedIcons/FB logo.png", alt: "Facebook", link: "https://facebook.com/" },
-        { src: "/assets/FixedIcons/Instgram Logo.png", alt: "Instagram", link: "https://instagram.com/" },
-        { src: "/assets/FixedIcons/Linkid in Logo.png", alt: "LinkedIn", link: "https://linkedin.com/" },
-        { src: "/assets/FixedIcons/Youtub Logo.png", alt: "YouTube", link: "https://youtube.com/" },
+        { src: "/assets/FixedIcons/Whatsup Logo.png", alt: "WhatsApp", link: "https://wa.me/9144514459" },
+        { src: "/assets/FixedIcons/FB logo.png", alt: "Facebook", link: "https://www.facebook.com/txhospitals/" },
+        { src: "/assets/FixedIcons/Instgram Logo.png", alt: "Instagram", link: "https://www.instagram.com/txhospitals/" },
+        { src: "/assets/FixedIcons/Linkid in Logo.png", alt: "LinkedIn", link: "https://www.linkedin.com/company/tx-hospitals/" },
+        { src: "/assets/FixedIcons/Youtub Logo.png", alt: "YouTube", link: "https://www.youtube.com/@txhospitalsofficial" },
     ];
 
     return (
