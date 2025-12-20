@@ -168,7 +168,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                         {quickLinks.map((link, idx) => (
                             <button
                                 key={idx}
-                                className="flex items-center justify-between bg-pink-700 text-white text-left font-semibold p-2 rounded hover:bg-yellow-500 transition"
+                                className="flex items-center justify-between bg-pink-700 text-white text-left font-semibold p-2 rounded hover:bg-pink-800 transition"
                                 onClick={() => handleNavigate(link.path)}
                             >
                                 {link.name} <FiArrowRight />
@@ -293,12 +293,13 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                     )}
                     {hoveredLibraryItem === "Health Packages" && (
                         <div className="grid grid-cols-1">
-                            {healthPackages.map((name, i) => (
+                            {healthPackages.map((healthPackage, i) => (
                                 <button
                                     key={i}
+                                    onClick={() => { handleMenuClick(healthPackage?.path); setOpenMenu(null); }}
                                     className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
                                 >
-                                    {name}
+                                    {healthPackage?.name}
                                 </button>
                             ))}
                         </div>

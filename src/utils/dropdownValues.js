@@ -287,15 +287,15 @@ export const secondOpinion = [
 ]
 
 export const healthPackages = [
-    "Whole Body Checkup",
-    "Executive Health Checkup – Pro",
-    "Master Health Checkup",
-    "Lifestyle Screen Quick Checkup",
-    "Executive Health Checkup",
-    "General Quick Checkup",
-    "Cardiac Health Checkup",
-    "Gastro Health Checkup",
-    "Kidney Health Checkup",
-    "Lungs Health Checkup",
-    "Orthopedics Health Checkup"
+    { name: "Whole Body Checkup", path: "/health-package/whole-body-check-up-package/" },
+    { name: "Executive Health Checkup – Pro", path: "/health-package/executive-health-checkup-pro-package/" },
+    { name: "Master Health Checkup", path: "/health-package/master-health-check-up-package/ " },
+    { name: "Lifestyle Screen Quick Checkup", path: "/health-package/lifestyle-screen-quick-check-up-package/" },
+    { name: "Executive Health Checkup", path: "/health-package/executive-health-check-up-package/" },
+    { name: "General Quick Checkup", path: "/health-package/general-quick-health-check-up-package/" },
+    { name: "Cardiac Health Checkup", path: "/health-package/cardiac-health-check-up-package/" },
+    { name: "Gastro Health Checkup", path: "/health-package/gastro-health-check-up-package/" },
+    { name: "Kidney Health Checkup", path: "/health-package/kidney-health-check-up-package/" },
+    { name: "Lungs Health Checkup", path: "/health-package/lungs-health-check-up-package/" },
+    { name: "Orthopedics Health Checkup", path: "/health-package/orthopedic-health-check-up-package/" }
 ]

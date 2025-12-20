@@ -198,7 +198,7 @@ export default function Doctors() {
                                                 </button>
                                                 <button
                                                     className="w-full py-2 text-pink-700 underline font-semibold rounded-lg hover:scale-105 transition"
-                                                    onClick={() => handleViewProfile(doctor)}
+                                                    onClick={() => router.push(`/${doctor.url.replace(/^\/|\/$/g, '')}/`)}
                                                 >
                                                     View Profile
                                                 </button>
