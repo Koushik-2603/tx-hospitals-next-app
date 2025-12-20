@@ -5,6 +5,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import CONFIG from "@/config";
 import HealthPackageCard from "@/components/HealthPackages/HealthPackageCard";
 import WhyChooseHealthPackages from "@/components/HealthPackages/WhyChooseHealthPackages";
+import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 
 export default function HPLandingPage() {
 
@@ -12,6 +13,7 @@ export default function HPLandingPage() {
     // const [active, setActive] = useState("All Packages");
     const [packages, setPackages] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [showModal, setShowModal] = useState(false);
 
     // const filters = [
     //     "All Packages",
@@ -118,7 +120,7 @@ export default function HPLandingPage() {
                         </p>
                         <div className="flex justify-center items-center gap-2 mb-2">
                             <button
-                                // onClick={handleBook}
+                                onClick={() => setShowModal(true)}
                                 className="bg-pink-700 text-xs hover:bg-pink-800 text-white font-semibold px-2 py-1 rounded-full transition"
                             >
                                 Book Appointment
@@ -220,7 +222,7 @@ export default function HPLandingPage() {
                         </p>
                         <div className="flex justify-center items-center gap-12 mb-4">
                             <button
-                                // onClick={handleBook}
+                                onClick={() => setShowModal(true)}
                                 className="bg-pink-700 hover:bg-pink-800 text-white text-xl font-semibold px-8 py-3 rounded-full transition"
                             >
                                 Book Appointment
@@ -235,6 +237,7 @@ export default function HPLandingPage() {
                     </div>
                 </>
             )}
+            <BookAppointmentForm showModal={showModal} setShowModal={setShowModal} />
         </>
     );
 }

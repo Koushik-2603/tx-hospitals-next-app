@@ -95,10 +95,11 @@ const BookAppointmentForm = ({ showModal, setShowModal }) => {
                                     name="location"
                                     className="w-full px-4 py-2 rounded-md text-black"
                                 >
-                                    <option value="">Select Location</option>
-                                    <option value="Banjara Hills">Banjara Hills</option>
-                                    <option value="Uppal">Uppal</option>
-                                    <option value="Kachiguda">Kachiguda</option>
+                                    <option value="">Select a Location</option>
+                                    <option>TX Hospitals Uppal</option>
+                                    <option>TX Hospitals Kachiguda</option>
+                                    <option>TX Hospitals Banjara Hills</option>
+                                    <option>TX Children Hospitals Banjara Hills</option>
                                 </select>
                             </div>
 

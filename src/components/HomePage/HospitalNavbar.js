@@ -459,7 +459,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                         onClick={() => handleNavigate("/about-us/")}
                                         className="text-gray-800 hover:text-pink-600 w-full text-left"
                                     >
-                                        About Us
+                                        About
                                     </button>
                                 </li>
 
@@ -468,7 +468,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                         className="text-gray-800 hover:text-pink-600 w-full flex justify-between items-center"
                                         onClick={() => setIsCOEDropdownOpen(!isCOEDropdownOpen)}
                                     >
-                                        Our Specialities
+                                        Specialties
                                         {isCOEDropdownOpen ? (
                                             <ChevronUpIcon className="w-4 h-4" />
                                         ) : (
@@ -497,7 +497,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                         onClick={() => handleNavigate("/find-doctor/")}
                                         className="text-gray-800 hover:text-pink-600 w-full text-left"
                                     >
-                                        Our Doctors
+                                        Doctors
                                     </button>
                                 </li>
                                 <li>

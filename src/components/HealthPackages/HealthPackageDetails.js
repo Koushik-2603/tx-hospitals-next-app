@@ -8,6 +8,7 @@ import Image from "next/image";
 import FAQSchema from "@/utils/FAQSchema";
 import { ChevronUp } from "lucide-react";
 import Head from "next/head";
+import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 
 export default function HealthPackageDetails() {
 
@@ -17,6 +18,7 @@ export default function HealthPackageDetails() {
     const [packageData, setPackageData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [openIndex, setOpenIndex] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         if (!router.isReady) return;
@@ -210,7 +212,7 @@ export default function HealthPackageDetails() {
                         />
                         <div className="flex justify-center items-center gap-2 mb-2">
                             <button
-                                // onClick={handleBook}
+                                onClick={() => setShowModal(true)}
                                 className="bg-pink-700 text-xs hover:bg-pink-800 text-white font-semibold px-2 py-1 rounded-full transition"
                             >
                                 Book Appointment
@@ -419,7 +421,7 @@ export default function HealthPackageDetails() {
                         />
                         <div className="flex justify-center items-center gap-12 mb-4">
                             <button
-                                // onClick={handleBook}
+                                onClick={() => setShowModal(true)}
                                 className="bg-pink-700 hover:bg-pink-800 text-white text-xl font-semibold px-8 py-3 rounded-full transition"
                             >
                                 Book Appointment
@@ -477,6 +479,7 @@ export default function HealthPackageDetails() {
                     </section>
                 </>
             )}
+            <BookAppointmentForm showModal={showModal} setShowModal={setShowModal} />
         </>
     )
 }
