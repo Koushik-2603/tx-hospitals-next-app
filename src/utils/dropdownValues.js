@@ -1,7 +1,7 @@
 export const quickLinks = [
-    { name: "Find Doctors", path: "/find-doctor" },
-    { name: "Request Second Opinion", path: "/surgery-care" },
-    { name: "Health Checkup", path: "/" },
+    { name: "Find Doctors", path: "/find-doctor/" },
+    { name: "Request Second Opinion", path: "/surgery-care/" },
+    { name: "Health Checkup", path: "/health-package/" },
     { name: "Contact Us", path: "/" },
 ];
 

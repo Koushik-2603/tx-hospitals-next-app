@@ -90,20 +90,22 @@ export default function HPLandingPage() {
                             </p>
                         ) : (
                             <div className="grid grid-cols-1 gap-4 items-stretch">
-                                {packages.map((pkg) => (
-                                    <HealthPackageCard
-                                        key={pkg.hpId}
-                                        title={pkg.hpTitle}
-                                        description={
-                                            pkg.packageDetails
-                                                ?.replace(/<[^>]*>/g, "")
-                                        }
-                                        packageCovers={pkg.packageCovers}
-                                        actualPrice={pkg.actualPrice}
-                                        offerPrice={pkg.offerPrice}
-                                        detailsUrl={pkg.url}
-                                    />
-                                ))}
+                                {[...packages]
+                                    .sort((a, b) => Number(b.offerPrice) - Number(a.offerPrice))
+                                    .map((pkg) => (
+                                        <HealthPackageCard
+                                            key={pkg.hpId}
+                                            title={pkg.hpTitle}
+                                            description={
+                                                pkg.packageDetails
+                                                    ?.replace(/<[^>]*>/g, "")
+                                            }
+                                            packageCovers={pkg.packageCovers}
+                                            actualPrice={pkg.actualPrice}
+                                            offerPrice={pkg.offerPrice}
+                                            detailsUrl={pkg.url}
+                                        />
+                                    ))}
                             </div>
                         )}
                     </section>

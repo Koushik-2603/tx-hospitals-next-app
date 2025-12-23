@@ -6,6 +6,7 @@ import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import WhenToSeekSecondOpinion from "@/components/SecondOpinion/WhenToSeekSecondOpinion";
 import WhatToExpectCard from "@/components/SecondOpinion/WhatToExpectCard";
+import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 
 export default function SOLandingPage() {
 
@@ -13,6 +14,7 @@ export default function SOLandingPage() {
     const [surgeryOptions, setSurgeryOptions] = useState([]);
     const [selectedSurgery, setSelectedSurgery] = useState(null);
     const [showAll, setShowAll] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         window.scrollTo({ left: document.body.scrollWidth, top: 0, behavior: "smooth" });
@@ -55,7 +57,224 @@ export default function SOLandingPage() {
     return (
         <>
             {isMobile ? (
-                <></>
+                <section className="w-full">
+                    <div className="bg-gray-50 text-center -mt-6 mb-4">
+                        <h2 className="text-4xl font-semibold text-pink-700">Second Opinion</h2>
+                    </div>
+                    <section className="relative w-full h-full px-2">
+                        <div className="absolute inset-0 -z-10">
+                            <Image
+                                src="/assets/SO/Banner _.webp"
+                                alt="Second Opinion Background"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                            <div className="absolute inset-0 bg-blue-900/60"></div>
+                        </div>
+                        <div className="flex flex-col text-white">
+                            <h1 className="text-2xl text-center font-bold leading-snug mb-3">
+                                Get a Second Opinion from
+                                India’s Leading Surgeons
+                            </h1>
+                            <p className="text-base text-center leading-relaxed mb-2">
+                                Whether you’re uncertain about a diagnosis or
+                                planning a major surgery, our senior specialists
+                                help you make informed and confident healthcare decisions
+                            </p>
+                        </div>
+                        <div className="relative text-white bg-white/10 backdrop-blur-sm border border-blue-300/40 rounded-3xl p-3">
+                            <h2 className="text-2xl font-bold mb-3 text-center">
+                                Book Appointment
+                            </h2>
+                            <form className="space-y-1">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div>
+                                        <label className="block mb-1 text-lg">Enter your Full Name</label>
+                                        <input
+                                            type="text"
+                                            className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-4 py-1 outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block mb-1 text-lg">Mobile Number</label>
+                                        <div className="relative">
+                                            <input
+                                                type="text"
+                                                className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-4 py-1 pr-20 outline-none"
+                                            />
+                                            <button
+                                                type="button"
+                                                className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400 text-sm font-semibold"
+                                            >
+                                                Send OTP
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="block mb-3 text-lg">Select Surgery</label>
+                                    <input
+                                        type="text"
+                                        className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-4 py-1 outline-none"
+                                    />
+                                </div>
+                                <div className="flex justify-center">
+                                    <button
+                                        type="submit"
+                                        className="bg-pink-700 text-white mt-2 px-4 rounded-full text-xl font-semibold"
+                                    >
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <div className="flex justify-center md:justify-end">
+                        <Image
+                            src="/assets/SO/Why Choose TX Hospitals image.webp"
+                            alt="Doctor Consultation"
+                            width={700}
+                            height={550}
+                            className="object-contain"
+                            priority
+                        />
+                    </div>
+                    <div className="px-2 flex flex-col justify-center">
+                        <h2 className="text-xl text-center font-bold text-pink-700 mb-2">
+                            Why Choose TX Hospitals for a Second Opinion?
+                        </h2>
+
+                        <p className="text-sm leading-relaxed text-gray-700 mb-2">
+                            TX Hospitals stands among India’s most trusted names in
+                            advanced surgical and diagnostic excellence. With NABH
+                            accreditation, robotic technology and highly experienced
+                            specialists, we offer trusted second opinions that help
+                            patients avoid unnecessary procedures and choose the
+                            safest, most effective path to recovery.
+                        </p>
+                        <ul className="text-sm text-gray-800">
+                            <li className="flex items-start gap-1">
+                                <span className="text-red-600">✓</span>
+                                Senior Consultants in Every Specialty
+                            </li>
+
+                            <li className="flex items-start gap-1">
+                                <span className="text-red-600">✓</span>
+                                Robotic & Minimally Invasive Surgery Experts
+                            </li>
+
+                            <li className="flex items-start gap-1">
+                                <span className="text-red-600">✓</span>
+                                Accurate, Transparent and Honest Guidance
+                            </li>
+
+                            <li className="flex items-start gap-1">
+                                <span className="text-red-600">✓</span>
+                                24×7 Critical & Emergency Care
+                            </li>
+
+                            <li className="flex items-start gap-1">
+                                <span className="text-red-600">✓</span>
+                                Fast, Secure Report Review within 24–48 Hours
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="px-2 mt-2">
+                        <h2 className="text-xl text-center font-bold text-pink-700 mb-1">
+                            Get a Second Opinion Before Your Surgery
+                        </h2>
+
+                        <p className="text-sm leading-relaxed text-gray-700 mb-2">
+                            Not sure if surgery is the right step? We’re here to help.
+                            At TX Hospitals, our expert surgeons from diverse special es carefully assess your
+                            medical reports and scans to provide a clear, unbiased second opinion
+                        </p>
+                    </div>
+                    <div className="px-2">
+                        <div className="grid grid-cols-2 gap-2">
+                            {(showAll ? surgeryOptions : surgeryOptions.slice(0, 8)).map((option, index) => (
+                                <div
+                                    key={index}
+                                    className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105"
+                                // onClick={() => handleViewDetails(option.id)}
+                                >
+                                    <div className="w-28 h-28 rounded-full border-pink-700 flex items-center justify-center p-1">
+                                        <img loading="lazy"
+                                            src={option.image}
+                                            alt={option.name}
+                                            className="w-28 h-28 object-contain"
+                                        />
+                                    </div>
+                                    <p className="text-center text-sm font-medium">{option.name}</p>
+                                </div>
+                            ))}
+                        </div>
+                        {surgeryOptions.length > 8 && (
+                            <div className="flex justify-center mt-4">
+                                <button
+                                    onClick={() => setShowAll(!showAll)}
+                                    className="text-pink-700 font-semibold text-lg underline hover:text-pink-900 transition"
+                                >
+                                    {showAll ? "Show Less" : "Show More"}
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                    <div className="px-2">
+                        <WhenToSeekSecondOpinion />
+                    </div>
+                    <div className="bg-pink-300 px-2 py-1 my-2 flex justify-center items-center">
+                        <p className="text-black text-base font-semibold mr-4">
+                            Need an Appointment?
+                        </p>
+                        <button
+                            onClick={() => setShowModal(true)}
+                            className="bg-pink-700 text-white text-lg font-semibold px-2 rounded-md hover:bg-pink-700 transition"
+                        >
+                            Click here
+                        </button>
+                    </div>
+                    <div className="px-2">
+                        <h2 className="text-xl text-center font-bold text-pink-700 mb-1">
+                            Expert Consulta on for a Confident Decision
+                        </h2>
+
+                        <p className="text-sm leading-relaxed text-gray-700 mb-2">
+                            When you come to TX Hospitals for a second opinion, our specialists go
+                            beyond just reviewing reports — they truly understand you.<br />
+                            Here’s what to expect:
+                        </p>
+                    </div>
+                    <div className="mt-16 px-2">
+                        <WhatToExpectCard />
+                        <p className="text-sm leading-relaxed text-gray-700">
+                            At TX Hospitals, we combine precision, exper se and empathy —
+                            empowering you to make informed choices with confidence.
+                        </p>
+                    </div>
+                    <div className="bg-[#f8f0e7] rounded-xl mb-2 px-2">
+                        <h2 className="text-[#b01640] text-center text-xl font-bold mb-2">
+                            Book Your Second Opinion Today
+                        </h2>
+                        <p className="text-gray-900 text-sm leading-relaxed">
+                            You deserve clarity, confidence and care that goes beyond a single
+                            opinion. <br />
+                            At TX Hospitals, we help you make informed health decisions backed by
+                            advanced <br />
+                            diagnostics and experienced specialists. <br />
+                            Call us at <span className="font-bold">9144514459</span> or by
+                            visiting TX Hospitals website to book your consultation now
+                        </p>
+                        <div className="mt-2 px-20">
+                            <a href="tel:9144514459">
+                                <button className="bg-pink-700 text-white text-lg font-semibold px-2 py-1 rounded-md hover:bg-pink-800 transition">
+                                    Call us Today
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </section>
             ) : (
                 <section className="w-full">
                     <div className="bg-gray-50 pl-16 text-center mt-8 mb-4">
@@ -238,7 +457,10 @@ export default function SOLandingPage() {
                             <p className="text-black text-xl font-semibold mr-4">
                                 Need an Appointment?
                             </p>
-                            <button className="bg-pink-700 text-white text-lg font-semibold px-6 py-2 rounded-md hover:bg-pink-700 transition">
+                            <button
+                                onClick={() => setShowModal(true)}
+                                className="bg-pink-700 text-white text-lg font-semibold px-6 py-2 rounded-md hover:bg-pink-700 transition"
+                            >
                                 Click here
                             </button>
                         </div>
@@ -284,6 +506,7 @@ export default function SOLandingPage() {
                     </section>
                 </section>
             )}
+            <BookAppointmentForm showModal={showModal} setShowModal={setShowModal} />
         </>
     );
 }
