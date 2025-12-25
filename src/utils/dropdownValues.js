@@ -2,7 +2,7 @@ export const quickLinks = [
     { name: "Find Doctors", path: "/find-doctor/" },
     { name: "Request Second Opinion", path: "/surgery-care/" },
     { name: "Health Checkup", path: "/health-package/" },
-    { name: "Contact Us", path: "/" },
+    { name: "Contact Us", path: "/contact-us/" },
 ];
 
 export const dropdowns = {
@@ -63,6 +63,13 @@ export const directorsNames = [
     "Dr. Deepak Raju",
     "Mr. Raveendra Reddy Rami"
 ]
+
+export const locations = [
+    { name: "Uppal", path: "/contact-us/uppal/" },
+    { name: "Kachiguda", path: "/contact-us/kachiguda/" },
+    { name: "Banjara Hills - 1", path: "/contact-us/banjara-hills1/" },
+    { name: "Banjara Hills - 2", path: "/contact-us/banjara-hills2/" }
+];
 
 export const departments = [
     { name: "Cardiology", path: "/specialities/cardiac-sciences" },

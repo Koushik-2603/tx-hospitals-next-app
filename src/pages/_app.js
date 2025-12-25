@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoogleTranslateLoader from "@/components/GoogleTranslateLoader";
+import "leaflet/dist/leaflet.css";
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
 

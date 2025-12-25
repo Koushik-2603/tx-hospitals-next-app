@@ -10,18 +10,18 @@ import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 export default function HPLandingPage() {
 
     const isMobile = useIsMobile();
-    // const [active, setActive] = useState("All Packages");
+    const [active, setActive] = useState("All Packages");
     const [packages, setPackages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
 
-    // const filters = [
-    //     "All Packages",
-    //     "Basic",
-    //     "Comprehensive",
-    //     "Executive",
-    //     "Specialized",
-    // ];
+    const filters = [
+        "All Packages",
+        "Basic",
+        "Comprehensive",
+        "Executive",
+        "Specialized",
+    ];
 
     useEffect(() => {
         const fetchPackages = async () => {
@@ -172,7 +172,7 @@ export default function HPLandingPage() {
                             </div>
                         </div>
                     </section>
-                    {/* <div className="w-full flex flex-wrap gap-4 justify-center mt-4">
+                    <div className="w-full flex flex-wrap gap-4 justify-center mt-4">
                         {filters.map((item) => (
                             <button
                                 key={item}
@@ -187,7 +187,7 @@ export default function HPLandingPage() {
                                 {item}
                             </button>
                         ))}
-                    </div> */}
+                    </div>
                     <section className="container mx-auto px-14 py-10">
                         {loading ? (
                             <p className="text-center text-gray-500">

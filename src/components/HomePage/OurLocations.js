@@ -2,33 +2,39 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
+import { useRouter } from "next/router";
 
 const locations = [
     {
         name: "TX Hospitals, Uppal",
         image: "/assets/Our Location/Uppal Location Image.png",
         rating: 4.8,
+        path: "/contact-us/uppal/"
     },
     {
         name: "TX Hospitals, Kachiguda",
         image: "/assets/Our Location/Kachiguda Image.png",
         rating: 4.8,
+        path: "/contact-us/kachiguda/"
     },
     {
         name: "TX Hospitals, Banjara Hills",
         image: "/assets/Our Location/Banjara Hills  Hospitals Image.png",
         rating: 4.9,
+        path: "/contact-us/banjara-hills1/"
     },
     {
         name: "TX Children Hospitals, Banjara Hills",
         image: "/assets/Our Location/Banjara Hills Children Image.png",
         rating: 4.8,
+        path: "/contact-us/banjara-hills2/"
     },
 ];
 
 export default function OurLocations() {
 
     const isMobile = useIsMobile();
+    const router = useRouter();
 
     return (
         <>
@@ -46,7 +52,8 @@ export default function OurLocations() {
                             {locations.map((loc, i) => (
                                 <div
                                     key={i}
-                                    className="bg-white rounded-xl shadow-lg overflow-hidden w-full transition hover:scale-[1.02]"
+                                    onClick={() => router.push(loc?.path)}
+                                    className="bg-white rounded-xl shadow-lg overflow-hidden w-full transition hover:scale-[1.02] cursor-pointer"
                                 >
                                     <div className="w-full h-28 relative">
                                         <Image
@@ -122,7 +129,8 @@ export default function OurLocations() {
                             {locations.map((loc, i) => (
                                 <div
                                     key={i}
-                                    className="bg-white rounded-xl shadow-lg overflow-hidden w-52 m-3 transition hover:scale-[1.02]"
+                                    onClick={() => router.push(loc?.path)}
+                                    className="bg-white rounded-xl shadow-lg overflow-hidden w-52 m-3 transition hover:scale-[1.02] cursor-pointer"
                                 >
                                     <div className="w-full h-44 relative">
                                         <Image

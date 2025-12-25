@@ -8,7 +8,7 @@ import { MdPhoneInTalk } from "react-icons/md";
 import Image from "next/image";
 import LanguageDropdown from "@/components/HomePage/LanguageDropdown";
 import useIsMobile from "@/hooks/useIsMobile";
-import { dropdowns, quickLinks, managementNames, directorsNames, departments, healthConditions, treatmetnAndProcedures, diagnosticsGuide, symptomsGuide, medicineGuide, medicalTechnology, secondOpinion, healthPackages } from "@/utils/dropdownValues";
+import { dropdowns, quickLinks, managementNames, directorsNames, locations, departments, healthConditions, treatmetnAndProcedures, diagnosticsGuide, symptomsGuide, medicineGuide, medicalTechnology, secondOpinion, healthPackages } from "@/utils/dropdownValues";
 
 export default function HospitalNavbar({ variant = "primary", forceSecondary = false, setForceSecondary }) {
 
@@ -107,12 +107,18 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                         return;
                                     }
                                     if (item === "Overview") {
-                                        handleMenuClick("/about-us");
+                                        handleMenuClick("/about-us/");
+                                    }
+                                    if (item === "Contact Us") {
+                                        handleMenuClick("/contact-us/");
+                                    }
+                                    if (item === "FAQ’s") {
+                                        handleMenuClick("/faqs/");
                                     }
                                 }}
                             >
                                 <span>{item}</span>
-                                {(item === "Management" || item === "Board of Directors") && <FiChevronRight />}
+                                {(item === "Management" || item === "Board of Directors" || item === "Contact Us") && <FiChevronRight />}
                             </div>
                         ))}
                     </div>
@@ -140,6 +146,19 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                     className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
                                 >
                                     {name}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                    {hoveredAboutItem === "Contact Us" && (
+                        <div className="flex flex-col gap-2 min-w-[200px]">
+                            {locations.map((location, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => { handleMenuClick(location?.path); setOpenMenu(null); }}
+                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
+                                >
+                                    {location?.name}
                                 </button>
                             ))}
                         </div>
