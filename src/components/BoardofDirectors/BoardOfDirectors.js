@@ -17,8 +17,7 @@ Known for his exceptional clinical proficiency, He is recognized
 as a visionary leader in healthcare management. He combines 
 his extensive surgical skills with strong management acumen to 
 enhance both patient care and operational efficiency. As a key 
-f
- igure in the healthcare sector, he is committed to delivering 
+figure in the healthcare sector, he is committed to delivering 
 innovative solutions and ensuring the highest standards of 
 treatment for his patients.`,
         },
@@ -48,8 +47,7 @@ TX Hospitals.`,
  Mr. Raveendra Reddy Rami is a seasoned executive known for 
 driving success through people-focused hospital management. 
 He has a unique ability to balance strategic decision-making with 
-f
- inancial discipline, adopting a hands-on leadership approach that 
+financial discipline, adopting a hands-on leadership approach that 
 results in high satisfaction levels among employees, patients and 
 physicians. He is a skilled communicator and relationship builder 
 with expertise in organizational planning, multimillion-dollar capital 
