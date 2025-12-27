@@ -115,6 +115,9 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                     if (item === "FAQ’s") {
                                         handleMenuClick("/faqs/");
                                     }
+                                    if (item === "International Patient") {
+                                        handleMenuClick("/international-patient-services/")
+                                    }
                                 }}
                             >
                                 <span>{item}</span>
@@ -629,7 +632,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                             </div>
                             <LanguageDropdown
                                 setForceSecondary={setForceSecondary}
-                                languages={["English", "Telugu", "Hindi", "Bengali", "French", "Arabic"]}
+                                languages={["English", "Telugu", "Hindi", "Bengali", "Tamil", "Marathi", "Malayalam", "Kannada", "Arabic", "Urdu", "Swahili", "Somali", "Italian", "Spanish", "Persian", "Portuguese", "Amharic", "French", "Russian", "Chinese (Simplified)", "Nepali", "Phasto", "Gujarati", "Punjabi"]}
                             />
                         </div>
                     </nav>

@@ -1,0 +1,18 @@
+export const countryFlags = [
+    { name: "YEMEN", src: "/assets/International_Patients/Flags/Yemen.png" },
+    { name: "OMAN", src: "/assets/International_Patients/Flags/Oman.png" },
+    { name: "SRI LANKA", src: "/assets/International_Patients/Flags/Flag_of_Sri_Lanka.svg.png" },
+    { name: "NEPAL", src: "/assets/International_Patients/Flags/Flag_of_Nepal.png" },
+    { name: "BANGLADESH", src: "/assets/International_Patients/Flags/_bangladesh.png" },
+    { name: "USA", src: "/assets/International_Patients/Flags/Flag_of_the_United_States.png" },
+    { name: "SUDAN", src: "/assets/International_Patients/Flags/Sudan.png" },
+    { name: "DJIBOUTI", src: "/assets/International_Patients/Flags/Flag_of_Djibouti.svg.png" },
+    { name: "SOUTH SUDAN", src: "/assets/International_Patients/Flags/Flag_of_South_Sudan.svg.png" },
+    { name: "SOMALIA", src: "/assets/International_Patients/Flags/Flag_of_Somalia.svg.png" },
+    { name: "NAIROBI", src: "/assets/International_Patients/Flags/Flag_of_Nairobi.svg.png" },
+    { name: "IRAQ", src: "/assets/International_Patients/Flags/Flag_of_Iraq.svg.png" },
+    { name: "KENYA", src: "/assets/International_Patients/Flags/Flag_of_Kenya.svg.png" },
+    { name: "ETHIOPIA", src: "/assets/International_Patients/Flags/Flag_of_Ethiopia.svg.png" },
+    { name: "UAE", src: "/assets/International_Patients/Flags/UAE.png" },
+    { name: "NIGERIA", src: "/assets/International_Patients/Flags/Flag_of_Nigeria.svg.png" },
+];

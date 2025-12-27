@@ -17,7 +17,7 @@ export default function GoogleTranslateLoader() {
         new window.google.translate.TranslateElement(
           {
             pageLanguage: "en",
-            includedLanguages: "en,hi,te,bn,fr,ar",
+            includedLanguages: "en,hi,te,bn,ta,mr,ml,kn,gu,pa,ar,ur,it,es,pt,fr,ru,zh-CN,ne",
             autoDisplay: false,
           },
           "google_translate_element"

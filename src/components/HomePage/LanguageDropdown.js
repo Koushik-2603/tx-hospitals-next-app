@@ -9,8 +9,26 @@ const languageMap = {
     Telugu: "te",
     Hindi: "hi",
     Bengali: "bn",
-    French: "fr",
+    Tamil: "ta",
+    Marathi: "mr",
+    Malayalam: "ml",
+    Kannada: "kn",
+    Gujarati: "gu",
+    Punjabi: "pa",
     Arabic: "ar",
+    Urdu: "ur",
+    Swahili: "sw",
+    Somali: "so",
+    Italian: "it",
+    Spanish: "es",
+    Persian: "fa",
+    Portuguese: "pt",
+    Amharic: "am",
+    French: "fr",
+    Russian: "ru",
+    "Chinese (Simplified)": "zh-CN",
+    Nepali: "ne",
+    Pashto: "ps",
 };
 
 const getInitialLanguage = () => {
@@ -62,7 +80,7 @@ export default function LanguageDropdown({ languages, setForceSecondary }) {
             </button>
 
             {open && (
-                <div className="absolute left-0 mt-2 w-40 bg-white border rounded-lg shadow-lg z-50">
+                <div className="absolute left-0 mt-2 w-40 max-h-64 bg-white border overflow-y-auto rounded-lg shadow-lg z-50">
                     <ul className="flex flex-col text-sm font-medium">
                         {languages.map((lang) => (
                             <li
