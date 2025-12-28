@@ -31,10 +31,16 @@
 // }
 export function changeLanguage(lang) {
     if (!lang) return;
+    const targetLang = lang || "en";
 
-    // Set Google Translate cookie
-    document.cookie = `googtrans=/en/${lang}; path=/`;
+    document.cookie = `googtrans=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    document.cookie = `googtrans=;path=/;domain=${window.location.hostname};expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 
+    document.cookie = `googtrans=/en/${targetLang};path=/;domain=${window.location.hostname}`;
+
+    localStorage.setItem("googtrans", `/en/${targetLang}`);
+    sessionStorage.setItem("googtrans", `/en/${targetLang}`);
+    console.log("Current googtrans cookie: ", document.cookie);
     // Force reload Google Translate iframe
     const iframe = document.querySelector("iframe.goog-te-menu-frame");
     if (iframe) {
