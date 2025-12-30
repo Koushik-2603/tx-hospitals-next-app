@@ -52,7 +52,7 @@ export default function Specialities() {
                 <div className="bg-gray-50 w-full px-3">
                     <div className="max-w-6xl mx-auto text-center">
                         {/* Heading */}
-                        <h2 className="text-2xl font-bold text-pink-700 mb-1">Our Specialities</h2>
+                        <h2 className="text-2xl font-bold text-pink-700 mb-1">Our Specialties</h2>
                         <p className="text-xs leading-relaxed mb-3 text-gray-700">
                             At TX Hospitals, we bring together medical expertise, modern technology and patient-first care under one roof. Our Centres of Excellence are dedicated to delivering comprehensive treatment across major specialties, ensuring every patient receives the best possible outcome.
                         </p>
@@ -74,7 +74,7 @@ export default function Specialities() {
                 <div className="bg-gray-50 w-full py-3 px-6">
                     <div className="max-w-6xl mx-auto text-center">
                         {/* Heading */}
-                        <h2 className="text-3xl font-bold text-pink-700 mb-5">Our Specialities</h2>
+                        <h2 className="text-3xl font-bold text-pink-700 mb-5">Our Specialties</h2>
                         <p className="text-lg max-w-3xl mx-auto mb-6 text-gray-700">
                             At TX Hospitals, we bring together medical expertise, modern technology and patient-first care under one roof. Our Centres of Excellence are dedicated to delivering comprehensive treatment across major specialties, ensuring every patient receives the best possible outcome.
                         </p>

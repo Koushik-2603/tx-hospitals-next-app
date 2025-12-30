@@ -40,8 +40,8 @@ TX Hospitals.`,
         {
             id: "director-2",
             name: " Mr. Raveendra Reddy Rami",
-            qualification: "Master’s Degree in Health Administration",
-            designation: "",
+            qualification: "IIMC,MHA(OU)",
+            designation: "Master’s Degree in Health Administration",
             image: "/assets/Board_of_Directors/Mr. Raveendra Reddy Rami.webp",
             description: `With over two decades of experience in healthcare administration,
  Mr. Raveendra Reddy Rami is a seasoned executive known for 

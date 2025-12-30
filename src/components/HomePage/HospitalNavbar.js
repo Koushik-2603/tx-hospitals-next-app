@@ -576,23 +576,30 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                             </a>
 
                             {/* Dropdown triggers */}
-                            {["about", "specialties"].map((menu) => (
-                                <div
-                                    key={menu}
-                                    onMouseEnter={() => handleOpen(menu)}
-                                    onMouseLeave={handleClose}
-                                    className="relative py-12"
-                                >
-                                    <a
-                                        href={`#${menu}`}
-                                        className={`${linkClass} cursor-pointer flex items-center gap-1`}
-                                        onClick={(e) => e.preventDefault()}
+                            {["about", "specialties"].map((menu) => {
+                                const isSpecialties = menu === "specialties";
+                                return (
+                                    <div
+                                        key={menu}
+                                        onMouseEnter={() => handleOpen(menu)}
+                                        onMouseLeave={handleClose}
+                                        className="relative py-12"
                                     >
-                                        {menu.charAt(0).toUpperCase() + menu.slice(1)}
-                                        <FiChevronDown size={16} />
-                                    </a>
-                                </div>
-                            ))}
+                                        <a
+                                            href={isSpecialties ? "/specialities" : `#${menu}`}
+                                            className={`${linkClass} cursor-pointer flex items-center gap-1`}
+                                            onClick={(e) => {
+                                                if (!isSpecialties) {
+                                                    e.preventDefault();
+                                                }
+                                            }}
+                                        >
+                                            {menu.charAt(0).toUpperCase() + menu.slice(1)}
+                                            <FiChevronDown size={16} />
+                                        </a>
+                                    </div>
+                                );
+                            })}
                         </div>
 
                         {/* Logo */}

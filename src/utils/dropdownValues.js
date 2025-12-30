@@ -55,7 +55,7 @@ export const managementNames = [
     "L Panduranga Reddy",
     "Dr. Srikanth Vodnala",
     "Navya Vani S",
-    "Dr. Asna Zain",
+    // "Dr. Asna Zain",
 ];
 
 export const directorsNames = [

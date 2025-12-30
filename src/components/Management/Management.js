@@ -65,21 +65,21 @@ in driving continuous improvement initiatives while ensuring the
 hospital adheres to regulatory standards, enhancing operational
  excellence.`,
         },
-        {
-            id: "management-4",
-            name: " Dr. Asna Zain",
-            qualification: "MBBS, MBA",
-            designation: "",
-            image: "/assets/Management/Dr. Asna Zain.webp",
-            description: `Dr. Asna Zain is a young and accomplished healthcare professional
- with extensive experience in healthcare administration and operations.
- She has previously served as Associate Vice President of Operations
- at a renowned hospital group in Hyderabad and gained clinical
- experience in the USA. Dr. Zain holds a diploma in Medical Law and
- Ethics from the National Law School University of India. Her expertise
- lies in patient care management and hospital operations, focusing on
- enhancing both clinical and administrative efficiency.`,
-        },
+//         {
+//             id: "management-4",
+//             name: " Dr. Asna Zain",
+//             qualification: "MBBS, MBA",
+//             designation: "",
+//             image: "/assets/Management/Dr. Asna Zain.webp",
+//             description: `Dr. Asna Zain is a young and accomplished healthcare professional
+//  with extensive experience in healthcare administration and operations.
+//  She has previously served as Associate Vice President of Operations
+//  at a renowned hospital group in Hyderabad and gained clinical
+//  experience in the USA. Dr. Zain holds a diploma in Medical Law and
+//  Ethics from the National Law School University of India. Her expertise
+//  lies in patient care management and hospital operations, focusing on
+//  enhancing both clinical and administrative efficiency.`,
+//         },
     ];
 
     return (

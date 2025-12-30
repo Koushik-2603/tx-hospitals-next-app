@@ -11,7 +11,7 @@ export default function Specialities() {
 
     const breadcrumbItems = [
         { label: "Home", href: "/" },
-        { label: "Specialities" },
+        { label: "Specialties" },
     ];
 
     return (
