@@ -7,14 +7,17 @@ import useIsMobile from "@/hooks/useIsMobile";
 import WhenToSeekSecondOpinion from "@/components/SecondOpinion/WhenToSeekSecondOpinion";
 import WhatToExpectCard from "@/components/SecondOpinion/WhatToExpectCard";
 import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
+import { useRouter } from "next/router";
 
 export default function SOLandingPage() {
 
+    const router = useRouter();
     const isMobile = useIsMobile();
     const [surgeryOptions, setSurgeryOptions] = useState([]);
-    const [selectedSurgery, setSelectedSurgery] = useState(null);
+    const [selectedSurgery, setSelectedSurgery] = useState("");
     const [showAll, setShowAll] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [formData, setFormData] = useState({ name: "", phone: "" });
 
     useEffect(() => {
         window.scrollTo({ left: document.body.scrollWidth, top: 0, behavior: "smooth" });
@@ -23,7 +26,7 @@ export default function SOLandingPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const endpoint = `${CONFIG.API_BASE_URL}/secondopinion/getAllSecondOpinion`;
+                const endpoint = `${CONFIG.API_BASE_URL}/new-secondopinion/getAllSecondOpinion`;
                 const response = await axios.get(endpoint);
 
                 const options = response.data.Items.map((item) => {
@@ -35,7 +38,8 @@ export default function SOLandingPage() {
                     return {
                         id: item.soId,
                         name,
-                        image: item.soImage,
+                        image: item?.soImage,
+                        url: item?.url,
                     };
                 }).sort((a, b) => a.name.localeCompare(b.name));
 
@@ -53,6 +57,31 @@ export default function SOLandingPage() {
 
         fetchData();
     }, []);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/send-email/surgery-booking`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    mobile: formData.phone,
+                    surgerytype: selectedSurgery,
+                }),
+            });
+            router.push("/thank-you/");
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
+    };
 
     return (
         <>
@@ -87,12 +116,17 @@ export default function SOLandingPage() {
                             <h2 className="text-2xl font-bold mb-3 text-center">
                                 Book Appointment
                             </h2>
-                            <form className="space-y-1">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <form className="space-y-1" onSubmit={handleSubmit}>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block mb-1 text-lg">Enter your Full Name</label>
                                         <input
                                             type="text"
+                                            name="name"
+                                            placeholder="Name*"
+                                            value={formData.name}
+                                            onChange={handleInputChange}
+                                            required
                                             className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-4 py-1 outline-none"
                                         />
                                     </div>
@@ -100,24 +134,38 @@ export default function SOLandingPage() {
                                         <label className="block mb-1 text-lg">Mobile Number</label>
                                         <div className="relative">
                                             <input
-                                                type="text"
+                                                type="tel"
+                                                name="phone"
+                                                placeholder="Phone*"
+                                                value={formData.phone}
+                                                onChange={handleInputChange}
+                                                required
                                                 className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-4 py-1 pr-20 outline-none"
                                             />
-                                            <button
-                                                type="button"
-                                                className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400 text-sm font-semibold"
-                                            >
-                                                Send OTP
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block mb-3 text-lg">Select Surgery</label>
-                                    <input
-                                        type="text"
+                                    <label className="block mb-2 text-lg">Select Surgery</label>
+                                    <select
+                                        name="surgery"
+                                        value={selectedSurgery}
+                                        onChange={(e) => setSelectedSurgery(e.target.value)}
                                         className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-4 py-1 outline-none"
-                                    />
+                                    >
+                                        <option value="" className="bg-white text-gray-700">
+                                            Please Select
+                                        </option>
+                                        {surgeryOptions.map((option, index) => (
+                                            <option
+                                                key={index}
+                                                value={option.name}
+                                                className="bg-white text-gray-700"
+                                            >
+                                                {option.name}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
                                 <div className="flex justify-center">
                                     <button
@@ -197,11 +245,11 @@ export default function SOLandingPage() {
                                 <div
                                     key={index}
                                     className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105"
-                                // onClick={() => handleViewDetails(option.id)}
+                                    onClick={() => router.push(`/${option.url.replace(/^\/|\/$/g, '')}/`)}
                                 >
                                     <div className="w-28 h-28 rounded-full border-pink-700 flex items-center justify-center p-1">
                                         <img loading="lazy"
-                                            src={option.image}
+                                            src={option?.image}
                                             alt={option.name}
                                             className="w-28 h-28 object-contain"
                                         />
@@ -310,12 +358,17 @@ export default function SOLandingPage() {
                                 <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
                                     Book Appointment
                                 </h2>
-                                <form className="space-y-2">
+                                <form className="space-y-2" onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
                                             <label className="block mb-2 text-lg">Enter your Full Name</label>
                                             <input
                                                 type="text"
+                                                name="name"
+                                                placeholder="Name*"
+                                                value={formData.name}
+                                                onChange={handleInputChange}
+                                                required
                                                 className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-5 py-2 outline-none"
                                             />
                                         </div>
@@ -323,24 +376,38 @@ export default function SOLandingPage() {
                                             <label className="block mb-2 text-lg">Mobile Number</label>
                                             <div className="relative">
                                                 <input
-                                                    type="text"
+                                                    type="tel"
+                                                    name="phone"
+                                                    placeholder="Phone*"
+                                                    value={formData.phone}
+                                                    onChange={handleInputChange}
+                                                    required
                                                     className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-5 py-2 pr-20 outline-none"
                                                 />
-                                                <button
-                                                    type="button"
-                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400 text-sm font-semibold"
-                                                >
-                                                    Send OTP
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div>
                                         <label className="block mb-2 text-lg">Select Surgery</label>
-                                        <input
-                                            type="text"
+                                        <select
+                                            name="surgery"
+                                            value={selectedSurgery}
+                                            onChange={(e) => setSelectedSurgery(e.target.value)}
                                             className="w-full bg-transparent text-white border border-cyan-300 rounded-full px-5 py-2 outline-none"
-                                        />
+                                        >
+                                            <option value="" className="bg-white text-gray-700">
+                                                Please Select
+                                            </option>
+                                            {surgeryOptions.map((option, index) => (
+                                                <option
+                                                    key={index}
+                                                    value={option.name}
+                                                    className="bg-white text-gray-700"
+                                                >
+                                                    {option.name}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
                                     <div className="flex justify-center">
                                         <button
@@ -424,7 +491,7 @@ export default function SOLandingPage() {
                                     <div
                                         key={index}
                                         className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105"
-                                    // onClick={() => handleViewDetails(option.id)}
+                                        onClick={() => router.push(`/${option.url.replace(/^\/|\/$/g, '')}/`)}
                                     >
                                         <div className="w-36 h-36 rounded-full border-pink-700 flex items-center justify-center p-2">
                                             <img loading="lazy"

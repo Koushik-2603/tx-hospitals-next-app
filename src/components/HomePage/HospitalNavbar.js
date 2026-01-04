@@ -303,12 +303,13 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                     )}
                     {hoveredLibraryItem === "Second Opinion" && (
                         <div className="grid grid-cols-3">
-                            {secondOpinion.map((name, i) => (
+                            {secondOpinion.map((secondOpinion, i) => (
                                 <button
                                     key={i}
+                                    onClick={() => { handleMenuClick(secondOpinion?.path); setOpenMenu(null); }}
                                     className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
                                 >
-                                    {name}
+                                    {secondOpinion?.name}
                                 </button>
                             ))}
                         </div>

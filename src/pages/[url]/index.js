@@ -7,6 +7,7 @@ import ViewProfile from "@/components/Doctors/ViewProfile";
 // import SecondOpinionDetail from "@/components/SecondOpinion/SecondOpinionDetail";
 import { useRouter } from "next/router";
 import SecondaryLayout from "@/components/Layouts/SecondaryLayout";
+import SODetailsPage from "@/components/SecondOpinion/SODetailsPage";
 
 export default function UniversalPage() {
     const router = useRouter();
@@ -60,7 +61,7 @@ export default function UniversalPage() {
                 }
 
                 /* 3️⃣ Second Opinion */
-                const soRes = await axios.get(`${CONFIG.API_BASE_URL}/secondopinion/getAllSecondOpinion`);
+                const soRes = await axios.get(`${CONFIG.API_BASE_URL}/new-secondopinion/getAllSecondOpinion`);
                 const opinions = soRes.data.Items;
 
                 const matchOpinion = opinions.find(
@@ -68,8 +69,12 @@ export default function UniversalPage() {
                 );
 
                 if (matchOpinion) {
+                    const surgeryDetails = await axios.get(
+                        `${CONFIG.API_BASE_URL}/new-secondopinion/getSecondOpinionbyId/${matchOpinion.soId}`
+                    );
+
                     setType("surgery");
-                    setData(matchOpinion);
+                    setData(surgeryDetails?.data?.Item);
                     setLoading(false);
                     return;
                 }
@@ -122,10 +127,7 @@ export default function UniversalPage() {
     if (type === "surgery") {
         return (
             <SecondaryLayout>
-                {/* <SecondOpinionDetail surgeryData={data} /> */}
-                <div className="mt-28 text-center text-pink-700">
-                    Surgery UI Coming Soon
-                </div>
+                <SODetailsPage surgeryData={data} />
             </SecondaryLayout>
         );
     }

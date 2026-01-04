@@ -70,7 +70,7 @@ export default function LanguageDropdown({ languages, setForceSecondary }) {
         <div ref={ref} className="relative inline-block text-left">
             {/* Toggle Button */}
             <button
-                className="flex items-center gap-2 bg-pink-700 shadow-lg px-4 py-1 rounded-full text-white font-medium"
+                className="flex items-center gap-2 notranslate bg-pink-700 shadow-lg px-4 py-1 rounded-full text-white font-medium"
                 onClick={toggleDropdown}
             >
                 {language}
@@ -85,7 +85,7 @@ export default function LanguageDropdown({ languages, setForceSecondary }) {
                         {languages.map((lang) => (
                             <li
                                 key={lang}
-                                className={`px-4 py-2 cursor-pointer ${language === lang
+                                className={`px-4 py-2 cursor-pointer notranslate ${language === lang
                                     ? "bg-pink-700 text-white"
                                     : "hover:bg-pink-100"
                                     }`}
