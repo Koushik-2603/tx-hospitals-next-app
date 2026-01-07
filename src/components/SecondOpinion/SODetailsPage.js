@@ -19,10 +19,6 @@ export default function SODetailsPage({ surgeryData }) {
     const [openIndex, setOpenIndex] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
-    const handleCall = () => {
-        window.location.href = "tel:9144514459";
-    };
-
     const toggle = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
@@ -112,12 +108,13 @@ export default function SODetailsPage({ surgeryData }) {
                                 >
                                     Book Appointment
                                 </button>
-                                <button
-                                    onClick={handleCall}
-                                    className="border border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white text-xs font-semibold px-2 py-1 rounded-full transition"
-                                >
-                                    Talk to our Experts
-                                </button>
+                                <a href="tel:9144514459">
+                                    <button
+                                        className="border border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white text-xs font-semibold px-2 py-1 rounded-full transition"
+                                    >
+                                        Talk to our Experts
+                                    </button>
+                                </a>
                             </div>
                         </div>
                         <section className="w-full px-2 py-2">
@@ -244,12 +241,13 @@ export default function SODetailsPage({ surgeryData }) {
                                 >
                                     Book Appointment
                                 </button>
-                                <button
-                                    onClick={handleCall}
-                                    className="border-2 border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white text-xl font-semibold px-8 py-3 rounded-full transition"
-                                >
-                                    Talk to our Experts
-                                </button>
+                                <a href="tel:9144514459">
+                                    <button
+                                        className="border-2 border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white text-xl font-semibold px-8 py-3 rounded-full transition"
+                                    >
+                                        Talk to our Experts
+                                    </button>
+                                </a>
                             </div>
                         </div>
                         <section className="w-full px-12 py-8">

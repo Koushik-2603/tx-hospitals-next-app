@@ -288,7 +288,7 @@ export default function DoctorsLandingPage() {
                     </div>
                 </div>
             ) : (
-                <div className="relative bg-gray-200 w-full min-h-full">
+                <div className="relative bg-gray-200 w-full min-h-full px-8">
                     <div className="flex justify-between items-center pt-4 px-4">
                         {/* Breadcrumbs */}
                         <div className="text-white">

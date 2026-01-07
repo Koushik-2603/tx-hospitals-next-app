@@ -44,12 +44,14 @@ export default function CommonReasons({ data }) {
                         >
                             Book Appointment
                         </button>
-                        <button
-                            onClick={handleCall}
-                            className="border border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white text-xs font-semibold px-2 py-1 rounded-full transition"
-                        >
-                            Talk to our Experts
-                        </button>
+                        <a href="tel:9144514459">
+                            <button
+                                onClick={handleCall}
+                                className="border border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white text-xs font-semibold px-2 py-1 rounded-full transition"
+                            >
+                                Talk to our Experts
+                            </button>
+                        </a>
                     </div>
                 </section>
             ) : (
@@ -84,12 +86,14 @@ export default function CommonReasons({ data }) {
                         >
                             Book Appointment
                         </button>
-                        <button
-                            onClick={handleCall}
-                            className="border-2 border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white text-xl font-semibold px-8 py-3 rounded-full transition"
-                        >
-                            Talk to our Experts
-                        </button>
+                        <a href="tel:9144514459">
+                            <button
+                                onClick={handleCall}
+                                className="border-2 border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white text-xl font-semibold px-8 py-3 rounded-full transition"
+                            >
+                                Talk to our Experts
+                            </button>
+                        </a>
                     </div>
                 </section>
             )}
