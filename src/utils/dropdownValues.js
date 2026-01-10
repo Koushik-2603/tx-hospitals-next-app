@@ -16,27 +16,77 @@ export const dropdowns = {
         "Contact Us",
         "FAQ’s",
     ],
-    specialties: [
-        { name: "Cardiology", path: "/specialities/cardiac-sciences" },
-        { name: "Gastroenterology", path: "/specialities/gastro-sciences" },
-        { name: "Neurology", path: "/specialities/neuro-sciences" },
-        { name: "Robotics", path: "/specialities/robotics-science" },
-        { name: "Transplant", path: "/specialities/transplant-medicine" },
-        { name: "Nephrology", path: "/specialities/nephrology" },
-        { name: "Urology", path: "/specialities/urology" },
-        { name: "Orthopaedics", path: "/specialities/orthopaedics" },
-        { name: "Mother & Child Care", path: "/specialities/mother-child-care" },
-        { name: "Oncology", path: "/specialities/oncology" },
-        { name: "Internal Medicine", path: "/specialities/internal-medicine" },
-        { name: "Pulmonology", path: "/specialities/pulmonology" },
-        { name: "ENT", path: "/specialities/ent" },
-        { name: "Skin & Cosmetic care", path: "/specialities/dermatology-cosmetic-care" },
-        { name: "Dental & Maxillofacial", path: "/specialities/dental-and-maxillofacial-care" },
-        { name: "Endocrinology", path: "/specialities/endocrinology" },
-        { name: "EYE/ Ophthalmology", path: "/specialities/eye-ophthalmology" },
-        { name: "Anaesthesia & Pain management", path: "/specialities/anaesthesia-and-pain-management" },
-        { name: "Rheumatology", path: "/specialities/rheumatology" }
-    ],
+    specialties: {
+        part1: [
+            {
+                name: "Transplant Surgery",
+                path: "/specialities/transplant-medicine",
+                subItems: [
+                    { name: "Liver Transplantation", path: "/specialities/liver-transplant" },
+                    { name: "Kidney Transplantation", path: "/specialities/kidney-transplant" }
+                ]
+            },
+            {
+                name: "Robotic Sciencies",
+                path: "/specialities/robotics-science",
+                subItems: [
+                    { name: "Robotic orthopedic surgery", path: "/specialities/robotic-orthopedic-surgery" },
+                    { name: "Robotic GI Surgery", path: "/specialities/robotic-gi-surgery" },
+                    { name: "Robotic Urologic surgery", path: "/specialities/robotic-urologic-surgery" },
+                    { name: "Robotic Gynecologic Surgery", path: "/specialities/robotic-gynecologic-surgery" },
+                    { name: "Robotic Cancer Surgery", path: "/specialities/robotic-cancer-surgery" }
+                ]
+            },
+            {
+                name: "Cardiac Sciences",
+                path: "/specialities/cardiac-sciences",
+                subItems: [
+                    { name: "Cardiology", path: "/specialities/cardiac-sciences" },
+                    { name: "Cardiothoracic & Vascular surgery", path: "/specialities/cardio-thoracic-vascular-surgery" }
+                ]
+            },
+            {
+                name: "Gastro Sciences",
+                path: "/specialities/gastro-sciences",
+                subItems: [
+                    { name: "Medical Gastroenterology", path: "/specialities/medical-gastroenterology" },
+                    { name: "Surgical Gastroenterology", path: "/specialities/surgical-gastroenterology" }
+                ]
+            },
+            {
+                name: "Renal Sciences",
+                path: "/specialities/nephrology",
+                subItems: [
+                    { name: "Nephrology", path: "/specialities/nephrology" },
+                    { name: "Urology", path: "/specialities/urology" }
+                ]
+            },
+            {
+                name: "Mother & Child Care",
+                path: "/specialities/mother-child-care",
+                subItems: [
+                    { name: "Gynaecology", path: "/specialities/gynaecology" },
+                    { name: "Paediatrics", path: "/specialities/paediatrics" }
+                ]
+            }
+        ],
+        part3: [
+            { name: "Neuro Sciences", path: "/specialities/neuro-sciences" },
+            { name: "Oncology", path: "/specialities/oncology" },
+            { name: "Orthopaedics", path: "/specialities/orthopaedics" },
+            { name: "Pulmonology", path: "/specialities/pulmonology" },
+            { name: "Internal medicine", path: "/specialities/internal-medicine" },
+            { name: "Rheumatology", path: "/specialities/rheumatology" }
+        ],
+        part4: [
+            { name: "ENT", path: "/specialities/ent" },
+            { name: "Skin & Cosmetic care", path: "/specialities/dermatology-cosmetic-care" },
+            { name: "Dental & Maxillofacial", path: "/specialities/dental-and-maxillofacial-care" },
+            { name: "Endocrinology", path: "/specialities/endocrinology" },
+            { name: "Opthalmology", path: "/specialities/eye-ophthalmology" },
+            { name: "Anaesthesia & Pain management", path: "/specialities/anaesthesia-and-pain-management" }
+        ]
+    },
     library: [
         { name: "Health Conditions", path: "" },
         { name: "Treatments & Procedures", path: "" },

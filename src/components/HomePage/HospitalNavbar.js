@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { FiArrowRight, FiX, FiChevronDown, FiChevronRight } from "react-icons/fi";
+import { FiArrowRight, FiX, FiChevronDown, FiChevronUp, FiChevronRight } from "react-icons/fi";
 import { Menu, X } from "lucide-react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { MdPhoneInTalk } from "react-icons/md";
@@ -20,7 +20,11 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
     const [hoveredLibraryItem, setHoveredLibraryItem] = useState(null);
     const [navHeight, setNavHeight] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isCOEDropdownOpen, setIsCOEDropdownOpen] = useState(false);
+    const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
+    const [isMobileSpecialtiesOpen, setIsMobileSpecialtiesOpen] = useState(false);
+    const [isMobileLibraryOpen, setIsMobileLibraryOpen] = useState(false);
+    const [mobileOpenSubItem, setMobileOpenSubItem] = useState(null); // Tracks nested accordion state
+    const [hoveredSpecialty, setHoveredSpecialty] = useState(dropdowns.specialties.part1[0]);
 
     const isSecondary = variant === "secondary" || forceSecondary;
 
@@ -40,6 +44,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
 
     const handleOpen = (menu) => {
         setOpenMenu(menu);
+        if (menu === "specialties") setHoveredSpecialty(dropdowns.specialties.part1[0]);
         if (setForceSecondary) setForceSecondary(true);
     };
 
@@ -87,53 +92,47 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
             className="fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4"
             style={{ top: navHeight }}
         >
-            <div className="max-w-6xl mx-auto flex justify-between text-black text-xs">
-                {/* Left: About items with Management names */}
-                <div className="flex gap-4 font-semibold min-w-[400px]">
-                    <div className="flex flex-col gap-2 cursor-pointer">
-                        {dropdowns.about.map((item, idx) => (
-                            <div
-                                key={idx}
-                                className={`flex items-center justify-between py-2 relative cursor-pointer min-w-[200px] 
-                                    ${hoveredAboutItem === item ? "text-pink-700" : "text-gray-800"}`}
-                                onMouseEnter={() => setHoveredAboutItem(item)}
-                                onClick={() => {
-                                    if (item === "Chairman’s Message") {
-                                        handleMenuClick("/", "chairman-message-section");
-                                        return;
-                                    }
-                                    if (item === "Why Choose Us") {
-                                        handleMenuClick("/", "why-choose-us");
-                                        return;
-                                    }
-                                    if (item === "Overview") {
-                                        handleMenuClick("/about-us/");
-                                    }
-                                    if (item === "Contact Us") {
-                                        handleMenuClick("/contact-us/");
-                                    }
-                                    if (item === "FAQ’s") {
-                                        handleMenuClick("/faqs/");
-                                    }
-                                    if (item === "International Patient") {
-                                        handleMenuClick("/international-patient-services/")
-                                    }
-                                }}
-                            >
-                                <span>{item}</span>
-                                {(item === "Management" || item === "Board of Directors" || item === "Contact Us") && <FiChevronRight />}
-                            </div>
-                        ))}
-                    </div>
-                    <div className="mx-4 border-r border-gray-300"></div>
+            <div className="max-w-7xl mx-auto flex justify-between text-black text-xs gap-6">
+                {/* Left: About items */}
+                <div className="flex flex-col gap-2 min-w-[220px] border-r border-gray-200 pr-4">
+                    {dropdowns.about.map((item, idx) => (
+                        <div
+                            key={idx}
+                            onMouseEnter={() => setHoveredAboutItem(item)}
+                            onClick={() => {
+                                if (item === "Chairman’s Message") {
+                                    handleMenuClick("/", "chairman-message-section");
+                                    return;
+                                }
+                                if (item === "Why Choose Us") {
+                                    handleMenuClick("/", "why-choose-us");
+                                    return;
+                                }
+                                if (item === "Overview") handleMenuClick("/about-us/");
+                                if (item === "Contact Us") handleMenuClick("/contact-us/");
+                                if (item === "FAQ’s") handleMenuClick("/faqs/");
+                                if (item === "International Patient") handleMenuClick("/international-patient-services/");
+                            }}
+                            className={`flex items-center justify-between py-2 px-3 rounded cursor-pointer transition-colors
+                                ${hoveredAboutItem === item ? "bg-pink-100 text-pink-700 font-bold" : "text-gray-800 hover:bg-gray-100"}`}
+                        >
+                            <span>{item}</span>
+                            {(item === "Management" || item === "Board of Directors" || item === "Contact Us") && (
+                                <FiChevronRight className={`${hoveredAboutItem === item ? "opacity-100" : "opacity-50"}`} />
+                            )}
+                        </div>
+                    ))}
+                </div>
 
+                {/* Center: Dynamic content */}
+                <div className="flex-1 min-w-[250px] border-r border-gray-200 pr-4">
                     {hoveredAboutItem === "Management" && (
-                        <div className="flex flex-col gap-2 min-w-[200px]">
+                        <div className="flex flex-col gap-1">
                             {managementNames.map((name, i) => (
                                 <button
                                     key={i}
                                     onClick={() => handleMenuClick("/management", `management-${i}`)}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
+                                    className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100 last:border-0"
                                 >
                                     {name}
                                 </button>
@@ -141,12 +140,12 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                         </div>
                     )}
                     {hoveredAboutItem === "Board of Directors" && (
-                        <div className="flex flex-col gap-2 min-w-[200px]">
+                        <div className="flex flex-col gap-1">
                             {directorsNames.map((name, i) => (
                                 <button
                                     key={i}
                                     onClick={() => handleMenuClick("/board-of-directors", `director-${i}`)}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
+                                    className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100 last:border-0"
                                 >
                                     {name}
                                 </button>
@@ -154,12 +153,12 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                         </div>
                     )}
                     {hoveredAboutItem === "Contact Us" && (
-                        <div className="flex flex-col gap-2 min-w-[200px]">
+                        <div className="grid grid-cols-1 gap-1">
                             {locations.map((location, i) => (
                                 <button
                                     key={i}
                                     onClick={() => { handleMenuClick(location?.path); setOpenMenu(null); }}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
+                                    className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100 last:border-0"
                                 >
                                     {location?.name}
                                 </button>
@@ -169,28 +168,24 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                 </div>
 
                 {/* Right: Quick Links */}
-                <div className="w-72 pl-4 border-l border-gray-500 space-y-4 relative">
+                <div className="w-64 space-y-4">
                     <div className="flex items-center justify-between">
                         <h1 className="font-bold text-lg text-left">Quick Links</h1>
-                        <button
-                            onClick={handleClose}
-                            className="text-gray-600 hover:text-black text-xl font-bold"
-                        >
+                        <button onClick={handleClose} className="text-gray-600 hover:text-black">
                             <FiX />
                         </button>
                     </div>
-                    <div className="bg-blue-100 p-2 rounded-lg">
-                        <p className="text-xs text-gray-600 font-semibold">
-                            Emergency & 24/7 Health Support
+                    <div className="bg-blue-100 p-2 rounded-lg text-left">
+                        <p className="text-[10px] text-gray-600 font-bold uppercase tracking-wider">
+                            Emergency & 24/7 Support
                         </p>
-                        <p className="text-base font-medium text-black">9144514459</p>
+                        <p className="text-lg font-bold text-black">9144514459</p>
                     </div>
-
                     <div className="flex flex-col gap-2">
                         {quickLinks.map((link, idx) => (
                             <button
                                 key={idx}
-                                className="flex items-center justify-between bg-pink-700 text-white text-left font-semibold p-2 rounded hover:bg-pink-800 transition"
+                                className="flex items-center justify-between bg-pink-700 text-white text-xs font-bold p-2.5 rounded hover:bg-pink-800 transition shadow-sm"
                                 onClick={() => handleNavigate(link.path)}
                             >
                                 {link.name} <FiArrowRight />
@@ -209,148 +204,186 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
             className="fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4"
             style={{ top: navHeight }}
         >
-            <div className="max-w-6xl mx-auto flex justify-between text-black text-xs">
-                <div className="flex gap-4 font-semibold min-w-[400px]">
-                    <div className="flex flex-col gap-2 cursor-pointer">
-                        {dropdowns.library.map((item, idx) => (
-                            <div
-                                key={idx}
-                                className={`flex items-center justify-between py-2 relative text-xs cursor-pointer min-w-[200px] 
-                                    ${hoveredLibraryItem === item?.name ? "text-pink-700" : "text-gray-800"}`}
-                                onMouseEnter={() => setHoveredLibraryItem(item?.name)}
-                                onClick={() => {
-                                    handleNavigate(item?.path)
-                                    setHoveredLibraryItem(item?.name);
-                                }}
-                            >
-                                <span>{item?.name}</span>
-                                {item?.name !== "News & Media" && <FiChevronRight />}
-                            </div>
+            <div className="max-w-7xl mx-auto flex justify-between text-black text-xs gap-6">
+                {/* Left: Library items */}
+                <div className="flex flex-col gap-2 min-w-[220px] border-r border-gray-200 pr-4">
+                    {dropdowns.library.map((item, idx) => (
+                        <div
+                            key={idx}
+                            onMouseEnter={() => setHoveredLibraryItem(item?.name)}
+                            onClick={() => {
+                                handleNavigate(item?.path);
+                                setHoveredLibraryItem(item?.name);
+                            }}
+                            className={`flex items-center justify-between py-2 px-3 rounded cursor-pointer transition-colors
+                                ${hoveredLibraryItem === item?.name ? "bg-pink-100 text-pink-700 font-bold" : "text-gray-800 hover:bg-gray-100"}`}
+                        >
+                            <span>{item?.name}</span>
+                            {item?.name !== "News & Media" && (
+                                <FiChevronRight className={`${hoveredLibraryItem === item?.name ? "opacity-100" : "opacity-50"}`} />
+                            )}
+                        </div>
+                    ))}
+                </div>
+
+                {/* Center: Dynamic content based on hovered item */}
+                <div className="flex-1 min-w-[400px] border-r border-gray-200 pr-4 overflow-y-auto max-h-[400px]">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-1">
+                        {hoveredLibraryItem === "Health Conditions" && healthConditions.map((name, i) => (
+                            <button key={i} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
+                                {name}
+                            </button>
+                        ))}
+                        {hoveredLibraryItem === "Treatments & Procedures" && treatmetnAndProcedures.map((name, i) => (
+                            <button key={i} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
+                                {name}
+                            </button>
+                        ))}
+                        {hoveredLibraryItem === "Diagnostics Guide" && diagnosticsGuide.map((name, i) => (
+                            <button key={i} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
+                                {name}
+                            </button>
+                        ))}
+                        {hoveredLibraryItem === "Medicine Guide" && medicineGuide.map((name, i) => (
+                            <button key={i} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
+                                {name}
+                            </button>
+                        ))}
+                        {hoveredLibraryItem === "Symptoms Guide" && symptomsGuide.map((name, i) => (
+                            <button key={i} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
+                                {name}
+                            </button>
+                        ))}
+                        {hoveredLibraryItem === "Medical Technology" && medicalTechnology.map((name, i) => (
+                            <button key={i} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
+                                {name}
+                            </button>
+                        ))}
+                        {hoveredLibraryItem === "Second Opinion" && secondOpinion.map((item, i) => (
+                            <button key={i} onClick={() => { handleMenuClick(item?.path); setOpenMenu(null); }} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
+                                {item?.name}
+                            </button>
+                        ))}
+                        {hoveredLibraryItem === "Health Packages" && healthPackages.map((item, i) => (
+                            <button key={i} onClick={() => { handleMenuClick(item?.path); setOpenMenu(null); }} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
+                                {item?.name}
+                            </button>
                         ))}
                     </div>
-                    <div className="mx-4 border-r border-gray-300"></div>
-                    {hoveredLibraryItem === "Health Conditions" && (
-                        <div className="grid grid-cols-3">
-                            {healthConditions.map((name, i) => (
-                                <button
-                                    key={i}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
-                                >
-                                    {name}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                    {hoveredLibraryItem === "Treatments & Procedures" && (
-                        <div className="grid grid-cols-3">
-                            {treatmetnAndProcedures.map((name, i) => (
-                                <button
-                                    key={i}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
-                                >
-                                    {name}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                    {hoveredLibraryItem === "Diagnostics Guide" && (
-                        <div className="grid grid-cols-3">
-                            {diagnosticsGuide.map((name, i) => (
-                                <button
-                                    key={i}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
-                                >
-                                    {name}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                    {hoveredLibraryItem === "Medicine Guide" && (
-                        <div className="grid grid-cols-4">
-                            {medicineGuide.map((name, i) => (
-                                <button
-                                    key={i}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
-                                >
-                                    {name}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                    {hoveredLibraryItem === "Symptoms Guide" && (
-                        <div className="grid grid-cols-4">
-                            {symptomsGuide.map((name, i) => (
-                                <button
-                                    key={i}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
-                                >
-                                    {name}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                    {hoveredLibraryItem === "Medical Technology" && (
-                        <div className="grid grid-cols-1">
-                            {medicalTechnology.map((name, i) => (
-                                <button
-                                    key={i}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
-                                >
-                                    {name}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                    {hoveredLibraryItem === "Second Opinion" && (
-                        <div className="grid grid-cols-3">
-                            {secondOpinion.map((secondOpinion, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => { handleMenuClick(secondOpinion?.path); setOpenMenu(null); }}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
-                                >
-                                    {secondOpinion?.name}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                    {hoveredLibraryItem === "Health Packages" && (
-                        <div className="grid grid-cols-1">
-                            {healthPackages.map((healthPackage, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => { handleMenuClick(healthPackage?.path); setOpenMenu(null); }}
-                                    className="text-xs font-medium text-black text-left hover:text-pink-700 transition py-2"
-                                >
-                                    {healthPackage?.name}
-                                </button>
-                            ))}
-                        </div>
-                    )}
                 </div>
+
                 {/* Right: Quick Links */}
-                <div className="w-72 pl-4 border-l border-gray-500 space-y-4 relative">
+                <div className="w-64 space-y-4">
                     <div className="flex items-center justify-between">
                         <h1 className="font-bold text-lg text-left">Quick Links</h1>
-                        <button
-                            onClick={handleClose}
-                            className="text-gray-600 hover:text-black text-xl font-bold"
-                        >
+                        <button onClick={handleClose} className="text-gray-600 hover:text-black">
                             <FiX />
                         </button>
                     </div>
-                    <div className="bg-blue-100 p-2 rounded-lg">
-                        <p className="text-xs text-gray-600 font-semibold">
-                            Emergency & 24/7 Health Support
+                    <div className="bg-blue-100 p-2 rounded-lg text-left">
+                        <p className="text-[10px] text-gray-600 font-bold uppercase tracking-wider">
+                            Emergency & 24/7 Support
                         </p>
-                        <p className="text-base font-medium text-black">9144514459</p>
+                        <p className="text-lg font-bold text-black">9144514459</p>
                     </div>
-
                     <div className="flex flex-col gap-2">
                         {quickLinks.map((link, idx) => (
                             <button
                                 key={idx}
-                                className="flex items-center justify-between bg-pink-700 text-white text-left font-semibold p-2 rounded hover:bg-pink-800 transition"
+                                className="flex items-center justify-between bg-pink-700 text-white text-xs font-bold p-2.5 rounded hover:bg-pink-800 transition shadow-sm"
+                                onClick={() => handleNavigate(link.path)}
+                            >
+                                {link.name} <FiArrowRight />
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+
+    const renderSpecialtiesDropdown = () => (
+        <div
+            onMouseEnter={() => handleOpen("specialties")}
+            onMouseLeave={handleClose}
+            className="fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4"
+            style={{ top: navHeight }}
+        >
+            <div className="max-w-7xl mx-auto flex justify-between text-black text-xs gap-6">
+                {/* Column 1: Main Categories */}
+                <div className="flex flex-col gap-2 min-w-[200px] border-r border-gray-200 pr-4">
+                    {dropdowns.specialties.part1.map((item, idx) => (
+                        <div
+                            key={idx}
+                            onMouseEnter={() => setHoveredSpecialty(item)}
+                            onClick={() => { handleMenuClick(item.path); setOpenMenu(null); }}
+                            className={`flex items-center justify-between py-2 px-2 rounded cursor-pointer transition-colors
+                                ${hoveredSpecialty?.name === item.name ? "bg-pink-100 text-pink-700 font-bold" : "text-gray-800 hover:bg-gray-100"}`}
+                        >
+                            <span>{item.name}</span>
+                            <FiChevronRight className={`${hoveredSpecialty?.name === item.name ? "opacity-100" : "opacity-50"}`} />
+                        </div>
+                    ))}
+                </div>
+
+                {/* Column 2: Sub-items of selected Category */}
+                <div className="flex flex-col gap-2 min-w-[220px] border-r border-gray-200 pr-4">
+                    {hoveredSpecialty?.subItems.map((sub, i) => (
+                        <button
+                            key={i}
+                            onClick={() => { handleMenuClick(sub.path); setOpenMenu(null); }}
+                            className="text-left text-gray-700 hover:text-pink-700 py-1 px-2 transition-colors font-medium"
+                        >
+                            {sub.name}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Column 3: Fixed Categories */}
+                <div className="flex flex-col gap-2 min-w-[180px] border-r border-gray-200 pr-4">
+                    {dropdowns.specialties.part3.map((item, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => { handleMenuClick(item.path); setOpenMenu(null); }}
+                            className="text-left text-gray-800 hover:text-pink-700 py-2 px-2 transition-colors font-semibold"
+                        >
+                            {item.name}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Column 4: Fixed Categories */}
+                <div className="flex flex-col gap-2 min-w-[200px] border-r border-gray-200 pr-4">
+                    {dropdowns.specialties.part4.map((item, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => { handleMenuClick(item.path); setOpenMenu(null); }}
+                            className="text-left text-gray-800 hover:text-pink-700 py-2 px-2 transition-colors font-semibold"
+                        >
+                            {item.name}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Column 5: Quick Links */}
+                <div className="w-64 space-y-4">
+                    <div className="flex items-center justify-between">
+                        <h1 className="font-bold text-lg text-left">Quick Links</h1>
+                        <button onClick={handleClose} className="text-gray-600 hover:text-black">
+                            <FiX />
+                        </button>
+                    </div>
+                    <div className="bg-blue-100 p-2 rounded-lg text-left">
+                        <p className="text-[10px] text-gray-600 font-bold uppercase tracking-wider">
+                            Emergency & 24/7 Support
+                        </p>
+                        <p className="text-lg font-bold text-black">9144514459</p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        {quickLinks.map((link, idx) => (
+                            <button
+                                key={idx}
+                                className="flex items-center justify-between bg-pink-700 text-white text-xs font-bold p-2.5 rounded hover:bg-pink-800 transition shadow-sm"
                                 onClick={() => handleNavigate(link.path)}
                             >
                                 {link.name} <FiArrowRight />
@@ -365,7 +398,8 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
     const renderDropdown = (title, items) => {
         if (title === "about") return renderAboutDropdown();
         if (title === "library") return renderLibraryDropdown();
-        const list = title === "specialties" ? dropdowns.specialties : items;
+        if (title === "specialties") return renderSpecialtiesDropdown();
+        const list = items;
         return (
             <div
                 onMouseEnter={() => handleOpen(title)}
@@ -375,27 +409,16 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
             >
                 <div className="max-w-6xl mx-auto flex justify-between text-black text-xs">
                     <div
-                        className={`${title === "specialties" ? "grid grid-cols-3" : "flex flex-col ml-40"
-                            } cursor-pointer gap-x-12 gap-y-4 font-semibold`}
+                        className="flex flex-col ml-40 cursor-pointer gap-x-12 gap-y-4 font-semibold"
                     >
-                        {list.map((item, idx) =>
-                            title === "specialties" ? (
-                                <button
-                                    key={idx}
-                                    onClick={() => { handleMenuClick(item.path); setOpenMenu(null); }}
-                                    className={`text-left text-gray-800 hover:text-pink-700 ${item.name === 'ENT' ? 'notranslate' : ''}`}
-                                >
-                                    {item.name}
-                                </button>
-                            ) : (
-                                <span
-                                    key={idx}
-                                    className="cursor-pointer text-gray-800 hover:text-pink-700"
-                                >
-                                    {item}
-                                </span>
-                            )
-                        )}
+                        {list.map((item, idx) => (
+                            <span
+                                key={idx}
+                                className="cursor-pointer text-gray-800 hover:text-pink-700"
+                            >
+                                {item}
+                            </span>
+                        ))}
                     </div>
 
                     {/* Right side quick links */}
@@ -464,9 +487,16 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                             />
                         </div>
 
+                        <LanguageDropdown
+                            setForceSecondary={setForceSecondary}
+                            isSecondary={isSecondary}
+                            isMobile={true}
+                            languages={["English", "Telugu", "Hindi", "Bengali", "Tamil", "Marathi", "Malayalam", "Kannada", "Arabic", "Urdu", "Swahili", "Somali", "Italian", "Spanish", "Persian", "Portuguese", "Amharic", "French", "Russian", "Chinese (Simplified)", "Nepali", "Pashto", "Gujarati", "Punjabi"]}
+                        />
+
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="p-2 bg-white/10 rounded-md"
+                            className={`p-2 rounded-md ${isMenuOpen || isSecondary ? "bg-gray-200 text-black" : "bg-white/10 text-white"}`}
                         >
                             {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
                         </button>
@@ -474,39 +504,110 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
 
                     {/* Menu Panel */}
                     {isMenuOpen && (
-                        <div className="fixed top-[70px] left-0 w-full sm:w-3/4 h-[calc(100vh-70px)] bg-white text-black z-40 shadow-xl p-5 overflow-y-auto transition-all duration-300">
+                        <div className="fixed top-[70px] left-0 w-full sm:w-3/4 h-[calc(100vh-70px)] bg-white text-black z-40 shadow-xl p-5 pb-24 overflow-y-auto transition-all duration-300">
                             {/* Menu Items */}
                             <ul className="space-y-4">
+                                {/* ABOUT ACCORDION */}
                                 <li>
                                     <button
-                                        onClick={() => handleNavigate("/about-us/")}
-                                        className="text-gray-800 hover:text-pink-600 w-full text-left"
+                                        className="text-gray-800 hover:text-pink-600 w-full flex justify-between items-center text-lg transition-colors"
+                                        onClick={() => setIsMobileAboutOpen(!isMobileAboutOpen)}
                                     >
                                         About
+                                        {isMobileAboutOpen ? <FiChevronUp /> : <FiChevronDown />}
                                     </button>
+                                    {isMobileAboutOpen && (
+                                        <ul className="ml-4 mt-2 space-y-2 border-l-2 border-pink-100 pl-4 transition-all">
+                                            {dropdowns.about.filter(item => item !== "Contact Us").map((item, idx) => {
+                                                const hasSub = ["Management", "Board of Directors"].includes(item);
+                                                const isSubOpen = mobileOpenSubItem === `about-${item}`;
+                                                return (
+                                                    <li key={idx}>
+                                                        <div className="flex flex-col">
+                                                            <button
+                                                                className={`text-sm flex justify-between items-center text-left w-full py-2 transition-colors ${isSubOpen ? 'text-pink-600 font-semibold' : 'text-gray-600 hover:text-pink-500'}`}
+                                                                onClick={() => {
+                                                                    if (hasSub) {
+                                                                        setMobileOpenSubItem(isSubOpen ? null : `about-${item}`);
+                                                                    } else {
+                                                                        if (item === "Chairman’s Message") handleMenuClick("/", "chairman-message-section");
+                                                                        else if (item === "Why Choose Us") handleMenuClick("/", "why-choose-us");
+                                                                        else if (item === "Overview") handleNavigate("/about-us/");
+                                                                        else if (item === "FAQ’s") handleNavigate("/faqs/");
+                                                                        else if (item === "International Patient") handleNavigate("/international-patient-services/");
+                                                                        setOpenMenu(null);
+                                                                        setIsMenuOpen(false);
+                                                                    }
+                                                                }}
+                                                            >
+                                                                {item}
+                                                                {hasSub && (isSubOpen ? <FiChevronUp className="text-xs" /> : <FiChevronDown className="text-xs" />)}
+                                                            </button>
+
+                                                            {isSubOpen && (
+                                                                <ul className="ml-4 space-y-1 border-l border-gray-100 pl-3 py-1">
+                                                                    {item === "Management" && managementNames.map((name, i) => (
+                                                                        <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => handleNavigate("/management")}>{name}</button></li>
+                                                                    ))}
+                                                                    {item === "Board of Directors" && directorsNames.map((name, i) => (
+                                                                        <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => handleNavigate("/board-of-directors")}>{name}</button></li>
+                                                                    ))}
+                                                                    {item === "Contact Us" && locations.map((loc, i) => (
+                                                                        <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => handleNavigate(loc.path)}>{loc.name}</button></li>
+                                                                    ))}
+                                                                </ul>
+                                                            )}
+                                                        </div>
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    )}
                                 </li>
 
+                                {/* SPECIALTIES ACCORDION */}
                                 <li>
                                     <button
-                                        className="text-gray-800 hover:text-pink-600 w-full flex justify-between items-center"
-                                        onClick={() => setIsCOEDropdownOpen(!isCOEDropdownOpen)}
+                                        className="text-gray-800 hover:text-pink-600 w-full flex justify-between items-center text-lg transition-colors"
+                                        onClick={() => setIsMobileSpecialtiesOpen(!isMobileSpecialtiesOpen)}
                                     >
                                         Specialties
-                                        {isCOEDropdownOpen ? (
-                                            <ChevronUpIcon className="w-4 h-4" />
-                                        ) : (
-                                            <ChevronDownIcon className="w-4 h-4" />
-                                        )}
+                                        {isMobileSpecialtiesOpen ? <FiChevronUp /> : <FiChevronDown />}
                                     </button>
 
-                                    {isCOEDropdownOpen && (
-                                        <ul className="ml-3 mt-2 space-y-2">
-                                            {departments.map((dept) => (
-                                                <li key={dept.name}>
-                                                    <button
-                                                        className="text-xs text-gray-600 hover:text-pink-500 text-left w-full"
-                                                        onClick={() => handleNavigate(dept.path)}
-                                                    >
+                                    {isMobileSpecialtiesOpen && (
+                                        <ul className="ml-4 mt-2 space-y-2 border-l-2 border-pink-100 pl-4">
+                                            {dropdowns.specialties.part1.map((dept, idx) => {
+                                                const isSubOpen = mobileOpenSubItem === `spec-${dept.name}`;
+                                                return (
+                                                    <li key={idx}>
+                                                        <div className="flex flex-col">
+                                                            <button
+                                                                className={`text-sm flex justify-between items-center text-left w-full py-2 transition-colors ${isSubOpen ? 'text-pink-600 font-semibold' : 'text-gray-600 hover:text-pink-500'}`}
+                                                                onClick={() => setMobileOpenSubItem(isSubOpen ? null : `spec-${dept.name}`)}
+                                                            >
+                                                                {dept.name}
+                                                                {isSubOpen ? <FiChevronUp className="text-xs" /> : <FiChevronDown className="text-xs" />}
+                                                            </button>
+                                                            {isSubOpen && (
+                                                                <ul className="ml-4 space-y-1 border-l border-gray-100 pl-3 py-1">
+                                                                    {dept.subItems.map((sub, i) => (
+                                                                        <li key={i}>
+                                                                            <button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => { handleNavigate(sub.path); setIsMenuOpen(false); }}>
+                                                                                {sub.name}
+                                                                            </button>
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            )}
+                                                        </div>
+                                                    </li>
+                                                );
+                                            })}
+                                            {/* Other Specialties from Part 3 & 4 */}
+                                            {[...dropdowns.specialties.part3, ...dropdowns.specialties.part4].map((dept, idx) => (
+                                                <li key={`fixed-${idx}`}>
+                                                    <button className="text-sm text-gray-600 hover:text-pink-500 text-left w-full py-2" onClick={() => handleNavigate(dept.path)}>
                                                         {dept.name}
                                                     </button>
                                                 </li>
@@ -515,47 +616,64 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                     )}
                                 </li>
 
+                                {/* DOCTORS LINK */}
                                 <li>
                                     <button
                                         onClick={() => handleNavigate("/find-doctor/")}
-                                        className="text-gray-800 hover:text-pink-600 w-full text-left"
+                                        className="text-gray-800 hover:text-pink-600 w-full text-left text-lg transition-colors"
                                     >
                                         Doctors
                                     </button>
                                 </li>
+
+                                {/* LIBRARY ACCORDION */}
                                 <li>
                                     <button
-                                        onClick={() =>
-                                            handleNavigate("/international-patient-services/")
-                                        }
-                                        className="text-gray-800 hover:text-pink-600 w-full text-left"
+                                        className="text-gray-800 hover:text-pink-600 w-full flex justify-between items-center text-lg transition-colors"
+                                        onClick={() => setIsMobileLibraryOpen(!isMobileLibraryOpen)}
                                     >
-                                        International Patient
+                                        Library
+                                        {isMobileLibraryOpen ? <FiChevronUp /> : <FiChevronDown />}
                                     </button>
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={() => handleNavigate("/blog/")}
-                                        className="text-gray-800 hover:text-pink-600 w-full text-left"
-                                    >
-                                        Blogs
-                                    </button>
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={() => handleNavigate("/news-and-media/")}
-                                        className="text-gray-800 hover:text-pink-600 w-full text-left"
-                                    >
-                                        News & Media
-                                    </button>
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={() => handleNavigate("/contact-us/")}
-                                        className="text-gray-800 hover:text-pink-600 w-full text-left"
-                                    >
-                                        Contact Us
-                                    </button>
+                                    {isMobileLibraryOpen && (
+                                        <ul className="ml-4 mt-2 space-y-2 border-l-2 border-pink-100 pl-4">
+                                            {dropdowns.library.map((item, idx) => {
+                                                const hasSub = item.name !== "News & Media"; // Only News & Media has no sub-menu in desktop either
+                                                const isSubOpen = mobileOpenSubItem === `lib-${item.name}`;
+                                                return (
+                                                    <li key={idx}>
+                                                        <div className="flex flex-col">
+                                                            <button
+                                                                className={`text-sm flex justify-between items-center text-left w-full py-2 transition-colors ${isSubOpen ? 'text-pink-600 font-semibold' : 'text-gray-600 hover:text-pink-500'}`}
+                                                                onClick={() => {
+                                                                    if (hasSub) setMobileOpenSubItem(isSubOpen ? null : `lib-${item.name}`);
+                                                                    else if (item.path || item.name === "News & Media") {
+                                                                        handleNavigate(item.path || "/news-and-media/");
+                                                                        setIsMenuOpen(false);
+                                                                    }
+                                                                }}
+                                                            >
+                                                                {item.name}
+                                                                {hasSub && (isSubOpen ? <FiChevronUp className="text-xs" /> : <FiChevronDown className="text-xs" />)}
+                                                            </button>
+                                                            {isSubOpen && (
+                                                                <ul className="ml-4 space-y-1 border-l border-gray-100 pl-3 py-1 grid grid-cols-1 overflow-y-auto max-h-[250px]">
+                                                                    {item.name === "Health Conditions" && healthConditions.map((n, i) => <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => { handleNavigate('#'); setIsMenuOpen(false); }}>{n}</button></li>)}
+                                                                    {item.name === "Treatments & Procedures" && treatmetnAndProcedures.map((n, i) => <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => { handleNavigate('#'); setIsMenuOpen(false); }}>{n}</button></li>)}
+                                                                    {item.name === "Diagnostics Guide" && diagnosticsGuide.map((n, i) => <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => { handleNavigate('#'); setIsMenuOpen(false); }}>{n}</button></li>)}
+                                                                    {item.name === "Medicine Guide" && medicineGuide.map((n, i) => <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => { handleNavigate('#'); setIsMenuOpen(false); }}>{n}</button></li>)}
+                                                                    {item.name === "Symptoms Guide" && symptomsGuide.map((n, i) => <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => { handleNavigate('#'); setIsMenuOpen(false); }}>{n}</button></li>)}
+                                                                    {item.name === "Medical Technology" && medicalTechnology.map((n, i) => <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => { handleNavigate('#'); setIsMenuOpen(false); }}>{n}</button></li>)}
+                                                                    {item.name === "Second Opinion" && secondOpinion.map((sub, i) => <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => { handleNavigate(sub.path); setIsMenuOpen(false); }}>{sub.name}</button></li>)}
+                                                                    {item.name === "Health Packages" && healthPackages.map((sub, i) => <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => { handleNavigate(sub.path); setIsMenuOpen(false); }}>{sub.name}</button></li>)}
+                                                                </ul>
+                                                            )}
+                                                        </div>
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    )}
                                 </li>
                             </ul>
                         </div>
@@ -639,8 +757,10 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                 </a>
                             </div>
                             <LanguageDropdown
+                                isSecondary={isSecondary}
+                                isMobile={false}
                                 setForceSecondary={setForceSecondary}
-                                languages={["English", "Telugu", "Hindi", "Bengali", "Tamil", "Marathi", "Malayalam", "Kannada", "Arabic", "Urdu", "Swahili", "Somali", "Italian", "Spanish", "Persian", "Portuguese", "Amharic", "French", "Russian", "Chinese (Simplified)", "Nepali", "Phasto", "Gujarati", "Punjabi"]}
+                                languages={["English", "Telugu", "Hindi", "Bengali", "Tamil", "Marathi", "Malayalam", "Kannada", "Arabic", "Urdu", "Swahili", "Somali", "Italian", "Spanish", "Persian", "Portuguese", "Amharic", "French", "Russian", "Chinese (Simplified)", "Nepali", "Pashto", "Gujarati", "Punjabi"]}
                             />
                         </div>
                     </nav>
