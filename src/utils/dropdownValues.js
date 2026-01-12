@@ -22,12 +22,12 @@ export const dropdowns = {
                 name: "Transplant Surgery",
                 path: "/specialities/transplant-medicine",
                 subItems: [
-                    { name: "Liver Transplantation", path: "/specialities/liver-transplant" },
+                    { name: "Liver Transplantation", path: "/liver-transplation-surgery/" },
                     { name: "Kidney Transplantation", path: "/specialities/kidney-transplant" }
                 ]
             },
             {
-                name: "Robotic Sciencies",
+                name: "Robotic Sciences",
                 path: "/specialities/robotics-science",
                 subItems: [
                     { name: "Robotic orthopedic surgery", path: "/specialities/robotic-orthopedic-surgery" },
