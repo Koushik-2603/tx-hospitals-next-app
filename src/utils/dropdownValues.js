@@ -22,19 +22,19 @@ export const dropdowns = {
                 name: "Transplant Surgery",
                 path: "/specialities/transplant-medicine",
                 subItems: [
-                    { name: "Liver Transplantation", path: "/liver-transplation-surgery/" },
-                    { name: "Kidney Transplantation", path: "/specialities/kidney-transplant" }
+                    { name: "Liver Transplantation", path: "/liver-transplantation-surgery/" },
+                    { name: "Kidney Transplantation", path: "/kidney-transplantation-surgery/" }
                 ]
             },
             {
                 name: "Robotic Sciences",
-                path: "/specialities/robotics-science",
+                path: "/specialities/robotics-science/",
                 subItems: [
-                    { name: "Robotic orthopedic surgery", path: "/specialities/robotic-orthopedic-surgery" },
-                    { name: "Robotic GI Surgery", path: "/specialities/robotic-gi-surgery" },
-                    { name: "Robotic Urologic surgery", path: "/specialities/robotic-urologic-surgery" },
-                    { name: "Robotic Gynecologic Surgery", path: "/specialities/robotic-gynecologic-surgery" },
-                    { name: "Robotic Cancer Surgery", path: "/specialities/robotic-cancer-surgery" }
+                    { name: "Robotic orthopedic surgery", path: "/specialities/robotics-science" },
+                    { name: "Robotic GI Surgery", path: "/specialities/robotics-science" },
+                    { name: "Robotic Urologic surgery", path: "/specialities/robotics-science" },
+                    { name: "Robotic Gynecologic Surgery", path: "/specialities/robotics-science" },
+                    { name: "Robotic Cancer Surgery", path: "/specialities/robotics-science" }
                 ]
             },
             {
@@ -42,15 +42,15 @@ export const dropdowns = {
                 path: "/specialities/cardiac-sciences",
                 subItems: [
                     { name: "Cardiology", path: "/specialities/cardiac-sciences" },
-                    { name: "Cardiothoracic & Vascular surgery", path: "/specialities/cardio-thoracic-vascular-surgery" }
+                    { name: "Cardiothoracic & Vascular surgery", path: "/specialities/cardiac-sciences" }
                 ]
             },
             {
                 name: "Gastro Sciences",
                 path: "/specialities/gastro-sciences",
                 subItems: [
-                    { name: "Medical Gastroenterology", path: "/specialities/medical-gastroenterology" },
-                    { name: "Surgical Gastroenterology", path: "/specialities/surgical-gastroenterology" }
+                    { name: "Medical Gastroenterology", path: "/specialities/gastro-sciences" },
+                    { name: "Surgical Gastroenterology", path: "/specialities/gastro-sciences" }
                 ]
             },
             {
@@ -58,15 +58,15 @@ export const dropdowns = {
                 path: "/specialities/nephrology",
                 subItems: [
                     { name: "Nephrology", path: "/specialities/nephrology" },
-                    { name: "Urology", path: "/specialities/urology" }
+                    { name: "Urology", path: "/specialities/nephrology" }
                 ]
             },
             {
                 name: "Mother & Child Care",
                 path: "/specialities/mother-child-care",
                 subItems: [
-                    { name: "Gynaecology", path: "/specialities/gynaecology" },
-                    { name: "Paediatrics", path: "/specialities/paediatrics" }
+                    { name: "Gynaecology", path: "/specialities/mother-child-care" },
+                    { name: "Paediatrics", path: "/specialities/mother-child-care" }
                 ]
             }
         ],
