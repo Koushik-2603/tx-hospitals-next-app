@@ -1,10 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import useIsMobile from "@/hooks/useIsMobile";
-import { FaTags } from "react-icons/fa";
 import { IoPlay, IoPause, IoStop, IoPlaySkipForward } from "react-icons/io5";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp,FaTags } from "react-icons/fa";
 import { franc } from "franc";
 import { motion } from "framer-motion";
 import DOMPurify from "dompurify";

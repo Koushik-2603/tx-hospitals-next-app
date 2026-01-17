@@ -92,7 +92,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
             className="fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4"
             style={{ top: navHeight }}
         >
-            <div className="max-w-7xl mx-auto flex justify-between text-black text-xs gap-6">
+            <div className="max-w-7xl mx-auto flex justify-between text-black text-sm gap-6">
                 {/* Left: About items */}
                 <div className="flex flex-col gap-2 min-w-[220px] border-r border-gray-200 pr-4">
                     {dropdowns.about.map((item, idx) => (
@@ -204,7 +204,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
             className="fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4"
             style={{ top: navHeight }}
         >
-            <div className="max-w-7xl mx-auto flex justify-between text-black text-xs gap-6">
+            <div className="max-w-7xl mx-auto flex justify-between text-black text-sm gap-6">
                 {/* Left: Library items */}
                 <div className="flex flex-col gap-2 min-w-[220px] border-r border-gray-200 pr-4">
                     {dropdowns.library.map((item, idx) => (
@@ -227,7 +227,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                 </div>
 
                 {/* Center: Dynamic content based on hovered item */}
-                <div className="flex-1 min-w-[400px] border-r border-gray-200 pr-4 overflow-y-auto max-h-[400px]">
+                <div className="flex-1 min-w-[400px] border-r border-gray-200 pr-4 overflow-y-auto max-h-[400px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-1">
                         {hoveredLibraryItem === "Health Conditions" && healthConditions.map((name, i) => (
                             <button key={i} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
@@ -260,7 +260,15 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                             </button>
                         ))}
                         {hoveredLibraryItem === "Second Opinion" && secondOpinion.map((item, i) => (
-                            <button key={i} onClick={() => { handleMenuClick(item?.path); setOpenMenu(null); }} className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100">
+                            <button
+                                key={i}
+                                onClick={() => { handleMenuClick(item?.path); setOpenMenu(null); }}
+                                className={`text-left py-2 px-2 transition-colors font-medium border-b border-gray-100 
+                                ${item.name === "View More"
+                                        ? "text-pink-700 underline font-bold"
+                                        : "text-gray-700 hover:text-pink-700"
+                                    }`}
+                            >
                                 {item?.name}
                             </button>
                         ))}
@@ -309,7 +317,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
             className="fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4"
             style={{ top: navHeight }}
         >
-            <div className="max-w-7xl mx-auto flex justify-between text-black text-xs gap-6">
+            <div className="max-w-7xl mx-auto flex justify-between text-black text-sm gap-6">
                 {/* Column 1: Main Categories */}
                 <div className="flex flex-col gap-2 min-w-[200px] border-r border-gray-200 pr-4">
                     {dropdowns.specialties.part1.map((item, idx) => (
@@ -407,7 +415,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                 className={`fixed left-0 w-full bg-pink-50 shadow-md border-t border-gray-200 z-40 px-10 py-4`}
                 style={{ top: navHeight }}
             >
-                <div className="max-w-6xl mx-auto flex justify-between text-black text-xs">
+                <div className="max-w-6xl mx-auto flex justify-between text-black text-sm">
                     <div
                         className="flex flex-col ml-40 cursor-pointer gap-x-12 gap-y-4 font-semibold"
                     >

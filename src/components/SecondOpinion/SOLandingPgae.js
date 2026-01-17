@@ -285,7 +285,7 @@ export default function SOLandingPage() {
                     </div>
                     <div className="px-2">
                         <h2 className="text-xl text-center font-bold text-pink-700 mb-1">
-                            Expert Consultant on for a Confident Decision
+                            Expert Consultation on for a Confident Decision
                         </h2>
 
                         <p className="text-sm leading-relaxed text-gray-700 mb-2">
@@ -533,7 +533,7 @@ export default function SOLandingPage() {
                         </div>
                         <div className="max-w-xl mx-auto px-6 text-center">
                             <h2 className="text-2xl font-bold text-pink-700 mb-2">
-                                Expert Consultant on for a Confident Decision
+                                Expert Consultation on for a Confident Decision
                             </h2>
 
                             <p className="text-base leading-relaxed text-gray-700 mb-3">

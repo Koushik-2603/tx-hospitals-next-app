@@ -24,24 +24,26 @@ export default function SocialSidebar() {
     return (
         <>
             {isMobile ? (
-                <div className="fixed bottom-0 z-50 w-full bg-pink-700">
-                    <div className="flex flex-row items-center justify-center">
+                <div className="fixed bottom-0 z-50 w-full bg-gradient-to-r from-pink-800 to-pink-800 shadow-lg">
+                    <div className="flex flex-row items-center justify-around">
                         {mobileIcons.map((icon, idx) => (
                             <button
                                 key={idx}
                                 type="button"
                                 aria-label={icon.alt}
                                 onClick={() => window.open(icon.link, "_blank")}
-                                className="flex flex-col items-center justify-center gap-1 px-2 py-1 border-r border-white/30 last:border-r-0 text-white cursor-pointer transition"
+                                className="flex flex-col items-center justify-center gap-2 px-3 py-1 flex-1 border-r border-white/20 last:border-r-0 text-white cursor-pointer transition-all duration-200 hover:bg-white/10 active:bg-white/20 active:scale-95"
                             >
-                                <Image
-                                    src={icon.src}
-                                    alt={icon.alt}
-                                    width={20}
-                                    height={20}
-                                    className="object-contain"
-                                />
-                                <p className="text-[10px] font-medium text-center">
+                                <div className="flex items-center justify-center">
+                                    <Image
+                                        src={icon.src}
+                                        alt={icon.alt}
+                                        width={30}
+                                        height={30}
+                                        className="object-contain drop-shadow-md"
+                                    />
+                                </div>
+                                <p className="text-[11px] font-semibold text-center leading-tight">
                                     {icon.alt}
                                 </p>
                             </button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import SecondaryLayout from '@/components/Layouts/SecondaryLayout';
 import HeroSection from '@/components/LiverTransplant/HeroSection';
@@ -10,8 +10,17 @@ import InfrastructureSection from '@/components/LiverTransplant/InfrastructureSe
 import DonorSafetySection from '@/components/LiverTransplant/DonorSafetySection';
 import WhyChooseSection from '@/components/LiverTransplant/WhyChooseSection';
 import FinalCtaSection from '@/components/LiverTransplant/FinalCtaSection';
+import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 
 export default function LiverTransplantationSurgery() {
+    // State Management
+    const [showModal, setShowModal] = useState(false);
+
+    // Handler Functions
+    const handleCall = () => {
+        window.location.href = "tel:9144514459";
+    };
+
     // Data Objects
     const heroData = {
         highlightedTitle: "Liver Transplantation Surgery",
@@ -24,7 +33,8 @@ export default function LiverTransplantationSurgery() {
                 text: "Book An Appointment",
                 icon: "/assets/surgeries/live-transplant/Book an Appointment  Icon 3.webp",
                 alt: "Calendar Icon",
-                className: "bg-[#B12C49] text-white hover:bg-[#96253d]"
+                className: "bg-[#B12C49] text-white hover:bg-[#96253d]",
+                onClick: () => setShowModal(true)
             },
             {
                 text: "Call Now",
@@ -32,7 +42,8 @@ export default function LiverTransplantationSurgery() {
                 alt: "Phone Icon",
                 width: 20,
                 height: 20,
-                className: "border-2 border-[#B12C49] text-[#B12C49] bg-[#fde8eb] hover:bg-[#fbdada]"
+                className: "border-2 border-[#B12C49] text-[#B12C49] bg-[#fde8eb] hover:bg-[#fbdada]",
+                onClick: handleCall
             }
         ]
     };
@@ -113,7 +124,8 @@ export default function LiverTransplantationSurgery() {
             alt: "Calendar Icon",
             className: "border-2 border-white text-white",
             iconBgClass: "p-2 rounded-lg",
-            iconClass: "w-7 h-7 object-contain brightness-0 invert transition-all group-hover:brightness-100 group-hover:invert-0"
+            iconClass: "w-7 h-7 object-contain brightness-0 invert transition-all group-hover:brightness-100 group-hover:invert-0",
+            onClick: () => setShowModal(true)
         },
         {
             text: "Call Now",
@@ -123,7 +135,8 @@ export default function LiverTransplantationSurgery() {
             height: 24,
             className: "bg-white text-[#B12C49] shadow-2xl hover:bg-gray-100",
             iconBgClass: "p-2 rounded-lg",
-            iconClass: "w-6 h-6 object-contain"
+            iconClass: "w-6 h-6 object-contain",
+            onClick: handleCall
         }
     ];
 
@@ -253,6 +266,7 @@ export default function LiverTransplantationSurgery() {
                         description={finalCtaData.description}
                         buttons={finalCtaData.buttons}
                     />
+                    <BookAppointmentForm showModal={showModal} setShowModal={setShowModal} />
                 </div>
             </SecondaryLayout>
         </>
