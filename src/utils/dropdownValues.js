@@ -42,31 +42,31 @@ export const dropdowns = {
                 path: "/specialities/cardiac-sciences",
                 subItems: [
                     { name: "Cardiology", path: "/specialities/cardiac-sciences" },
-                    { name: "Cardiothoracic & Vascular surgery", path: "/specialities/cardiac-sciences" }
+                    { name: "Cardiothoracic & Vascular surgery", path: "/specialities/cardiothoracic-and-vascular-surgery-hospitals-in-hyderabad-india/" }
                 ]
             },
             {
                 name: "Gastro Sciences",
                 path: "/specialities/gastro-sciences",
                 subItems: [
-                    { name: "Medical Gastroenterology", path: "/specialities/gastro-sciences" },
-                    { name: "Surgical Gastroenterology", path: "/specialities/gastro-sciences" }
+                    { name: "Medical Gastroenterology", path: "/specialities/medical-gastro-hospitals/" },
+                    { name: "Surgical Gastroenterology", path: "/specialities/surgical-gastroenterology-hospitals/" }
                 ]
             },
             {
                 name: "Renal Sciences",
                 path: "/specialities/nephrology",
                 subItems: [
-                    { name: "Nephrology", path: "/specialities/nephrology" },
-                    { name: "Urology", path: "/specialities/nephrology" }
+                    { name: "Nephrology", path: "/specialities/nephrology/" },
+                    { name: "Urology", path: "/specialities/urology/" }
                 ]
             },
             {
                 name: "Mother & Child Care",
                 path: "/specialities/mother-child-care",
                 subItems: [
-                    { name: "Gynaecology", path: "/specialities/mother-child-care" },
-                    { name: "Paediatrics", path: "/specialities/mother-child-care" }
+                    { name: "Gynaecology", path: "/specialities/gynecology-hospitals/" },
+                    { name: "Paediatrics", path: "/specialities/pediatric-hospitals/" }
                 ]
             }
         ],

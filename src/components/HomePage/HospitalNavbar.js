@@ -112,9 +112,11 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                 if (item === "Contact Us") handleMenuClick("/contact-us/");
                                 if (item === "FAQ’s") handleMenuClick("/faqs/");
                                 if (item === "International Patient") handleMenuClick("/international-patient-services/");
+                                if (item === "Board of Directors") handleMenuClick("/board-of-directors/");
+                                if (item === "Management") handleMenuClick("/management/");
                             }}
-                            className={`flex items-center justify-between py-2 px-3 rounded cursor-pointer transition-colors
-                                ${hoveredAboutItem === item ? "bg-pink-100 text-pink-700 font-bold" : "text-gray-800 hover:bg-gray-100"}`}
+                            className={`flex items-center justify-between py-2 px-3 rounded cursor-pointer transition-colors font-bold
+                                ${hoveredAboutItem === item ? "bg-pink-100 text-pink-700" : "text-gray-800 hover:bg-gray-100"}`}
                         >
                             <span>{item}</span>
                             {(item === "Management" || item === "Board of Directors" || item === "Contact Us") && (
@@ -215,8 +217,8 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                 handleNavigate(item?.path);
                                 setHoveredLibraryItem(item?.name);
                             }}
-                            className={`flex items-center justify-between py-2 px-3 rounded cursor-pointer transition-colors
-                                ${hoveredLibraryItem === item?.name ? "bg-pink-100 text-pink-700 font-bold" : "text-gray-800 hover:bg-gray-100"}`}
+                            className={`flex items-center justify-between py-2 px-3 rounded cursor-pointer transition-colors font-bold
+                                ${hoveredLibraryItem === item?.name ? "bg-pink-100 text-pink-700" : "text-gray-800 hover:bg-gray-100"}`}
                         >
                             <span>{item?.name}</span>
                             {item?.name !== "News & Media" && (
@@ -325,8 +327,8 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                             key={idx}
                             onMouseEnter={() => setHoveredSpecialty(item)}
                             onClick={() => { handleMenuClick(item.path); setOpenMenu(null); }}
-                            className={`flex items-center justify-between py-2 px-2 rounded cursor-pointer transition-colors
-                                ${hoveredSpecialty?.name === item.name ? "bg-pink-100 text-pink-700 font-bold" : "text-gray-800 hover:bg-gray-100"}`}
+                            className={`flex items-center justify-between py-2 px-2 rounded cursor-pointer transition-colors font-bold
+                                ${hoveredSpecialty?.name === item.name ? "bg-pink-100 text-pink-700" : "text-gray-800 hover:bg-gray-100"}`}
                         >
                             <span>{item.name}</span>
                             <FiChevronRight className={`${hoveredSpecialty?.name === item.name ? "opacity-100" : "opacity-50"}`} />

@@ -14,11 +14,11 @@ import BacklinkSection from "@/components/COE/BacklinkSection";
 import countryOptions from "@/utils/countryOptions";
 import ActionButtons from "@/components/Common/ActionButtons";
 
-export default function Diagnosties() {
+export default function Diagnosties({ department: propDepartment }) {
     const router = useRouter();
     const contentRef = useRef(null);
     const { slug } = router.query;
-    const department = slug?.[0] || null;
+    const department = propDepartment || slug?.[0] || null;
     const tab = slug?.[1] || "";
     const isMobile = useIsMobile();
     const [data, setData] = useState(null);

@@ -30,6 +30,50 @@ export default function CenterOfExcellencePage() {
         const second = slug[1] || null;
         const third = slug[2] || null;
 
+        // Custom Slugs for Cardiothoracic & Vascular Surgery
+        if (dep === "cardiothoracic-and-vascular-surgery-hospitals-in-hyderabad-india") {
+            setDepartment("cardiothoracic-vascular-surgery");
+            setRouteType("coe-main");
+            setTab("");
+            return;
+        }
+        if (dep === "best-ctvs-disease-treatment-in-hyderabad-india") {
+            setDepartment("cardiothoracic-vascular-surgery");
+            setRouteType("coe-tab");
+            setTab("disease-and-treatment");
+            return;
+        }
+        if (dep === "best-cardiothoracic-and-vascular-procedures-in-hyderabad-india") {
+            setDepartment("cardiothoracic-vascular-surgery");
+            setRouteType("coe-tab");
+            setTab("procedures");
+            return;
+        }
+        if (dep === "medical-gastro-hospitals") {
+            setDepartment("medical-gastroenterology");
+            setRouteType("coe-main");
+            setTab("");
+            return;
+        }
+        if (dep === "surgical-gastroenterology-hospitals") {
+            setDepartment("surgical-gastroenterology");
+            setRouteType("coe-main");
+            setTab("");
+            return;
+        }
+        if (dep === "gynecology-hospitals") {
+            setDepartment("gynaecology");
+            setRouteType("coe-main");
+            setTab("");
+            return;
+        }
+        if (dep === "pediatric-hospitals") {
+            setDepartment("paediatrics");
+            setRouteType("coe-main");
+            setTab("");
+            return;
+        }
+
         setDepartment(dep);
 
         if (!second) {
@@ -67,7 +111,35 @@ export default function CenterOfExcellencePage() {
 
     const handleTabClick = (key) => {
         setTab(key);
-        router.push(`/specialities/${department}/${key ? `${key}/` : ""}`);
+        if (department === "cardiothoracic-vascular-surgery") {
+            if (key === "") {
+                router.push("/specialities/cardiothoracic-and-vascular-surgery-hospitals-in-hyderabad-india/");
+            } else if (key === "disease-and-treatment") {
+                router.push("/specialities/best-ctvs-disease-treatment-in-hyderabad-india/");
+            } else if (key === "procedures") {
+                router.push("/specialities/best-cardiothoracic-and-vascular-procedures-in-hyderabad-india/");
+            } else {
+                router.push(`/specialities/cardiothoracic-vascular-surgery/${key}/`);
+            }
+        } else if (department === "medical-gastroenterology") {
+            if (key === "") {
+                router.push("/specialities/medical-gastro-hospitals/");
+            }
+        } else if (department === "surgical-gastroenterology") {
+            if (key === "") {
+                router.push("/specialities/surgical-gastro-hospitals/");
+            }
+        } else if (department === "gynaecology") {
+            if (key === "") {
+                router.push("/specialities/gynecology-hospitals/");
+            }
+        } else if (department === "paediatrics") {
+            if (key === "") {
+                router.push("/specialities/pediatric-hospitals/");
+            }
+        } else {
+            router.push(`/specialities/${department}/${key ? `${key}/` : ""}`);
+        }
     };
 
     const tabs = [
@@ -153,11 +225,11 @@ export default function CenterOfExcellencePage() {
                         ))}
                     </motion.div>
                     <AnimatePresence mode="wait">
-                        {tab === "" && <COEOverview />}
-                        {tab === "disease-and-treatment" && <DiseasesTreatments />}
-                        {tab === "diagnostics" && <Diagnosties />}
-                        {tab === "procedures" && <Procedures />}
-                        {tab === "our-clinical-team" && <Doctors />}
+                        {tab === "" && <COEOverview department={department} />}
+                        {tab === "disease-and-treatment" && <DiseasesTreatments department={department} />}
+                        {tab === "diagnostics" && <Diagnosties department={department} />}
+                        {tab === "procedures" && <Procedures department={department} />}
+                        {tab === "our-clinical-team" && <Doctors department={department} />}
                     </AnimatePresence>
                 </div>
             ) : (
@@ -196,11 +268,11 @@ export default function CenterOfExcellencePage() {
                         ))}
                     </motion.div>
                     <AnimatePresence mode="wait">
-                        {tab === "" && <COEOverview />}
-                        {tab === "disease-and-treatment" && <DiseasesTreatments />}
-                        {tab === "diagnostics" && <Diagnosties />}
-                        {tab === "procedures" && <Procedures />}
-                        {tab === "our-clinical-team" && <Doctors />}
+                        {tab === "" && <COEOverview department={department} />}
+                        {tab === "disease-and-treatment" && <DiseasesTreatments department={department} />}
+                        {tab === "diagnostics" && <Diagnosties department={department} />}
+                        {tab === "procedures" && <Procedures department={department} />}
+                        {tab === "our-clinical-team" && <Doctors department={department} />}
                     </AnimatePresence>
                 </div>
             )}

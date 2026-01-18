@@ -13,11 +13,11 @@ import useIsMobile from "@/hooks/useIsMobile";
 import BacklinkSection from "@/components/COE/BacklinkSection";
 import AppointmentModal from "@/components/Doctors/AppointmentModal";
 
-export default function Doctors() {
+export default function Doctors({ department: propDepartment }) {
     const router = useRouter();
     const contentRef = useRef(null);
     const { slug } = router.query;
-    const department = slug?.[0] || null;
+    const department = propDepartment || slug?.[0] || null;
     const tab = slug?.[1] || "";
     const isMobile = useIsMobile();
     const [data, setData] = useState(null);
@@ -87,7 +87,7 @@ export default function Doctors() {
             </div>
         );
     }
-    
+
     if (error) return <p className="text-center p-4 text-lg text-pink-700 font-semibold">{error}</p>;
 
     const getDoctorDepartment = (dept) => {

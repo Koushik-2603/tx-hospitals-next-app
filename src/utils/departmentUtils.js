@@ -75,6 +75,26 @@ export const departmentData = {
         title: "Rheumatology",
         image: "/assets/COE/Rheumatology.webp",
     },
+    "cardiothoracic-vascular-surgery": {
+        title: "Cardiothoracic & Vascular Surgery",
+        image: "/assets/COE/Cardio _.webp",
+    },
+    "medical-gastroenterology": {
+        title: "Medical Gastroenterology",
+        image: "/assets/COE/Gaastro.webp",
+    },
+    "surgical-gastroenterology": {
+        title: "Surgical Gastroenterology",
+        image: "/assets/COE/Gaastro.webp",
+    },
+    "gynaecology": {
+        title: "Gynaecology",
+        image: "/assets/COE/Mother and Child Care.webp",
+    },
+    "paediatrics": {
+        title: "Paediatrics",
+        image: "/assets/COE/Mother and Child Care.webp",
+    },
 };
 
 export function getDepartmentDetails(slug) {
