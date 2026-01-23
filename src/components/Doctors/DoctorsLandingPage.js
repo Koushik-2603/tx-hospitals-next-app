@@ -24,7 +24,7 @@ export default function DoctorsLandingPage() {
     const [doctorsData, setDoctorsData] = useState([]);
     const [departments, setDepartments] = useState([]);
     const [selectedLocation, setSelectedLocation] = useState("");
-    const [selectedSpeciality, setSelectedSpeciality] = useState("CARDIAC SCIENCES");
+    const [selectedSpeciality, setSelectedSpeciality] = useState("Cardiothoracic & Vascular Surgery");
     const [visibleDoctors, setVisibleDoctors] = useState(9);
     const isMobile = useIsMobile();
     const [locationSearch, setLocationSearch] = useState("");
@@ -52,32 +52,36 @@ export default function DoctorsLandingPage() {
     const filteredCategories = uniqueCategories.length === 1 ? uniqueCategories : departments;
 
     const categoryOrder = [
-        "CARDIAC SCIENCES",
-        "NEURO SCIENCES",
-        "RENAL SCIENCES",
-        "GASTRO SCIENCES",
-        "ONCOLOGY",
-        "ORTHOPEDICS",
-        "INTERNAL MEDICINE",
-        "MOTHER AND CHILD CARE",
-        "ANESTHESIA & PAIN MANAGEMENT",
-        "DERMATOLOGY, COSMETIC CARE & PLASTIC SURGERY",
-        "Eye / Ophthalmology",
-        "DENTAL AND MAXILLOFACIAL CARE",
-        "ENDOCRINOLOGY",
-        "Transplant Medicine",
-        "Wellness & Diagnostic Centre",
-        "Robotic Sciences",
+        "Cardiothoracic & Vascular Surgery",
+        "Cardiac Sciences",
+        "Medical Gastroenterology",
+        "Surgical Gastroenterology",
+        "Nephrology",
+        "Urology",
+        "Gynaecology",
+        "Paediatrics",
+        "Neuro Sciences",
+        "oncology",
+        "Orthopaedics",
         "Pulmonology",
+        "ENT",
+        "Internal Medicine",
+        "Rheumatology",
+        "Skin & Cosmetic Care",
+        "Dental & Maxillofacial",
+        "Endocrinology",
+        "Opthalmology",
+        "Radiology",
+        "Anaesthesia & Pain Management"
     ];
 
-    const sortedCategories = filteredCategories
-        .filter((category) => filteredDoctors.some((doctor) => doctor.category === category))
+    const sortedCategories = (uniqueCategories.length === 1 ? uniqueCategories : departments)
+        .filter((category) => filteredDoctors.some((doctor) => doctor.category?.toLowerCase() === category?.toLowerCase()))
         .sort((a, b) => {
-            const indexA = categoryOrder.indexOf(a);
-            const indexB = categoryOrder.indexOf(b);
+            const indexA = categoryOrder.findIndex(cat => cat.toLowerCase() === a?.toLowerCase());
+            const indexB = categoryOrder.findIndex(cat => cat.toLowerCase() === b?.toLowerCase());
 
-            if (indexA === -1 && indexB === -1) return 0;
+            if (indexA === -1 && indexB === -1) return a.localeCompare(b);
             if (indexA === -1) return 1;
             if (indexB === -1) return -1;
 
@@ -153,10 +157,10 @@ export default function DoctorsLandingPage() {
     const filteredDepartments = departments
         .filter((dept) => dept.toLowerCase().includes(specialitySearch.toLowerCase()))
         .sort((a, b) => {
-            const indexA = categoryOrder.indexOf(a.toUpperCase());
-            const indexB = categoryOrder.indexOf(b.toUpperCase());
+            const indexA = categoryOrder.findIndex(cat => cat.toLowerCase() === a.toLowerCase());
+            const indexB = categoryOrder.findIndex(cat => cat.toLowerCase() === b.toLowerCase());
 
-            if (indexA === -1 && indexB === -1) return 0;
+            if (indexA === -1 && indexB === -1) return a.localeCompare(b);
             if (indexA === -1) return 1;
             if (indexB === -1) return -1;
             return indexA - indexB;
@@ -201,89 +205,95 @@ export default function DoctorsLandingPage() {
                         />
                         {/* Doctors Content */}
                         <div className="flex-1">
-                            {sortedCategories.map((category) => {
-                                const doctorsInCategory = filteredDoctors
-                                    .filter((doctor) => doctor.category?.toUpperCase() === category.toUpperCase())
-                                    .sort((a, b) => Number(a.priorityOrder) - Number(b.priorityOrder))
-                                    .slice(0, visibleDoctors); // Limit per scroll
+                            {sortedCategories.length > 0 ? (
+                                sortedCategories.map((category) => {
+                                    const doctorsInCategory = filteredDoctors
+                                        .filter((doctor) => doctor.category?.toLowerCase() === category?.toLowerCase())
+                                        .sort((a, b) => Number(a.priorityOrder) - Number(b.priorityOrder))
+                                        .slice(0, visibleDoctors); // Limit per scroll
 
-                                return (
-                                    <div key={category} className="mb-8">
-                                        {/* Doctors Grid */}
-                                        <div className="grid grid-cols-1 gap-4">
-                                            {doctorsInCategory.length > 0 ? (
-                                                doctorsInCategory.map((doctor, i) => (
-                                                    <div
-                                                        className="bg-white rounded-lg shadow-lg border border-gray-500 p-2 flex flex-col justify-between"
-                                                        key={i}
-                                                    >
-                                                        <motion.div
-                                                            initial={{ opacity: 0, y: 50 }}
-                                                            animate={{ opacity: 1, y: 0 }}
-                                                            transition={{ duration: 0.5, delay: i * 0.2 }}
-                                                            className="flex gap-2"
+                                    return (
+                                        <div key={category} className="mb-8">
+                                            {/* Doctors Grid */}
+                                            <div className="grid grid-cols-1 gap-4">
+                                                {doctorsInCategory.length > 0 ? (
+                                                    doctorsInCategory.map((doctor, i) => (
+                                                        <div
+                                                            className="bg-white rounded-lg shadow-lg border border-gray-500 p-2 flex flex-col justify-between"
+                                                            key={i}
                                                         >
-                                                            <div className="relative w-28 h-32 z-10">
-                                                                <img
-                                                                    loading="lazy"
-                                                                    src="/assets/Doctors/image.png"
-                                                                    alt="Background"
-                                                                    className="absolute inset-0 w-full h-full"
-                                                                />
-                                                                <motion.img
-                                                                    src={doctor.image}
-                                                                    alt={doctor.name}
-                                                                    className="relative z-10 w-28 rounded-sm object-cover"
-                                                                    whileHover={{ scale: 1.1 }}
-                                                                    transition={{ duration: 0.3 }}
-                                                                />
-                                                            </div>
-
-                                                            <div className="flex-1">
-                                                                <h3 className="text-base pb-1 font-bold text-pink-700">{doctor.name}</h3>
-                                                                <p className="text-xs pb-1 text-gray-600">{doctor.designation}</p>
-                                                                <div className="text-xs p-1 bg-gray-200 rounded-lg text-gray-600">
-                                                                    {doctor.qualification}
-                                                                </div>
-                                                                <div className="text-gray-700 text-xs font-bold">
-                                                                    Experience: {doctor.experience}
-                                                                </div>
-                                                                <div className="flex items-center gap-3">
-                                                                    <Image
-                                                                        src="/assets/Doctors/Location Icon.webp"
-                                                                        alt="Location Icon"
-                                                                        width={10}
-                                                                        height={10}
+                                                            <motion.div
+                                                                initial={{ opacity: 0, y: 50 }}
+                                                                animate={{ opacity: 1, y: 0 }}
+                                                                transition={{ duration: 0.5, delay: i * 0.2 }}
+                                                                className="flex gap-2"
+                                                            >
+                                                                <div className="relative w-28 h-32 z-10">
+                                                                    <img
+                                                                        loading="lazy"
+                                                                        src="/assets/Doctors/image.png"
+                                                                        alt="Background"
+                                                                        className="absolute inset-0 w-full h-full"
                                                                     />
-                                                                    <div>{doctor.location.split(",")[0]}</div>
+                                                                    <motion.img
+                                                                        src={doctor.image}
+                                                                        alt={doctor.name}
+                                                                        className="relative z-10 w-28 rounded-sm object-cover"
+                                                                        whileHover={{ scale: 1.1 }}
+                                                                        transition={{ duration: 0.3 }}
+                                                                    />
                                                                 </div>
+
+                                                                <div className="flex-1">
+                                                                    <h3 className="text-base pb-1 font-bold text-pink-700">{doctor.name}</h3>
+                                                                    <p className="text-xs pb-1 text-gray-600">{doctor.designation}</p>
+                                                                    <div className="text-xs p-1 bg-gray-200 rounded-lg text-gray-600">
+                                                                        {doctor.qualification}
+                                                                    </div>
+                                                                    <div className="text-gray-700 text-xs font-bold">
+                                                                        Experience: {doctor.experience}
+                                                                    </div>
+                                                                    <div className="flex items-center gap-3">
+                                                                        <Image
+                                                                            src="/assets/Doctors/Location Icon.webp"
+                                                                            alt="Location Icon"
+                                                                            width={10}
+                                                                            height={10}
+                                                                        />
+                                                                        <div>{doctor.location.split(",")[0]}</div>
+                                                                    </div>
+                                                                </div>
+                                                            </motion.div>
+                                                            <div className="flex flex-col justify-between mx-auto mt-4">
+                                                                <button
+                                                                    className="w-full py-1 px-4 border border-pink-700 text-pink-700 font-semibold rounded-lg hover:scale-105 transition"
+                                                                    onClick={() => setOpen(true)}
+                                                                >
+                                                                    Book Appointment
+                                                                </button>
+                                                                <button
+                                                                    className="w-full py-2 text-pink-700 underline font-semibold rounded-lg hover:scale-105 transition"
+                                                                    onClick={() => router.push(`/${doctor.url.replace(/^\/|\/$/g, '')}/`)}
+                                                                >
+                                                                    View Profile
+                                                                </button>
                                                             </div>
-                                                        </motion.div>
-                                                        <div className="flex flex-col justify-between mx-auto mt-4">
-                                                            <button
-                                                                className="w-full py-1 px-4 border border-pink-700 text-pink-700 font-semibold rounded-lg hover:scale-105 transition"
-                                                                onClick={() => setOpen(true)}
-                                                            >
-                                                                Book Appointment
-                                                            </button>
-                                                            <button
-                                                                className="w-full py-2 text-pink-700 underline font-semibold rounded-lg hover:scale-105 transition"
-                                                                onClick={() => router.push(`/${doctor.url.replace(/^\/|\/$/g, '')}/`)}
-                                                            >
-                                                                View Profile
-                                                            </button>
                                                         </div>
-                                                    </div>
-                                                ))
-                                            ) : (
-                                                <p className="text-center text-gray-600 col-span-2">
-                                                    No doctors found in {category}.
-                                                </p>
-                                            )}
+                                                    ))
+                                                ) : (
+                                                    <p className="text-center text-gray-600 col-span-2">
+                                                        No doctors found in {category}.
+                                                    </p>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                );
-                            })}
+                                    );
+                                })
+                            ) : (
+                                <div className="text-center py-10">
+                                    <p className="text-gray-600 text-lg font-medium">No doctors found matching your criteria.</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -320,94 +330,100 @@ export default function DoctorsLandingPage() {
                         />
                         {/* Doctors Content */}
                         <div className="flex-1">
-                            {sortedCategories.map((category) => {
-                                const doctorsInCategory = filteredDoctors
-                                    .filter((doctor) => doctor.category?.toUpperCase() === category.toUpperCase())
-                                    .sort((a, b) => Number(a.priorityOrder) - Number(b.priorityOrder))
-                                    .slice(0, visibleDoctors); // Limit per scroll
+                            {sortedCategories.length > 0 ? (
+                                sortedCategories.map((category) => {
+                                    const doctorsInCategory = filteredDoctors
+                                        .filter((doctor) => doctor.category?.toLowerCase() === category?.toLowerCase())
+                                        .sort((a, b) => Number(a.priorityOrder) - Number(b.priorityOrder))
+                                        .slice(0, visibleDoctors); // Limit per scroll
 
-                                return (
-                                    <div key={category} className="mb-8">
-                                        {/* Doctors Grid */}
-                                        <div className="grid grid-cols-2 gap-4">
-                                            {doctorsInCategory.length > 0 ? (
-                                                doctorsInCategory.map((doctor, i) => (
-                                                    <div
-                                                        className="bg-white rounded-lg shadow-lg border border-gray-500 p-4 flex flex-col justify-between"
-                                                        key={i}
-                                                    >
-                                                        <motion.div
-                                                            initial={{ opacity: 0, y: 50 }}
-                                                            animate={{ opacity: 1, y: 0 }}
-                                                            transition={{ duration: 0.5, delay: i * 0.2 }}
-                                                            className="flex gap-4"
+                                    return (
+                                        <div key={category} className="mb-8">
+                                            {/* Doctors Grid */}
+                                            <div className="grid grid-cols-2 gap-4">
+                                                {doctorsInCategory.length > 0 ? (
+                                                    doctorsInCategory.map((doctor, i) => (
+                                                        <div
+                                                            className="bg-white rounded-lg shadow-lg border border-gray-500 p-4 flex flex-col justify-between"
+                                                            key={i}
                                                         >
-                                                            <div className="relative w-32 h-36 z-10">
-                                                                <img
-                                                                    loading="lazy"
-                                                                    src="/assets/Doctors/image.png"
-                                                                    alt="Background"
-                                                                    className="absolute inset-0 w-full h-full"
-                                                                />
-                                                                <motion.img
-                                                                    src={doctor.image}
-                                                                    alt={doctor.name}
-                                                                    className="relative z-10 w-32 h-34 rounded-sm object-cover"
-                                                                    whileHover={{ scale: 1.1 }}
-                                                                    transition={{ duration: 0.3 }}
-                                                                />
-                                                            </div>
-
-                                                            <div className="flex-1">
-                                                                <h3 className="text-xl pb-2 font-bold text-pink-700">{doctor.name}</h3>
-                                                                <p className="text-sm pb-2 text-gray-600">{doctor.designation}</p>
-                                                                <div className="text-sm p-2 bg-gray-200 rounded-lg text-gray-600">
-                                                                    {doctor.qualification}
-                                                                </div>
-                                                                <div className="text-gray-700 text-sm font-bold">
-                                                                    Experience: {doctor.experience}
-                                                                </div>
-                                                                <div className="flex items-center gap-3">
-                                                                    <Image
-                                                                        src="/assets/Doctors/Location Icon.webp"
-                                                                        alt="Location Icon"
-                                                                        width={12}
-                                                                        height={12}
+                                                            <motion.div
+                                                                initial={{ opacity: 0, y: 50 }}
+                                                                animate={{ opacity: 1, y: 0 }}
+                                                                transition={{ duration: 0.5, delay: i * 0.2 }}
+                                                                className="flex gap-4"
+                                                            >
+                                                                <div className="relative w-32 h-36 z-10">
+                                                                    <img
+                                                                        loading="lazy"
+                                                                        src="/assets/Doctors/image.png"
+                                                                        alt="Background"
+                                                                        className="absolute inset-0 w-full h-full"
                                                                     />
-                                                                    <div>{doctor.location.split(",")[0]}</div>
+                                                                    <motion.img
+                                                                        src={doctor.image}
+                                                                        alt={doctor.name}
+                                                                        className="relative z-10 w-32 h-34 rounded-sm object-cover"
+                                                                        whileHover={{ scale: 1.1 }}
+                                                                        transition={{ duration: 0.3 }}
+                                                                    />
                                                                 </div>
-                                                            </div>
-                                                        </motion.div>
 
-                                                        {/* Buttons */}
-                                                        <div className="flex flex-col justify-between mx-auto mt-4">
-                                                            <button
-                                                                className="w-full py-1 px-4 border border-pink-700 text-pink-700 font-semibold rounded-lg hover:scale-105 transition"
-                                                                onClick={() => {
-                                                                    setSelectedDoctor(doctor);
-                                                                    setOpen(true);
-                                                                }}
-                                                            >
-                                                                Book Appointment
-                                                            </button>
-                                                            <button
-                                                                className="w-full py-2 text-pink-700 underline font-semibold rounded-lg hover:scale-105 transition"
-                                                                onClick={() => router.push(`/${doctor.url.replace(/^\/|\/$/g, '')}/`)}
-                                                            >
-                                                                View Profile
-                                                            </button>
+                                                                <div className="flex-1">
+                                                                    <h3 className="text-xl pb-2 font-bold text-pink-700">{doctor.name}</h3>
+                                                                    <p className="text-sm pb-2 text-gray-600">{doctor.designation}</p>
+                                                                    <div className="text-sm p-2 bg-gray-200 rounded-lg text-gray-600">
+                                                                        {doctor.qualification}
+                                                                    </div>
+                                                                    <div className="text-gray-700 text-sm font-bold">
+                                                                        Experience: {doctor.experience}
+                                                                    </div>
+                                                                    <div className="flex items-center gap-3">
+                                                                        <Image
+                                                                            src="/assets/Doctors/Location Icon.webp"
+                                                                            alt="Location Icon"
+                                                                            width={12}
+                                                                            height={12}
+                                                                        />
+                                                                        <div>{doctor.location.split(",")[0]}</div>
+                                                                    </div>
+                                                                </div>
+                                                            </motion.div>
+
+                                                            {/* Buttons */}
+                                                            <div className="flex flex-col justify-between mx-auto mt-4">
+                                                                <button
+                                                                    className="w-full py-1 px-4 border border-pink-700 text-pink-700 font-semibold rounded-lg hover:scale-105 transition"
+                                                                    onClick={() => {
+                                                                        setSelectedDoctor(doctor);
+                                                                        setOpen(true);
+                                                                    }}
+                                                                >
+                                                                    Book Appointment
+                                                                </button>
+                                                                <button
+                                                                    className="w-full py-2 text-pink-700 underline font-semibold rounded-lg hover:scale-105 transition"
+                                                                    onClick={() => router.push(`/${doctor.url.replace(/^\/|\/$/g, '')}/`)}
+                                                                >
+                                                                    View Profile
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                ))
-                                            ) : (
-                                                <p className="text-center text-gray-600 col-span-2">
-                                                    No doctors found in {category}.
-                                                </p>
-                                            )}
+                                                    ))
+                                                ) : (
+                                                    <p className="text-center text-gray-600 col-span-2">
+                                                        No doctors found in {category}.
+                                                    </p>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                );
-                            })}
+                                    );
+                                })
+                            ) : (
+                                <div className="text-center py-10">
+                                    <p className="text-gray-600 text-lg font-medium">No doctors found matching your criteria.</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

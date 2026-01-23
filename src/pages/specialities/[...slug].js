@@ -26,7 +26,7 @@ export default function CenterOfExcellencePage() {
     useEffect(() => {
         if (!slug) return;
 
-        const dep = slug[0] || null;
+        let dep = slug[0] || null;
         const second = slug[1] || null;
         const third = slug[2] || null;
 
@@ -49,29 +49,15 @@ export default function CenterOfExcellencePage() {
             setTab("procedures");
             return;
         }
+        // Map special slugs to departments but don't return early to allow tab detection
         if (dep === "medical-gastro-hospitals") {
-            setDepartment("medical-gastroenterology");
-            setRouteType("coe-main");
-            setTab("");
-            return;
-        }
-        if (dep === "surgical-gastroenterology-hospitals") {
-            setDepartment("surgical-gastroenterology");
-            setRouteType("coe-main");
-            setTab("");
-            return;
-        }
-        if (dep === "gynecology-hospitals") {
-            setDepartment("gynaecology");
-            setRouteType("coe-main");
-            setTab("");
-            return;
-        }
-        if (dep === "pediatric-hospitals") {
-            setDepartment("paediatrics");
-            setRouteType("coe-main");
-            setTab("");
-            return;
+            dep = "medical-gastroenterology";
+        } else if (dep === "surgical-gastro-hospitals" || dep === "surgical-gastroenterology-hospitals") {
+            dep = "surgical-gastroenterology";
+        } else if (dep === "gynecology-hospitals") {
+            dep = "gynaecology";
+        } else if (dep === "pediatric-hospitals") {
+            dep = "paediatrics";
         }
 
         setDepartment(dep);
@@ -122,21 +108,13 @@ export default function CenterOfExcellencePage() {
                 router.push(`/specialities/cardiothoracic-vascular-surgery/${key}/`);
             }
         } else if (department === "medical-gastroenterology") {
-            if (key === "") {
-                router.push("/specialities/medical-gastro-hospitals/");
-            }
+            router.push(`/specialities/medical-gastro-hospitals/${key ? `${key}/` : ""}`);
         } else if (department === "surgical-gastroenterology") {
-            if (key === "") {
-                router.push("/specialities/surgical-gastro-hospitals/");
-            }
+            router.push(`/specialities/surgical-gastro-hospitals/${key ? `${key}/` : ""}`);
         } else if (department === "gynaecology") {
-            if (key === "") {
-                router.push("/specialities/gynecology-hospitals/");
-            }
+            router.push(`/specialities/gynecology-hospitals/${key ? `${key}/` : ""}`);
         } else if (department === "paediatrics") {
-            if (key === "") {
-                router.push("/specialities/pediatric-hospitals/");
-            }
+            router.push(`/specialities/pediatric-hospitals/${key ? `${key}/` : ""}`);
         } else {
             router.push(`/specialities/${department}/${key ? `${key}/` : ""}`);
         }
