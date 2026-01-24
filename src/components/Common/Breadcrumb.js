@@ -15,6 +15,7 @@ export default function Breadcrumb({ items = [], separator = <FaChevronRight siz
                         {!isLast && item.href ? (
                             <Link
                                 href={item.href}
+                                title={item.fullLabel || item.label}
                                 className="flex items-center hover:text-pink-600 transition-colors cursor-pointer"
                             >
                                 {isFirst && (
@@ -32,6 +33,7 @@ export default function Breadcrumb({ items = [], separator = <FaChevronRight siz
                             </Link>
                         ) : (
                             <span
+                                title={item.fullLabel || item.label}
                                 className={`font-medium ${isLast ? "text-pink-700" : "text-gray-700"
                                     }`}
                             >

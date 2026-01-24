@@ -12,6 +12,7 @@ import DOMPurify from "dompurify";
 import FAQSchema from "@/utils/FAQSchema";
 import { ChevronUp } from "lucide-react";
 import { useState } from "react";
+import Breadcrumb from "@/components/Common/Breadcrumb";
 
 export default function SODetailsPage({ surgeryData }) {
 
@@ -22,6 +23,21 @@ export default function SODetailsPage({ surgeryData }) {
     const toggle = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
+
+    const breadcrumbItems = [
+        { label: "Home", href: "/" },
+        {
+            label: isMobile ? "SO" : "Second Opinion",
+            href: "/surgery-care/",
+            fullLabel: "Second Opinion"
+        },
+        {
+            label: isMobile && surgeryData?.soTitle?.length > 15
+                ? surgeryData.soTitle.substring(0, 12) + "..."
+                : surgeryData?.soTitle,
+            fullLabel: surgeryData?.soTitle
+        },
+    ];
 
     return (
         <>
@@ -35,6 +51,9 @@ export default function SODetailsPage({ surgeryData }) {
                     <section className="w-full">
                         <div className="bg-gray-50 text-center -mt-6">
                             <h2 className="text-xl font-semibold text-pink-700">{surgeryData?.soTitle}</h2>
+                            <div className="flex justify-center mt-2 px-2">
+                                <Breadcrumb items={breadcrumbItems} />
+                            </div>
                         </div>
                         <section className="relative w-full bg-[#910114] overflow-hidden">
                             <div className="absolute inset-0">
@@ -163,8 +182,13 @@ export default function SODetailsPage({ surgeryData }) {
                     </section>
                 ) : (
                     <section className="w-full">
-                        <div className="bg-gray-50 pl-16 text-center mt-8 mb-4">
-                            <h2 className="text-4xl font-semibold text-pink-700">{surgeryData?.soTitle}</h2>
+                        <div className="bg-gray-50 px-16 mt-8 mb-4 flex flex-col items-start min-h-[80px]">
+                            <div className="mb-2">
+                                <Breadcrumb items={breadcrumbItems} />
+                            </div>
+                            <h2 className="w-full text-center text-4xl font-semibold text-pink-700">
+                                {surgeryData?.soTitle}
+                            </h2>
                         </div>
                         <section className="relative w-full bg-[#910114] overflow-hidden">
                             <div className="absolute inset-0">

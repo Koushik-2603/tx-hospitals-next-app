@@ -48,11 +48,12 @@ export default function BlogsLandingPage() {
                 const allCategories = sortedAndFilteredBlogs.flatMap(blog => blog.categories || []);
                 const uniqueCategories = [...new Set(allCategories)];
                 setDepartments(uniqueCategories);
-                const map = {};
+                const existingMap = JSON.parse(localStorage.getItem('slugMap') || '{}');
+                const newMap = { ...existingMap };
                 response.data.Items.forEach(blog => {
-                    map[blog.url] = { id: blog.blogId, type: 'blog' };
+                    newMap[blog.url.replace(/^\/|\/$/g, "")] = { id: blog.blogId, type: 'blog' };
                 });
-                localStorage.setItem('slugMap', JSON.stringify(map));
+                localStorage.setItem('slugMap', JSON.stringify(newMap));
             } catch (error) {
                 console.error("Error fetching blogs: ", error);
                 setError("No data found!");
@@ -212,7 +213,7 @@ export default function BlogsLandingPage() {
                                         <AppointmentForm />
                                     </div>
                                 </div>
-                            )}  
+                            )}
                             <div
                                 onClick={() => setOpen(!open)}
                                 className="flex items-center gap-2 cursor-pointer"

@@ -128,11 +128,12 @@ export default function DoctorsLandingPage() {
                 setDepartments(uniqueDepartments);
                 setError(null);
                 setLoading(false);
-                const map = {};
+                const existingMap = JSON.parse(localStorage.getItem('slugMap') || '{}');
+                const newMap = { ...existingMap };
                 data.forEach(doctor => {
-                    map[doctor.url] = { id: doctor.id, type: 'doctor' };
+                    newMap[doctor.url.replace(/^\/|\/$/g, "")] = { id: doctor.id, type: 'doctor' };
                 });
-                localStorage.setItem('slugMap', JSON.stringify(map));
+                localStorage.setItem('slugMap', JSON.stringify(newMap));
             })
             .catch((error) => console.error("Error fetching doctors data:", error));
     }, []);

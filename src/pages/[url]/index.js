@@ -18,63 +18,83 @@ export default function UniversalPage() {
     const [data, setData] = useState(null);
     const [departments, setDepartments] = useState([]);
 
+    // Simple static cache to avoid re-fetching lists during the same session
+    const apiCache = {
+        blogs: null,
+        doctors: null,
+        opinions: null
+    };
+
     useEffect(() => {
         if (!url) return;
 
         const fetchData = async () => {
             try {
-                /* 1️⃣ Blogs */
-                const blogsRes = await axios.get(`${CONFIG.API_BASE_URL}/blogs/getAllBlogs`);
+                // 1. FAST PATH: Check local storage hint for instant resolution
+                const slugMap = JSON.parse(localStorage.getItem('slugMap') || '{}');
+                const cleanUrl = url.replace(/^\/|\/$/g, "");
+                const hint = slugMap[cleanUrl];
+
+                if (hint) {
+                    if (hint.type === 'surgery') {
+                        const res = await axios.get(`${CONFIG.API_BASE_URL}/new-secondopinion/getSecondOpinionbyId/${hint.id}`);
+                        setType("surgery");
+                        setData(res?.data?.Item);
+                        setLoading(false);
+                        return;
+                    }
+                    if (hint.type === 'doctor') {
+                        const res = await axios.get(`${CONFIG.API_BASE_URL}/doctors/${hint.id}`);
+                        setType("doctor");
+                        setData(res.data);
+                        setLoading(false);
+                        return;
+                    }
+                }
+
+                // 2. REGULAR PATH (Fallback): Search through all lists
+                const [blogsRes, doctorsRes, soRes] = await Promise.all([
+                    apiCache.blogs || axios.get(`${CONFIG.API_BASE_URL}/blogs/getAllBlogs`),
+                    apiCache.doctors || axios.get(`${CONFIG.API_BASE_URL}/getAllDoctors`),
+                    apiCache.opinions || axios.get(`${CONFIG.API_BASE_URL}/new-secondopinion/getAllSecondOpinion`)
+                ]);
+
+                // Cache the results for subsequent navigations
+                apiCache.blogs = blogsRes;
+                apiCache.doctors = doctorsRes;
+                apiCache.opinions = soRes;
+
                 const blogs = blogsRes.data.Items?.filter(b => b.enabled === true) || [];
+                const doctors = doctorsRes.data;
+                const opinions = soRes.data.Items;
 
-                const matchBlog = blogs.find(
-                    blog => url === blog.url.replace(/^\/|\/$/g, "")
-                );
-
+                // Check Blogs
+                const matchBlog = blogs.find(blog => cleanUrl === blog.url.replace(/^\/|\/$/g, ""));
                 if (matchBlog) {
                     const allCats = blogs.flatMap(b => b.categories || []);
                     setDepartments([...new Set(allCats)]);
-
                     setType("blog");
                     setData(matchBlog);
                     setLoading(false);
                     return;
                 }
 
-                /* 2️⃣ Doctors */
-                const doctorsRes = await axios.get(`${CONFIG.API_BASE_URL}/getAllDoctors`);
-                const doctors = doctorsRes.data;
-
-                const matchDoctor = doctors.find(
-                    d => url === d.url.replace(/^\/|\/$/g, "")
-                );
-
+                // Check Doctors
+                const matchDoctor = doctors.find(d => cleanUrl === d.url.replace(/^\/|\/$/g, ""));
                 if (matchDoctor) {
-                    const doctorDetails = await axios.get(
-                        `${CONFIG.API_BASE_URL}/doctors/${matchDoctor.id}`
-                    );
-
+                    const res = await axios.get(`${CONFIG.API_BASE_URL}/doctors/${matchDoctor.id}`);
                     setType("doctor");
-                    setData(doctorDetails.data);
+                    setData(res.data);
                     setLoading(false);
                     return;
                 }
 
-                /* 3️⃣ Second Opinion */
-                const soRes = await axios.get(`${CONFIG.API_BASE_URL}/new-secondopinion/getAllSecondOpinion`);
-                const opinions = soRes.data.Items;
-
-                const matchOpinion = opinions.find(
-                    op => url === op.url.replace(/^\/|\/$/g, "")
-                );
-
+                // Check Second Opinion
+                const matchOpinion = opinions.find(op => cleanUrl === op.url.replace(/^\/|\/$/g, ""));
                 if (matchOpinion) {
-                    const surgeryDetails = await axios.get(
-                        `${CONFIG.API_BASE_URL}/new-secondopinion/getSecondOpinionbyId/${matchOpinion.soId}`
-                    );
-
+                    const res = await axios.get(`${CONFIG.API_BASE_URL}/new-secondopinion/getSecondOpinionbyId/${matchOpinion.soId}`);
                     setType("surgery");
-                    setData(surgeryDetails?.data?.Item);
+                    setData(res?.data?.Item);
                     setLoading(false);
                     return;
                 }

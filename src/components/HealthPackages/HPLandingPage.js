@@ -5,6 +5,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import CONFIG from "@/config";
 import HealthPackageCard from "@/components/HealthPackages/HealthPackageCard";
 import WhyChooseHealthPackages from "@/components/HealthPackages/WhyChooseHealthPackages";
+import Breadcrumb from "@/components/Common/Breadcrumb";
 import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 
 export default function HPLandingPage() {
@@ -14,6 +15,11 @@ export default function HPLandingPage() {
     const [packages, setPackages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
+
+    const breadcrumbItems = [
+        { label: "Home", href: "/" },
+        { label: "Health Packages" },
+    ];
 
     const filters = [
         "All Packages",
@@ -49,7 +55,10 @@ export default function HPLandingPage() {
         <>
             {isMobile ? (
                 <>
-                    <section className="relative -mt-6 w-full h-[200px] flex items-center justify-center overflow-hidden">
+                    <div className="bg-gray-50 flex justify-center py-2 -mt-6">
+                        <Breadcrumb items={breadcrumbItems} />
+                    </div>
+                    <section className="relative mt-2 w-full h-[200px] flex items-center justify-center overflow-hidden">
                         <Image
                             src="/assets/HP/Health Packages _ Banner_.webp"
                             alt="Background"
@@ -138,6 +147,9 @@ export default function HPLandingPage() {
                 </>
             ) : (
                 <>
+                    <div className="bg-gray-50 px-16 py-4 mt-8">
+                        <Breadcrumb items={breadcrumbItems} />
+                    </div>
                     <section className="relative w-full h-[350px] flex items-center justify-center overflow-hidden">
                         <Image
                             src="/assets/HP/Health Packages _ Banner_.webp"

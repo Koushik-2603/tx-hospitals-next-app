@@ -8,6 +8,7 @@ import WhenToSeekSecondOpinion from "@/components/SecondOpinion/WhenToSeekSecond
 import WhatToExpectCard from "@/components/SecondOpinion/WhatToExpectCard";
 import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 import { useRouter } from "next/router";
+import Breadcrumb from "@/components/Common/Breadcrumb";
 
 export default function SOLandingPage() {
 
@@ -18,6 +19,11 @@ export default function SOLandingPage() {
     const [showAll, setShowAll] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [formData, setFormData] = useState({ name: "", phone: "" });
+
+    const breadcrumbItems = [
+        { label: "Home", href: "/" },
+        { label: "Second Opinion" },
+    ];
 
     useEffect(() => {
         window.scrollTo({ left: document.body.scrollWidth, top: 0, behavior: "smooth" });
@@ -45,11 +51,12 @@ export default function SOLandingPage() {
 
                 setSurgeryOptions(options);
                 setSelectedSurgery(options[0]?.name || "");
-                const map = {};
+                const existingMap = JSON.parse(localStorage.getItem('slugMap') || '{}');
+                const newMap = { ...existingMap };
                 response.data.Items.forEach(option => {
-                    map[option.url] = { id: option.soId, type: 'surgery' };
+                    newMap[option.url.replace(/^\/|\/$/g, "")] = { id: option.soId, type: 'surgery' };
                 });
-                localStorage.setItem('slugMap', JSON.stringify(map));
+                localStorage.setItem('slugMap', JSON.stringify(newMap));
             } catch (error) {
                 console.error("Error fetching packages: ", error);
             }
@@ -87,8 +94,8 @@ export default function SOLandingPage() {
         <>
             {isMobile ? (
                 <section className="w-full">
-                    <div className="bg-gray-50 text-center -mt-6 mb-4">
-                        <h2 className="text-4xl font-semibold text-pink-700">Second Opinion</h2>
+                    <div className="bg-gray-50 px-2 mt-4 mb-4 flex justify-start">
+                        <Breadcrumb items={breadcrumbItems} />
                     </div>
                     <section className="relative w-full h-full px-2">
                         <div className="absolute inset-0 -z-10">
@@ -325,8 +332,13 @@ export default function SOLandingPage() {
                 </section>
             ) : (
                 <section className="w-full">
-                    <div className="bg-gray-50 pl-16 text-center mt-8 mb-4">
-                        <h2 className="text-4xl font-semibold text-pink-700">Second Opinion</h2>
+                    <div className="bg-gray-50 px-16 mt-8 mb-4 flex items-center relative min-h-[60px]">
+                        <div className="z-10">
+                            <Breadcrumb items={breadcrumbItems} />
+                        </div>
+                        <h2 className="absolute inset-0 flex items-center justify-center text-4xl font-semibold text-pink-700 pointer-events-none">
+                            Second Opinion
+                        </h2>
                     </div>
                     <section className="relative w-full h-full px-6">
                         <div className="absolute inset-0 -z-10">

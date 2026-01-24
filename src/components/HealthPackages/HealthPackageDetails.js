@@ -8,6 +8,7 @@ import Image from "next/image";
 import FAQSchema from "@/utils/FAQSchema";
 import { ChevronUp } from "lucide-react";
 import Head from "next/head";
+import Breadcrumb from "@/components/Common/Breadcrumb";
 import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 
 export default function HealthPackageDetails() {
@@ -19,6 +20,21 @@ export default function HealthPackageDetails() {
     const [loading, setLoading] = useState(true);
     const [openIndex, setOpenIndex] = useState(null);
     const [showModal, setShowModal] = useState(false);
+
+    const breadcrumbItems = [
+        { label: "Home", href: "/" },
+        {
+            label: isMobile ? "HP" : "Health Packages",
+            href: "/health-package/",
+            fullLabel: "Health Packages"
+        },
+        {
+            label: isMobile && packageData?.hpTitle?.length > 15
+                ? packageData.hpTitle.substring(0, 12) + "..."
+                : packageData?.hpTitle,
+            fullLabel: packageData?.hpTitle
+        },
+    ];
 
     useEffect(() => {
         if (!router.isReady) return;
@@ -62,7 +78,10 @@ export default function HealthPackageDetails() {
             </Head>
             {isMobile ? (
                 <>
-                    <section className="w-full px-2 py-2 -mt-6">
+                    <div className="bg-gray-50 flex justify-center py-2 -mt-6">
+                        <Breadcrumb items={breadcrumbItems} />
+                    </div>
+                    <section className="w-full px-2">
                         <div className="grid grid-cols-1 gap-2">
                             <div className="bg-pink-700 rounded-3xl p-2 text-white flex flex-col justify-center">
                                 <h1 className="text-2xl font-bold leading-tight">
@@ -271,7 +290,10 @@ export default function HealthPackageDetails() {
                 </>
             ) : (
                 <>
-                    <section className="w-full px-12 py-8">
+                    <div className="bg-gray-50 px-16 mt-12">
+                        <Breadcrumb items={breadcrumbItems} />
+                    </div>
+                    <section className="w-full px-12 py-4">
                         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
                             <div className="bg-pink-700 rounded-3xl p-8 text-white flex flex-col justify-center">
                                 <h1 className="text-5xl font-bold leading-tight">
