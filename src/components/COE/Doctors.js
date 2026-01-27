@@ -112,7 +112,7 @@ export default function Doctors({ department: propDepartment }) {
             "ent": "ENT",
             "rheumatology": "Rheumatology",
         };
-        return departmentMap[dept] || "General Medicine";
+        return departmentMap[dept] || dept?.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
     };
 
     return (
