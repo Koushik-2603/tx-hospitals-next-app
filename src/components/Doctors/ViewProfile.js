@@ -51,18 +51,12 @@ export default function ViewProfile({ doctorData }) {
                         <Breadcrumb items={breadcrumbItems} />
                         <div className="max-w-3xl mx-auto flex flex-col items-center gap-6 mt-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                             {/* Image Container with Watermark */}
-                            <div className="relative w-[230px] h-[230px] flex-shrink-0">
-                                <span className="absolute inset-0 flex items-center justify-center text-4xl font-black text-gray-200 opacity-20 select-none z-0">
-                                    TX <br /> HOSPITALS
-                                </span>
-                                <div className="relative w-full h-full rounded-2xl border-4 border-[#b01752] overflow-hidden z-10 bg-white">
-                                    <Image
-                                        src={doctorData?.image}
-                                        alt={doctorData?.name}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
+                            <div className="relative w-32 h-32 mb-4 z-10">
+                                <img
+                                    src={doctorData?.image}
+                                    alt={doctorData?.name}
+                                    className="relative z-10 w-56 rounded-sm object-cover"
+                                />
                             </div>
 
                             <div className="flex-1 w-full text-center">
