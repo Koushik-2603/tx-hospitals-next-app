@@ -4,9 +4,11 @@ import { useRouter } from "next/router";
 import { sendOtp, verifyOtp } from "@/utils/otpUtils";
 import CONFIG from "@/config";
 import { motion, AnimatePresence } from "framer-motion";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
     const router = useRouter();
+    const isMobile = useIsMobile();
     const [step, setStep] = useState(1); // 1: Info, 2: OTP, 3: Verified
     const [generatedOtp, setGeneratedOtp] = useState("");
     const [otp, setOtp] = useState("");
@@ -95,10 +97,10 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
     };
 
     return (
-        <section className="py-8 px-6 md:px-12 bg-white font-inter">
+        <section className={`${isMobile ? 'py-6 px-4' : 'py-8 px-6 md:px-12'} bg-white font-inter`}>
             <div className="container mx-auto max-w-4xl">
-                <div className="bg-white rounded-3xl p-4 md:p-6">
-                    <div className="flex flex-col md:flex-row gap-4 mb-4">
+                <div className={`bg-white rounded-3xl ${isMobile ? 'p-4' : 'p-4 md:p-6'}`}>
+                    <div className={`flex ${isMobile ? 'flex-col' : 'flex-col md:flex-row'} ${isMobile ? 'gap-3' : 'gap-4'} mb-4`}>
                         {/* Name Input */}
                         <div className="flex-1">
                             <input
@@ -108,7 +110,7 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
                                 value={formData.name}
                                 onChange={handleChange}
                                 disabled={step > 1}
-                                className="w-full px-6 py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-700 transition-all text-gray-700 font-medium placeholder:text-gray-400"
+                                className={`w-full ${isMobile ? 'px-4 py-3 text-sm' : 'px-6 py-4'} rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-700 transition-all text-gray-700 font-medium placeholder:text-gray-400`}
                             />
                         </div>
 
@@ -122,7 +124,7 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
                                 onChange={handleChange}
                                 disabled={step > 1}
                                 maxLength={10}
-                                className="w-full px-6 py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-700 transition-all text-gray-700 font-medium placeholder:text-gray-400"
+                                className={`w-full ${isMobile ? 'px-4 py-3 text-sm' : 'px-6 py-4'} rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-700 transition-all text-gray-700 font-medium placeholder:text-gray-400`}
                             />
                         </div>
 
@@ -131,7 +133,7 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
                             <button
                                 onClick={handleGetOtp}
                                 disabled={loading}
-                                className="bg-[#b02a44] hover:bg-[#8e2136] text-white px-10 py-4 rounded-xl font-bold transition-all shadow-md disabled:opacity-50"
+                                className={`bg-[#b02a44] hover:bg-[#8e2136] text-white ${isMobile ? 'px-6 py-3 text-sm' : 'px-10 py-4'} rounded-xl font-bold transition-all shadow-md disabled:opacity-50 ${isMobile ? 'w-full' : ''}`}
                             >
                                 {loading ? "Sending..." : "Get OTP"}
                             </button>
@@ -146,7 +148,7 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
                                 exit={{ opacity: 0, y: -20 }}
                                 className="space-y-4"
                             >
-                                <p className="text-center text-gray-800 font-bold text-base md:text-lg">
+                                <p className={`text-center text-gray-800 font-bold ${isMobile ? 'text-sm' : 'text-base md:text-lg'}`}>
                                     To Confirm your details, please enter OTP sent to you on {formData.mobile}
                                 </p>
 
@@ -156,20 +158,20 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
                                         placeholder="Enter OTP"
                                         value={otp}
                                         onChange={(e) => setOtp(e.target.value)}
-                                        className="w-full px-6 py-4 md:py-6 rounded-3xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-700 transition-all text-xl md:text-2xl text-center tracking-widest font-bold text-gray-700 placeholder:text-gray-400 placeholder:text-base placeholder:tracking-normal"
+                                        className={`w-full ${isMobile ? 'px-4 py-4 text-lg' : 'px-6 py-4 md:py-6 text-xl md:text-2xl'} rounded-3xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-700 transition-all text-center tracking-widest font-bold text-gray-700 placeholder:text-gray-400 ${isMobile ? 'placeholder:text-sm' : 'placeholder:text-base'} placeholder:tracking-normal`}
                                     />
                                 </div>
 
-                                <div className="flex justify-between max-w-2xl mx-auto px-2">
+                                <div className={`flex justify-between max-w-2xl mx-auto ${isMobile ? 'px-1' : 'px-2'}`}>
                                     <button
                                         onClick={() => { setStep(1); setOtp(""); setMessage(""); }}
-                                        className="text-gray-800 font-bold text-base md:text-lg hover:underline"
+                                        className={`text-gray-800 font-bold ${isMobile ? 'text-sm' : 'text-base md:text-lg'} hover:underline`}
                                     >
                                         Change number
                                     </button>
                                     <button
                                         onClick={handleGetOtp}
-                                        className="text-gray-800 font-bold text-base md:text-lg hover:underline"
+                                        className={`text-gray-800 font-bold ${isMobile ? 'text-sm' : 'text-base md:text-lg'} hover:underline`}
                                     >
                                         Resend
                                     </button>
@@ -179,7 +181,7 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
                                     <button
                                         onClick={handleVerifyAndSubmit}
                                         disabled={loading}
-                                        className="w-full bg-[#a32b47] hover:bg-[#86233a] text-white py-4 md:py-5 rounded-3xl font-bold text-xl md:text-2xl transition-all shadow-lg disabled:opacity-70"
+                                        className={`w-full bg-[#a32b47] hover:bg-[#86233a] text-white ${isMobile ? 'py-3 text-lg' : 'py-4 md:py-5 text-xl md:text-2xl'} rounded-3xl font-bold transition-all shadow-lg disabled:opacity-70`}
                                     >
                                         {loading ? "Submitting..." : "Submit"}
                                     </button>
@@ -189,7 +191,7 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
                     </AnimatePresence>
 
                     {message && (
-                        <p className="text-center mt-6 text-2xl font-bold text-gray-800 animate-pulse">
+                        <p className={`text-center mt-6 ${isMobile ? 'text-base' : 'text-2xl'} font-bold text-gray-800 animate-pulse`}>
                             {message}
                         </p>
                     )}

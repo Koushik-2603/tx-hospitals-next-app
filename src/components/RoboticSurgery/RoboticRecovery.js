@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
 import DOMPurify from "dompurify";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const RoboticRecovery = ({ data }) => {
+    const isMobile = useIsMobile();
+
     if (!data || data.length === 0) return null;
 
     const { heading, topDescription, lines, bottomDescription, image } = data[0];
-
-    // Debug: Log the data structure
-    console.log("RoboticRecovery data:", { heading, topDescription, bottomDescription, image });
 
     // Extract image URL from multiple possible sources
     let imageUrl = "";
@@ -30,8 +30,6 @@ const RoboticRecovery = ({ data }) => {
         }
     }
 
-    console.log("Extracted imageUrl:", imageUrl);
-
     // Remove all img tags from both descriptions
     const cleanTopDescription = topDescription
         ? topDescription
@@ -49,6 +47,69 @@ const RoboticRecovery = ({ data }) => {
             .trim()
         : "";
 
+    if (isMobile) {
+        return (
+            <section className="py-6 px-4 font-inter bg-white overflow-hidden">
+                <div className="max-w-full">
+                    {/* Header */}
+                    <div className="text-center mb-6">
+                        <h2 className="text-[22px] leading-tight font-bold mb-3 text-pink-700">
+                            {heading}
+                        </h2>
+                        <div
+                            className="text-gray-900 text-[13px] font-normal"
+                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanTopDescription) }}
+                        />
+                    </div>
+
+                    {/* Image with Frame */}
+                    {imageUrl && (
+                        <div className="mb-6">
+                            <div className="relative bg-white rounded-[30px] border-[6px] border-pink-700 shadow-lg overflow-hidden">
+                                <img
+                                    src={imageUrl}
+                                    alt="Recovery"
+                                    className="w-full h-auto object-cover rounded-[24px]"
+                                    style={{ display: 'block' }}
+                                    onError={(e) => {
+                                        console.error("Failed to load image:", imageUrl);
+                                        e.target.style.display = 'none';
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Timeline List */}
+                    <div className="relative mb-6">
+                        {/* Vertical Line */}
+                        <div className="absolute left-[11px] top-6 bottom-6 w-[2px] bg-pink-700"></div>
+
+                        <div className="space-y-8 relative z-10">
+                            {lines.map((item, index) => (
+                                <div key={index} className="flex items-center gap-3">
+                                    <div className="flex-shrink-0 w-6 h-6 rounded-full border-[3px] border-pink-700 bg-pink-700 flex items-center justify-center shadow-sm">
+                                        <div className="w-2 h-2 rounded-full bg-white"></div>
+                                    </div>
+                                    <p className="text-gray-900 text-[13px] font-normal">
+                                        {item}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Footer Description */}
+                    <div
+                        className="text-center text-gray-900 text-[13px] font-normal leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanBottomDescription) }}
+                    />
+                </div>
+            </section>
+        );
+    }
+
+    // Desktop version
     return (
         <section className="py-10 px-6 md:px-12 font-inter bg-white overflow-hidden">
             <div className="container mx-auto max-w-7xl">

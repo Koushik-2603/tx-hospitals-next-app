@@ -1,12 +1,64 @@
 "use client";
 import React from "react";
 import DOMPurify from "dompurify";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const RoboticBenefits = ({ data }) => {
+    const isMobile = useIsMobile();
+
     if (!data || data.length === 0) return null;
 
     const { heading, items, bottomDescription } = data[0];
 
+    if (isMobile) {
+        return (
+            <section className="py-6 px-4 font-inter bg-white overflow-hidden">
+                <div className="max-w-full">
+                    {/* Header */}
+                    <h2 className="text-[22px] leading-tight font-bold text-center mb-6 text-gray-900">
+                        {heading}
+                    </h2>
+
+                    {/* Benefits Grid - 2 columns */}
+                    <div className="grid grid-cols-2 gap-3 mb-6">
+                        {items.map((benefit, index) => (
+                            <div
+                                key={index}
+                                className="bg-[#f2d0d9] rounded-[20px] p-4 flex flex-col items-center text-center"
+                            >
+                                {/* Icon Container */}
+                                <div className="mb-3 w-16 h-16 flex items-center justify-center">
+                                    <img
+                                        src={benefit.image}
+                                        alt={benefit.title}
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+
+                                {/* Title */}
+                                <h3 className="text-[13px] leading-tight font-bold text-pink-700 mb-2">
+                                    {benefit.title}
+                                </h3>
+
+                                {/* Description */}
+                                <p className="text-gray-900 text-[11px] leading-relaxed font-normal">
+                                    {benefit.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Footer Text */}
+                    <div
+                        className="text-center text-gray-900 text-[13px] font-normal leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                    />
+                </div>
+            </section>
+        );
+    }
+
+    // Desktop version
     return (
         <section className="py-10 px-6 md:px-12 font-inter bg-white overflow-hidden">
             <div className="container mx-auto max-w-7xl">
