@@ -15,28 +15,27 @@ const WhatIsRoboticSurgery = ({ data }) => {
     const highlightedTitle = "Robotic Orthopaedic Surgery?";
 
     return (
-        <section className="bg-[#f0f2f5] py-8 px-6 md:px-12 font-inter">
+        <section className="bg-[#f0f2f5] py-10 px-6 md:px-12 font-inter">
             <div className="container mx-auto max-w-7xl text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-8 text-gray-800">
+                <h2 className="text-2xl md:text-4xl font-bold mb-6 text-gray-800">
                     {mainTitle}
                     <span className="text-pink-700">{highlightedTitle}</span>
                 </h2>
 
-                <div className="space-y-3 text-gray-700 text-lg md:text-xl leading-relaxed text-center px-4 md:px-10">
+                <div className="space-y-4 text-gray-700 text-base md:text-lg leading-relaxed text-center px-2 md:px-8">
                     {/* Render first two paragraphs */}
                     {cleanParagraphs.slice(0, 2).map((para, index) => (
                         <div
                             key={index}
                             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(para) }}
-                            className="mb-6"
                         />
                     ))}
 
                     {/* Render last paragraph in the highlighted box */}
                     {cleanParagraphs.length > 2 && (
-                        <div className="mt-12 bg-[#f9ebf0] border border-gray-300 rounded-3xl p-8 md:p-10 shadow-sm">
+                        <div className="mt-8 bg-[#f9ebf0] border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm">
                             <div
-                                className="text-gray-800 text-lg md:text-xl leading-relaxed font-medium"
+                                className="text-gray-800 text-base md:text-lg leading-relaxed font-medium"
                                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanParagraphs[2]) }}
                             />
                         </div>

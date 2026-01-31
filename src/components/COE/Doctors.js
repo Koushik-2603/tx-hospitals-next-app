@@ -63,6 +63,8 @@ export default function Doctors({ department: propDepartment }) {
                     encodedDept = "MOTHER%20AND%20CHILD%20CARE";
                 } else if (encodedDept === "dermatology%20cosmetic%20care") {
                     encodedDept = "DERMATOLOGY,%20COSMETIC%20CARE%20&%20PLASTIC%20SURGERY";
+                } else if (encodedDept === "cardiothoracic%20vascular%20surgery") {
+                    encodedDept = "cardiothoracic%20&%20vascular%20surgery";
                 }
                 const endpoint = `${CONFIG.API_BASE_URL}/getdoctorsbydept/${encodedDept}`;
                 const response = await axios.get(endpoint);
