@@ -10,9 +10,24 @@ const WhatIsRoboticSurgery = ({ data }) => {
     // Cleanup first and last tags
     let cleanParagraphs = paragraphs.map(p => p.replace(/<p>/g, "").replace(/<\/p>/g, "").trim());
 
-    const titleParts = heading.split("Robotic Orthopaedic Surgery?");
-    const mainTitle = titleParts[0];
-    const highlightedTitle = "Robotic Orthopaedic Surgery?";
+    // Dynamically extract the part to highlight (assumes format: "What is [Surgery Type]?")
+    const questionMarkIndex = heading.indexOf("?");
+    let mainTitle = "";
+    let highlightedTitle = "";
+
+    if (questionMarkIndex !== -1) {
+        // Find "Robotic" keyword to split
+        const roboticIndex = heading.indexOf("Robotic");
+        if (roboticIndex !== -1) {
+            mainTitle = heading.substring(0, roboticIndex);
+            highlightedTitle = heading.substring(roboticIndex);
+        } else {
+            // Fallback: just use the whole heading
+            highlightedTitle = heading;
+        }
+    } else {
+        highlightedTitle = heading;
+    }
 
     return (
         <section className="bg-[#f0f2f5] py-10 px-6 md:px-12 font-inter">

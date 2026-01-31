@@ -5,12 +5,49 @@ import DOMPurify from "dompurify";
 const RoboticRecovery = ({ data }) => {
     if (!data || data.length === 0) return null;
 
-    const { heading, topDescription, lines, bottomDescription } = data[0];
+    const { heading, topDescription, lines, bottomDescription, image } = data[0];
 
-    // Extract image URL from topDescription and clean the text
-    const imgMatch = topDescription.match(/<img src="([^"]+)"/);
-    const imageUrl = imgMatch ? imgMatch[1] : "";
-    const cleanTopDescription = topDescription.replace(/<img[^>]*>/, "").replace(/<p><br><\/p>/g, "").trim();
+    // Debug: Log the data structure
+    console.log("RoboticRecovery data:", { heading, topDescription, bottomDescription, image });
+
+    // Extract image URL from multiple possible sources
+    let imageUrl = "";
+
+    // Check if there's a dedicated image field
+    if (image) {
+        imageUrl = image;
+    } else {
+        // Try to extract from topDescription
+        const topImgMatch = topDescription?.match(/\u003cimg[^\u003e]*src=["']([^"']+)["'][^\u003e]*\/?\u003e/i);
+        if (topImgMatch) {
+            imageUrl = topImgMatch[1];
+        } else {
+            // Try to extract from bottomDescription
+            const bottomImgMatch = bottomDescription?.match(/\u003cimg[^\u003e]*src=["']([^"']+)["'][^\u003e]*\/?\u003e/i);
+            if (bottomImgMatch) {
+                imageUrl = bottomImgMatch[1];
+            }
+        }
+    }
+
+    console.log("Extracted imageUrl:", imageUrl);
+
+    // Remove all img tags from both descriptions
+    const cleanTopDescription = topDescription
+        ? topDescription
+            .replace(/\u003cimg[^\u003e]*\/?\u003e/gi, "")
+            .replace(/\u003cp\u003e\s*\u003cbr\s*\/?\u003e\s*\u003c\/p\u003e/gi, "")
+            .replace(/\u003cp\u003e\s*\u003c\/p\u003e/gi, "")
+            .trim()
+        : "";
+
+    const cleanBottomDescription = bottomDescription
+        ? bottomDescription
+            .replace(/\u003cimg[^\u003e]*\/?\u003e/gi, "")
+            .replace(/\u003cp\u003e\s*\u003cbr\s*\/?\u003e\s*\u003c\/p\u003e/gi, "")
+            .replace(/\u003cp\u003e\s*\u003c\/p\u003e/gi, "")
+            .trim()
+        : "";
 
     return (
         <section className="py-10 px-6 md:px-12 font-inter bg-white overflow-hidden">
@@ -47,27 +84,34 @@ const RoboticRecovery = ({ data }) => {
                     </div>
 
                     {/* Right - Image with Frame */}
-                    <div className="flex-1">
-                        <div className="relative p-3 md:p-5">
-                            {/* Frame Shadow/Background */}
-                            <div className="absolute inset-0 shadow-2xl transform rotate-1 scale-105 opacity-10"></div>
+                    {imageUrl && (
+                        <div className="flex-1">
+                            <div className="relative p-3 md:p-5">
+                                {/* Frame Shadow/Background */}
+                                <div className="absolute inset-0 shadow-2xl transform rotate-1 scale-105 opacity-10"></div>
 
-                            {/* Image Container */}
-                            <div className="relative bg-white rounded-[2.5rem] border-[6px] md:border-[8px] border-pink-700 shadow-2xl overflow-hidden group">
-                                <img
-                                    src={imageUrl}
-                                    alt="Recovery"
-                                    className="w-full h-auto rounded-[1.5rem] transition-transform duration-700 group-hover:scale-105"
-                                />
+                                {/* Image Container */}
+                                <div className="relative bg-white rounded-[2.5rem] border-[6px] md:border-[8px] border-pink-700 shadow-2xl overflow-hidden group">
+                                    <img
+                                        src={imageUrl}
+                                        alt="Recovery"
+                                        className="w-full h-auto max-h-[500px] object-contain rounded-[1.5rem] transition-transform duration-700 group-hover:scale-105"
+                                        style={{ display: 'block' }}
+                                        onError={(e) => {
+                                            console.error("Failed to load image:", imageUrl);
+                                            e.target.style.display = 'none';
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
 
                 {/* Footer Description */}
                 <div
                     className="text-center mt-12 text-gray-700 text-base md:text-lg font-medium max-w-5xl mx-auto leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanBottomDescription) }}
                 />
             </div>
         </section>

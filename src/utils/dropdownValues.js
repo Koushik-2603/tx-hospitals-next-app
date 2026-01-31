@@ -31,10 +31,10 @@ export const dropdowns = {
                 path: "/specialities/robotics-science/",
                 subItems: [
                     { name: "Robotic orthopedic surgery", path: "/specialities/robotic-orthopaedic-surgery-hyderabad" },
-                    { name: "Robotic GI Surgery", path: "/specialities/robotics-science" },
-                    { name: "Robotic Urologic surgery", path: "/specialities/robotics-science" },
-                    { name: "Robotic Gynecologic Surgery", path: "/specialities/robotics-science" },
-                    { name: "Robotic Cancer Surgery", path: "/specialities/robotics-science" }
+                    { name: "Robotic GI Surgery", path: "/specialities/robotic-gastrointestinal-surgery-in-hyderabad/" },
+                    { name: "Robotic Urologic surgery", path: "/specialities/robotic-urologic-surgery-hyderabad/" },
+                    { name: "Robotic Gynecologic Surgery", path: "/specialities/robotic-gynaecology-surgery-in-hyderabad-india/" },
+                    { name: "Robotic Cancer Surgery", path: "/specialities/robotic-cancer-surgery-hyderabad/" }
                 ]
             },
             {
