@@ -30,7 +30,7 @@ export const dropdowns = {
                 name: "Robotic Sciences",
                 path: "/specialities/robotics-science/",
                 subItems: [
-                    { name: "Robotic orthopedic surgery", path: "/specialities/robotics-science" },
+                    { name: "Robotic orthopedic surgery", path: "/specialities/robotic-orthopaedic-surgery-hyderabad" },
                     { name: "Robotic GI Surgery", path: "/specialities/robotics-science" },
                     { name: "Robotic Urologic surgery", path: "/specialities/robotics-science" },
                     { name: "Robotic Gynecologic Surgery", path: "/specialities/robotics-science" },

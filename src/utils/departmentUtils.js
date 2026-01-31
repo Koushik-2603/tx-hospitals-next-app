@@ -77,23 +77,23 @@ export const departmentData = {
     },
     "cardiothoracic-vascular-surgery": {
         title: "Cardiothoracic & Vascular Surgery",
-        image: "/assets/COE/Cardio _.webp",
+        image: "/assets/COE/CARDIOTHORACIC &  Vascular Surgery.webp",
     },
     "medical-gastroenterology": {
         title: "Medical Gastroenterology",
-        image: "/assets/COE/Gaastro.webp",
+        image: "/assets/COE/MEDICAL GASTROENTEROLOGY.webp",
     },
     "surgical-gastroenterology": {
         title: "Surgical Gastroenterology",
-        image: "/assets/COE/Gaastro.webp",
+        image: "/assets/COE/SURGICAL GASTROENTEROLOGY.webp",
     },
     "gynaecology": {
         title: "Gynaecology",
-        image: "/assets/COE/Mother and Child Care.webp",
+        image: "/assets/COE/GYNAECOLOGY.webp",
     },
     "paediatrics": {
         title: "Paediatrics",
-        image: "/assets/COE/Mother and Child Care.webp",
+        image: "/assets/COE/PAEDIATRICS.webp",
     },
 };
 
