@@ -21,7 +21,7 @@ export default function RoboticUrologicSurgeryPage() {
     const [error, setError] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
-    const pageUrl = "/specialities/robotic-urologic-surgery-hyderabad/";
+    const pageUrl = "/specialities/robotic-urologic-surgery-in-hyderabad/";
     const apiUrl = `https://api.txhospitals.vgworld.in/robotic-surgery/getRoboticSurgerybyURL/${encodeURIComponent(pageUrl)}`;
 
     useEffect(() => {
