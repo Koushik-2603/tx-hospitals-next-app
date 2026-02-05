@@ -34,7 +34,7 @@ export const dropdowns = {
                     { name: "Robotic GI Surgery", path: "/specialities/robotic-gastrointestinal-surgery-in-hyderabad/" },
                     { name: "Robotic Urologic surgery", path: "/specialities/robotic-urologic-surgery-in-hyderabad/" },
                     { name: "Robotic Gynecologic Surgery", path: "/specialities/robotic-gynaecology-surgery-in-hyderabad-india/" },
-                    { name: "Robotic Cancer Surgery", path: "/specialities/robotic-cancer-surgery-hyderabad/" }
+                    { name: "Robotic Cancer Surgery", path: "/specialities/robotic-cancer-surgery-in-hyderabad/" }
                 ]
             },
             {

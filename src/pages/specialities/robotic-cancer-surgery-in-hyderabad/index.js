@@ -21,7 +21,7 @@ export default function RoboticCancerSurgeryPage() {
     const [error, setError] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
-    const pageUrl = "/specialities/robotic-cancer-surgery-hyderabad/";
+    const pageUrl = "/specialities/robotic-cancer-surgery-in-hyderabad/";
     const apiUrl = `https://api.txhospitals.vgworld.in/robotic-surgery/getRoboticSurgerybyURL/${encodeURIComponent(pageUrl)}`;
 
     useEffect(() => {
