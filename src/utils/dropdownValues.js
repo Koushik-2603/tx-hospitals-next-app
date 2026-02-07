@@ -42,7 +42,7 @@ export const dropdowns = {
                 path: "/specialities/cardiac-sciences",
                 subItems: [
                     { name: "Cardiology", path: "/specialities/cardiac-sciences" },
-                    { name: "Cardiothoracic & Vascular surgery", path: "/specialities/cardiothoracic-and-vascular-surgery-hospitals-in-hyderabad-india/" }
+                    { name: "Cardiothoracic & Vascular surgery", path: "/specialities/cardiothoracic-and-vascular-surgery-hospitals/" }
                 ]
             },
             {

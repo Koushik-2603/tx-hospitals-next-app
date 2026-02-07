@@ -50,9 +50,10 @@ const COERoutes = [
   "/specialities/cardiac-sciences/our-clinical-team/",
   "/liver-transplantation-surgery/",
   "/kidney-transplantation-surgery/",
-  "/specialities/cardiothoracic-and-vascular-surgery-hospitals-in-hyderabad-india/",
-  "/specialities/best-ctvs-disease-treatment-in-hyderabad-india/",
-  "/specialities/best-cardiothoracic-and-vascular-procedures-in-hyderabad-india/",
+  "/specialities/cardiothoracic-and-vascular-surgery-hospitals/",
+  "/specialities/cardiothoracic-and-vascular-surgery-hospitals/disease-and-treatment/",
+  "/specialities/cardiothoracic-and-vascular-surgery-hospitals/procedures/",
+  "/specialities/cardiothoracic-and-vascular-surgery-hospitals/our-clinical-team/",
   "/specialities/neuro-sciences/",
   "/specialities/neuro-sciences/disease-and-treatment/",
   "/specialities/neuro-sciences/diagnostics/",
@@ -178,8 +179,8 @@ const sitemapEndpoints = {
   coe: COERoutes,
   doctors: `${apiUrl}/getAllDoctors`,
   blogs: `${apiUrl}/blogs/getAllBlogs`,
-  healthPackages: `${apiUrl}/healthpackages/getAllHealthPackages`,
-  secondOpinion: `${apiUrl}/secondopinion/getAllSecondOpinion`,
+  healthPackages: `${apiUrl}/new-healthpackages/getAllHealthPackages`,
+  secondOpinion: `${apiUrl}/new-secondopinion/getAllSecondOpinion`,
 };
 
 const fetchRoutes = async (key, endpointOrArray) => {

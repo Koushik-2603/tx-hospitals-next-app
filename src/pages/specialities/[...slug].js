@@ -30,26 +30,9 @@ export default function CenterOfExcellencePage() {
         const second = slug[1] || null;
         const third = slug[2] || null;
 
-        // Custom Slugs for Cardiothoracic & Vascular Surgery
-        if (dep === "cardiothoracic-and-vascular-surgery-hospitals-in-hyderabad-india") {
-            setDepartment("cardiothoracic-vascular-surgery");
-            setRouteType("coe-main");
-            setTab("");
-            return;
+        if (dep === "cardiothoracic-and-vascular-surgery-hospitals") {
+            dep = "cardiothoracic-vascular-surgery";
         }
-        if (dep === "best-ctvs-disease-treatment-in-hyderabad-india") {
-            setDepartment("cardiothoracic-vascular-surgery");
-            setRouteType("coe-tab");
-            setTab("disease-and-treatment");
-            return;
-        }
-        if (dep === "best-cardiothoracic-and-vascular-procedures-in-hyderabad-india") {
-            setDepartment("cardiothoracic-vascular-surgery");
-            setRouteType("coe-tab");
-            setTab("procedures");
-            return;
-        }
-        // Map special slugs to departments but don't return early to allow tab detection
         if (dep === "medical-gastro-hospitals") {
             dep = "medical-gastroenterology";
         } else if (dep === "surgical-gastro-hospitals" || dep === "surgical-gastroenterology-hospitals") {
@@ -98,15 +81,7 @@ export default function CenterOfExcellencePage() {
     const handleTabClick = (key) => {
         setTab(key);
         if (department === "cardiothoracic-vascular-surgery") {
-            if (key === "") {
-                router.push("/specialities/cardiothoracic-and-vascular-surgery-hospitals-in-hyderabad-india/");
-            } else if (key === "disease-and-treatment") {
-                router.push("/specialities/best-ctvs-disease-treatment-in-hyderabad-india/");
-            } else if (key === "procedures") {
-                router.push("/specialities/best-cardiothoracic-and-vascular-procedures-in-hyderabad-india/");
-            } else {
-                router.push(`/specialities/cardiothoracic-vascular-surgery/${key}/`);
-            }
+            router.push(`/specialities/cardiothoracic-and-vascular-surgery-hospitals/${key ? `${key}/` : ""}`);
         } else if (department === "medical-gastroenterology") {
             router.push(`/specialities/medical-gastro-hospitals/${key ? `${key}/` : ""}`);
         } else if (department === "surgical-gastroenterology") {
