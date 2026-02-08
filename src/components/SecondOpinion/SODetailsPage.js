@@ -4,6 +4,7 @@ import Image from "next/image";
 import SOBookAppointemntForm from "@/components/SecondOpinion/SOBookAppointmentForm";
 import CommonReasons from "@/components/SecondOpinion/CommonReasons";
 import WhySecondOpinion from "@/components/SecondOpinion/WhySecondOpinion";
+import Benefits from "@/components/SecondOpinion/Benefits";
 import RiskOfDelay from "@/components/SecondOpinion/RiskOfDelay";
 import OtpForm from "@/components/SecondOpinion/OtpForm";
 import WhyChoose from "@/components/SecondOpinion/WhyChoose";
@@ -107,6 +108,7 @@ export default function SODetailsPage({ surgeryData }) {
                         </section>
                         <CommonReasons data={surgeryData?.commonReasons[0]} />
                         <WhySecondOpinion data={surgeryData?.whySO[0]} />
+                        <Benefits data={surgeryData?.benefits?.[0]} />
                         <RiskOfDelay data={surgeryData?.risk[0]} />
                         <OtpForm />
                         <WhyChoose data={surgeryData?.whyChoose[0]} />
@@ -245,6 +247,7 @@ export default function SODetailsPage({ surgeryData }) {
                         </section>
                         <CommonReasons data={surgeryData?.commonReasons[0]} />
                         <WhySecondOpinion data={surgeryData?.whySO[0]} />
+                        <Benefits data={surgeryData?.benefits?.[0]} />
                         <RiskOfDelay data={surgeryData?.risk[0]} />
                         <OtpForm />
                         <WhyChoose data={surgeryData?.whyChoose[0]} />
