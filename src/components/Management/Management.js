@@ -38,8 +38,8 @@ and a culture of continuous improvement.`,
         {
             id: "management-2",
             name: "Dr. Srikanth Vodnala",
-            qualification: "B.Sc, B.E",
-            designation: " MBA, IIM Bangalore, LLB",
+            qualification: "DMS, MBA- Healthcare, EGMP-IIMB, LLB",
+            designation: "Group Chief Operating Officer",
             image: "/assets/Management/Dr. Srikanth Vodnala.webp",
             description: ` Dr. Srikanth Vodnala is a seasoned healthcare administrator with over
  16 years of diverse experience in healthcare management. An alumnus
