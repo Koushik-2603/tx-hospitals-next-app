@@ -72,7 +72,8 @@ export default function CenterOfExcellencePage() {
 
         if (second === "procedures" && third) {
             setRouteType("procedure-detail");
-            setUrl(third);
+            const fullUrl = `/specialities/${slug.join('/')}/`;
+            setUrl(fullUrl);
             return;
         }
 
@@ -131,7 +132,7 @@ export default function CenterOfExcellencePage() {
     if (routeType === "procedure-detail") {
         return (
             <SecondaryLayout>
-                <ProcedureDetailsPage department={department} url={url} />
+                <ProcedureDetailsPage url={url} />
             </SecondaryLayout>
         );
     }
