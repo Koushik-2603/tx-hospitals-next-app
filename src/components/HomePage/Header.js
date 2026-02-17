@@ -36,7 +36,7 @@ export default function HospitalHero() {
                     <div className="relative h-[83vh]">
                         <video
                             className="absolute w-full h-full object-cover object-top"
-                            src="/assets/720p_LR.mp4"
+                            src="/assets/TX HOSPITAL SHORT VIDEO WEBSITE 20260216.mp4"
                             autoPlay
                             muted
                             loop
@@ -76,7 +76,7 @@ export default function HospitalHero() {
                     <div className="relative h-[95vh]">
                         <video
                             className="absolute w-full h-full object-cover object-top"
-                            src="/assets/720p_LR.mp4"
+                            src="/assets/TX HOSPITAL SHORT VIDEO WEBSITE 20260216.mp4"
                             autoPlay
                             muted
                             loop
