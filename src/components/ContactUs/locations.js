@@ -37,7 +37,7 @@ export const locations = [
     },
     {
         id: 4,
-        name: "TX Children's Hospital, Banjara Hills, Hyderabad.",
+        name: "TX Children's Hospital, Banjara Hills, Hyderabad",
         address: "# 8-2-680, Raichandani Construction, no:12, B Road, Sri Ram Nagar Colony, Banjara Hills, Hyderabad, Telangana 500028",
         phone: "040-66529999",
         mapCoords: [17.407950683449737, 78.4449538935423],
@@ -47,4 +47,16 @@ export const locations = [
         seoDescription: "TX Children’s Hospital in Banjara Hills, Hyderabad offers expert pediatricians, NICU, PICU, and advanced child care services. 24/7 emergency support for children’s health.",
         seoKeywords: "TX Children’s Hospital Banjara Hills, Best children’s hospital in Banjara Hills, Pediatric hospital in Banjara Hills, Neonatal care hospital Banjara Hills, Best pediatrician in Banjara Hills Hyderabad, TX Hospitals children’s wing Banjara Hills, 24/7 children’s hospital in Banjara Hills, PICU and NICU hospital Banjara Hills, Child specialist doctors in Banjara Hills"
     },
+    {
+        id: 5,
+        name: "TX Hospitals, Miyapur, Hyderabad",
+        address: " Pillar No A 600, Plot 65 & 66, Miyapur Cross Road, Mathrusree Nagar, Hafeezpet, Hyderabad, Telangana 500059",
+        phone: "",
+        mapCoords: [17.49594147086547, 78.36466448274872],
+        image: "",
+        slug: "miyapur",
+        seoTitle: "TX Hospitals Miyapur, Hyderabad | 24/7 Multi-Specialty Hospital",
+        seoDescription: "Visit TX Hospitals Miyapur, Hyderabad for 24/7 multi-specialty medical care. Best accredited hospital with expert doctors & emergency services. Call now!",
+        seoKeywords: "Contact TX Hospitals Miyapur, Best hospital in Miyapur Hyderabad, Multi-specialty hospital in Miyapur, NABH hospitals in Miyapur, 24/7 hospital in Miyapur Hyderabad, Emergency hospital Miyapur, Top doctors in Miyapur, TX Hospitals phone number Miyapur"
+    }
 ];

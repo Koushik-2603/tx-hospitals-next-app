@@ -118,7 +118,8 @@ export const locations = [
     { name: "Uppal", path: "/contact-us/uppal/" },
     { name: "Kachiguda", path: "/contact-us/kachiguda/" },
     { name: "Banjara Hills - 1", path: "/contact-us/banjara-hills1/" },
-    { name: "Banjara Hills - 2", path: "/contact-us/banjara-hills2/" }
+    { name: "Banjara Hills - 2", path: "/contact-us/banjara-hills2/" },
+    { name: "Miyapur", path: "/contact-us/miyapur/" },
 ];
 
 export const departments = [
