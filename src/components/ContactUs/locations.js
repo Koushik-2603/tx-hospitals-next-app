@@ -50,10 +50,10 @@ export const locations = [
     {
         id: 5,
         name: "TX Hospitals, Miyapur, Hyderabad",
-        address: " Pillar No A 600, Plot 65 & 66, Miyapur Cross Road, Mathrusree Nagar, Hafeezpet, Hyderabad, Telangana 500059",
-        phone: "",
+        address: "Pillar No A 600, Plot 65 & 66, Miyapur Cross Road, Mathrusree Nagar, Hafeezpet, Hyderabad, Telangana 500059",
+        phone: "04021999999",
         mapCoords: [17.49594147086547, 78.36466448274872],
-        image: "",
+        image: "/assets/ContactUs/TX Hospitals Miyapur.webp",
         slug: "miyapur",
         seoTitle: "TX Hospitals Miyapur, Hyderabad | 24/7 Multi-Specialty Hospital",
         seoDescription: "Visit TX Hospitals Miyapur, Hyderabad for 24/7 multi-specialty medical care. Best accredited hospital with expert doctors & emergency services. Call now!",
