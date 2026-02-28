@@ -42,8 +42,11 @@ export default function DoctorsLandingPage() {
         const doctorLoc = doctor.location ? doctor.location.toLowerCase() : "";
 
         return (
-            (selectedCat === "" || doctorCategory.includes(selectedCat)) &&
-            (searchTerm === "" || (doctor.name && doctor.name.toLowerCase().includes(searchTerm.toLowerCase()))) &&
+            (selectedCat === "" || doctorCategory === selectedCat) &&
+            (searchTerm === "" || (
+                (doctor.name && doctor.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                (doctorCategory && doctorCategory.includes(searchTerm.toLowerCase()))
+            )) &&
             (selectedLocation === "" || selectedLocation === null || doctorLoc.includes(selectedLocation.toLowerCase()))
         );
     });
