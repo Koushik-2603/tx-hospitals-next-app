@@ -20,7 +20,7 @@ export const dropdowns = {
         part1: [
             {
                 name: "Transplant Surgery",
-                path: "/specialities/transplant-medicine",
+                path: "",
                 subItems: [
                     { name: "Liver Transplantation", path: "/liver-transplantation-surgery/" },
                     { name: "Kidney Transplantation", path: "/kidney-transplantation-surgery/" }
@@ -28,7 +28,7 @@ export const dropdowns = {
             },
             {
                 name: "Robotic Sciences",
-                path: "/specialities/robotics-science/",
+                path: "",
                 subItems: [
                     { name: "Robotic orthopedic surgery", path: "/specialities/robotic-orthopaedic-surgery-hyderabad" },
                     { name: "Robotic GI Surgery", path: "/specialities/robotic-gastrointestinal-surgery-in-hyderabad/" },
@@ -39,7 +39,7 @@ export const dropdowns = {
             },
             {
                 name: "Cardiac Sciences",
-                path: "/specialities/cardiac-sciences",
+                path: "",
                 subItems: [
                     { name: "Cardiology", path: "/specialities/cardiac-sciences" },
                     { name: "Cardiothoracic & Vascular surgery", path: "/specialities/cardiothoracic-and-vascular-surgery-hospitals/" }
@@ -47,7 +47,7 @@ export const dropdowns = {
             },
             {
                 name: "Gastro Sciences",
-                path: "/specialities/gastro-sciences",
+                path: "",
                 subItems: [
                     { name: "Medical Gastroenterology", path: "/specialities/medical-gastro-hospitals/" },
                     { name: "Surgical Gastroenterology", path: "/specialities/surgical-gastroenterology-hospitals/" }
@@ -55,7 +55,7 @@ export const dropdowns = {
             },
             {
                 name: "Renal Sciences",
-                path: "/specialities/nephrology",
+                path: "",
                 subItems: [
                     { name: "Nephrology", path: "/specialities/nephrology/" },
                     { name: "Urology", path: "/specialities/urology/" }
@@ -63,7 +63,7 @@ export const dropdowns = {
             },
             {
                 name: "Mother & Child Care",
-                path: "/specialities/mother-child-care",
+                path: "",
                 subItems: [
                     { name: "Gynaecology", path: "/specialities/gynecology-hospitals/" },
                     { name: "Paediatrics", path: "/specialities/pediatric-hospitals/" }

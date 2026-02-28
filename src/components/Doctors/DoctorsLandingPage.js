@@ -24,7 +24,7 @@ export default function DoctorsLandingPage() {
     const [doctorsData, setDoctorsData] = useState([]);
     const [departments, setDepartments] = useState([]);
     const [selectedLocation, setSelectedLocation] = useState("");
-    const [selectedSpeciality, setSelectedSpeciality] = useState("Cardiothoracic & Vascular Surgery");
+    const [selectedSpeciality, setSelectedSpeciality] = useState("");
     const [visibleDoctors, setVisibleDoctors] = useState(9);
     const isMobile = useIsMobile();
     const [locationSearch, setLocationSearch] = useState("");

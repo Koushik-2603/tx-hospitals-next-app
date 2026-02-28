@@ -214,7 +214,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                             key={idx}
                             onMouseEnter={() => setHoveredLibraryItem(item?.name)}
                             onClick={() => {
-                                handleNavigate(item?.path);
+                                if (item?.path) handleNavigate(item?.path);
                                 setHoveredLibraryItem(item?.name);
                             }}
                             className={`flex items-center justify-between py-2 px-3 rounded cursor-pointer transition-colors font-bold
@@ -326,7 +326,12 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                         <div
                             key={idx}
                             onMouseEnter={() => setHoveredSpecialty(item)}
-                            onClick={() => { handleMenuClick(item.path); setOpenMenu(null); }}
+                            onClick={() => {
+                                if (item.path) {
+                                    handleMenuClick(item.path);
+                                    setOpenMenu(null);
+                                }
+                            }}
                             className={`flex items-center justify-between py-2 px-2 rounded cursor-pointer transition-colors font-bold
                                 ${hoveredSpecialty?.name === item.name ? "bg-pink-100 text-pink-700" : "text-gray-800 hover:bg-gray-100"}`}
                         >
@@ -354,7 +359,12 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                     {dropdowns.specialties.part3.map((item, idx) => (
                         <button
                             key={idx}
-                            onClick={() => { handleMenuClick(item.path); setOpenMenu(null); }}
+                            onClick={() => {
+                                if (item.path) {
+                                    handleMenuClick(item.path);
+                                    setOpenMenu(null);
+                                }
+                            }}
                             className="text-left text-gray-800 hover:text-pink-700 py-2 px-2 transition-colors font-semibold"
                         >
                             {item.name}
@@ -367,7 +377,12 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                     {dropdowns.specialties.part4.map((item, idx) => (
                         <button
                             key={idx}
-                            onClick={() => { handleMenuClick(item.path); setOpenMenu(null); }}
+                            onClick={() => {
+                                if (item.path) {
+                                    handleMenuClick(item.path);
+                                    setOpenMenu(null);
+                                }
+                            }}
                             className="text-left text-gray-800 hover:text-pink-700 py-2 px-2 transition-colors font-semibold"
                         >
                             {item.name}
@@ -617,7 +632,9 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                             {/* Other Specialties from Part 3 & 4 */}
                                             {[...dropdowns.specialties.part3, ...dropdowns.specialties.part4].map((dept, idx) => (
                                                 <li key={`fixed-${idx}`}>
-                                                    <button className="text-sm text-gray-600 hover:text-pink-500 text-left w-full py-2" onClick={() => handleNavigate(dept.path)}>
+                                                    <button className="text-sm text-gray-600 hover:text-pink-500 text-left w-full py-2" onClick={() => {
+                                                        if (dept.path) handleNavigate(dept.path);
+                                                    }}>
                                                         {dept.name}
                                                     </button>
                                                 </li>

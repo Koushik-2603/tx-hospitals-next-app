@@ -29,6 +29,12 @@ const locations = [
         rating: 4.8,
         path: "/contact-us/banjara-hills2/"
     },
+    {
+        name: "TX Hospitals, Miyapur",
+        image: "/assets/ContactUs/TX Hospitals Miyapur.webp",
+        rating: 4.8,
+        path: "/contact-us/miyapur/"
+    },
 ];
 
 export default function OurLocations() {
@@ -47,13 +53,13 @@ export default function OurLocations() {
                         </p>
                     </div>
                     <div className="px-2 mt-2">
-                        {/* Grid Cards */}
-                        <div className="grid grid-cols-2 gap-4 justify-center relative z-10">
+                        {/* Flex Container for better alignment with 5 items */}
+                        <div className="flex flex-wrap gap-4 justify-center relative z-10">
                             {locations.map((loc, i) => (
                                 <div
                                     key={i}
                                     onClick={() => router.push(loc?.path)}
-                                    className="bg-white rounded-xl shadow-lg overflow-hidden w-full transition hover:scale-[1.02] cursor-pointer"
+                                    className="bg-white rounded-xl shadow-lg overflow-hidden w-[45%] transition hover:scale-[1.02] cursor-pointer"
                                 >
                                     <div className="w-full h-28 relative">
                                         <Image
@@ -100,7 +106,7 @@ export default function OurLocations() {
             ) : (
                 <section className="relative">
                     {/* Pink Background instead of image */}
-                    <div className="absolute left-0 top-0 bottom-0 w-3/4 bg-pink-700 rounded-tr-3xl" />
+                    <div className="absolute left-0 top-0 bottom-0 w-[85%] bg-pink-700 rounded-tr-3xl" />
 
                     <div className="flex items-center justify-between mx-auto relative max-w-6xl px-16">
                         {/* Heading + Image */}
@@ -124,53 +130,104 @@ export default function OurLocations() {
                             </div>
                         </div>
 
-                        {/* Grid Cards */}
-                        <div className="grid grid-cols-2 gap-8 relative z-10">
-                            {locations.map((loc, i) => (
-                                <div
-                                    key={i}
-                                    onClick={() => router.push(loc?.path)}
-                                    className="bg-white rounded-xl shadow-lg overflow-hidden w-52 m-3 transition hover:scale-[1.02] cursor-pointer"
-                                >
-                                    <div className="w-full h-44 relative">
-                                        <Image
-                                            src={loc.image}
-                                            alt={loc.name}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                    <div className="p-2">
-                                        <h3 className="text-base font-semibold text-gray-800">
-                                            {loc.name}
-                                        </h3>
-                                        <div className="flex items-center">
+                        {/* Locations Content: 2 over 3 Layout */}
+                        <div className="flex flex-col gap-6 relative z-10">
+                            {/* Top Row: 2 Cards */}
+                            <div className="flex gap-6 justify-center">
+                                {locations.slice(0, 2).map((loc, i) => (
+                                    <div
+                                        key={i}
+                                        onClick={() => router.push(loc?.path)}
+                                        className="bg-white rounded-xl shadow-lg overflow-hidden w-48 transition hover:scale-[1.02] cursor-pointer"
+                                    >
+                                        <div className="w-full h-40 relative">
                                             <Image
-                                                src="/assets/Our Location/Google icon.png"
-                                                alt="Google"
-                                                width={18}
-                                                height={18}
+                                                src={loc.image}
+                                                alt={loc.name}
+                                                fill
+                                                className="object-cover"
                                             />
-                                            <span className="ml-2 text-sm text-gray-700">
-                                                {loc.rating}
-                                            </span>
-                                            <div className="ml-2 flex">
-                                                {Array(5)
-                                                    .fill()
-                                                    .map((_, index) => (
-                                                        <Image
-                                                            key={index}
-                                                            src="/assets/Our Location/Start icon.png"
-                                                            alt="Star"
-                                                            width={16}
-                                                            height={16}
-                                                        />
-                                                    ))}
+                                        </div>
+                                        <div className="p-3">
+                                            <h3 className="text-sm font-semibold text-gray-800 leading-tight mb-2">
+                                                {loc.name}
+                                            </h3>
+                                            <div className="flex items-center">
+                                                <Image
+                                                    src="/assets/Our Location/Google icon.png"
+                                                    alt="Google"
+                                                    width={16}
+                                                    height={16}
+                                                />
+                                                <span className="ml-2 text-xs text-gray-700">
+                                                    {loc.rating}
+                                                </span>
+                                                <div className="ml-1 flex">
+                                                    {Array(5)
+                                                        .fill()
+                                                        .map((_, index) => (
+                                                            <Image
+                                                                key={index}
+                                                                src="/assets/Our Location/Start icon.png"
+                                                                alt="Star"
+                                                                width={12}
+                                                                height={12}
+                                                            />
+                                                        ))}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
+                            {/* Bottom Row: 3 Cards */}
+                            <div className="flex gap-6 justify-center">
+                                {locations.slice(2).map((loc, i) => (
+                                    <div
+                                        key={i + 2}
+                                        onClick={() => router.push(loc?.path)}
+                                        className="bg-white rounded-xl shadow-lg overflow-hidden w-48 transition hover:scale-[1.02] cursor-pointer"
+                                    >
+                                        <div className="w-full h-40 relative">
+                                            <Image
+                                                src={loc.image}
+                                                alt={loc.name}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                        <div className="p-3">
+                                            <h3 className="text-sm font-semibold text-gray-800 leading-tight mb-2">
+                                                {loc.name}
+                                            </h3>
+                                            <div className="flex items-center">
+                                                <Image
+                                                    src="/assets/Our Location/Google icon.png"
+                                                    alt="Google"
+                                                    width={16}
+                                                    height={16}
+                                                />
+                                                <span className="ml-2 text-xs text-gray-700">
+                                                    {loc.rating}
+                                                </span>
+                                                <div className="ml-1 flex">
+                                                    {Array(5)
+                                                        .fill()
+                                                        .map((_, index) => (
+                                                            <Image
+                                                                key={index}
+                                                                src="/assets/Our Location/Start icon.png"
+                                                                alt="Star"
+                                                                width={12}
+                                                                height={12}
+                                                            />
+                                                        ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
