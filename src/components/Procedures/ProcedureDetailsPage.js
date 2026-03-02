@@ -69,7 +69,7 @@ export default function ProcedureDetailsPage({ url }) {
 
             <div className="font-inter bg-white text-black text-left">
                 {/* Hero Section */}
-                <div className="max-w-7xl mx-auto md:px-12 px-4 py-4 md:pt-12">
+                <div className="max-w-7xl mx-auto md:px-12 px-2 -mt-4 md:pt-12">
                     <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
                         <ProcedureHeroSection pHeroSection={pHeroSection} />
                         <ProcedureAppointmentForm heading={pHeroSection.heading} />

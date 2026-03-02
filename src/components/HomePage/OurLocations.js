@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
+import LocationsCarousel from "@/components/HomePage/LocationsCarousel";
 import { useRouter } from "next/router";
 
 const locations = [
@@ -45,62 +46,16 @@ export default function OurLocations() {
     return (
         <>
             {isMobile ? (
-                <section className="relative bg-pink-700 py-2">
-                    <div className="text-center relative z-10">
-                        <h2 className="text-xl font-bold text-white">Our Locations</h2>
-                        <p className="text-white text-base">
+                <section className="relative bg-pink-700 py-6">
+                    <div className="text-center relative z-10 mb-4 px-4">
+                        <h2 className="text-2xl font-bold text-white mb-1">Our Locations</h2>
+                        <p className="text-white/90 text-sm">
                             Find Hospital Near You
                         </p>
                     </div>
-                    <div className="px-2 mt-2">
-                        {/* Flex Container for better alignment with 5 items */}
-                        <div className="flex flex-wrap gap-4 justify-center relative z-10">
-                            {locations.map((loc, i) => (
-                                <div
-                                    key={i}
-                                    onClick={() => router.push(loc?.path)}
-                                    className="bg-white rounded-xl shadow-lg overflow-hidden w-[45%] transition hover:scale-[1.02] cursor-pointer"
-                                >
-                                    <div className="w-full h-28 relative">
-                                        <Image
-                                            src={loc.image}
-                                            alt={loc.name}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                    <div className="p-1">
-                                        <h3 className="text-xs font-semibold text-gray-800">
-                                            {loc.name}
-                                        </h3>
-                                        <div className="flex items-center mt-1">
-                                            <Image
-                                                src="/assets/Our Location/Google icon.png"
-                                                alt="Google"
-                                                width={18}
-                                                height={18}
-                                            />
-                                            <span className="ml-2 text-xs text-gray-700">
-                                                {loc.rating}
-                                            </span>
-                                            <div className="ml-2 flex">
-                                                {Array(5)
-                                                    .fill()
-                                                    .map((_, index) => (
-                                                        <Image
-                                                            key={index}
-                                                            src="/assets/Our Location/Start icon.png"
-                                                            alt="Star"
-                                                            width={16}
-                                                            height={16}
-                                                        />
-                                                    ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+
+                    <div className="relative z-10">
+                        <LocationsCarousel locations={locations} />
                     </div>
                 </section>
             ) : (

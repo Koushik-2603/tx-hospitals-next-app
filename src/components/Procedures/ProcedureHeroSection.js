@@ -12,7 +12,7 @@ const ProcedureHeroSection = ({ pHeroSection }) => {
             </div>
 
             {/* Heading */}
-            <h1 className="text-3xl md:text-4xl font-bold text-pink-700 mb-6 leading-tight">
+            <h1 className="text-2xl md:text-4xl font-bold text-pink-700 mb-6 leading-tight">
                 {pHeroSection.heading}
             </h1>
 
