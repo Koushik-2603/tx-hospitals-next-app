@@ -29,11 +29,16 @@ export default function LocationsCarousel({ locations }) {
             <div
                 className="flex transition-transform duration-700 ease-in-out"
                 style={{
-                    transform: `translateX(-${current * 100}%)`
+                    transform: `translateX(-${(current * 100) / length}%)`,
+                    width: `${length * 100}%`
                 }}
             >
                 {locations.map((loc, index) => (
-                    <div key={index} className="w-full flex-shrink-0 flex justify-center px-4">
+                    <div
+                        key={index}
+                        className="flex-shrink-0 flex justify-center px-4"
+                        style={{ width: `${100 / length}%` }}
+                    >
                         <div
                             onClick={() => handleNavigate(loc?.path)}
                             className="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-[230px] transition hover:scale-[1.02] cursor-pointer"
