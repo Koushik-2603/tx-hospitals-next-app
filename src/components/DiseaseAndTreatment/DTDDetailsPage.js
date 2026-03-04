@@ -1,40 +1,42 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import Head from "next/head";
-import DOMPurify from "dompurify";
 import CONFIG from "@/config";
-import useIsMobile from "@/hooks/useIsMobile";
-import AppointmentForm from "@/components/DiseaseAndTreatment/AppointmentForm";
-import FAQSchema from "@/utils/FAQSchema";
+import DTHeroSection from "@/components/DiseaseAndTreatment/DTHeroSection";
+import DTAppointmentForm from "@/components/DiseaseAndTreatment/DTAppointmentForm";
+import BookAppointmentForm from "../Blogs/BookAppointemntForm";
+import WhatIsDT from "@/components/DiseaseAndTreatment/WhatIsDT";
+import TypesOfDT from "@/components/DiseaseAndTreatment/TypesOfDT";
+import CausesAndRiskFactors from "@/components/DiseaseAndTreatment/CausesAndRiskFactors";
+import SymptomsDT from "@/components/DiseaseAndTreatment/SymptomsDT";
+import WhenToSeekCare from "@/components/DiseaseAndTreatment/WhenToSeekCare";
+import DiagnosisDT from "@/components/DiseaseAndTreatment/DiagnosisDT";
+import TreatmentOptionsDT from "@/components/DiseaseAndTreatment/TreatmentOptionsDT";
+import ComplicationsDT from "@/components/DiseaseAndTreatment/ComplicationsDT";
+import PreventionDT from "@/components/DiseaseAndTreatment/PreventionDT";
+import WhenToSeekMedicalHelpDT from "@/components/DiseaseAndTreatment/WhenToSeekMedicalHelpDT";
+import WhyChooseUsDT from "@/components/DiseaseAndTreatment/WhyChooseUsDT";
+import TakeFirstStepDT from "@/components/DiseaseAndTreatment/TakeFirstStepDT";
+import FAQDT from "@/components/DiseaseAndTreatment/FAQDT";
 
-export default function DTDDetailsPage({ department, url }) {
+export default function DTDDetailsPage({ url }) {
 
-    const isMobile = useIsMobile();
+    console.log("Received URL prop:", url);
     const [loading, setLoading] = useState(true);
-    const [procedureData, setProcedureData] = useState(null);
-    const [activeIndex, setActiveIndex] = useState(null);
+    const [data, setData] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
-        window.scrollTo({ left: document.body.scrollWidth, top: 0, behavior: "smooth" });
-    }, []);
-
-    useEffect(() => {
+        if (!url) return;
         const fetchData = async () => {
             try {
-                const deptName = decodeURIComponent(department).replace(/-/g, " ").toUpperCase();
-                const deptRes = await axios.get(`${CONFIG.API_BASE_URL}/dieseasesandtreatments/getDATbydept/${deptName}`);
-                const dat = deptRes.data.find(res =>
-                    res.url?.toLowerCase() === `/specialities/${department}/disease-and-treatment/${url}/`
+                // Fetching from the new API with encoded slug
+                const response = await axios.get(
+                    `${CONFIG.API_BASE_URL}/new-dieseasesandtreatments/getNewDATbyURL/${encodeURIComponent(url)}`
                 );
-                if (!dat) {
-                    setLoading(false);
-                    return;
-                }
-                const datId = dat.dtId;
-                const datDetailsRes = await axios.get(`${CONFIG.API_BASE_URL}/dieseasesandtreatments/getDATbyId/${datId}`);
-                setProcedureData(datDetailsRes.data.Item);
+                setData(response?.data[0]);
             } catch (err) {
                 console.error("Error fetching procedure data:", err);
             } finally {
@@ -43,11 +45,7 @@ export default function DTDDetailsPage({ department, url }) {
         };
 
         fetchData();
-    }, [department, url]);
-
-    const toggleFAQ = (index) => {
-        setActiveIndex(index === activeIndex ? null : index);
-    };
+    }, [url]);
 
     if (loading) {
         return (
@@ -59,169 +57,101 @@ export default function DTDDetailsPage({ department, url }) {
             </div>
         );
     }
-    if (!procedureData) return <p className="text-center mt-14 font-inter p-4 text-lg text-pink-700 font-semibold">No Data Found!</p>;
+
+    if (!data) {
+        return <p className="text-center mt-14 font-inter p-4 text-lg text-pink-700 font-semibold">No Data Found!</p>;
+    }
 
     return (
         <>
             <Head>
-                <title>{procedureData.seoTitle}</title>
-                <meta name="description" content={procedureData.metaKeywords} />
-                <meta name="keywords" content={procedureData.metaDescription} />
+                <title>{data.seoTitle}</title>
+                <meta name="description" content={data.metaKeywords} />
+                <meta name="keywords" content={data.metaDescription} />
             </Head>
-            {isMobile ? (
-                <div className="-mt-5 font-inter">
-                    <div className="flex items-center gap-2 justify-between bg-pink-700 p-1 mx-auto rounded-xl w-[95%] text-white mb-2">
-                        <div className="bg-inherit w-36 h-36 flex items-center justify-center">
-                            <img loading="lazy" src={procedureData.dtImage} alt="icon" className="w-16 h-16 rounded-full bg-white" />
-                        </div>
-                        <h1 className="text-xl font-bold">{procedureData.dtTitle}</h1>
-                    </div>
-                    <div className="flex flex-col justify-between items-start gap-6 mb-2 px-2">
-                        <div className="w-full">
-                            <AppointmentForm />
-                        </div>
-                        <div>
-                            {procedureData.extraFields?.map((field, index) => {
-                                const getHeadingTag = () => {
-                                    if (index === 0 || index === 1) return 'h2';
-                                    return 'h3';
-                                };
 
-                                const HeadingTag = getHeadingTag();
-                                return (
-                                    <div key={index}>
-                                        <HeadingTag className={`text-pink-700 ${index <= 1 ? 'text-lg' : 'text-base'
-                                            } font-semibold`}>{field.heading}</HeadingTag>
-                                        <div
-                                            className="text-gray-700 text-sm pl-4 leading-relaxed"
-                                            dangerouslySetInnerHTML={{
-                                                __html: DOMPurify.sanitize(
-                                                    field.description.replace(/<ul>/g, '<ul class="list-disc ml-6">')
-                                                        .replace(/<ol>/g, '<ol class="list-decimal ml-6">')
-                                                )
-                                            }}
-                                        />
-                                    </div>
-                                )
-                            })}
-                        </div>
+            {(data.dtTitle || data.dtdescription) && (
+                <div className="max-w-7xl mx-auto md:px-12 px-4 py-10 md:py-7">
+                    <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 bg-white">
+                        <DTHeroSection
+                            dtTitle={data.dtTitle}
+                            dtdescription={data.dtdescription}
+                            onSchedule={() => setShowModal(true)}
+                            onLearnMore={() => {
+                                const el = document.getElementById("dt-content");
+                                if (el) el.scrollIntoView({ behavior: "smooth" });
+                            }}
+                        />
+                        <DTAppointmentForm heading={data.dtTitle} />
                     </div>
-
-                    {procedureData.faqs?.length > 0 && (
-                        <div className="mt-2">
-                            <div className="bg-white m-4">
-                                <h2 className="text-lg font-bold text-pink-700 mb-2">FAQs</h2>
-                                <FAQSchema faqs={procedureData.faqs} />
-                                <div className="text-gray-700 pl-6 leading-relaxed space-y-4">
-                                    {procedureData.faqs.map((faq, index) => (
-                                        <div
-                                            key={index}
-                                            className={`border-2 rounded-lg ${activeIndex === index
-                                                ? "border-pink-600"
-                                                : "border-pink-300"
-                                                }`}
-                                        >
-                                            <button
-                                                className={`w-full p-1 flex justify-between text-sm items-center text-left font-medium ${activeIndex === index ? "text-white bg-pink-600 border-b border-white" : "text-pink-600"
-                                                    }`}
-                                                onClick={() => toggleFAQ(index)}
-                                            >
-                                                {faq.question}
-                                                {activeIndex === index ? (
-                                                    <FaChevronDown className="text-white" />
-                                                ) : (
-                                                    <FaChevronUp className="text-pink-600" />
-                                                )}
-                                            </button>
-                                            {activeIndex === index && (
-                                                <div className="p-4 text-sm text-black">
-                                                    <p dangerouslySetInnerHTML={{ __html: faq.description }} />
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            ) : (
-                <div className="mt-8 font-inter">
-                    <div className="flex items-center gap-4 bg-pink-700 px-8 py-4 mx-auto rounded-xl max-w-6xl text-white mb-4">
-                        <div className="bg-white rounded-full w-32 h-32 flex items-center justify-center shrink-0 mr-6">
-                            <img loading="lazy" src={procedureData.dtImage} alt="icon" className="w-32 h-32 object-contain" />
-                        </div>
-                        <h1 className="text-3xl font-bold text-left w-full">{procedureData.dtTitle}</h1>
-                    </div>
-                    <div className="flex flex-row justify-between items-start gap-6 mb-2 max-w-6xl mx-auto">
-                        <div className="w-[70%] hide-scrollbar flex-1 overflow-y-auto max-h-[calc(100vh-40px)]">
-                            {procedureData.extraFields?.map((field, index) => {
-                                const getHeadingTag = () => {
-                                    if (index === 0 || index === 1) return 'h2';
-                                    return 'h3';
-                                };
-
-                                const HeadingTag = getHeadingTag();
-                                return (
-                                    <div key={index}>
-                                        <HeadingTag className={`${index <= 1 ? 'text-2xl' : 'text-xl'
-                                            } font-bold text-pink-700 mb-2`}>{field.heading}</HeadingTag>
-                                        <div
-                                            className="text-gray-700 pl-6 leading-relaxed"
-                                            dangerouslySetInnerHTML={{
-                                                __html: DOMPurify.sanitize(
-                                                    field.description.replace(/<ul>/g, '<ul class="list-disc ml-6">')
-                                                        .replace(/<ol>/g, '<ol class="list-decimal ml-6">')
-                                                )
-                                            }}
-                                        />
-                                    </div>
-                                )
-                            })}
-                        </div>
-                        <div className="w-[30%] flex justify-end">
-                            <AppointmentForm />
-                        </div>
-                    </div>
-                    {procedureData.faqs?.length > 0 && (
-                        <div className="mt-2 mx-[2%]">
-                            <div className="bg-white pl-4 m-4">
-                                <h2 className="text-2xl font-bold text-pink-700 mb-2">FAQs</h2>
-                                <FAQSchema faqs={procedureData.faqs} />
-                                <div className="text-gray-700 pl-6 leading-relaxed space-y-4">
-                                    {procedureData.faqs.map((faq, index) => (
-                                        <div
-                                            key={index}
-                                            className={`border-2 rounded-lg ${activeIndex === index
-                                                ? "border-pink-600"
-                                                : "border-pink-300"
-                                                }`}
-                                        >
-                                            <button
-                                                className={`w-full p-4 flex justify-between items-center text-left font-medium ${activeIndex === index ? "text-white bg-pink-600 border-b border-white" : "text-pink-600"
-                                                    }`}
-                                                onClick={() => toggleFAQ(index)}
-                                            >
-                                                {faq.question}
-                                                {activeIndex === index ? (
-                                                    <FaChevronDown className="text-white" />
-                                                ) : (
-                                                    <FaChevronUp className="text-pink-600" />
-                                                )}
-                                            </button>
-                                            {activeIndex === index && (
-                                                <div className="p-4 text-black">
-                                                    <p dangerouslySetInnerHTML={{ __html: faq.description }} />
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    )}
                 </div>
             )}
+            {/* What is DT Section */}
+            {data.whatIsdt && data.whatIsdt.length > 0 && (
+                <WhatIsDT data={data.whatIsdt} />
+            )}
+
+            {/* Types of DT Section */}
+            {data.typesOfdt && data.typesOfdt.length > 0 && (
+                <TypesOfDT data={data.typesOfdt} openModal={() => setShowModal(true)} />
+            )}
+
+            {/* Causes & Risk Factors Section */}
+            {data.causesandRiskFactors && data.causesandRiskFactors.length > 0 && (
+                <CausesAndRiskFactors data={data.causesandRiskFactors} openModal={() => setShowModal(true)} />
+            )}
+
+            {/* Symptoms Section */}
+            {data.symptoms && data.symptoms.length > 0 && (
+                <SymptomsDT data={data.symptoms} />
+            )}
+
+            {/* When to Seek Care Section */}
+            {data.whentoSeekCare && data.whentoSeekCare.length > 0 && (
+                <WhenToSeekCare data={data.whentoSeekCare} openModal={() => setShowModal(true)} />
+            )}
+
+            {/* Diagnosis Section */}
+            {data.diagnosis && data.diagnosis.length > 0 && (
+                <DiagnosisDT data={data.diagnosis} openModal={() => setShowModal(true)} />
+            )}
+
+            {/* Treatment Options Section */}
+            {data.treatmentOptions && data.treatmentOptions.length > 0 && (
+                <TreatmentOptionsDT data={data.treatmentOptions} />
+            )}
+
+            {/* Complications Section */}
+            {data.complications && data.complications.length > 0 && (
+                <ComplicationsDT data={data.complications} />
+            )}
+
+            {/* Prevention Section */}
+            {data.prevention && data.prevention.length > 0 && (
+                <PreventionDT data={data.prevention} />
+            )}
+
+            {/* When to Seek Medical Help Section */}
+            {data.whentoSeekMedicalCare && data.whentoSeekMedicalCare.length > 0 && (
+                <WhenToSeekMedicalHelpDT data={data.whentoSeekMedicalCare} />
+            )}
+
+            {/* Why Choose Us Section */}
+            {data.whyChooseUs && data.whyChooseUs.length > 0 && (
+                <WhyChooseUsDT data={data.whyChooseUs} />
+            )}
+
+            {/* Take First Step Section */}
+            {data.takefirstStep && data.takefirstStep.length > 0 && (
+                <TakeFirstStepDT data={data.takefirstStep} openModal={() => setShowModal(true)} />
+            )}
+
+            {/* FAQs Section */}
+            {data.faqs && data.faqs.length > 0 && (
+                <FAQDT faqs={data.faqs} />
+            )}
+
+            <BookAppointmentForm showModal={showModal} setShowModal={setShowModal} />
         </>
     );
 }

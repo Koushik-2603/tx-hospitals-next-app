@@ -66,7 +66,8 @@ export default function CenterOfExcellencePage() {
 
         if (second === "disease-and-treatment" && third) {
             setRouteType("dat-detail");
-            setUrl(third);
+            const fullUrl = `/specialities/${slug.join('/')}/`;
+            setUrl(fullUrl);
             return;
         }
 
@@ -124,7 +125,7 @@ export default function CenterOfExcellencePage() {
     if (routeType === "dat-detail") {
         return (
             <SecondaryLayout>
-                <DTDDetailsPage department={department} url={url} />
+                <DTDDetailsPage url={url} />
             </SecondaryLayout>
         );
     }

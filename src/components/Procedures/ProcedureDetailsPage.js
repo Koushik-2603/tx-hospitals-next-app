@@ -15,6 +15,7 @@ import BenefitsAndRecovery from "./BenefitsAndRecovery";
 import WhyChooseProcedure from "./WhyChooseProcedure";
 import TakeChargeOfHealth from "./TakeChargeOfHealth";
 import ProcedureFAQ from "./ProcedureFAQ";
+import CONFIG from "@/config";
 
 export default function ProcedureDetailsPage({ url }) {
     console.log("Received URL prop:", url);
@@ -29,7 +30,7 @@ export default function ProcedureDetailsPage({ url }) {
             try {
                 // Fetching from the new API with encoded slug
                 const response = await axios.get(
-                    `https://api.txhospitals.vgworld.in/new-procedures/getNewProceduresbyURL/${encodeURIComponent(url)}`
+                    `${CONFIG.API_BASE_URL}/new-procedures/getNewProceduresbyURL/${encodeURIComponent(url)}`
                 );
                 setData(response?.data[0]);
             } catch (err) {
