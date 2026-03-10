@@ -11,6 +11,7 @@ import DonorSafetySection from '@/components/LiverTransplant/DonorSafetySection'
 import WhyChooseSection from '@/components/LiverTransplant/WhyChooseSection';
 import FinalCtaSection from '@/components/LiverTransplant/FinalCtaSection';
 import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
+import TransplantSurgeons from '@/components/LiverTransplant/TransplantSurgeons';
 
 export default function LiverTransplantationSurgery() {
     // State Management
@@ -20,6 +21,55 @@ export default function LiverTransplantationSurgery() {
     const handleCall = () => {
         window.location.href = "tel:9144514459";
     };
+
+    const surgeonsData = [
+        {
+            heading: "Best Liver Transplant Surgeons in Hyderabad",
+            description: "Our expert liver transplant team delivers advanced surgical precision, comprehensive critical care support and improved transplant outcomes using state-of-the-art technology and global treatment protocols.",
+            doctors: [
+                {
+                    name: "Dr. Bharath Vattekunta",
+                    designation: "Lead Consultant – HPB & Liver Transplant Surgeon",
+                    experience: "16+ Years",
+                    location: "Banjara Hills, Hyderabad",
+                    url: "https://txhospitals.in/dr-bharath-vattekunta-best-liver-transplant-surgeon-hyderabad/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1769595011814-Dr.%20BHARATH.webp"
+                },
+                {
+                    name: "Dr. Hareesh Tarigoppula",
+                    designation: "Consultant – Liver Transplant Anaesthesia & Liver Intensive Care",
+                    experience: "8+ Years",
+                    location: "Banjara Hills, Hyderabad",
+                    url: "https://txhospitals.in/dr-hareesh-tarigoppula-liver-transplant-anaesthesia/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1772187753528-Dr.%20Hareesh%20Tarigoppula.webp"
+                },
+                {
+                    name: "Dr. Naren Mandalapu",
+                    designation: "Associate Consultant – Hepato-Pancreato-Biliary Surgery & Liver Transplantation",
+                    experience: "8+ Years",
+                    location: "Banjara Hills, Hyderabad",
+                    url: "https://txhospitals.in/dr-naren-mandalapu-hpb-liver-transplant-surgeon/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1772188836050-Dr.%20Naren%20Mandalapu.webp"
+                },
+                {
+                    name: "Dr. Shravan Reddy G",
+                    designation: "Consultant - Anaesthesia & Critical Care",
+                    experience: "8+ Years",
+                    location: "Banjara Hills, Hyderabad",
+                    url: "https://txhospitals.in/dr-shravan-reddy-g-anaesthesia-critical-care/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1772190239905-Dr.%20Shravan%20Reddy%20G.webp"
+                },
+                {
+                    name: "Dr. Vinod W. Chahare",
+                    designation: "Consultant - Medical Gastroenterologist, Hepatologist and Intervention Endoscopist",
+                    experience: "11+ Years",
+                    location: "Banjara Hills, Hyderabad",
+                    url: "https://txhospitals.in/dr-w-vinod-chahare/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1757067986860-Dr%20Vinod%20W%20Chahare.webp"
+                },
+            ]
+        }
+    ];
 
     // Data Objects
     const heroData = {
@@ -247,6 +297,10 @@ export default function LiverTransplantationSurgery() {
                     />
                     <CtaSection
                         buttons={ctaButtons}
+                    />
+                    <TransplantSurgeons
+                        data={surgeonsData}
+                        onBookNow={() => setShowModal(true)}
                     />
                     <InfrastructureSection
                         headerData={infrastructureData.header}

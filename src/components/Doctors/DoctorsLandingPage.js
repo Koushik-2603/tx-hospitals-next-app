@@ -13,6 +13,7 @@ const locations = [
     { value: "Uppal", label: "Uppal" },
     { value: "Kachiguda", label: "Kachiguda" },
     { value: "Banjara Hills", label: "Banjara Hills" },
+    { value: "Miyapur", label: "Miyapur" },
 ];
 
 export default function DoctorsLandingPage() {

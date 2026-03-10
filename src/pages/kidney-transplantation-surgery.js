@@ -11,6 +11,7 @@ import DonorSafetySection from '@/components/LiverTransplant/DonorSafetySection'
 import WhyChooseSection from '@/components/LiverTransplant/WhyChooseSection';
 import FinalCtaSection from '@/components/LiverTransplant/FinalCtaSection';
 import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
+import TransplantSurgeons from '@/components/LiverTransplant/TransplantSurgeons';
 
 export default function LiverTransplantationSurgery() {
     // State Management
@@ -20,6 +21,71 @@ export default function LiverTransplantationSurgery() {
     const handleCall = () => {
         window.location.href = "tel:9144514459";
     };
+
+    const surgeonsData = [
+        {
+            heading: "Best Kidney Transplant Doctors in Hyderabad",
+            description: "Our multidisciplinary kidney transplant team provides advanced surgical expertise, comprehensive renal care and superior transplant outcomes supported by modern technology and international treatment protocols.",
+            doctors: [
+                {
+                    name: "Dr. Bharath Kumar Reddy K",
+                    designation: "MBBS, MS, MCh (Urology)",
+                    experience: "8+ Years",
+                    location: "Kachiguda, Hyderabad",
+                    url: "https://txhospitals.in/dr-bharath-kumar-reddy-kuchur/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1757073727269-Dr%20Bharath%20Kumar%20reddy.webp"
+                },
+                {
+                    name: "Dr. Hidayathullah G",
+                    designation: "MBBS, MS, MCh (Urology)",
+                    experience: "20+ Years",
+                    location: "Banjara Hills, Hyderabad",
+                    url: "https://txhospitals.in/dr-hidayathullah-g/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1757073691030-Dr%20Hidayathullah%20G.webp"
+                },
+                {
+                    name: "Dr. N. Pavan Kumar Rao",
+                    designation: "MBBS, MD, DM (Nephrology)",
+                    experience: "21+ Years",
+                    location: "Banjara Hills, Hyderabad",
+                    url: "https://txhospitals.in/dr-n-pavan-kumar/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1741494580819-Dr.%20N.%20Pawan%20Kumar%20Rao.jpg"
+                },
+                {
+                    name: "Dr. S. Yashwanth",
+                    designation: "MBBS, MS, MCh (Urology)",
+                    experience: "10+ Years",
+                    location: "Uppal, Hyderabad",
+                    url: "https://txhospitals.in/dr-s-yashwanth/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1741493081819-Dr.%20S.%20Yashwanth.jpg"
+                },
+                {
+                    name: "Dr. S.V. Subramanyam",
+                    designation: "MBBS, MD, MISN (Nephrologist)",
+                    experience: "23+ Years",
+                    location: "Banjara Hills, Hyderabad",
+                    url: "https://txhospitals.in/dr-sv-subramanyam-banjara-hills/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1757068343213-Dr%20S%20V%20Subramanyam.webp"
+                },
+                {
+                    name: "Dr. Sashidhar Ch",
+                    designation: "MBBS, MD - General Medicine, DNB - Nephrology",
+                    experience: "21+ Years",
+                    location: "Kachiguda, Hyderabad",
+                    url: "https://txhospitals.in/dr-sashidhar-ch/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1741495559146-Dr.%20Sashidhar%20Ch.jpg"
+                },
+                {
+                    name: "Dr. V.V.A. Ch. Sekhar Reddy",
+                    designation: "MBBS, DNB (General Surgery), DrNB (Genitourinary Surgery), USI International Travel Fellow",
+                    experience: "7+ Years",
+                    location: "Banjara Hills, Hyderabad",
+                    url: "https://txhospitals.in/dr-vva-ch-sekhar-reddy-top-urologist-hyderabad/",
+                    image: "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/1759295872508-Dr.%20V.V.A.Ch.%20Sekhar%20Reddy.webp"
+                }
+            ]
+        }
+    ];
 
     const heroData = {
         highlightedTitle: "Kidney Transplantation Surgery",
@@ -244,6 +310,10 @@ export default function LiverTransplantationSurgery() {
                     />
                     <CtaSection
                         buttons={ctaButtons}
+                    />
+                    <TransplantSurgeons
+                        data={surgeonsData}
+                        onBookNow={() => setShowModal(true)}
                     />
                     <InfrastructureSection
                         headerData={infrastructureData.header}
