@@ -172,6 +172,13 @@ const COERoutes = [
   "/specialities/rheumatology/procedures/",
   "/specialities/rheumatology/technology-and-facilities/",
   "/specialities/rheumatology/our-clinical-team/",
+  "/specialities/robotic-orthopaedic-surgery-hyderabad",
+  "/specialities/robotic-gastrointestinal-surgery-in-hyderabad/",
+  "/specialities/robotic-urologic-surgery-in-hyderabad/",
+  "/specialities/robotic-gynaecology-surgery-in-hyderabad-india/",
+  "/specialities/robotic-cancer-surgery-in-hyderabad/",
+  "/liver-transplantation-surgery/",
+  "/kidney-transplantation-surgery/",
 ];
 
 const sitemapEndpoints = {
