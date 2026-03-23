@@ -2,9 +2,11 @@
 import React from "react";
 import DOMPurify from "dompurify";
 import useIsMobile from "@/hooks/useIsMobile";
+import { useRouter } from "next/router";
 
 const RoboticProcedures = ({ data }) => {
     const isMobile = useIsMobile();
+    const router = useRouter();
 
     if (!data || data.length === 0) return null;
 
@@ -70,7 +72,10 @@ const RoboticProcedures = ({ data }) => {
 
                                         {/* Button */}
                                         <div className="mt-auto">
-                                            <button className="bg-pink-700 hover:bg-pink-800 text-white px-4 py-2 rounded-lg text-[13px] font-semibold transition-colors duration-300 shadow-sm w-full">
+                                            <button
+                                                onClick={() => item.url && router.push(item.url)}
+                                                className="bg-pink-700 hover:bg-pink-800 text-white px-4 py-2 rounded-lg text-[13px] font-semibold transition-colors duration-300 shadow-sm w-full"
+                                            >
                                                 Read More
                                             </button>
                                         </div>
@@ -146,7 +151,10 @@ const RoboticProcedures = ({ data }) => {
 
                                     {/* Button */}
                                     <div className="mt-auto">
-                                        <button className="bg-pink-700 hover:bg-pink-800 text-white px-6 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 shadow-md">
+                                        <button
+                                            onClick={() => item.url && router.push(item.url)}
+                                            className="bg-pink-700 hover:bg-pink-800 text-white px-6 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 shadow-md"
+                                        >
                                             Read More
                                         </button>
                                     </div>
