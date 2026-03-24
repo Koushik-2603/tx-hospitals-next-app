@@ -13,7 +13,7 @@ import FinalCtaSection from '@/components/LiverTransplant/FinalCtaSection';
 import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 import TransplantSurgeons from '@/components/LiverTransplant/TransplantSurgeons';
 
-export default function LiverTransplantationSurgery() {
+export default function KidneyTransplantationSurgery() {
     // State Management
     const [showModal, setShowModal] = useState(false);
 
