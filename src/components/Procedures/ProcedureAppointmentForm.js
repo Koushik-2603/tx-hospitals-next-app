@@ -20,10 +20,13 @@ export default function ProcedureAppointmentForm({ heading }) {
     });
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
+        const { name, value } = e.target;
+        if (name === "mobile") {
+            const numericValue = value.replace(/\D/g, "").slice(0, 10);
+            setFormData((prev) => ({ ...prev, [name]: numericValue }));
+            return;
+        }
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleSendOtp = async () => {
@@ -129,14 +132,17 @@ export default function ProcedureAppointmentForm({ heading }) {
                                 onChange={handleChange}
                                 placeholder="Mobile Number"
                                 required
+                                inputMode="numeric"
+                                pattern="[0-9]*"
+                                maxLength={10}
                                 className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition bg-white"
                             />
                             {step === 1 && (
                                 <button
                                     type="button"
                                     onClick={handleSendOtp}
-                                    disabled={loading}
-                                    className="px-4 py-3 bg-[#C23358] text-white font-semibold rounded-lg hover:bg-pink-800 transition whitespace-nowrap disabled:opacity-50"
+                                    disabled={loading || !formData.name.trim() || formData.mobile.length !== 10}
+                                    className="px-4 py-3 bg-[#C23358] text-white font-semibold rounded-lg hover:bg-pink-800 transition whitespace-nowrap disabled:bg-gray-400 disabled:cursor-not-allowed"
                                 >
                                     {loading ? "Sending..." : "Send OTP"}
                                 </button>

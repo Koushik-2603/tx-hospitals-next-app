@@ -20,9 +20,15 @@ export default function SOBookAppointemntForm() {
     });
 
     const handleChange = (e) => {
+        const { name, value } = e.target;
+        if (name === "mobile") {
+            const numericValue = value.replace(/\D/g, "").slice(0, 10);
+            setFormData((prev) => ({ ...prev, [name]: numericValue }));
+            return;
+        }
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value,
+            [name]: value,
         });
     };
 
@@ -89,6 +95,9 @@ export default function SOBookAppointemntForm() {
                                         name="mobile"
                                         value={formData.mobile}
                                         onChange={handleChange}
+                                        inputMode="numeric"
+                                        pattern="[0-9]*"
+                                        maxLength={10}
                                         className="flex-1 rounded-full px-4 py-2 border border-gray-400 focus:outline-none"
                                     />
 
@@ -102,7 +111,8 @@ export default function SOBookAppointemntForm() {
                                                     onSuccess: () => setStep(2),
                                                 })
                                             }
-                                            className="px-5 rounded-full border border-gray-400 text-sm font-medium"
+                                            disabled={!formData.name.trim() || formData.mobile.length !== 10}
+                                            className="px-5 rounded-full border border-gray-400 text-sm font-medium disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                                         >
                                             Send OTP
                                         </button>
@@ -176,6 +186,9 @@ export default function SOBookAppointemntForm() {
                                     name="mobile"
                                     value={formData.mobile}
                                     onChange={handleChange}
+                                    inputMode="numeric"
+                                    pattern="[0-9]*"
+                                    maxLength={10}
                                     className="flex-1 rounded-full px-4 py-2 border border-gray-400 focus:outline-none"
                                 />
 
@@ -189,7 +202,8 @@ export default function SOBookAppointemntForm() {
                                                 onSuccess: () => setStep(2),
                                             })
                                         }
-                                        className="px-5 rounded-full border border-gray-400 text-sm font-medium"
+                                        disabled={!formData.name.trim() || formData.mobile.length !== 10}
+                                        className="px-5 rounded-full border border-gray-400 text-sm font-medium disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                                     >
                                         Send OTP
                                     </button>

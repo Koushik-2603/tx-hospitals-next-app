@@ -21,6 +21,13 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        if (name === "mobile") {
+            const numericValue = value.replace(/\D/g, "");
+            if (numericValue.length <= 10) {
+                setFormData(prev => ({ ...prev, [name]: numericValue }));
+            }
+            return;
+        }
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
@@ -123,6 +130,8 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
                                 value={formData.mobile}
                                 onChange={handleChange}
                                 disabled={step > 1}
+                                inputMode="numeric"
+                                pattern="[0-9]*"
                                 maxLength={10}
                                 className={`w-full ${isMobile ? 'px-4 py-3 text-sm' : 'px-6 py-4'} rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-700 transition-all text-gray-700 font-medium placeholder:text-gray-400`}
                             />
@@ -132,8 +141,8 @@ const RoboticLeadForm = ({ department = "Robotic Orthopaedic Surgery" }) => {
                         {step === 1 && (
                             <button
                                 onClick={handleGetOtp}
-                                disabled={loading}
-                                className={`bg-[#b02a44] hover:bg-[#8e2136] text-white ${isMobile ? 'px-6 py-3 text-sm' : 'px-10 py-4'} rounded-xl font-bold transition-all shadow-md disabled:opacity-50 ${isMobile ? 'w-full' : ''}`}
+                                disabled={loading || !formData.name.trim() || formData.mobile.length !== 10}
+                                className={`bg-[#b02a44] hover:bg-[#8e2136] text-white ${isMobile ? 'px-6 py-3 text-sm' : 'px-10 py-4'} rounded-xl font-bold transition-all shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed ${isMobile ? 'w-full' : ''}`}
                             >
                                 {loading ? "Sending..." : "Get OTP"}
                             </button>
