@@ -1,12 +1,10 @@
-"use client";
 import React from "react";
 import DOMPurify from "dompurify";
 import useIsMobile from "@/hooks/useIsMobile";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 const RoboticProcedures = ({ data }) => {
     const isMobile = useIsMobile();
-    const router = useRouter();
 
     if (!data || data.length === 0) return null;
 
@@ -72,12 +70,16 @@ const RoboticProcedures = ({ data }) => {
 
                                         {/* Button */}
                                         <div className="mt-auto">
-                                            <button
-                                                onClick={() => item.url && router.push(item.url)}
-                                                className="bg-pink-700 hover:bg-pink-800 text-white px-4 py-2 rounded-lg text-[13px] font-semibold transition-colors duration-300 shadow-sm w-full"
+                                            <Link
+                                                href={item.url || "#"}
+                                                className="bg-pink-700 hover:bg-pink-800 text-white px-4 py-2 rounded-lg text-[13px] font-semibold transition-colors duration-300 shadow-sm w-full block text-center"
+                                                onClick={(e) => {
+                                                    if (!item.url) e.preventDefault();
+                                                    console.log("Navigating to:", item.url);
+                                                }}
                                             >
                                                 Read More
-                                            </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -151,12 +153,16 @@ const RoboticProcedures = ({ data }) => {
 
                                     {/* Button */}
                                     <div className="mt-auto">
-                                        <button
-                                            onClick={() => item.url && router.push(item.url)}
-                                            className="bg-pink-700 hover:bg-pink-800 text-white px-6 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 shadow-md"
+                                        <Link
+                                            href={item.url || "#"}
+                                            className="bg-pink-700 hover:bg-pink-800 text-white px-6 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 shadow-md inline-block text-center"
+                                            onClick={(e) => {
+                                                if (!item.url) e.preventDefault();
+                                                console.log("Navigating to:", item.url);
+                                            }}
                                         >
                                             Read More
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
