@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 const WhatIsProcedure = ({ data }) => {
     if (!data || data.length === 0) return null;
@@ -17,7 +17,7 @@ const WhatIsProcedure = ({ data }) => {
                     <div
                         className="text-gray-700 text-base md:text-lg leading-relaxed space-y-4"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.description)
+                            __html: sanitize(content.description)
                         }}
                     />
                 </div>

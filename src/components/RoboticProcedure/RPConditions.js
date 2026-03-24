@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RPConditions = ({ data, onBookNow }) => {
@@ -28,7 +28,7 @@ const RPConditions = ({ data, onBookNow }) => {
                     {topDescription && (
                         <div
                             className="text-gray-800 text-[16px] md:text-[18px] max-w-4xl mx-auto font-normal leading-relaxed"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topDescription) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(topDescription) }}
                         />
                     )}
                 </div>
@@ -62,7 +62,7 @@ const RPConditions = ({ data, onBookNow }) => {
                     <div className="bg-[#fff1f3] rounded-[10px] p-8 text-center flex flex-col items-center gap-5">
                         <div
                             className="text-gray-900 text-[15px] md:text-[17px] font-bold leading-relaxed max-w-5xl"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(bottomDescription) }}
                         />
                         <button
                             onClick={onBookNow}

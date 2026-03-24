@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RoboticBenefits = ({ data }) => {
@@ -51,7 +51,7 @@ const RoboticBenefits = ({ data }) => {
                     {/* Footer Text */}
                     <div
                         className="text-center text-gray-900 text-[13px] font-normal leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(bottomDescription) }}
                     />
                 </div>
             </section>
@@ -99,7 +99,7 @@ const RoboticBenefits = ({ data }) => {
                 {/* Footer Text */}
                 <div
                     className="text-center mt-12 text-gray-700 text-base md:text-lg font-medium max-w-5xl mx-auto leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                    dangerouslySetInnerHTML={{ __html: sanitize(bottomDescription) }}
                 />
             </div>
         </section>

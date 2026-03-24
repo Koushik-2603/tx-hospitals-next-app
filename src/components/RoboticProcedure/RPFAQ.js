@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RPFAQ = ({ data }) => {
@@ -51,7 +51,7 @@ const RPFAQ = ({ data }) => {
                                         >
                                             <div
                                                 className="p-7 text-gray-700 text-sm md:text-base leading-relaxed bg-white border-t border-pink-50 prose prose-pink max-w-none"
-                                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(faq.answer) }}
+                                                dangerouslySetInnerHTML={{ __html: sanitize(faq.answer) }}
                                             />
                                         </motion.div>
                                     )}

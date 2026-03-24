@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const CheckIcon = () => (
@@ -35,7 +35,7 @@ const RPBenefits = ({ data }) => {
                 {topDescription && (
                     <div
                         className="text-pink-100 text-[13px] text-center leading-relaxed mb-5 [&_p]:mb-0 [&_strong]:font-semibold [&_strong]:text-white"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topDescription) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(topDescription) }}
                     />
                 )}
 
@@ -53,7 +53,7 @@ const RPBenefits = ({ data }) => {
                 {bottomDescription && (
                     <div
                         className="text-pink-100 text-[12px] text-center leading-relaxed [&_p]:mb-0 [&_strong]:font-semibold [&_strong]:text-white"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(bottomDescription) }}
                     />
                 )}
             </section>
@@ -73,7 +73,7 @@ const RPBenefits = ({ data }) => {
                 {topDescription && (
                     <div
                         className="text-pink-100 text-base text-center leading-relaxed mb-8 max-w-3xl mx-auto [&_p]:mb-0 [&_strong]:font-semibold [&_strong]:text-white"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topDescription) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(topDescription) }}
                     />
                 )}
 
@@ -91,7 +91,7 @@ const RPBenefits = ({ data }) => {
                 {bottomDescription && (
                     <div
                         className="text-pink-100 text-sm md:text-base text-center leading-relaxed max-w-4xl mx-auto [&_p]:mb-0 [&_strong]:font-semibold [&_strong]:text-white"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(bottomDescription) }}
                     />
                 )}
             </div>

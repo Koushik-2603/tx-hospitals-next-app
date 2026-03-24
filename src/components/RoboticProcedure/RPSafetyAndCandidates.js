@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RPSafetyAndCandidates = ({ safetyData, candidateData }) => {
@@ -31,7 +31,7 @@ const RPSafetyAndCandidates = ({ safetyData, candidateData }) => {
                     [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_ul]:mb-6
                     [&_p]:mb-4 last:[&_p]:mb-0
                     [&_strong]:font-bold"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.description) }}
+                    dangerouslySetInnerHTML={{ __html: sanitize(data.description) }}
                 />
             </div>
         );

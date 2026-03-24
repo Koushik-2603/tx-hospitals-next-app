@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RPSafety = ({ data }) => {
@@ -32,7 +32,7 @@ const RPSafety = ({ data }) => {
                         <div
                             className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-10 text-white text-[16px] md:text-[18px] leading-relaxed 
                             [&_p]:mb-6 last:[&_p]:mb-0 [&_strong]:text-pink-100 [&_ul]:space-y-4 [&_li]:flex [&_li]:items-center [&_li]:gap-4 [&_li:before]:content-['🛡️']"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(description) }}
                         />
                     </div>
                 </div>

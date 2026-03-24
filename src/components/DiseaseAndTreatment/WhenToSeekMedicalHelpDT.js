@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 const WhenToSeekMedicalHelpDT = ({ data }) => {
     if (!data || data.length === 0) return null;
@@ -33,7 +33,7 @@ const WhenToSeekMedicalHelpDT = ({ data }) => {
                 <div
                     className="text-gray-700 text-center text-base md:text-lg mb-10 leading-relaxed max-w-4xl mx-auto"
                     dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(content.description),
+                        __html: sanitize(content.description),
                     }}
                 />
             )}

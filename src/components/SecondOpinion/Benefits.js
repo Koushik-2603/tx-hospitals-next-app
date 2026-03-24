@@ -1,6 +1,6 @@
 
 import useIsMobile from "@/hooks/useIsMobile";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 export default function Benefits({ data }) {
     const isMobile = useIsMobile();
@@ -30,7 +30,7 @@ export default function Benefits({ data }) {
                     [&_li]:pl-1
                     [&_strong]:font-semibold"
                     dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(cleanDescription)
+                        __html: sanitize(cleanDescription)
                     }}
                 />
             </div>

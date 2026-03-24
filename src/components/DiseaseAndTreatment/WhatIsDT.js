@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 const WhatIsDT = ({ data }) => {
     if (!data || data.length === 0) return null;
@@ -29,7 +29,7 @@ const WhatIsDT = ({ data }) => {
                     <div
                         className="text-gray-700 text-base md:text-lg leading-relaxed space-y-4 prose prose-a:text-[#C23358] prose-a:font-semibold prose-strong:text-gray-900"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.description),
+                            __html: sanitize(content.description),
                         }}
                     />
                 </div>

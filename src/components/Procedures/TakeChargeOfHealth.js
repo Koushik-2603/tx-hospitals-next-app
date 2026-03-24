@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaPhoneAlt } from "react-icons/fa";
 
 const TakeChargeOfHealth = ({ data, openModal }) => {
@@ -20,7 +20,7 @@ const TakeChargeOfHealth = ({ data, openModal }) => {
                     <div
                         className="text-white/90 text-base md:text-lg leading-relaxed mb-2 max-w-4xl mx-auto space-y-4"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.description)
+                            __html: sanitize(content.description)
                         }}
                     />
                 )}

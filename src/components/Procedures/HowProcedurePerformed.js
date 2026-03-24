@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaCheckCircle, FaPhoneAlt } from "react-icons/fa";
 
 const HowProcedurePerformed = ({ data, openModal, durationData }) => {
@@ -21,7 +21,7 @@ const HowProcedurePerformed = ({ data, openModal, durationData }) => {
                     <div
                         className="text-center text-white/90 text-lg mb-12"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.description)
+                            __html: sanitize(content.description)
                         }}
                     />
                 )}
@@ -76,7 +76,7 @@ const HowProcedurePerformed = ({ data, openModal, durationData }) => {
                             <div
                                 className="font-medium text-gray-700"
                                 dangerouslySetInnerHTML={{
-                                    __html: DOMPurify.sanitize(durationContent.description)
+                                    __html: sanitize(durationContent.description)
                                 }}
                             />
                         ) : (

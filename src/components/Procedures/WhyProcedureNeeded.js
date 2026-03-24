@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaCheckCircle, FaCheck } from "react-icons/fa";
 
 const WhyProcedureNeeded = ({ whyData, conditionsData, openModal }) => {
@@ -25,7 +25,7 @@ const WhyProcedureNeeded = ({ whyData, conditionsData, openModal }) => {
                                 <div
                                     className="text-gray-700 text-base md:text-lg mb-3 leading-relaxed"
                                     dangerouslySetInnerHTML={{
-                                        __html: DOMPurify.sanitize(whyContent.topDescription)
+                                        __html: sanitize(whyContent.topDescription)
                                     }}
                                 />
                             )}
@@ -47,7 +47,7 @@ const WhyProcedureNeeded = ({ whyData, conditionsData, openModal }) => {
                                     <div
                                         className="text-gray-800 text-base mb-6 leading-relaxed font-medium"
                                         dangerouslySetInnerHTML={{
-                                            __html: DOMPurify.sanitize(whyContent.bottomDescription)
+                                            __html: sanitize(whyContent.bottomDescription)
                                         }}
                                     />
                                 )}
@@ -75,7 +75,7 @@ const WhyProcedureNeeded = ({ whyData, conditionsData, openModal }) => {
                                 <div
                                     className="text-gray-700 text-base md:text-lg mb-6 leading-relaxed"
                                     dangerouslySetInnerHTML={{
-                                        __html: DOMPurify.sanitize(conditionsContent.topDescription)
+                                        __html: sanitize(conditionsContent.topDescription)
                                     }}
                                 />
                             )}
@@ -95,7 +95,7 @@ const WhyProcedureNeeded = ({ whyData, conditionsData, openModal }) => {
                                 <div
                                     className="text-gray-700 text-base leading-relaxed mt-6"
                                     dangerouslySetInnerHTML={{
-                                        __html: DOMPurify.sanitize(conditionsContent.bottomDescription)
+                                        __html: sanitize(conditionsContent.bottomDescription)
                                     }}
                                 />
                             )}

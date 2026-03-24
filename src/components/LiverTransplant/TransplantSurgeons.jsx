@@ -1,7 +1,6 @@
-"use client";
 import React, { useRef, useState } from "react";
 import { FaChevronUp, FaChevronDown, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const TransplantSurgeons = ({ data, onBookNow }) => {
@@ -57,7 +56,7 @@ const TransplantSurgeons = ({ data, onBookNow }) => {
                         </h2>
                         <div
                             className="text-white text-[13px] leading-relaxed font-normal opacity-90"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(description) }}
                         />
                     </div>
 
@@ -163,7 +162,7 @@ const TransplantSurgeons = ({ data, onBookNow }) => {
                     </h2>
                     <div
                         className="text-pink-100 text-base md:text-lg max-w-4xl mx-auto opacity-90"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(description) }}
                     />
                 </div>
 

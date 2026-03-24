@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RPWhyChoose = ({ data }) => {
@@ -27,7 +27,7 @@ const RPWhyChoose = ({ data }) => {
                         {topDescription && (
                             <div
                                 className="text-gray-800 text-[15px] md:text-[17px] mt-4 max-w-4xl mx-auto leading-relaxed font-normal"
-                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topDescription) }}
+                                dangerouslySetInnerHTML={{ __html: sanitize(topDescription) }}
                             />
                         )}
                     </div>
@@ -55,7 +55,7 @@ const RPWhyChoose = ({ data }) => {
                     {bottomDescription && (
                         <div
                             className="text-center text-gray-900 text-[15px] md:text-[18px] font-bold leading-relaxed max-w-5xl mx-auto [&_strong]:text-[#b02a44] [&_strong]:font-bold"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(bottomDescription) }}
                         />
                     )}
                 </div>

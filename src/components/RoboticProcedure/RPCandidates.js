@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RPCandidates = ({ data }) => {
@@ -40,7 +40,7 @@ const RPCandidates = ({ data }) => {
                             {/* Manual hack for list bullets since API returns <ul> */}
                             <div
                                 dangerouslySetInnerHTML={{
-                                    __html: DOMPurify.sanitize(description).replace(/<li>/g, `<li><span class="text-[#b02a44] font-bold text-xl leading-none mt-1">✓</span><span>`)
+                                    __html: sanitize(description).replace(/<li>/g, `<li><span class="text-[#b02a44] font-bold text-xl leading-none mt-1">✓</span><span>`)
                                         .replace(/<\/li>/g, `</span></li>`)
                                 }}
                             />

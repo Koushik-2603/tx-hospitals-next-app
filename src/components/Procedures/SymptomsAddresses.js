@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 const SymptomsAddresses = ({ data }) => {
     if (!data || data.length === 0) return null;
@@ -31,7 +31,7 @@ const SymptomsAddresses = ({ data }) => {
                     <div
                         className="text-gray-700 text-base md:text-lg leading-relaxed space-y-4"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(formatDescription(content.description))
+                            __html: sanitize(formatDescription(content.description))
                         }}
                     />
                 </div>

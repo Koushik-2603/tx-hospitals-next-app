@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaShieldAlt } from "react-icons/fa";
 
 const DTHeroSection = ({ dtTitle, dtdescription, onSchedule, onLearnMore }) => {
@@ -21,7 +21,7 @@ const DTHeroSection = ({ dtTitle, dtdescription, onSchedule, onLearnMore }) => {
                 <div
                     className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 space-y-4"
                     dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(dtdescription),
+                        __html: sanitize(dtdescription),
                     }}
                 />
             )}

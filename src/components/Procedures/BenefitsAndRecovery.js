@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaCheckCircle, FaRegDotCircle } from "react-icons/fa";
 
 const BenefitsAndRecovery = ({ benefitsData, recoveryData }) => {
@@ -23,7 +23,7 @@ const BenefitsAndRecovery = ({ benefitsData, recoveryData }) => {
                             <div
                                 className="text-gray-700 text-base mb-3"
                                 dangerouslySetInnerHTML={{
-                                    __html: DOMPurify.sanitize(benefits.topDescription)
+                                    __html: sanitize(benefits.topDescription)
                                 }}
                             />
                         )}
@@ -50,7 +50,7 @@ const BenefitsAndRecovery = ({ benefitsData, recoveryData }) => {
                             <div
                                 className="text-gray-700 text-base mb-3"
                                 dangerouslySetInnerHTML={{
-                                    __html: DOMPurify.sanitize(recovery.topDescription)
+                                    __html: sanitize(recovery.topDescription)
                                 }}
                             />
                         )}
@@ -74,7 +74,7 @@ const BenefitsAndRecovery = ({ benefitsData, recoveryData }) => {
                     <div
                         className="text-gray-800 text-base font-medium leading-relaxed"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(recovery.bottomDescription)
+                            __html: sanitize(recovery.bottomDescription)
                         }}
                     />
                 </div>

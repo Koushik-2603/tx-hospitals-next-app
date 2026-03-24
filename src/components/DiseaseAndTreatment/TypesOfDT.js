@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 const TypesOfDT = ({ data, openModal }) => {
     if (!data || data.length === 0) return null;
@@ -31,7 +31,7 @@ const TypesOfDT = ({ data, openModal }) => {
                 <div
                     className="text-gray-700 text-center text-base md:text-lg mb-8 leading-relaxed max-w-4xl mx-auto"
                     dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(content.topDescription),
+                        __html: sanitize(content.topDescription),
                     }}
                 />
             )}
@@ -60,7 +60,7 @@ const TypesOfDT = ({ data, openModal }) => {
                 <div
                     className="text-gray-700 text-center text-base leading-relaxed max-w-4xl mx-auto [&_strong]:text-[#C23358] [&_a]:text-[#C23358] [&_a]:font-semibold [&_a]:underline"
                     dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(content.bottomDescription),
+                        __html: sanitize(content.bottomDescription),
                     }}
                 />
             )}

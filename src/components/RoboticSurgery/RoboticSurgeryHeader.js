@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import useIsMobile from "@/hooks/useIsMobile";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 const RoboticSurgeryHeader = ({ data, onBookNow }) => {
     const isMobile = useIsMobile();
@@ -52,7 +52,7 @@ const RoboticSurgeryHeader = ({ data, onBookNow }) => {
                     <div
                         className="text-gray-800 text-[15px] leading-relaxed font-normal mb-5"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(rsDescription)
+                            __html: sanitize(rsDescription)
                         }}
                     />
 
@@ -109,7 +109,7 @@ const RoboticSurgeryHeader = ({ data, onBookNow }) => {
                     <div
                         className="text-gray-800 text-lg mb-8 leading-relaxed font-medium"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(rsDescription)
+                            __html: sanitize(rsDescription)
                         }}
                     />
 

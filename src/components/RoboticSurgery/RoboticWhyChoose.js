@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaRegCheckCircle } from "react-icons/fa";
 import useIsMobile from "@/hooks/useIsMobile";
 
@@ -22,7 +22,7 @@ const RoboticWhyChoose = ({ data }) => {
                         </h2>
                         <div
                             className="text-gray-900 text-[13px] font-normal"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topDescription) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(topDescription) }}
                         />
                     </div>
 
@@ -49,7 +49,7 @@ const RoboticWhyChoose = ({ data }) => {
                     {/* Footer Description */}
                     <div
                         className="text-center text-gray-900 text-[13px] font-normal leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(bottomDescription) }}
                     />
                 </div>
             </section>
@@ -67,7 +67,7 @@ const RoboticWhyChoose = ({ data }) => {
                     </h2>
                     <div
                         className="text-gray-700 text-base md:text-lg font-medium max-w-4xl mx-auto"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topDescription) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(topDescription) }}
                     />
                 </div>
 
@@ -94,7 +94,7 @@ const RoboticWhyChoose = ({ data }) => {
                 {/* Footer Description */}
                 <div
                     className="text-center mt-12 text-gray-700 text-base md:text-lg font-medium max-w-6xl mx-auto leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bottomDescription) }}
+                    dangerouslySetInnerHTML={{ __html: sanitize(bottomDescription) }}
                 />
             </div>
         </section>

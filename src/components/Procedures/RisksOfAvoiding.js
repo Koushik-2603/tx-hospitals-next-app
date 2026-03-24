@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 const RisksOfAvoiding = ({ data }) => {
     if (!data || data.length === 0) return null;
@@ -21,7 +21,7 @@ const RisksOfAvoiding = ({ data }) => {
                 <div
                     className="text-gray-700 text-base md:text-lg mb-6 leading-relaxed"
                     dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(content.topDescription)
+                        __html: sanitize(content.topDescription)
                     }}
                 />
             )}
@@ -43,7 +43,7 @@ const RisksOfAvoiding = ({ data }) => {
                 <div
                     className="text-gray-700 text-base leading-relaxed"
                     dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(content.bottomDescription)
+                        __html: sanitize(content.bottomDescription)
                     }}
                 />
             )}

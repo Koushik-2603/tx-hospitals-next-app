@@ -9,7 +9,7 @@ import RiskOfDelay from "@/components/SecondOpinion/RiskOfDelay";
 import OtpForm from "@/components/SecondOpinion/OtpForm";
 import WhyChoose from "@/components/SecondOpinion/WhyChoose";
 import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import FAQSchema from "@/utils/FAQSchema";
 import { ChevronUp } from "lucide-react";
 import { useState } from "react";
@@ -119,7 +119,7 @@ export default function SODetailsPage({ surgeryData }) {
                             <p
                                 className="text-sm text-gray-700 mb-3 leading-relaxed"
                                 dangerouslySetInnerHTML={{
-                                    __html: DOMPurify.sanitize(surgeryData?.bookingField[0]?.description),
+                                    __html: sanitize(surgeryData?.bookingField[0]?.description),
                                 }}
                             />
                             <div className="flex justify-center items-center gap-2 mb-2">
@@ -169,7 +169,7 @@ export default function SODetailsPage({ surgeryData }) {
                                                 <div className="px-3 pb-2 text-gray-700 text-sm leading-relaxed">
                                                     <div
                                                         dangerouslySetInnerHTML={{
-                                                            __html: DOMPurify.sanitize(
+                                                            __html: sanitize(
                                                                 faq.description || faq.answer
                                                             ),
                                                         }}
@@ -258,7 +258,7 @@ export default function SODetailsPage({ surgeryData }) {
                             <p
                                 className="text-base text-gray-700 mb-6 leading-relaxed"
                                 dangerouslySetInnerHTML={{
-                                    __html: DOMPurify.sanitize(surgeryData?.bookingField[0]?.description),
+                                    __html: sanitize(surgeryData?.bookingField[0]?.description),
                                 }}
                             />
                             <div className="flex justify-center items-center gap-12 mb-4">
@@ -308,7 +308,7 @@ export default function SODetailsPage({ surgeryData }) {
                                                 <div className="px-6 pb-6 text-gray-700 text-base leading-relaxed">
                                                     <div
                                                         dangerouslySetInnerHTML={{
-                                                            __html: DOMPurify.sanitize(
+                                                            __html: sanitize(
                                                                 faq.description || faq.answer
                                                             ),
                                                         }}

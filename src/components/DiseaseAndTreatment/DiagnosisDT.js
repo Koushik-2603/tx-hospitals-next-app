@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaPhoneAlt } from "react-icons/fa";
 
 const DiagnosisDT = ({ data, openModal }) => {
@@ -22,7 +22,7 @@ const DiagnosisDT = ({ data, openModal }) => {
                     <div
                         className="text-white text-center text-base md:text-lg mb-8 leading-relaxed max-w-5xl mx-auto opacity-90"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.topDescription),
+                            __html: sanitize(content.topDescription),
                         }}
                     />
                 )}
@@ -65,7 +65,7 @@ const DiagnosisDT = ({ data, openModal }) => {
                         <div
                             className="text-gray-900 text-sm md:text-base leading-relaxed max-w-3xl [&_strong]:text-[#C23358] [&_a]:text-[#C23358] [&_a]:font-semibold [&_a]:underline text-center lg:text-left"
                             dangerouslySetInnerHTML={{
-                                __html: DOMPurify.sanitize(content.bottomDescription),
+                                __html: sanitize(content.bottomDescription),
                             }}
                         />
                         <div className="flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">

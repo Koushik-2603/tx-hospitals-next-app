@@ -1,6 +1,6 @@
 import useIsMobile from "@/hooks/useIsMobile";
 import Image from "next/image";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 export default function WhySecondOpinion({ data }) {
 
@@ -40,7 +40,7 @@ export default function WhySecondOpinion({ data }) {
                             <div
                                 className="text-xs text-gray-900 leading-relaxed"
                                 dangerouslySetInnerHTML={{
-                                    __html: DOMPurify.sanitize(item),
+                                    __html: sanitize(item),
                                 }}
                             />
                         </div>
@@ -77,7 +77,7 @@ export default function WhySecondOpinion({ data }) {
                                     <div
                                         className="text-lg text-gray-900 leading-relaxed"
                                         dangerouslySetInnerHTML={{
-                                            __html: DOMPurify.sanitize(item),
+                                            __html: sanitize(item),
                                         }}
                                     />
                                 </div>

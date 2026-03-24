@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { ChevronUp } from "lucide-react";
 
 const ProcedureFAQ = ({ faqs }) => {
@@ -42,7 +42,7 @@ const ProcedureFAQ = ({ faqs }) => {
                                 <div className="px-4 pb-4 md:px-6 md:pb-6 text-gray-700 text-sm md:text-base leading-relaxed border-t border-pink-100 mt-2 pt-2">
                                     <div
                                         dangerouslySetInnerHTML={{
-                                            __html: DOMPurify.sanitize(
+                                            __html: sanitize(
                                                 faq.description || faq.answer
                                             ),
                                         }}

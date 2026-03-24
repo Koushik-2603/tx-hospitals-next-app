@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const WhatIsRoboticSurgery = ({ data }) => {
@@ -49,7 +49,7 @@ const WhatIsRoboticSurgery = ({ data }) => {
                             <div
                                 key={index}
                                 className="font-normal"
-                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(para) }}
+                                dangerouslySetInnerHTML={{ __html: sanitize(para) }}
                             />
                         ))}
 
@@ -58,7 +58,7 @@ const WhatIsRoboticSurgery = ({ data }) => {
                             <div className="mt-6 bg-[#f9ebf0] border border-pink-100 rounded-[20px] p-5 shadow-sm">
                                 <div
                                     className="text-gray-900 text-[15px] leading-relaxed font-normal"
-                                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanParagraphs[2]) }}
+                                    dangerouslySetInnerHTML={{ __html: sanitize(cleanParagraphs[2]) }}
                                 />
                             </div>
                         )}
@@ -82,7 +82,7 @@ const WhatIsRoboticSurgery = ({ data }) => {
                     {cleanParagraphs.slice(0, 2).map((para, index) => (
                         <div
                             key={index}
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(para) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(para) }}
                         />
                     ))}
 
@@ -91,7 +91,7 @@ const WhatIsRoboticSurgery = ({ data }) => {
                         <div className="mt-8 bg-[#f9ebf0] border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm">
                             <div
                                 className="text-gray-800 text-base md:text-lg leading-relaxed font-medium"
-                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanParagraphs[2]) }}
+                                dangerouslySetInnerHTML={{ __html: sanitize(cleanParagraphs[2]) }}
                             />
                         </div>
                     )}

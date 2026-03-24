@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaPhoneAlt } from "react-icons/fa";
 
 const TypesOfProcedures = ({ data, openModal }) => {
@@ -23,7 +23,7 @@ const TypesOfProcedures = ({ data, openModal }) => {
                 <div
                     className="text-gray-700 text-center text-base md:text-lg mb-5 leading-relaxed max-w-4xl mx-auto"
                     dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(content.topDescription)
+                        __html: sanitize(content.topDescription)
                     }}
                 />
             )}
@@ -45,7 +45,7 @@ const TypesOfProcedures = ({ data, openModal }) => {
                 <div
                     className="text-gray-700 text-center text-base leading-relaxed mb-6 max-w-5xl mx-auto"
                     dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(content.bottomDescription)
+                        __html: sanitize(content.bottomDescription)
                     }}
                 />
             )}

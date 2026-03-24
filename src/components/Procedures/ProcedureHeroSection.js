@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaShieldAlt } from "react-icons/fa";
 
 const ProcedureHeroSection = ({ pHeroSection }) => {
@@ -20,7 +20,7 @@ const ProcedureHeroSection = ({ pHeroSection }) => {
             <div
                 className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 space-y-4"
                 dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(pHeroSection.description)
+                    __html: sanitize(pHeroSection.description)
                 }}
             />
 

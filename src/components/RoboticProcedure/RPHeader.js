@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RPHeader = ({ data, onBookNow }) => {
@@ -64,7 +64,7 @@ const RPHeader = ({ data, onBookNow }) => {
                     <div
                         className="text-gray-700 text-[14px] leading-relaxed font-normal mb-5"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(rpDescription),
+                            __html: sanitize(rpDescription),
                         }}
                     />
 
@@ -126,7 +126,7 @@ const RPHeader = ({ data, onBookNow }) => {
                     <div
                         className="text-gray-200 text-base md:text-lg leading-relaxed mb-8 font-normal"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(rpDescription),
+                            __html: sanitize(rpDescription),
                         }}
                     />
 

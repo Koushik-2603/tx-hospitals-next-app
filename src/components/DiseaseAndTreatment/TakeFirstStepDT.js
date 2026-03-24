@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaPhoneAlt } from "react-icons/fa";
 
 const TakeFirstStepDT = ({ data, openModal }) => {
@@ -22,7 +22,7 @@ const TakeFirstStepDT = ({ data, openModal }) => {
                     <div
                         className="text-white text-base md:text-lg mb-8 leading-relaxed max-w-5xl mx-auto opacity-95 [&_a]:text-white [&_a]:underline [&_a]:font-bold [&_strong]:font-bold"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.description),
+                            __html: sanitize(content.description),
                         }}
                     />
                 )}

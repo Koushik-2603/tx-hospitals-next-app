@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaRegCheckCircle } from "react-icons/fa";
 
 const TreatmentOptionsDT = ({ data }) => {
@@ -36,7 +36,7 @@ const TreatmentOptionsDT = ({ data }) => {
                     <div
                         className="text-gray-700 text-center text-base md:text-lg mb-8 leading-relaxed max-w-5xl mx-auto"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.topDescription),
+                            __html: sanitize(content.topDescription),
                         }}
                     />
                 )}
@@ -89,7 +89,7 @@ const TreatmentOptionsDT = ({ data }) => {
                     <div
                         className="text-gray-700 text-center text-sm md:text-base leading-relaxed max-w-4xl mx-auto [&_strong]:text-[#C23358] [&_a]:text-[#C23358] [&_a]:font-semibold [&_a]:underline mt-8"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.bottomDescription),
+                            __html: sanitize(content.bottomDescription),
                         }}
                     />
                 )}

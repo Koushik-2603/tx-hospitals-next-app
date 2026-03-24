@@ -1,5 +1,5 @@
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 
 const WhyChooseUsDT = ({ data }) => {
     if (!data || data.length === 0) return null;
@@ -50,7 +50,7 @@ const WhyChooseUsDT = ({ data }) => {
                     <div
                         className="text-gray-700 text-center text-base md:text-lg mb-10 leading-relaxed max-w-5xl mx-auto [&_strong]:text-[#C23358] [&_strong]:font-semibold [&_a]:text-[#C23358] [&_a]:font-semibold [&_a]:underline"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.topDescription),
+                            __html: sanitize(content.topDescription),
                         }}
                     />
                 )}
@@ -79,7 +79,7 @@ const WhyChooseUsDT = ({ data }) => {
                     <div
                         className="text-gray-800 text-center text-base md:text-lg font-medium leading-relaxed max-w-4xl mx-auto"
                         dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(content.bottomDescription),
+                            __html: sanitize(content.bottomDescription),
                         }}
                     />
                 )}

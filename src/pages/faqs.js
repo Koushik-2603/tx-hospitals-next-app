@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Head from "next/head";
 import SecondaryLayout from '@/components/Layouts/SecondaryLayout';
 import useIsMobile from '@/hooks/useIsMobile';
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { faqs } from '@/utils/faqsData';
 import FAQSchema from '@/utils/FAQSchema';
@@ -53,7 +53,7 @@ export default function FAQs() {
                                             <div className="p-2 text-black">
                                                 <p
                                                     dangerouslySetInnerHTML={{
-                                                        __html: DOMPurify.sanitize(faq.answer.replace(/<ul>/g, '<ul class="list-disc ml-6">').replace(/<ol>/g, '<ol class="list-decimal ml-6">'))
+                                                        __html: sanitize(faq.answer.replace(/<ul>/g, '<ul class="list-disc ml-6">').replace(/<ol>/g, '<ol class="list-decimal ml-6">'))
                                                     }}
                                                 />
                                             </div>
@@ -93,7 +93,7 @@ export default function FAQs() {
                                             <div className="p-4 text-black">
                                                 <p
                                                     dangerouslySetInnerHTML={{
-                                                        __html: DOMPurify.sanitize(faq.answer.replace(/<ul>/g, '<ul class="list-disc ml-6">').replace(/<ol>/g, '<ol class="list-decimal ml-6">'))
+                                                        __html: sanitize(faq.answer.replace(/<ul>/g, '<ul class="list-disc ml-6">').replace(/<ol>/g, '<ol class="list-decimal ml-6">'))
                                                     }}
                                                 />
                                             </div>

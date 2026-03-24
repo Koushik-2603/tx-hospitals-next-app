@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RoboticRecovery = ({ data }) => {
@@ -58,7 +58,7 @@ const RoboticRecovery = ({ data }) => {
                         </h2>
                         <div
                             className="text-gray-900 text-[13px] font-normal"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanTopDescription) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(cleanTopDescription) }}
                         />
                     </div>
 
@@ -102,7 +102,7 @@ const RoboticRecovery = ({ data }) => {
                     {/* Footer Description */}
                     <div
                         className="text-center text-gray-900 text-[13px] font-normal leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanBottomDescription) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(cleanBottomDescription) }}
                     />
                 </div>
             </section>
@@ -120,7 +120,7 @@ const RoboticRecovery = ({ data }) => {
                     </h2>
                     <div
                         className="text-gray-700 text-base md:text-lg max-w-4xl mx-auto"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanTopDescription) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(cleanTopDescription) }}
                     />
                 </div>
 
@@ -172,7 +172,7 @@ const RoboticRecovery = ({ data }) => {
                 {/* Footer Description */}
                 <div
                     className="text-center mt-12 text-gray-700 text-base md:text-lg font-medium max-w-5xl mx-auto leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(cleanBottomDescription) }}
+                    dangerouslySetInnerHTML={{ __html: sanitize(cleanBottomDescription) }}
                 />
             </div>
         </section>

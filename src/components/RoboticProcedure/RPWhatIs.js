@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 import axios from "axios";
 
@@ -50,7 +50,7 @@ const RPWhatIs = ({ data }) => {
                 {/* Description */}
                 <div
                     className="text-gray-700 text-[14px] leading-relaxed mb-6 [&_p]:mb-3"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+                    dangerouslySetInnerHTML={{ __html: sanitize(description) }}
                 />
 
                 {/* Booking Card */}
@@ -109,7 +109,7 @@ const RPWhatIs = ({ data }) => {
                         </h2>
                         <div
                             className="text-gray-700 text-base md:text-[17px] leading-relaxed [&_p]:mb-4"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(description) }}
                         />
                     </div>
 

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RPBooking = ({ data, onBookNow }) => {
@@ -19,7 +19,7 @@ const RPBooking = ({ data, onBookNow }) => {
                 {description && (
                     <div
                         className="text-white/90 text-[16px] md:text-[20px] max-w-6xl mx-auto leading-relaxed mb-10 font-normal space-y-4"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(description) }}
                     />
                 )}
 

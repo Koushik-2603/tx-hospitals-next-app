@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DOMPurify from "dompurify";
+import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const RoboticFirstStep = ({ data, onBookNow }) => {
@@ -28,7 +28,7 @@ const RoboticFirstStep = ({ data, onBookNow }) => {
                             </h2>
                             <div
                                 className="text-white text-[13px] mb-6 opacity-95 leading-relaxed"
-                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+                                dangerouslySetInnerHTML={{ __html: sanitize(description) }}
                             />
 
                             {/* Buttons */}
@@ -80,7 +80,7 @@ const RoboticFirstStep = ({ data, onBookNow }) => {
                         </h2>
                         <div
                             className="text-pink-50 text-base md:text-lg max-w-4xl mx-auto mb-8 opacity-90 leading-relaxed"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+                            dangerouslySetInnerHTML={{ __html: sanitize(description) }}
                         />
 
                         {/* Buttons */}
