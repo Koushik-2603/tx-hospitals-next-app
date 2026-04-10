@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiSearch } from "react-icons/fi";
 import HospitalNavbar from "@/components/HomePage/HospitalNavbar";
 import useIsMobile from "@/hooks/useIsMobile";
 import { useRouter } from "next/router";
@@ -18,6 +18,13 @@ export default function HospitalHero() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [forceSecondary, setForceSecondary] = useState(false);
     const isMobile = useIsMobile();
+    const [heroSearch, setHeroSearch] = useState("");
+
+    const handleHeroSearch = (e) => {
+        e?.preventDefault();
+        if (!heroSearch.trim()) return;
+        router.push(`/search?q=${encodeURIComponent(heroSearch.trim())}`);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -91,20 +98,23 @@ export default function HospitalHero() {
                             />
 
                             <div className="mt-auto flex flex-col items-center gap-6 w-full pb-12">
-                                <div className="flex flex-row items-center justify-center gap-4 w-full max-w-4xl mx-auto">
+                                <form onSubmit={handleHeroSearch} className="flex flex-row items-center justify-center gap-4 w-full max-w-4xl mx-auto">
                                     <div className="flex flex-1 relative">
                                         <input
                                             type="search"
+                                            value={heroSearch}
+                                            onChange={(e) => setHeroSearch(e.target.value)}
                                             placeholder="Search for Disease & Conditions, Medicines"
-                                            className="w-full bg-white py-2 pl-4 pr-10 border-2 border-pink-800 rounded-full text-black focus:outline-none"
+                                            className="w-full bg-white py-2 pl-4 pr-12 border-2 border-pink-700 rounded-full text-black focus:outline-none"
                                         />
-                                        <img
-                                            src="/assets/Header/Search Icon.png"
-                                            alt="search icon"
-                                            className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
-                                        />
+                                        <button
+                                            type="submit"
+                                            className="absolute right-1 top-1/2 -translate-y-1/2 bg-pink-700 hover:bg-pink-800 text-white rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+                                        >
+                                            <FiSearch size={15} />
+                                        </button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
