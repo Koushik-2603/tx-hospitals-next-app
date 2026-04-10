@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import useIsMobile from "@/hooks/useIsMobile";
 import FAQSchema from "@/utils/FAQSchema";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
     {
@@ -42,30 +43,49 @@ export default function FAQ() {
     };
 
     return (
-        <>
-            {isMobile ? (
-                <section className="py-1 px-2">
-                    {/* Heading */}
-                    <h2 className="text-center text-xl font-bold text-pink-700 mb-2">
-                        Frequently Asked Questions (FAQs)
+        <section className={`py-10 xl:py-12 px-6 overflow-hidden ${isMobile ? 'py-8 px-4' : ''}`}>
+            <div className="max-w-4xl mx-auto">
+                {/* Heading Block */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-12"
+                >
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-3 border border-pink-200">
+                        Common Queries
+                    </span>
+                    <h2 className={`font-extrabold text-gray-900 tracking-tight mb-4 ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
+                        Frequently Asked <span className="text-pink-700 relative">Questions
+                             <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
+                        </span>
                     </h2>
-                    <FAQSchema faqs={faqs} />
-                    {/* FAQ List */}
-                    <div className="space-y-2">
-                        {faqs.map((faq, idx) => (
-                            <div key={idx}>
-                                <button
-                                    onClick={() => toggleFAQ(idx)}
-                                    className={`w-full flex justify-between items-start gap-2 px-3 py-2 rounded-full border transition text-left text-xs
-              ${openIndex === idx
-                                            ? "bg-pink-700 text-white font-medium"
-                                            : "border-pink-600 text-pink-700 hover:bg-pink-50"
-                                        }`}
-                                >
-                                    <span className="flex-1 text-xs leading-snug">{faq.question}</span>
+                </motion.div>
+
+                <FAQSchema faqs={faqs} />
+                
+                {/* FAQ List */}
+                <div className="space-y-4">
+                    {faqs.map((faq, idx) => (
+                        <motion.div 
+                            key={idx}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: idx * 0.03 }}
+                            viewport={{ once: true }}
+                        >
+                            <button
+                                onClick={() => toggleFAQ(idx)}
+                                className={`w-full flex justify-between items-center px-6 py-5 rounded-3xl border-2 transition-all duration-300 text-left
+                                    ${openIndex === idx
+                                        ? "bg-pink-700 border-pink-700 text-white shadow-lg shadow-pink-200 font-bold"
+                                        : "border-gray-100 text-gray-800 bg-white hover:border-pink-300 hover:shadow-md font-bold"
+                                    }`}
+                            >
+                                <span className={`pr-4 ${isMobile ? 'text-sm' : 'text-base'}`}>{faq.question}</span>
+                                <div className={`flex-shrink-0 transition-transform duration-300 ${openIndex === idx ? "rotate-180" : ""}`}>
                                     <svg
-                                        className={`w-4 h-4 mt-0.5 flex-shrink-0 transform transition-transform ${openIndex === idx ? "rotate-180" : ""
-                                            }`}
+                                        className="w-6 h-6"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -73,69 +93,32 @@ export default function FAQ() {
                                         <path
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            strokeWidth={2}
+                                            strokeWidth={3}
                                             d="M19 9l-7 7-7-7"
                                         />
                                     </svg>
-                                </button>
+                                </div>
+                            </button>
 
+                            <AnimatePresence>
                                 {openIndex === idx && (
-                                    <div className="px-3 py-2 text-xs bg-gray-50 text-gray-700 rounded-full">
-                                        {faq.answer}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            ) : (
-                <section className="py-6 px-6">
-                    <div className="max-w-4xl mx-auto">
-                        {/* Heading */}
-                        <h2 className="text-center text-2xl md:text-3xl font-bold text-pink-700 mb-8">
-                            Frequently Asked Questions (FAQs)
-                        </h2>
-                        <FAQSchema faqs={faqs} />
-                        {/* FAQ List */}
-                        <div className="space-y-4">
-                            {faqs.map((faq, idx) => (
-                                <div key={idx}>
-                                    <button
-                                        onClick={() => toggleFAQ(idx)}
-                                        className={`w-full flex justify-between items-center px-6 py-4 rounded-full border text-left transition
-                  ${openIndex === idx
-                                                ? "bg-pink-700 text-white font-medium"
-                                                : "border-pink-600 text-pink-700 hover:bg-pink-50"
-                                            }`}
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                                        className="overflow-hidden"
                                     >
-                                        <span>{faq.question}</span>
-                                        <svg
-                                            className={`w-5 h-5 transform transition-transform ${openIndex === idx ? "rotate-180" : ""
-                                                }`}
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M19 9l-7 7-7-7"
-                                            />
-                                        </svg>
-                                    </button>
-
-                                    {openIndex === idx && (
-                                        <div className="px-6 py-4 bg-gray-50 text-gray-700 rounded-full">
+                                        <div className={`px-8 py-6 text-gray-600 font-medium leading-relaxed bg-pink-50/50 mt-2 rounded-3xl border border-pink-100 ${isMobile ? 'text-xs px-6 py-4' : ''}`}>
                                             {faq.answer}
                                         </div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            )}
-        </>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
     );
 }

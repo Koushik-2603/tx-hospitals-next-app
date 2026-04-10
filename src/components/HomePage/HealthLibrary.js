@@ -4,9 +4,24 @@ import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import CONFIG from "@/config";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.05
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
+    visible: { opacity: 1, scale: 1, y: 0 }
+};
 
 export default function HealthLibrary() {
-
     const router = useRouter();
     const [blogs, setBlogs] = useState([]);
     const isMobile = useIsMobile();
@@ -36,90 +51,71 @@ export default function HealthLibrary() {
     };
 
     return (
-        <>
-            {isMobile ? (
-                <section className="bg-pink-100 py-1 px-2">
-                    {/* Heading */}
-                    <h2 className="text-xl text-center font-bold text-pink-700 mb-1">
-                        Health Library
+        <section className={`bg-pink-50/50 py-10 xl:py-12 px-6 overflow-hidden ${isMobile ? 'py-8 px-4' : ''}`}>
+            <div className="max-w-6xl mx-auto text-center">
+                {/* Heading Block */}
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-12"
+                >
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-3 border border-pink-200">
+                        Expert Articles
+                    </span>
+                    <h2 className={`font-extrabold text-gray-900 tracking-tight mb-4 ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
+                        Health <span className="text-pink-700 relative">Library
+                             <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
+                        </span>
                     </h2>
-                    <p className="text-sm leadinf relaxed mb-4 text-gray-700">
+                    <p className={`max-w-2xl mx-auto text-gray-600 font-medium leading-relaxed ${isMobile ? 'text-sm px-2' : 'text-lg'}`}>
                         A reliable resource of easy-to-read articles on diseases, symptoms and treatments for informed health decisions.
                     </p>
+                </motion.div>
 
-                    {/* Blog Grid */}
-                    <div className="grid grid-cols-2 gap-2">
-                        {blogs.map((blog, idx) => (
-                            <div
-                                key={idx}
-                                className="relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition bg-white"
-                            >
-                                <div className="aspect-video cursor-pointer w-full">
-                                    <Image
-                                        src={blog.blogImage}
-                                        alt={blog.blogTitle}
-                                        width={400}
-                                        height={250}
-                                        className="w-full h-full object-cover"
-                                        onClick={() => { handleReadMore(blog) }}
-                                    />
-                                </div>
+                {/* Blog Grid */}
+                <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className={`grid gap-6 ${isMobile ? 'grid-cols-2 gap-3' : 'grid-cols-3'}`}
+                >
+                    {blogs.map((blog, idx) => (
+                        <motion.div
+                            key={idx}
+                            variants={itemVariants}
+                            whileHover={{ y: -8, scale: 1.02 }}
+                            className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-pink-100"
+                        >
+                            <div className="aspect-video cursor-pointer w-full overflow-hidden">
+                                <Image
+                                    src={blog.blogImage}
+                                    alt={blog.blogTitle}
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                    onClick={() => handleReadMore(blog)}
+                                />
                             </div>
-                        ))}
-                    </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
 
-                    {/* Show More / Show Less Button */}
-                    <div className="text-center">
-                        <button
-                            onClick={() => router.push("/blog")}
-                            className="mt-3 text-pink-700 font-semibold hover:underline"
-                        >
-                            Show More
-                        </button>
-                    </div>
-                </section>
-            ) : (
-                <section className="bg-pink-100 py-4 px-6">
-                    <div className="max-w-6xl mx-auto text-center">
-                        {/* Heading */}
-                        <h2 className="text-2xl md:text-3xl font-bold text-pink-700 mb-4">
-                            Health Library
-                        </h2>
-                        <p className="text-lg max-w-3xl mx-auto mb-4 text-gray-700">
-                            A reliable resource of easy-to-read articles on diseases, symptoms and treatments for informed health decisions.
-                        </p>
-
-                        {/* Blog Grid */}
-                        <div className="grid grid-cols-3 gap-6">
-                            {blogs.map((blog, idx) => (
-                                <div
-                                    key={idx}
-                                    className="relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition bg-white"
-                                >
-                                    <div className="aspect-video cursor-pointer w-full">
-                                        <Image
-                                            src={blog.blogImage}
-                                            alt={blog.blogTitle}
-                                            width={400}
-                                            height={250}
-                                            className="w-full h-full object-cover"
-                                            onClick={() => { handleReadMore(blog) }}
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Show More / Show Less Button */}
-                        <button
-                            onClick={() => router.push("/blog")}
-                            className="mt-6 text-pink-700 font-semibold hover:underline"
-                        >
-                            Show More
-                        </button>
-                    </div>
-                </section>
-            )}
-        </>
+                {/* Show More Button */}
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="mt-14"
+                >
+                    <button
+                        onClick={() => router.push("/blog")}
+                        className="inline-flex items-center gap-2 text-pink-700 font-bold px-8 py-3 rounded-full border-2 border-pink-600 hover:bg-pink-600 hover:text-white transition-all duration-300 shadow-sm active:scale-95"
+                    >
+                        Explore More Articles
+                    </button>
+                </motion.div>
+            </div>
+        </section>
     );
 }

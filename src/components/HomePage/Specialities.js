@@ -1,10 +1,11 @@
-// components/Specialities.js
-import React, { useState, useEffect } from "react";
+"use client";
+import React from "react";
 import { useRouter } from "next/router";
 import { FiChevronRight } from "react-icons/fi";
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import SpecialitiesCarousel from "@/components/HomePage/SpecialitiesCarousel";
+import { motion } from "framer-motion";
 
 const specialities = [
     {
@@ -33,8 +34,26 @@ const specialities = [
     },
 ];
 
-export default function Specialities() {
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.08
+        }
+    }
+};
 
+const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { 
+        opacity: 1, 
+        y: 0, 
+        transition: { type: "spring", stiffness: 150, damping: 15 }
+    }
+};
+
+export default function Specialities() {
     const router = useRouter();
     const isMobile = useIsMobile();
 
@@ -47,46 +66,67 @@ export default function Specialities() {
     };
 
     return (
-        <>
-            {isMobile ? (
-                <div className="bg-gray-50 w-full px-3">
-                    <div className="max-w-6xl mx-auto text-center">
-                        {/* Heading */}
-                        <h2 className="text-2xl font-bold text-pink-700 mb-1">Our Specialties</h2>
-                        <p className="text-xs leading-relaxed mb-3 text-gray-700">
-                            At TX Hospitals, we bring together medical expertise, modern technology and patient-first care under one roof. Our Centres of Excellence are dedicated to delivering comprehensive treatment across major specialties, ensuring every patient receives the best possible outcome.
-                        </p>
+        <section className="bg-gray-50 w-full py-8 px-6 overflow-hidden">
+            <div className="max-w-6xl mx-auto text-center">
+                {/* Heading (Original Alignment) */}
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-10"
+                >
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-3 border border-pink-200">
+                        Clinical Excellence
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+                        Our <span className="text-pink-700 relative inline-block">Specialties
+                             <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
+                        </span>
+                    </h2>
+                </motion.div>
+                
+                <motion.p 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="text-lg max-w-3xl mx-auto mb-14 text-gray-600 font-medium leading-relaxed"
+                >
+                    Experience world-class healthcare with medical expertise, modern technology and patient-first care under one roof.
+                </motion.p>
 
+                {isMobile ? (
+                    <div className="pb-4">
                         <SpecialitiesCarousel specialities={specialities} />
-
-                        {/* Show More / Show Less */}
-                        <div className="mt-2">
-                            <button
+                        <div className="mt-8">
+                            <motion.button
+                                whileTap={{ scale: 0.95 }}
                                 onClick={handleViewMore}
-                                className="text-pink-700 font-semibold underline hover:underline"
+                                className="text-pink-700 font-bold underline decoration-2 underline-offset-4 hover:text-pink-800 transition-colors"
                             >
-                                View More
-                            </button>
+                                View All Specialities
+                            </motion.button>
                         </div>
                     </div>
-                </div>
-            ) : (
-                <div className="bg-gray-50 w-full py-3 px-6">
-                    <div className="max-w-6xl mx-auto text-center">
-                        {/* Heading */}
-                        <h2 className="text-3xl font-bold text-pink-700 mb-5">Our Specialties</h2>
-                        <p className="text-lg max-w-3xl mx-auto mb-6 text-gray-700">
-                            At TX Hospitals, we bring together medical expertise, modern technology and patient-first care under one roof. Our Centres of Excellence are dedicated to delivering comprehensive treatment across major specialties, ensuring every patient receives the best possible outcome.
-                        </p>
-
-                        {/* Cards Grid */}
-                        <div className="grid grid-cols-4 gap-6 pt-12">
+                ) : (
+                    <div>
+                        {/* Cards Grid (Original Columns/Alignment) */}
+                        <motion.div 
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            className="grid grid-cols-4 gap-6 pt-16"
+                        >
                             {specialities.map((item, index) => (
-                                <div
+                                <motion.div
                                     key={index}
-                                    className="relative bg-white border border-gray-400 shadow-md rounded-2xl overflow-visible w-[250px] text-center mx-auto pt-24"
+                                    variants={cardVariants}
+                                    whileHover={{ y: -10 }}
+                                    className="relative bg-white border border-gray-200 shadow-lg rounded-[2rem] overflow-visible w-full max-w-[260px] text-center mx-auto pt-24 pb-6 transition-all duration-300"
                                 >
-                                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-xl overflow-hidden">
+                                    {/* Icon Container (Original Offset Look) */}
+                                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-3xl overflow-hidden shadow-xl border-4 border-white transition-transform duration-500 group-hover:scale-105">
                                         <Image
                                             src={item.img}
                                             alt={item.title}
@@ -95,35 +135,38 @@ export default function Specialities() {
                                         />
                                     </div>
 
-                                    <div className="p-4">
-                                        <h3 className="text-lg font-bold text-gray-900">{item.title}</h3>
-                                        <p className="text-gray-600 text-sm mt-2 leading-snug">{item.desc}</p>
-                                    </div>
-
-                                    <div className="flex justify-center pb-4">
-                                        <button
-                                            className="flex items-center justify-center w-7 h-7 bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow-md"
+                                    <div className="p-4 flex flex-col items-center">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                                        <p className="text-gray-600 text-sm leading-snug mb-6 line-clamp-3">
+                                            {item.desc}
+                                        </p>
+                                        
+                                        <motion.button
+                                            whileHover={{ scale: 1.1, rotate: 90 }}
+                                            whileTap={{ scale: 0.9 }}
+                                            className="flex items-center justify-center w-8 h-8 bg-pink-600 text-white rounded-full shadow-md hover:bg-pink-700 transition-colors"
                                             onClick={() => handleNavigate(item.path)}
                                         >
-                                            <FiChevronRight size={16} />
-                                        </button>
+                                            <FiChevronRight size={18} />
+                                        </motion.button>
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
-                        </div>
+                        </motion.div>
 
-                        {/* Show More / Show Less */}
-                        <div className="mt-8">
-                            <button
+                        <div className="mt-16">
+                            <motion.button
+                                whileHover={{ scale: 1.05, backgroundColor: "#be185d", color: "#fff" }}
+                                whileTap={{ scale: 0.95 }}
                                 onClick={handleViewMore}
-                                className="text-pink-700 font-semibold underline hover:underline"
+                                className="text-pink-700 font-bold px-8 py-3 rounded-full border-2 border-pink-700 transition-all duration-300 shadow-sm"
                             >
-                                View More
-                            </button>
+                                View All Specialities
+                            </motion.button>
                         </div>
                     </div>
-                </div>
-            )}
-        </>
+                )}
+            </div>
+        </section>
     );
 }

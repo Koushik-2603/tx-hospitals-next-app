@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
+import { motion, useInView } from "framer-motion";
 
 // Reusable hook
 const useCountUp = (end, duration = 2000) => {
@@ -60,100 +61,112 @@ const stats = [
     { number: 200, suffix: "+", title: "Doctors", desc: "Experienced doctors dedicated to personalized and expert care.", icon: "/assets/WhyChooseUs/Docotor Icon.png" },
 ];
 
-function StatCard({ item }) {
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.08
+        }
+    }
+};
 
+const cardVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+        opacity: 1, 
+        scale: 1,
+        transition: { type: "spring", stiffness: 160, damping: 14 }
+    }
+};
+
+function StatCard({ item, index }) {
     const isMobile = useIsMobile();
-    const [count, done, ref] = useCountUp(item.number, 2000);
+    const [count, done, countRef] = useCountUp(item.number, 2000);
 
     return (
-        <>
-            {isMobile ? (
-                <div
-                    ref={ref}
-                    className="bg-white text-gray-800 rounded-xl shadow-md p-2 hover:shadow-xl hover:scale-105 transition-transform duration-300"
-                >
-                    <div className="flex justify-between items-center">
-                        <h3 className="text-xl font-bold text-pink-700">
-                            {done ? formatNumber(item.number, item.suffix) : count.toLocaleString()}
-                        </h3>
-                        <div className="flex-shrink-0">
-                            <Image src={item.icon} alt={item.title} width={30} height={30} className="object-contain" />
-                        </div>
-                    </div>
-                    <div className="text-left">
-                        <h4 className="text-sm font-semibold">{item.title}</h4>
-                        <p className="text-[10px] text-gray-600 mt-1">{item.desc}</p>
-                    </div>
-                </div>
-            ) : (
-                <div
-                    ref={ref}
-                    className="bg-white text-gray-800 rounded-2xl shadow-md p-4 flex justify-between items-center hover:shadow-xl hover:scale-105 transition-transform duration-300"
-                >
-                    <div className="text-left">
-                        <h3 className="text-3xl font-bold text-pink-700">
-                            {done ? formatNumber(item.number, item.suffix) : count.toLocaleString()}
-                        </h3>
-                        <h4 className="text-lg font-semibold mt-1">{item.title}</h4>
-                        <p className="text-sm text-gray-600 mt-2">{item.desc}</p>
-                    </div>
-                    <div className="ml-4 flex-shrink-0">
-                        <Image src={item.icon} alt={item.title} width={70} height={70} className="object-contain" />
-                    </div>
-                </div>
-            )}
-        </>
+        <motion.div
+            variants={cardVariants}
+            whileHover={{ y: -8, scale: 1.02 }}
+            className={`bg-white text-gray-800 rounded-2xl shadow-md p-4 flex justify-between items-center transition-shadow duration-300 hover:shadow-2xl ${isMobile ? 'p-3 rounded-xl' : ''}`}
+        >
+            <div className="text-left flex-1" ref={countRef}>
+                <h3 className={`font-bold text-pink-700 ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+                    {done ? formatNumber(item.number, item.suffix) : count.toLocaleString()}
+                </h3>
+                <h4 className={`font-semibold mt-1 ${isMobile ? 'text-sm' : 'text-lg'}`}>{item.title}</h4>
+                <p className={`text-gray-600 mt-2 ${isMobile ? 'text-[10px] leading-tight' : 'text-sm'}`}>{item.desc}</p>
+            </div>
+            <motion.div 
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="ml-4 flex-shrink-0"
+            >
+                <Image 
+                    src={item.icon} 
+                    alt={item.title} 
+                    width={isMobile ? 40 : 70} 
+                    height={isMobile ? 40 : 70} 
+                    className="object-contain" 
+                />
+            </motion.div>
+        </motion.div>
     );
 }
 
 export default function WhyChooseUs() {
     const isMobile = useIsMobile();
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     if (isMobile === null) return null;
 
     return (
-        <>
-            {isMobile ? (
-                <section
-                    className="relative text-white py-4 px-2 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/assets/WhyChooseUs/BG.png')" }}
-                    id="why-choose-us"
-                >
-                    <div className="max-w-6xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-2">Why Choose Us?</h2>
-                        <p className="text-xs leading-relaxed mb-6 text-gray-100">
-                            At TX Hospitals, we are redefining healthcare by combining clinical excellence, advanced technology and patient-first values.
-                            With a strong presence across Hyderabad, we have become one of the most trusted names for holistic, world-class healthcare.
-                        </p>
+        <section
+            ref={sectionRef}
+            className={`relative text-white py-10 px-6 bg-cover bg-center overflow-hidden ${isMobile ? 'py-8 px-4' : ''}`}
+            style={{ backgroundImage: "url('/assets/WhyChooseUs/BG.png')" }}
+            id="why-choose-us"
+        >
+            {/* Background Overlay */}
+            <div className="absolute inset-0 bg-pink-900/40 pointer-events-none"></div>
 
-                        <div className="grid grid-cols-2 gap-6">
-                            {stats.map((item, index) => (
-                                <StatCard key={index} item={item} />
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            ) : (
-                <section
-                    className="relative text-white py-16 px-6 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/assets/WhyChooseUs/BG.png')" }}
-                    id="why-choose-us"
+            <div className="max-w-6xl mx-auto text-center relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.4 }}
                 >
-                    <div className="max-w-6xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Us?</h2>
-                        <p className="text-lg max-w-3xl mx-auto mb-12 text-gray-100">
-                            At TX Hospitals, we are redefining healthcare by combining clinical excellence, advanced technology and patient-first values.
-                            With a strong presence across Hyderabad, we have become one of the most trusted names for holistic, world-class healthcare.
-                        </p>
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest mb-4 border border-white/30">
+                        Our Commitment
+                    </span>
+                    <h2 className={`font-extrabold mb-4 tracking-tight ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
+                        Why Choose <span className="text-white relative">Us?
+                            <span className="absolute -bottom-2 left-0 w-full h-1 bg-white/40 rounded-full"></span>
+                        </span>
+                    </h2>
+                </motion.div>
+                
+                <motion.p 
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.4, delay: 0.1 }}
+                    className={`max-w-3xl mx-auto mb-16 text-white/90 font-medium leading-relaxed ${isMobile ? 'text-sm mb-10 px-2' : 'text-xl'}`}
+                >
+                    Redefining healthcare by combining clinical excellence, advanced technology and patient-first values. Trusted for holistic, world-class healthcare.
+                </motion.p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {stats.map((item, index) => (
-                                <StatCard key={index} item={item} />
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            )}
-        </>
+                <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    className={`grid gap-6 ${isMobile ? 'grid-cols-2 gap-4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}
+                >
+                    {stats.map((item, index) => (
+                        <StatCard key={index} item={item} index={index} />
+                    ))}
+                </motion.div>
+            </div>
+        </section>
     );
 }

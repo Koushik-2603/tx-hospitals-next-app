@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import CONFIG from "../../config";
 import { useRouter } from "next/router";
-import useIsMobile from "@/hooks/useIsMobile";
+import { motion, AnimatePresence } from "framer-motion";
 
 const BookAppointmentForm = ({ showModal, setShowModal }) => {
-
     const router = useRouter();
-    const isMobile = useIsMobile();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -29,186 +26,121 @@ const BookAppointmentForm = ({ showModal, setShowModal }) => {
         router.push("/thank-you");
     };
 
+    const locations = [
+        "TX Hospitals Uppal",
+        "TX Hospitals Kachiguda",
+        "TX Hospitals Banjara Hills",
+        "TX Children Hospitals Banjara Hills"
+    ];
+
     return (
-        <>
+        <AnimatePresence>
             {showModal && (
-                <>
-                    {isMobile ? (
-                        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-3">
-                            <div className="bg-pink-700 font-inter text-white p-5 rounded-xl shadow-lg w-full max-w-lg relative">
+                <div className="fixed inset-0 flex items-center justify-center z-[9999] px-4 font-inter">
+                    {/* Backdrop */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setShowModal(false)}
+                        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                    />
 
-                                {/* Close Button */}
-                                <button
-                                    onClick={() => setShowModal(false)}
-                                    className="absolute top-0 right-0 text-white hover:text-gray-300"
-                                >
-                                    <IoClose size={28} />
-                                </button>
+                    {/* Modal Content */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.98, y: 15 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.98, y: 15 }}
+                        className="relative w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100"
+                    >
+                        {/* Branded Header */}
+                        <div className="bg-pink-700 py-4 px-8 text-white text-center relative">
+                            <h2 className="text-xl font-bold tracking-tight">Book Appointment</h2>
+                            <p className="text-pink-100/60 text-[9px] font-bold uppercase tracking-[0.2em] mt-0.5">Direct Medical Consultation</p>
 
-                                <h2 className="text-2xl font-bold mb-4 text-center">Book An Appointment</h2>
+                            <button
+                                onClick={() => setShowModal(false)}
+                                className="absolute top-4 right-6 text-white/50 hover:text-white transition-colors"
+                            >
+                                <IoClose size={20} />
+                            </button>
+                        </div>
 
-                                <form
-                                    action="https://formsubmit.co/crm.txhospitals@gmail.com"
-                                    method="POST"
-                                    onSubmit={handleSubmit}
-                                    className="space-y-1"
-                                >
-                                    {/* Hidden Fields */}
-                                    <input type="hidden" name="_cc" value="info.txhospitals@gmail.com" />
-                                    <input type="hidden" name="_captcha" value="false" />
+                        {/* Form Body */}
+                        <div className="p-6 md:p-8">
+                            <form
+                                action="https://formsubmit.co/crm.txhospitals@gmail.com"
+                                method="POST"
+                                onSubmit={handleSubmit}
+                                className="space-y-3.5"
+                            >
+                                {/* Hidden Fields */}
+                                <input type="hidden" name="_cc" value="info.txhospitals@gmail.com" />
+                                <input type="hidden" name="_captcha" value="false" />
 
-                                    {/* Patient Name */}
-                                    <div>
-                                        <label className="block text-sm mb-1">Patient Name*</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            placeholder="Name*"
-                                            required
-                                            className="w-full px-4 py-2 rounded-md text-black"
-                                        />
-                                    </div>
+                                {/* Patient Name */}
+                                <div className="space-y-1">
+                                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Patient Name</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder="Full Name"
+                                        required
+                                        className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
+                                    />
+                                </div>
 
-                                    {/* Phone */}
-                                    <div>
-                                        <label className="block text-sm mb-1">Mobile Number*</label>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            placeholder="Phone*"
-                                            required
-                                            className="w-full px-4 py-2 rounded-md text-black"
-                                        />
-                                    </div>
+                                {/* Mobile Number */}
+                                <div className="space-y-1">
+                                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Mobile Number</label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="Enter Phone"
+                                        required
+                                        className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
+                                    />
+                                </div>
 
-                                    {/* Date */}
-                                    <div>
-                                        <label className="block text-sm mb-1">Appointment Date*</label>
+                                {/* Date and Location Side by Side */}
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Date</label>
                                         <input
                                             type="date"
                                             name="date"
                                             required
-                                            className="w-full px-4 py-2 rounded-md text-black"
+                                            className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
                                         />
                                     </div>
-
-                                    {/* Location */}
-                                    <div>
-                                        <label className="block text-sm mb-1">Preferred Location</label>
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Center</label>
                                         <select
                                             name="location"
-                                            className="w-full px-4 py-2 rounded-md text-black"
+                                            required
+                                            className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm appearance-none cursor-pointer"
                                         >
-                                            <option value="">Select a Location</option>
-                                            <option>TX Hospitals Uppal</option>
-                                            <option>TX Hospitals Kachiguda</option>
-                                            <option>TX Hospitals Banjara Hills</option>
-                                            <option>TX Children Hospitals Banjara Hills</option>
+                                            <option value="">Choose</option>
+                                            {locations.map(loc => (
+                                                <option key={loc} value={loc}>{loc}</option>
+                                            ))}
                                         </select>
                                     </div>
+                                </div>
 
-                                    {/* Submit Button */}
-                                    <div className="text-center pt-2">
-                                        <button
-                                            type="submit"
-                                            className="bg-white text-pink-700 font-semibold px-6 py-2 rounded-full hover:bg-gray-200 transition"
-                                        >
-                                            Submit
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-4">
-                            <div className="bg-pink-700 font-inter text-white p-6 rounded-xl shadow-lg w-full max-w-lg relative">
-
-                                {/* Close Button */}
+                                {/* Submit Button */}
                                 <button
-                                    onClick={() => setShowModal(false)}
-                                    className="absolute top-3 right-3 text-white hover:text-gray-300"
+                                    type="submit"
+                                    className="w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 rounded-xl shadow-xl transition-all active:scale-95 text-xs uppercase tracking-[0.2em] mt-1"
                                 >
-                                    <IoClose size={28} />
+                                    Confirm Appointment
                                 </button>
-
-                                <h2 className="text-2xl font-bold mb-4 text-center">Book An Appointment</h2>
-
-                                <form
-                                    action="https://formsubmit.co/crm.txhospitals@gmail.com"
-                                    method="POST"
-                                    onSubmit={handleSubmit}
-                                    className="space-y-4"
-                                >
-                                    {/* Hidden Fields */}
-                                    <input type="hidden" name="_cc" value="info.txhospitals@gmail.com" />
-                                    <input type="hidden" name="_captcha" value="false" />
-
-                                    {/* Patient Name */}
-                                    <div>
-                                        <label className="block text-sm mb-1">Patient Name*</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            placeholder="Name*"
-                                            required
-                                            className="w-full px-4 py-2 rounded-md text-black"
-                                        />
-                                    </div>
-
-                                    {/* Phone */}
-                                    <div>
-                                        <label className="block text-sm mb-1">Mobile Number*</label>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            placeholder="Phone*"
-                                            required
-                                            className="w-full px-4 py-2 rounded-md text-black"
-                                        />
-                                    </div>
-
-                                    {/* Date */}
-                                    <div>
-                                        <label className="block text-sm mb-1">Appointment Date*</label>
-                                        <input
-                                            type="date"
-                                            name="date"
-                                            required
-                                            className="w-full px-4 py-2 rounded-md text-black"
-                                        />
-                                    </div>
-
-                                    {/* Location */}
-                                    <div>
-                                        <label className="block text-sm mb-1">Preferred Location</label>
-                                        <select
-                                            name="location"
-                                            className="w-full px-4 py-2 rounded-md text-black"
-                                        >
-                                            <option value="">Select a Location</option>
-                                            <option>TX Hospitals Uppal</option>
-                                            <option>TX Hospitals Kachiguda</option>
-                                            <option>TX Hospitals Banjara Hills</option>
-                                            <option>TX Children Hospitals Banjara Hills</option>
-                                        </select>
-                                    </div>
-
-                                    {/* Submit Button */}
-                                    <div className="text-center pt-2">
-                                        <button
-                                            type="submit"
-                                            className="bg-white text-pink-700 font-semibold px-6 py-2 rounded-full hover:bg-gray-200 transition"
-                                        >
-                                            Submit
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                            </form>
                         </div>
-                    )}
-                </>
+                    </motion.div>
+                </div>
             )}
-        </>
+        </AnimatePresence>
     );
 };
 

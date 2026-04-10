@@ -1,11 +1,26 @@
-// components/DiseaseSearch.js
+"use client";
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useRouter } from "next/router";
 import useIsMobile from "@/hooks/useIsMobile";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.02
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: { opacity: 1, scale: 1 }
+};
 
 export default function DiseaseSearch() {
-
     const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     const isMobile = useIsMobile();
     const router = useRouter();
@@ -24,113 +39,168 @@ export default function DiseaseSearch() {
     return (
         <>
             {isMobile ? (
-                <div className="w-full px-3 py-2 bg-white">
-                    <div className="max-w-6xl mx-auto grid grid-cols-1 gap-4 items-start">
+                <div className="w-full px-3 py-4 bg-white overflow-hidden">
+                    <div className="max-w-6xl mx-auto grid grid-cols-1 gap-8 items-start">
                         {/* Left: Alphabet grid */}
-                        <div className="bg-pink-50 p-2 rounded-lg shadow-sm">
-                            <h2 className="text-lg font-semibold text-gray-800 mb-3">
-                                Find Diseases &amp; Conditions By Alphabet
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-pink-50 p-4 rounded-2xl shadow-sm"
+                        >
+                            <h2 className="text-lg font-bold text-gray-800 mb-4 px-1">
+                                Find Diseases & Conditions By Alphabet
                             </h2>
-                            <div className="grid grid-cols-8 gap-2">
+                            <motion.div 
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="grid grid-cols-7 gap-2"
+                            >
                                 {alphabets.map((letter) => (
-                                    <button
+                                    <motion.button
                                         key={letter}
+                                        variants={itemVariants}
+                                        whileTap={{ scale: 0.9 }}
                                         onClick={() => handleAlphabetClick(letter)}
-                                        className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-500 text-gray-700 font-medium hover:bg-pink-600 hover:text-white hover:border-pink-600 transition"
+                                        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 font-bold text-xs hover:bg-pink-600 hover:text-white hover:border-pink-600 transition shadow-sm"
                                     >
                                         {letter}
-                                    </button>
+                                    </motion.button>
                                 ))}
-                                <button
+                                <motion.button
+                                    variants={itemVariants}
+                                    whileTap={{ scale: 0.9 }}
                                     onClick={() => router.push("/search?q=%23")}
-                                    className="h-8 px-2 flex items-center justify-center rounded-full border border-gray-500 text-gray-700 font-medium hover:bg-pink-600 hover:text-white hover:border-pink-600 transition text-xs"
+                                    className="h-9 px-3 flex items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 font-bold hover:bg-pink-600 hover:text-white hover:border-pink-600 transition text-xs shadow-sm"
                                 >
                                     #
-                                </button>
-                            </div>
-                        </div>
+                                </motion.button>
+                            </motion.div>
+                        </motion.div>
 
                         {/* Right: Search section */}
-                        <div>
-                            <h2 className="font-semibold text-center text-gray-800 mb-3">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <h2 className="font-bold text-center text-gray-800 mb-4 px-2">
                                 Search Diseases and Conditions
                             </h2>
-                            <form onSubmit={handleSearch} className="flex items-center w-full max-w-md mb-2">
+                            <form onSubmit={handleSearch} className="flex items-center w-full max-w-md mb-4 bg-white rounded-full border border-gray-300 overflow-hidden shadow-sm focus-within:border-pink-500 focus-within:ring-2 focus-within:ring-pink-100 transition-all">
                                 <input
                                     type="text"
                                     value={searchValue}
                                     onChange={(e) => setSearchValue(e.target.value)}
-                                    placeholder="Search"
-                                    className="flex-1 px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:ring-1 focus:ring-pink-500"
+                                    placeholder="Type symptoms or condition..."
+                                    className="flex-1 px-5 py-3 border-none focus:outline-none text-sm"
                                 />
-                                <button
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
                                     type="submit"
-                                    className="bg-pink-600 text-white px-4 py-3 rounded-r-full hover:bg-pink-700 transition flex items-center justify-center"
+                                    className="bg-pink-600 text-white px-5 py-3 hover:bg-pink-700 transition flex items-center justify-center"
                                 >
-                                    <FiSearch size={20} />
-                                </button>
+                                    <FiSearch size={22} />
+                                </motion.button>
                             </form>
-                            <p className="text-gray-600 text-xs leading-relaxed">
-                                Quickly find the information you need. Search our database to
-                                explore detailed information on various diseases and conditions,
-                                including symptoms, causes, and treatment options.
+                            <p className="text-gray-500 text-[11px] leading-relaxed text-center px-4">
+                                Quickly find detailed information on symptoms, causes, and treatment options from our expert database.
                             </p>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             ) : (
-                <div className="w-full px-3 py-3 bg-white">
-                    <div className="max-w-6xl mx-auto grid grid-cols-2 gap-10 items-start">
+                <div className="w-full px-6 py-8 bg-white overflow-hidden">
+                    <div className="max-w-6xl mx-auto grid grid-cols-2 gap-16 items-start">
                         {/* Left: Alphabet grid */}
-                        <div className="bg-pink-50 p-6 rounded-lg shadow-sm">
-                            <h2 className="text-xl font-semibold text-gray-800 mb-6">
-                                Find Diseases &amp; Conditions By Alphabet
+                        <motion.div 
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true }}
+                            className="bg-pink-50 p-8 rounded-[2rem] shadow-sm border border-pink-100"
+                        >
+                            <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100/50 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-4 border border-pink-200">
+                                Global Conditions
+                            </span>
+                            <h2 className="text-3xl font-extrabold text-gray-900 mb-8 tracking-tight">
+                                Find Diseases By <span className="text-pink-700">Alphabet</span>
                             </h2>
-                            <div className="grid grid-cols-9 gap-4">
+                            <motion.div 
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="grid grid-cols-9 gap-3"
+                            >
                                 {alphabets.map((letter) => (
-                                    <button
+                                    <motion.button
                                         key={letter}
+                                        variants={itemVariants}
+                                        whileHover={{ scale: 1.1, y: -2, backgroundColor: "#db2777", color: "#fff", borderColor: "#db2777" }}
+                                        whileTap={{ scale: 0.9 }}
                                         onClick={() => handleAlphabetClick(letter)}
-                                        className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-500 text-gray-700 font-medium hover:bg-pink-600 hover:text-white hover:border-pink-600 transition cursor-pointer"
+                                        className="w-10 h-10 xl:w-12 xl:h-12 flex items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 font-bold hover:shadow-md transition cursor-pointer"
                                     >
                                         {letter}
-                                    </button>
+                                    </motion.button>
                                 ))}
-                                <button
+                                <motion.button
+                                    variants={itemVariants}
+                                    whileHover={{ scale: 1.1, y: -2, backgroundColor: "#db2777", color: "#fff", borderColor: "#db2777" }}
+                                    whileTap={{ scale: 0.9 }}
                                     onClick={() => router.push("/search?q=%23")}
-                                    className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-500 text-gray-700 font-medium hover:bg-pink-600 hover:text-white hover:border-pink-600 transition text-sm"
+                                    className="w-10 h-10 xl:w-12 xl:h-12 flex items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 font-bold hover:shadow-md transition text-sm"
                                 >
                                     #
-                                </button>
-                            </div>
-                        </div>
+                                </motion.button>
+                            </motion.div>
+                        </motion.div>
 
                         {/* Right: Search section */}
-                        <div>
-                            <h2 className="text-xl font-semibold text-gray-800 mb-6">
-                                Search Diseases and Conditions
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true }}
+                            className="pt-4"
+                        >
+                             <span className="inline-block px-4 py-1.5 rounded-full bg-pink-50 text-pink-600 text-[10px] font-bold uppercase tracking-widest mb-4 border border-pink-100">
+                                Search Engine
+                            </span>
+                            <h2 className="text-4xl font-extrabold text-gray-900 mb-8 tracking-tight">
+                                Medical <span className="text-pink-700">Database</span>
                             </h2>
-                            <form onSubmit={handleSearch} className="flex items-center w-full max-w-md mb-4">
+                            <form onSubmit={handleSearch} className="flex items-center w-full max-w-md mb-6 bg-white rounded-full border border-gray-200 overflow-hidden shadow-sm focus-within:shadow-md focus-within:border-pink-500 transition-all">
                                 <input
                                     type="text"
                                     value={searchValue}
                                     onChange={(e) => setSearchValue(e.target.value)}
-                                    placeholder="Search"
-                                    className="flex-1 px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:ring-2 focus:ring-pink-500"
+                                    placeholder="Search conditions, causes, treatments..."
+                                    className="flex-1 px-6 py-4 border-none focus:outline-none text-base"
                                 />
-                                <button
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
                                     type="submit"
-                                    className="bg-pink-600 text-white px-4 py-3 rounded-r-full hover:bg-pink-700 transition flex items-center justify-center"
+                                    className="bg-pink-600 text-white px-6 py-4 hover:bg-pink-700 transition flex items-center justify-center"
                                 >
-                                    <FiSearch size={20} />
-                                </button>
+                                    <FiSearch size={24} />
+                                </motion.button>
                             </form>
-                            <p className="text-gray-600 text-sm leading-relaxed">
-                                Quickly find the information you need. Search our database to
-                                explore detailed information on various diseases and conditions,
-                                including symptoms, causes, and treatment options.
-                            </p>
-                        </div>
+                            <motion.p 
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.2 }}
+                                className="text-gray-500 text-lg leading-relaxed font-medium"
+                            >
+                                Quickly find the medical information you need. Search our database to
+                                explore symptoms, causes, and treatment options.
+                            </motion.p>
+                        </motion.div>
                     </div>
                 </div>
             )}

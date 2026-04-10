@@ -7,6 +7,9 @@ import CONFIG from "@/config";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/router";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, Clock, User, Phone, Mail, CheckCircle, MapPin, Star, ShieldCheck, ArrowRight, ArrowLeft } from "lucide-react";
+import Image from "next/image";
 
 export default function AppointmentModal({ closeModal, doctorData }) {
     const router = useRouter();
@@ -41,9 +44,9 @@ export default function AppointmentModal({ closeModal, doctorData }) {
     const defaultSlots = [
         "08:00 AM", "09:00 AM",
         "10:00 AM", "11:00 AM",
-        "12:30 AM", "01:30 PM",
-        "02:30 AM", "03:30 PM",
-        "04:30 AM", "05:30 PM",
+        "12:30 PM", "01:30 PM",
+        "02:30 PM", "03:30 PM",
+        "04:30 PM", "05:30 PM",
     ];
 
     useEffect(() => {
@@ -66,7 +69,7 @@ export default function AppointmentModal({ closeModal, doctorData }) {
             }
         };
         fetchAvailability();
-    }, [selectedDate]);
+    }, [selectedDate, doctorData]);
 
     const generateDynamicSlots = (start, end, interval) => {
         const slots = [];
@@ -96,7 +99,7 @@ export default function AppointmentModal({ closeModal, doctorData }) {
     const isSlotAvailable = (slotTime) => {
         if (bookedSlots.includes(slotTime)) return false;
 
-        const selected = format(selectedDate, "yyyy-MM-dd");
+        const selected = format(new Date(year, month, selectedDate), "yyyy-MM-dd");
         const today = format(new Date(), "yyyy-MM-dd");
 
         if (selected === today) {
@@ -115,14 +118,8 @@ export default function AppointmentModal({ closeModal, doctorData }) {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     const calendarDays = [];
-
-    for (let i = 0; i < firstDay; i++) {
-        calendarDays.push(null);
-    }
-
-    for (let d = 1; d <= daysInMonth; d++) {
-        calendarDays.push(d);
-    }
+    for (let i = 0; i < firstDay; i++) calendarDays.push(null);
+    for (let d = 1; d <= daysInMonth; d++) calendarDays.push(d);
 
     const goToPrevMonth = () => {
         setCurrentDate(new Date(year, month - 1, 1));
@@ -139,32 +136,28 @@ export default function AppointmentModal({ closeModal, doctorData }) {
         return date.getDay() === 0;
     };
 
-    const today = new Date();
-    const isToday = (day) =>
-        day === today.getDate() &&
-        month === today.getMonth() &&
-        year === today.getFullYear();
+    const todayDate = new Date();
+    const isDateToday = (day) =>
+        day === todayDate.getDate() &&
+        month === todayDate.getMonth() &&
+        year === todayDate.getFullYear();
 
     const handleChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const handleSendOtp = async () => {
         const otpCode = generateOtp();
-        setGeneratedOtp(otpCode); // Save for verification
-
+        setGeneratedOtp(otpCode);
         const message = `Your verification code is ${otpCode} ,code is valid for 5 Mins. Team TX Hospitals`;
-
         const url = `https://smslogin.co/v3/api.php?username=txhospitalsb&apikey=99144762b4fba93f4621&mobile=91${mobileNumber}&senderid=TXHOTP&message=${encodeURIComponent(message)}&templateid=1707169485003007437`;
 
         try {
-            const response = await fetch(url);
-            const data = await response.json();
-
+            await fetch(url);
             toast.success("OTP sent successfully!");
             setStep(3);
         } catch (error) {
             console.error("Error sending OTP:", error);
-            alert("Something went wrong while sending OTP.");
+            toast.error("Failed to send OTP. Please try again.");
         }
     };
 
@@ -173,7 +166,7 @@ export default function AppointmentModal({ closeModal, doctorData }) {
             toast.success("OTP Verified Successfully!");
             setStep(4);
         } else {
-            alert("Invalid OTP. Please try again.");
+            toast.error("Invalid OTP. Please try again.");
         }
     };
 
@@ -182,381 +175,314 @@ export default function AppointmentModal({ closeModal, doctorData }) {
         try {
             const response = await fetch(`${CONFIG.API_BASE_URL}/send-email/appointment-booking`, {
                 method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     ...formData,
                     mobile: mobileNumber,
-                    date: format(selectedDate, "EEE dd MMM"),
+                    date: format(new Date(year, month, selectedDate), "EEE dd MMM"),
                     time: selectedSlot,
-                    doctorName: doctorData.name,
+                    doctorName: doctorData?.name || "MD Specialist",
                 })
             });
 
             if (response.ok) {
                 router.push({
                     pathname: "/thank-you",
-                    query: {
-                        name: formData.name,
-                        mobile: mobileNumber,
-                        email: formData.email,
-                        type: "appointment"
-                    },
+                    query: { name: formData.name, mobile: mobileNumber, email: formData.email, type: "appointment" },
                 });
-            } else {
-                console.error("Failed to send email");
             }
         } catch (error) {
             console.error("Error:", error);
         }
     };
 
+    const steps = [
+        { id: 1, name: "Consult", icon: Calendar },
+        { id: 2, name: "Login", icon: ShieldCheck },
+        { id: 3, name: "Verify", icon: CheckCircle },
+        { id: 4, name: "Confirm", icon: Star }
+    ];
+
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-[9999] px-2">
-            <div className="bg-white rounded-3xl w-full max-w-md p-6 relative shadow-xl max-h-[90vh] overflow-y-auto hide-scrollbar">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[9999] px-4 py-4 overflow-hidden font-sans">
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.98, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                className="bg-white rounded-3xl w-full max-w-4xl overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[85vh] border border-gray-100"
+            >
+                {/* Close Button */}
+                <button 
+                    onClick={closeModal}
+                    className="absolute top-5 right-5 z-30 p-2 bg-gray-50 hover:bg-pink-100 hover:text-pink-600 rounded-full transition-all text-gray-400"
+                >
+                    <IoClose size={18} />
+                </button>
 
-                {/* HEADER */}
-                <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-3xl font-bold text-pink-700">
-                        Book Appointment
-                    </h2>
-
-                    <button onClick={closeModal}>
-                        <IoClose className="text-3xl text-gray-500" />
-                    </button>
-                </div>
-
-                {step === 1 && (
-                    <>
-                        <p className="text-xl font-semibold mb-2">Select Date</p>
-                        <div className="flex items-center justify-between mb-3">
-                            <p className="text-lg font-semibold">
-                                {monthName} {year}
-                            </p>
-
-                            <div className="flex gap-2">
-                                <button
-                                    className="border px-3 py-1 rounded-md"
-                                    onClick={goToPrevMonth}
-                                >
-                                    <GoChevronLeft />
-                                </button>
-                                <button
-                                    className="border px-3 py-1 rounded-md"
-                                    onClick={goToNextMonth}
-                                >
-                                    <GoChevronRight />
-                                </button>
+                {/* Left Sidebar - Branded Medium Theme */}
+                <div className="md:w-64 bg-pink-700 p-8 text-white shrink-0 flex flex-col">
+                    <div className="flex flex-col h-full">
+                        {/* Doctor Card */}
+                        <div className="mb-8">
+                            <div className="w-16 h-16 bg-white/20 rounded-2xl p-1 shadow-inner border border-white/30 mb-4 overflow-hidden">
+                                {doctorData?.doctorImage ? (
+                                    <Image 
+                                        src={doctorData.doctorImage} 
+                                        alt={doctorData.name} 
+                                        width={64} 
+                                        height={64} 
+                                        className="object-cover rounded-xl"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full flex items-center justify-center bg-white/10">
+                                        <User size={24} className="text-white/50" />
+                                    </div>
+                                )}
                             </div>
+                            <h3 className="text-lg font-bold leading-tight text-white">{doctorData?.name || "MD Specialist"}</h3>
+                            <p className="text-pink-100/80 text-xs font-bold uppercase tracking-wider mt-1.5">{doctorData?.department || doctorData?.speciality || "Specialist Department"}</p>
                         </div>
-                        <div className="grid grid-cols-7 text-center mb-2">
-                            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-                                <p
-                                    key={d}
-                                    className={`font-semibold ${d === "Sun" ? "text-pink-600" : "text-gray-600"
-                                        }`}
-                                >
-                                    {d}
-                                </p>
+
+                        {/* Steps - Clean Branded List */}
+                        <div className="space-y-5">
+                            {steps.map((s) => (
+                                <div key={s.id} className="flex items-center gap-4 group">
+                                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all border-2 ${step === s.id ? 'bg-white text-pink-700 border-white shadow-lg scale-105' : step > s.id ? 'bg-pink-400 border-pink-400 text-white' : 'bg-pink-800/40 text-pink-200 border-white/10'}`}>
+                                        <s.icon size={14} />
+                                    </div>
+                                    <span className={`text-xs font-black uppercase tracking-widest transition-all ${step === s.id ? 'text-white' : 'text-gray-300 opacity-60'}`}>
+                                        {s.name}
+                                    </span>
+                                </div>
                             ))}
                         </div>
-                        <div className="grid grid-cols-7 gap-2">
-                            {calendarDays.map((day, index) => {
-                                if (day === null) return <div key={index}></div>;
+                    </div>
+                </div>
 
-                                const dateObj = new Date(year, month, day);
-                                const isPastDate = dateObj < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                {/* Right Content - Compact & High Legibility */}
+                <div className="flex-1 overflow-y-auto hide-scrollbar bg-white p-8 md:p-10">
+                    <AnimatePresence mode="wait">
+                        {step === 1 && (
+                            <motion.div
+                                key="step1"
+                                initial={{ opacity: 0, x: 5 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -5 }}
+                                className="h-full"
+                            >
+                                <div className="mb-6">
+                                    <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Book <span className="text-pink-700">Appointment</span></h2>
+                                    <p className="text-gray-400 text-xs mt-1">Select your preferred date and available time slot.</p>
+                                </div>
 
-                                const isSelected = selectedDate === day;
-                                const todayCheck = isToday(day);
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    {/* Compact Calendar */}
+                                    <div>
+                                        <div className="flex items-center justify-between mb-4 px-1">
+                                            <h4 className="text-sm font-bold text-gray-800">{monthName} {year}</h4>
+                                            <div className="flex gap-1">
+                                                <button onClick={goToPrevMonth} className="p-1.5 hover:bg-pink-50 rounded-lg text-gray-400"><GoChevronLeft size={16} /></button>
+                                                <button onClick={goToNextMonth} className="p-1.5 hover:bg-pink-50 rounded-lg text-gray-400"><GoChevronRight size={16} /></button>
+                                            </div>
+                                        </div>
+                                        <div className="grid grid-cols-7 text-center mb-2 px-1">
+                                            {["S", "M", "T", "W", "T", "F", "S"].map((d) => (
+                                                <span key={d} className="text-[9px] font-bold text-gray-300">{d}</span>
+                                            ))}
+                                        </div>
+                                        <div className="grid grid-cols-7 gap-1">
+                                            {calendarDays.map((day, index) => {
+                                                if (day === null) return <div key={index} />;
+                                                const dateObj = new Date(year, month, day);
+                                                const isPast = dateObj < new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate());
+                                                const isSelected = selectedDate === day;
+                                                const isSun = isSundayDate(year, month, day);
+                                                
+                                                return (
+                                                    <button
+                                                        key={index}
+                                                        disabled={isPast || isSun}
+                                                        onClick={() => !isPast && !isSun && setSelectedDate(day)}
+                                                        className={`h-8 rounded-lg flex items-center justify-center font-bold text-xs transition-all
+                                                            ${isSelected ? 'bg-pink-700 text-white shadow-md' : (isPast || isSun) ? 'text-gray-200 cursor-not-allowed' : 'bg-gray-50 hover:bg-pink-50 text-gray-700 border border-transparent'}
+                                                        `}
+                                                    >
+                                                        {day}
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
 
-                                return (
-                                    <button
-                                        key={index}
-                                        disabled={isPastDate}
-                                        onClick={() => !isPastDate && setSelectedDate(day)}
-                                        className={`py-2 rounded-md border text-center font-semibold
-                                    ${(isPastDate || isSundayDate(year, month, day))
-                                                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                                                : isSelected
-                                                    ? "bg-pink-500 text-white"
-                                                    : todayCheck
-                                                        ? "border-pink-600 text-pink-700 bg-pink-100"
-                                                        : "text-gray-700 bg-gray-200"
-                                            }
-                                `}
-                                    >
-                                        {day}
-                                    </button>
-                                );
-                            })}
-                        </div>
-                        {selectedDate && (() => {
-                            const dateObj = new Date(year, month, selectedDate);
-
-                            const isPastDate =
-                                dateObj < new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-                            const isSunday = dateObj.getDay() === 0;
-
-                            return (
-                                <>
-                                    <p className="text-xl font-semibold mt-6">
-                                        {dateObj.toLocaleDateString("en-US", {
-                                            weekday: "short",
-                                            day: "numeric",
-                                            month: "short",
-                                            year: "numeric",
-                                        })}
-                                    </p>
-
-                                    {/* Show slots only if NOT past date and NOT Sunday */}
-                                    {!isPastDate && !isSunday && (
-                                        <div className="grid grid-cols-2 gap-3 mt-4">
+                                    {/* Time Slots Area */}
+                                    <div>
+                                        <h5 className="flex items-center gap-2 text-xs font-bold text-gray-800 mb-4">
+                                            <Clock size={14} className="text-pink-600" />
+                                            Available Slots
+                                        </h5>
+                                        <div className="grid grid-cols-2 gap-2">
                                             {slots.map((slot) => {
                                                 const available = isSlotAvailable(slot);
-
                                                 return (
                                                     <button
                                                         key={slot}
                                                         disabled={!available}
                                                         onClick={() => available && setSelectedSlot(slot)}
-                                                        className={`border rounded-xl py-3 text-lg font-semibold
-                                    ${selectedSlot === slot
-                                                                ? "bg-pink-700 text-white hover:bg-pink-800"
-                                                                : available
-                                                                    ? "text-gray-800 hover:bg-gray-100"
-                                                                    : "bg-gray-400 text-gray-500 cursor-not-allowed"
-                                                            }
-                                `}
+                                                        className={`py-2 rounded-lg text-[10px] font-bold transition-all border
+                                                            ${selectedSlot === slot ? 'bg-pink-700 border-pink-700 text-white shadow-sm' : available ? 'bg-white border-gray-100 text-gray-600 hover:border-pink-200' : 'bg-gray-50 border-transparent text-gray-200 cursor-not-allowed opacity-40'}
+                                                        `}
                                                     >
                                                         {slot}
                                                     </button>
                                                 );
                                             })}
                                         </div>
-                                    )}
+                                    </div>
+                                </div>
 
-                                    {/* Next button */}
-                                    {selectedSlot && (
+                                {selectedSlot && (
+                                    <button
+                                        ref={nextButtonRef}
+                                        onClick={() => setStep(2)}
+                                        className="w-full mt-8 bg-pink-700 hover:bg-pink-800 text-white py-3 rounded-xl font-bold text-sm shadow-xl transition-all flex items-center justify-center gap-2 active:scale-95"
+                                    >
+                                        Proceed to Login <ArrowRight size={16} />
+                                    </button>
+                                )}
+                            </motion.div>
+                        )}
+
+                        {(step === 2 || step === 3) && (
+                            <motion.div
+                                key="auth"
+                                initial={{ opacity: 0, y: 5 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="h-full flex flex-col justify-center items-center"
+                            >
+                                <div className="w-full max-w-xs">
+                                    <div className="text-center mb-6">
+                                        <div className="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-pink-700 mb-3 mx-auto border border-pink-100">
+                                            {step === 2 ? <Phone size={20} /> : <ShieldCheck size={20} />}
+                                        </div>
+                                        <h2 className="text-xl font-bold text-gray-900">{step === 2 ? 'Mobile Auth' : 'OTP Verification'}</h2>
+                                        <p className="text-gray-400 text-[11px] mt-1">{step === 2 ? 'Enter your 10-digit mobile number' : `Validation code sent to +91 ${mobileNumber}`}</p>
+                                    </div>
+                                    
+                                    <div className="space-y-4">
+                                        <div className="relative">
+                                            {step === 2 ? (
+                                                <>
+                                                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold text-xs border-r pr-3">+91</span>
+                                                    <input
+                                                        type="tel"
+                                                        maxLength={10}
+                                                        className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 pl-14 pr-4 focus:ring-4 focus:ring-pink-500/10 outline-none text-sm font-bold text-gray-900 transition-all"
+                                                        placeholder="Number"
+                                                        value={mobileNumber}
+                                                        onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, ''))}
+                                                    />
+                                                </>
+                                            ) : (
+                                                <input
+                                                    type="text"
+                                                    maxLength={6}
+                                                    className="w-full bg-gray-50 border border-gray-100 rounded-xl py-4 text-center text-xl font-bold tracking-[0.4em] focus:ring-4 focus:ring-pink-500/10 outline-none transition-all"
+                                                    placeholder="------"
+                                                    value={otp}
+                                                    onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
+                                                />
+                                            )}
+                                        </div>
+
                                         <button
-                                            ref={nextButtonRef}
-                                            className="bg-pink-700 hover:bg-pink-800 text-white w-full mt-6 py-3 rounded-full text-xl font-semibold"
-                                            onClick={() => setStep(2)}
+                                            disabled={step === 2 ? mobileNumber.length !== 10 : otp.length !== 6}
+                                            onClick={step === 2 ? handleSendOtp : handleVerifyOtp}
+                                            className={`w-full py-3 rounded-xl font-bold text-xs transition-all shadow-md
+                                                ${(step === 2 ? mobileNumber.length === 10 : otp.length === 6) ? 'bg-pink-700 text-white' : 'bg-gray-100 text-gray-300 cursor-not-allowed'}
+                                            `}
                                         >
-                                            Next
+                                            {step === 2 ? 'Send Code' : 'Verify & Proceed'}
                                         </button>
-                                    )}
-                                </>
-                            );
-                        })()}
-                    </>
-                )}
-                {step === 2 && (
-                    <>
-                        <h2 className="text-xl font-semibold text-pink-600 mb-2">
-                            Welcome Guest!
-                        </h2>
-                        <h3 className="text-xl font-semibold text-pink-600 mb-2">
-                            Login using Mobile Number
-                        </h3>
-                        <div className="flex items-center border border-pink-500 rounded-md overflow-hidden">
-                            <span className="px-3">+91</span>
-                            <input
-                                type="tel"
-                                placeholder="---------------------------"
-                                className="flex-grow p-2 outline-none text-lg"
-                                value={mobileNumber}
-                                onChange={(e) => setMobileNumber(e.target.value)}
-                            />
-                            <button
-                                className={`px-8 py-3 font-semibold transition-colors duration-300 ${mobileNumber.length === 10
-                                    ? "bg-pink-600 text-white"
-                                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                                    }`}
-                                disabled={mobileNumber.length !== 10}
-                                onClick={handleSendOtp}
-                            >
-                                Get OTP
-                            </button>
-                        </div>
-                    </>
-                )}
-                {step === 3 && (
-                    <>
-                        <h2 className="text-xl font-semibold text-pink-600 mb-2">
-                            Enter OTP
-                        </h2>
-                        <h3 className="text-xl font-semibold text-pink-600 mb-2">
-                            OTP valid for 5 min
-                        </h3>
-                        <div className="flex items-center border border-pink-500 rounded-md overflow-hidden">
-                            <input
-                                type="text"
-                                placeholder="Enter 6-digit OTP"
-                                className="flex-grow p-2 outline-none text-lg"
-                                value={otp}
-                                onChange={(e) => setOtp(e.target.value)}
-                            />
-                            <button
-                                className={`px-8 py-3 font-semibold transition-colors duration-300 ${otp.length === 6
-                                    ? "bg-pink-600 text-white"
-                                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                                    }`}
-                                disabled={otp.length !== 6}
-                                onClick={handleVerifyOtp}
-                            >
-                                Verify OTP
-                            </button>
-                        </div>
-                        <div className="flex justify-between mt-4">
-                            <button
-                                className="border border-gray-500 px-4 py-2 rounded-md"
-                                onClick={() => setStep(2)}
-                            >
-                                Edit Phone No.
-                            </button>
+                                        
+                                        <button onClick={() => setStep(step - 1)} className="w-full text-[11px] font-black uppercase tracking-[0.2em] text-gray-500 hover:text-pink-700 transition-colors py-4">Return to Previous</button>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
 
-                            <button
-                                className="border border-gray-500 px-4 py-2 rounded-md"
-                                onClick={handleSendOtp}
+                        {step === 4 && (
+                            <motion.div
+                                key="step4"
+                                initial={{ opacity: 0, x: 5 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="h-full"
                             >
-                                Resend OTP
-                            </button>
-                        </div>
-                    </>
-                )}
-                {step === 4 && (
-                    <div className="mx-auto p-4 border border-gray-300 rounded-lg shadow-md">
-                        <form className="space-y-2" onSubmit={handleFormSubmit}>
-                            <div className="flex flex-col">
-                                <label className="text-gray-700">Name</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    className="border-b border-gray-400 p-1 outline-none"
-                                    placeholder="Enter your name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className="flex flex-col">
-                                <label className="text-gray-700">Phone</label>
-                                <input
-                                    type="text"
-                                    name="mobile"
-                                    className="border-b border-gray-400 p-1 outline-none"
-                                    value={mobileNumber}
-                                    readOnly
-                                />
-                            </div>
-                            <div className="flex flex-col">
-                                <label className="text-gray-700">Email</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    className="border-b border-gray-400 p-1 outline-none"
-                                    placeholder="Enter your email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className="flex flex-col">
-                                <label className="text-gray-700">Date of Birth</label>
-                                <input
-                                    type="date"
-                                    name="dob"
-                                    className="border-b border-gray-400 p-1 outline-none"
-                                    value={formData.dob}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className="flex items-center gap-4">
-                                <span className="text-gray-700">Gender:</span>
-
-                                <label className="flex items-center space-x-2">
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Male"
-                                        checked={formData.gender === "Male"}
-                                        onChange={handleChange}
-                                        className="accent-pink-600"
-                                        required
-                                    />
-                                    <span>Male</span>
-                                </label>
-
-                                <label className="flex items-center space-x-2">
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Female"
-                                        checked={formData.gender === "Female"}
-                                        onChange={handleChange}
-                                        className="accent-pink-600"
-                                        required
-                                    />
-                                    <span>Female</span>
-                                </label>
-                            </div>
-                            <div className="flex justify-between gap-2">
-                                <div className="flex flex-col">
-                                    <label className="text-gray-700">Date</label>
-                                    <input
-                                        type="text"
-                                        name="appointment_date"
-                                        className="border border-gray-400 w-full rounded-md p-1 focus:border-pink-700 focus:ring-pink-700 focus:ring-1"
-                                        value={format(
-                                            new Date(year, month, selectedDate),
-                                            "EEE dd MMM"
-                                        )}
-                                        readOnly
-                                    />
+                                <div className="mb-6">
+                                    <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Patient <span className="text-pink-700">Details</span></h2>
+                                    <p className="text-gray-400 text-xs mt-1">Complete your profile for the medical records.</p>
                                 </div>
 
-                                <div className="flex flex-col">
-                                    <label className="text-gray-700">Time</label>
-                                    <input
-                                        type="text"
-                                        name="appointment_time"
-                                        className="border border-gray-400 w-full rounded-md p-1 focus:border-pink-700 focus:ring-pink-700 focus:ring-1"
-                                        value={selectedSlot}
-                                        readOnly
-                                    />
-                                </div>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                                <input
-                                    type="checkbox"
-                                    name="terms"
-                                    checked={isChecked}
-                                    onChange={() => setIsChecked(!isChecked)}
-                                    className="accent-pink-600 w-5 h-5"
-                                    required
-                                />
-                                <span className="text-gray-700">
-                                    I agree to the terms & conditions
-                                </span>
-                            </div>
-                            <button
-                                type="submit"
-                                className={`w-full py-3 mt-4 rounded-md text-white text-lg font-semibold ${isChecked
-                                    ? "bg-pink-600"
-                                    : "bg-gray-300 cursor-not-allowed"
-                                    }`}
-                                disabled={!isChecked}
-                            >
-                                Confirm Appointment
-                            </button>
-                        </form>
-                    </div>
-                )}
-            </div>
+                                <form className="space-y-4" onSubmit={handleFormSubmit}>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div className="space-y-1">
+                                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Full Name</label>
+                                            <input type="text" name="name" required className="w-full bg-gray-50 border border-gray-100 rounded-xl py-2.5 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/10 outline-none transition-all text-xs" value={formData.name} onChange={handleChange} />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Gender</label>
+                                            <div className="flex gap-2">
+                                                {["Male", "Female"].map(g => (
+                                                    <label key={g} className="flex-1 cursor-pointer">
+                                                        <input type="radio" name="gender" value={g} checked={formData.gender === g} onChange={handleChange} className="hidden" />
+                                                        <div className={`py-2.5 rounded-xl text-center text-[10px] font-bold transition-all border ${formData.gender === g ? 'bg-pink-700 border-pink-700 text-white' : 'bg-gray-50 border-gray-100 text-gray-400 hover:border-pink-200'}`}>{g}</div>
+                                                    </label>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div className="space-y-1">
+                                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Email</label>
+                                            <input type="email" name="email" required className="w-full bg-gray-50 border border-gray-100 rounded-xl py-2.5 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/10 outline-none transition-all text-xs" value={formData.email} onChange={handleChange} />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">DOB</label>
+                                            <input type="date" name="dob" required className="w-full bg-gray-50 border border-gray-100 rounded-xl py-2.5 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/10 outline-none transition-all text-xs" value={formData.dob} onChange={handleChange} />
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-pink-700/5 p-4 rounded-xl border border-pink-700/10 flex items-center justify-between mt-6">
+                                        <div className="flex flex-col">
+                                            <span className="text-[9px] font-bold text-pink-700 uppercase tracking-widest mb-1">Appointment Sync</span>
+                                            <div className="flex items-center gap-3 text-gray-900 font-bold text-xs">
+                                                <span>{selectedDate ? format(new Date(year, month, selectedDate), "EEE, dd MMM") : "-"}</span>
+                                                <span className="text-pink-200">|</span>
+                                                <span>{selectedSlot || "-"}</span>
+                                            </div>
+                                        </div>
+                                        <CheckCircle className="text-pink-600" size={20} />
+                                    </div>
+
+                                    <label className="flex items-center gap-3 cursor-pointer group mt-4">
+                                        <input type="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} className="w-4 h-4 rounded border-gray-200 text-pink-700 focus:ring-pink-500" required />
+                                        <span className="text-[10px] font-bold text-gray-600 uppercase tracking-wider group-hover:text-pink-700 transition-colors">I agree to medical notifications & T&C</span>
+                                    </label>
+
+                                    <button
+                                        type="submit"
+                                        disabled={!isChecked}
+                                        className={`w-full py-4 mt-4 rounded-xl text-white text-xs font-bold uppercase tracking-[0.2em] transition-all shadow-xl
+                                            ${isChecked ? 'bg-pink-700 hover:bg-pink-800' : 'bg-gray-100 text-gray-300 cursor-not-allowed'}
+                                        `}
+                                    >
+                                        Finalize Appointment
+                                    </button>
+                                </form>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            </motion.div>
         </div>
     );
 }
