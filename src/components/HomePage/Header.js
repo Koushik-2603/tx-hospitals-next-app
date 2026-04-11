@@ -54,6 +54,8 @@ export default function HospitalHero() {
                             muted
                             loop
                             playsInline
+                            preload="auto"
+                            poster="/assets/Header/Chairmans message.png"
                         />
                         <HospitalNavbar
                             variant={isScrolled ? "secondary" : "primary"}
@@ -90,6 +92,7 @@ export default function HospitalHero() {
                                 width={1300}
                                 height={400}
                                 className="w-full object-cover"
+                                priority
                             />
                         </motion.div>
                     </div>
@@ -108,6 +111,8 @@ export default function HospitalHero() {
                             muted
                             loop
                             playsInline
+                            preload="auto"
+                            poster="/assets/Header/Chairmans message.png"
                         />
                         <div className="relative z-20 flex flex-col h-full justify-between p-2">
                             {/* Navbar */}
@@ -160,6 +165,7 @@ export default function HospitalHero() {
                                 width={1300}
                                 height={400}
                                 className="w-full object-cover"
+                                priority
                             />
                         </motion.div>
 

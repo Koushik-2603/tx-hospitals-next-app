@@ -47,10 +47,13 @@ const getInitialLanguage = () => {
 
 export default function LanguageDropdown({ languages, setForceSecondary }) {
     const [open, setOpen] = useState(false);
-    const [language, setLanguage] = useState(getInitialLanguage);
+    const [language, setLanguage] = useState("English");
     const ref = useRef(null);
 
     useEffect(() => {
+        // Hydrate language from cookie on mount to avoid mismatch
+        setLanguage(getInitialLanguage());
+
         const handler = (e) => {
             if (ref.current && !ref.current.contains(e.target)) {
                 setOpen(false);
