@@ -134,9 +134,9 @@ export default function Doctors({ department: propDepartment }) {
                 <div className="font-inter">
                     <div className="relative pb-4 w-full min-h-full">
                         <div className="p-4 mx-w-full relative">
-                            <h1 className="text-4xl text-center font-bold text-pink-700 mb-4">
+                            <h2 className="text-4xl text-center font-bold text-pink-700 mb-4">
                                 Best {getDoctorDepartment(department)} Doctors in Hyderabad
-                            </h1>
+                            </h2>
                             <div className="grid grid-cols-3 gap-2 pt-4">
                                 {doctorsData
                                     ?.slice()
@@ -283,9 +283,9 @@ export default function Doctors({ department: propDepartment }) {
                 <div className="font-inter">
                     <div className="relative bg-gray-200 pb-2 w-full min-h-full">
                         <div className="p-4 mx-w-full relative">
-                            <h1 className="text-xl font-semibold text-pink-700">
+                            <h2 className="text-xl font-semibold text-pink-700">
                                 Best {getDoctorDepartment(department)} Doctors in Hyderabad
-                            </h1>
+                            </h2>
                             <div className="grid grid-cols-1 gap-2 pt-4">
                                 {doctorsData
                                     ?.slice()

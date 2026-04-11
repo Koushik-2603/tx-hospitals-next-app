@@ -146,8 +146,7 @@ export default function DiseasesTreatments({ department: propDepartment }) {
                         <div ref={contentRef} className="w-[70%] flex-1 hide-scrollbar overflow-y-auto pr-4 max-h-[calc(100vh-40px)]">
                             {data?.extraFields?.map((field, index) => {
                                 const getHeadingTag = () => {
-                                    if (index === 0) return 'h1';
-                                    if (index === 1 || index === 2) return 'h2';
+                                    if (index === 0 || index === 1 || index === 2) return 'h2';
                                     return 'h3';
                                 };
 
@@ -259,8 +258,7 @@ export default function DiseasesTreatments({ department: propDepartment }) {
                     <div className="pl-2">
                         {data?.extraFields?.map((field, index) => {
                             const getHeadingTag = () => {
-                                if (index === 0) return 'h1';
-                                if (index === 1 || index === 2) return 'h2';
+                                if (index === 0 || index === 1 || index === 2) return 'h2';
                                 return 'h3';
                             };
 

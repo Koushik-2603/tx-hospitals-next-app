@@ -172,7 +172,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                 {/* Right: Quick Links */}
                 <div className="w-64 space-y-4">
                     <div className="flex items-center justify-between">
-                        <h1 className="font-bold text-lg text-left">Quick Links</h1>
+                        <span className="font-bold text-lg text-left">Quick Links</span>
                         <button onClick={handleClose} className="text-gray-600 hover:text-black">
                             <FiX />
                         </button>
@@ -285,7 +285,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                 {/* Right: Quick Links */}
                 <div className="w-64 space-y-4">
                     <div className="flex items-center justify-between">
-                        <h1 className="font-bold text-lg text-left">Quick Links</h1>
+                        <span className="font-bold text-lg text-left">Quick Links</span>
                         <button onClick={handleClose} className="text-gray-600 hover:text-black">
                             <FiX />
                         </button>
@@ -393,7 +393,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                 {/* Column 5: Quick Links */}
                 <div className="w-64 space-y-4">
                     <div className="flex items-center justify-between">
-                        <h1 className="font-bold text-lg text-left">Quick Links</h1>
+                        <span className="font-bold text-lg text-left">Quick Links</span>
                         <button onClick={handleClose} className="text-gray-600 hover:text-black">
                             <FiX />
                         </button>
@@ -449,7 +449,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                     {/* Right side quick links */}
                     <div className="w-72 pl-4 border-l border-gray-500 space-y-4 relative">
                         <div className="flex items-center justify-between">
-                            <h1 className="font-bold text-lg text-left">Quick Links</h1>
+                            <span className="font-bold text-lg text-left">Quick Links</span>
                             <button
                                 onClick={handleClose}
                                 className="text-gray-600 hover:text-black text-xl font-bold"

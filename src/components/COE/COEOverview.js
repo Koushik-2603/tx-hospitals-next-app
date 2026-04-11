@@ -208,8 +208,7 @@ export default function COEOverview({ department: propDepartment }) {
                         >
                             {data?.extraFields?.map((field, index) => {
                                 const getHeadingTag = () => {
-                                    if (index === 0) return 'h1';
-                                    if (index === 1 || index === 2) return 'h2';
+                                    if (index === 0 || index === 1 || index === 2) return 'h2';
                                     return 'h3';
                                 };
 
@@ -341,11 +340,10 @@ export default function COEOverview({ department: propDepartment }) {
                 <div className="p-2 font-inter">
                     <div className="pl-2">
                         {data?.extraFields?.map((field, index) => {
-                            const getHeadingTag = () => {
-                                if (index === 0) return 'h1';
-                                if (index === 1 || index === 2) return 'h2';
-                                return 'h3';
-                            };
+                             const getHeadingTag = () => {
+                                 if (index === 0 || index === 1 || index === 2) return 'h2';
+                                 return 'h3';
+                             };
 
                             const HeadingTag = getHeadingTag();
                             return (
