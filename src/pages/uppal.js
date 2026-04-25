@@ -1,6 +1,6 @@
 import React from 'react';
+import Head from 'next/head';
 import SecondaryLayout from '@/components/Layouts/SecondaryLayout';
-import Head from "next/head";
 import UppalHero from '@/components/Uppal/UppalHero';
 import UppalStats from '@/components/Uppal/UppalStats';
 import UppalAbout from '@/components/Uppal/UppalAbout';
@@ -17,9 +17,8 @@ export default function UppalPage() {
     return (
         <>
             <Head>
-                <title>TX Hospitals Uppal – Best Multi-Specialty Hospital in Uppal</title>
-                <meta name="description" content="TX Hospitals Uppal offers world-class multi-specialty care with advanced diagnostics, expert doctors, and 24/7 emergency services in Uppal, Hyderabad." />
-                <meta name="keywords" content="TX Hospitals Uppal, Best hospital in Uppal, Multi-specialty hospital Uppal, Emergency care Uppal" />
+                <title>Best Hospital in Uppal, Hyderabad | TX Hospitals</title>
+                <meta name="description" content="Your nearest multi-specialty hospital with expert care, 50+ doctors, and 24/7 emergency services. Serving Uppal and nearby areas in Hyderabad." />
             </Head>
             <SecondaryLayout>
                 <main>
