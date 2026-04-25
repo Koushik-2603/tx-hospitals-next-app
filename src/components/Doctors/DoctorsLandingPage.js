@@ -35,7 +35,10 @@ export default function DoctorsLandingPage() {
 
     useEffect(() => {
         window.scrollTo({ left: document.body.scrollWidth, top: 0, behavior: "smooth" });
-    }, []);
+        if (router.query.location) {
+            setSelectedLocation(router.query.location);
+        }
+    }, [router.query.location]);
 
     const filteredDoctors = doctorsData.filter((doctor) => {
         const doctorCategory = doctor.category ? doctor.category.toLowerCase() : "";
