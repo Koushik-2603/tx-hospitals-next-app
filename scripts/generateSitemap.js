@@ -38,7 +38,8 @@ const staticRoutes = [
   "/surgery-care/",
   "/international-patient-services/",
   "/thank-you/",
-  "/biomedical-wastage/"
+  "/biomedical-wastage/",
+  "/uppal/"
 ];
 
 const COERoutes = [

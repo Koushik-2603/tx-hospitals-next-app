@@ -66,10 +66,10 @@ const UppalWhyChoose = () => {
                             <div className="text-5xl font-black text-pink-50 mb-4 group-hover:text-pink-100 transition-colors">
                                 {reason.num}
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-pink-700 transition-colors">
+                            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-pink-700 transition-colors">
                                 {reason.title}
                             </h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-gray-600 text-base leading-relaxed">
                                 {reason.desc}
                             </p>
                         </motion.div>

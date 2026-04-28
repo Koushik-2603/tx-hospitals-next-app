@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-    Heart, Bone, Brain, Activity, ShieldPlus, 
-    Wind, Droplet, Microscope, Ear, Stethoscope, 
+import {
+    Heart, Bone, Brain, Activity, ShieldPlus,
+    Wind, Droplet, Microscope, Ear, Stethoscope,
     User, Smile, Eye, ArrowRight
 } from 'lucide-react';
 import Link from 'next/link';
@@ -10,67 +10,67 @@ import Link from 'next/link';
 const specialtiesData = [
     {
         title: "Cardiology",
-        icon: <Heart size={24} />,
+        icon: <Heart size={32} />,
         desc: "Heart care, ECG, echo, cardiac consultations & interventions by expert cardiologists near you."
     },
     {
         title: "Orthopedics",
-        icon: <Bone size={24} />,
+        icon: <Bone size={32} />,
         desc: "Bone, joint & spine treatment. Fractures, joint replacements, sports injuries & physiotherapy."
     },
     {
         title: "Neurology",
-        icon: <Brain size={24} />,
+        icon: <Brain size={32} />,
         desc: "Brain & nervous system care, stroke, epilepsy, migraines and neurological disorders."
     },
     {
         title: "Gastroenterology",
-        icon: <Activity size={24} />,
+        icon: <Activity size={32} />,
         desc: "Digestive health, liver care, endoscopy, colonoscopy & hernia surgery by expert GI doctors."
     },
     {
         title: "Oncology",
-        icon: <ShieldPlus size={24} />,
+        icon: <ShieldPlus size={32} />,
         desc: "Cancer diagnosis, treatment & support, chemotherapy, surgical oncology & palliative care."
     },
     {
         title: "Pulmonology",
-        icon: <Wind size={24} />,
+        icon: <Wind size={32} />,
         desc: "Lung & respiratory care, asthma, COPD, sleep apnea, bronchoscopy & chest infections."
     },
     {
         title: "Nephrology",
-        icon: <Droplet size={24} />,
+        icon: <Droplet size={32} />,
         desc: "Kidney care, dialysis, chronic kidney disease management & transplant coordination."
     },
     {
         title: "Urology",
-        icon: <Microscope size={24} />,
+        icon: <Microscope size={32} />,
         desc: "Urinary tract, kidney stones, prostate & bladder conditions, minimally invasive surgeries."
     },
     {
         title: "ENT",
-        icon: <Ear size={24} />,
+        icon: <Ear size={32} />,
         desc: "Ear, nose & throat care, hearing loss, sinus infections, tonsil surgery & voice disorders."
     },
     {
         title: "Internal Medicine",
-        icon: <Stethoscope size={24} />,
+        icon: <Stethoscope size={32} />,
         desc: "General physician consultations, diabetes, thyroid, hypertension & chronic disease management."
     },
     {
         title: "Dermatology",
-        icon: <User size={24} />,
+        icon: <User size={32} />,
         desc: "Skin, hair & nail conditions, acne, psoriasis, eczema, laser therapy & cosmetic dermatology."
     },
     {
         title: "Dental",
-        icon: <Smile size={24} />,
+        icon: <Smile size={32} />,
         desc: "Complete dental care, cleaning, fillings, root canals, implants & orthodontic treatments."
     },
     {
         title: "Ophthalmology",
-        icon: <Eye size={24} />,
+        icon: <Eye size={32} />,
         desc: "Eye care, cataract, glaucoma, retinal disorders, LASIK & routine eye examinations."
     }
 ];
@@ -94,9 +94,9 @@ const UppalSpecialties = () => {
                 </div>
 
                 {/* Specialties Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-4">
                     {specialtiesData.map((spec, index) => (
-                        <motion.div 
+                        <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -109,13 +109,13 @@ const UppalSpecialties = () => {
                             <div className="absolute bottom-0 left-0 w-full h-[3px] bg-pink-700/20"></div>
 
                             {/* Icon */}
-                            <div className="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center text-pink-700 mb-4 transition-transform group-hover:scale-110 duration-300">
+                            <div className="w-14 h-14 rounded-xl bg-pink-50 flex items-center justify-center text-pink-700 mb-6 transition-transform group-hover:scale-110 duration-300">
                                 {spec.icon}
                             </div>
 
                             {/* Content */}
-                            <h3 className="font-bold text-gray-900 text-sm mb-2">{spec.title}</h3>
-                            <p className="text-xs text-gray-500 leading-relaxed flex-grow">
+                            <h3 className="font-bold text-gray-900 text-2xl mb-3">{spec.title}</h3>
+                            <p className="text-lg text-gray-600 leading-relaxed flex-grow">
                                 {spec.desc}
                             </p>
                         </motion.div>

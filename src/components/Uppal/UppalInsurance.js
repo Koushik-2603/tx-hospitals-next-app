@@ -58,7 +58,7 @@ const UppalInsurance = () => {
                                 transition={{ delay: index * 0.05 }}
                                 className="bg-white border border-gray-200 rounded-lg py-3 px-2 flex items-center justify-center text-center shadow-sm hover:border-pink-200 hover:shadow-md transition-all cursor-default"
                             >
-                                <span className="text-xs font-bold text-gray-800">{provider}</span>
+                                <span className="text-sm font-bold text-gray-800">{provider}</span>
                             </motion.div>
                         ))}
                         {/* Special Many More Badge */}
@@ -69,7 +69,7 @@ const UppalInsurance = () => {
                             transition={{ delay: insuranceProviders.length * 0.05 }}
                             className="bg-pink-50 border border-pink-200 rounded-lg py-3 px-2 flex items-center justify-center text-center shadow-sm"
                         >
-                            <span className="text-xs font-bold text-pink-700">+ Many More</span>
+                            <span className="text-sm font-bold text-pink-700">+ Many More</span>
                         </motion.div>
                     </div>
                 </div>
@@ -96,8 +96,8 @@ const UppalInsurance = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 className="text-base font-bold text-gray-900 mb-1">{step.title}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed font-medium">
+                                    <h3 className="text-lg font-bold text-gray-900 mb-1">{step.title}</h3>
+                                    <p className="text-base text-gray-500 leading-relaxed font-medium">
                                         {step.desc}
                                     </p>
                                 </div>

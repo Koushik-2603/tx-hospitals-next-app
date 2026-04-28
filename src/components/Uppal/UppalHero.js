@@ -69,7 +69,7 @@ const UppalHero = () => {
                                     <div className="mt-0.5 bg-pink-50 p-1.5 rounded-lg shrink-0 border border-pink-100">
                                         {feature.icon}
                                     </div>
-                                    <p className="text-gray-700 text-sm">{feature.text}</p>
+                                    <p className="text-gray-700 text-base">{feature.text}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -81,9 +81,12 @@ const UppalHero = () => {
                             >
                                 Book an Appointment
                             </button>
-                            <button className="border-2 border-pink-700 text-pink-700 px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-50 transition-all transform hover:scale-105">
-                                Meet Our Doctors
-                            </button>
+                            <a 
+                                href="tel:9144514459"
+                                className="border-2 border-pink-700 text-pink-700 px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-50 transition-all transform hover:scale-105 text-center"
+                            >
+                                Call Now
+                            </a>
                         </div>
                     </motion.div>
 

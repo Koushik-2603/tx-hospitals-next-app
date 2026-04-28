@@ -39,7 +39,7 @@ const UppalEmergency = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-gray-400 text-sm md:text-base leading-relaxed font-medium max-w-xl"
+                            className="text-gray-400 text-base md:text-lg leading-relaxed font-medium max-w-xl"
                         >
                             Medical emergencies don't follow a schedule. Our emergency department at TX Hospitals, Uppal is operational round the clock, experienced doctors, paramedic staff, and fully equipped ICU, ready the moment you need us.
                         </motion.p>
@@ -60,7 +60,7 @@ const UppalEmergency = () => {
                             <Phone className="w-5 h-5 md:w-6 md:h-6 fill-current" />
                             Call Emergency: 91 44514459
                         </a>
-                        <p className="text-gray-500 text-xs mt-4 font-medium tracking-wide">
+                        <p className="text-gray-500 text-sm mt-4 font-medium tracking-wide">
                             Ambulance available · Uppal & nearby areas
                         </p>
                     </motion.div>

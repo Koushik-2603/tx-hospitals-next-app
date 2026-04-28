@@ -2,23 +2,23 @@ import React from 'react';
 import { Award } from 'lucide-react';
 import Link from 'next/link';
 
-const DoctorCard = ({ 
-    name, 
-    specialty, 
-    designation, 
-    experience, 
-    imageSrc, 
+const DoctorCard = ({
+    name,
+    specialty,
+    designation,
+    experience,
+    imageSrc,
     profileLink = "#",
-    onBookClick 
+    onBookClick
 }) => {
     return (
         <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full group">
             {/* Image Section */}
             <div className="relative h-56 w-full bg-[#fdf5f8] overflow-hidden">
                 {imageSrc ? (
-                    <img 
-                        src={imageSrc} 
-                        alt={name} 
+                    <img
+                        src={imageSrc}
+                        alt={name}
                         className="w-full h-full object-cover object-top scale-[1.02] transition-transform duration-500 group-hover:scale-[1.08]"
                     />
                 ) : (
@@ -27,7 +27,7 @@ const DoctorCard = ({
                         {/* You can put a default user icon here if desired */}
                     </div>
                 )}
-                
+
                 {/* Specialty Badge */}
                 <div className="absolute bottom-3 left-3 bg-pink-700 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md">
                     {specialty}
@@ -36,16 +36,18 @@ const DoctorCard = ({
 
             {/* Content Section */}
             <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{name}</h3>
-                <p className="text-xs text-gray-500 mb-4 line-clamp-2 h-8">{designation}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-1 line-clamp-2 h-14 leading-tight">{name}</h3>
+                <p className="text-sm text-gray-500 mb-4 line-clamp-2 h-10">{designation}</p>
 
-                <div className="flex items-center gap-1.5 text-pink-600 mb-6">
-                    <Award size={14} className="fill-pink-100" />
-                    <span className="text-xs font-bold">{experience} Years Experience</span>
+                <div className="flex items-start gap-1.5 text-pink-600 mb-6">
+                    <Award size={14} className="fill-pink-100 mt-1 flex-shrink-0" />
+                    <span className="text-sm font-bold h-10 leading-tight">
+                        {experience ? experience.toString().replace(/years?|experience/gi, '').trim() : '0'} Years <br /> Experience
+                    </span>
                 </div>
 
                 <div className="mt-auto space-y-2">
-                    <button 
+                    <button
                         onClick={onBookClick}
                         className="w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-2.5 rounded-lg text-xs transition-colors shadow-sm"
                     >
