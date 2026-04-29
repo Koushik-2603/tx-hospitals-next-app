@@ -36,10 +36,10 @@ const reasons = [
 
 const UppalWhyChoose = () => {
     return (
-        <section className="bg-white py-16 px-6 md:px-10 lg:px-12">
+        <section className="bg-white py-10 md:py-16 px-6 md:px-10 lg:px-12">
             <div className="max-w-[1400px] mx-auto">
                 {/* Header Section */}
-                <div className="mb-12 max-w-3xl">
+                <div className="mb-8 md:mb-12 max-w-3xl">
                     <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-pink-700 mb-2 block">
                         Why TX Hospitals, Uppal
                     </span>
@@ -53,9 +53,9 @@ const UppalWhyChoose = () => {
                 </div>
 
                 {/* Grid Section */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {reasons.map((reason, index) => (
-                        <motion.div 
+                        <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}

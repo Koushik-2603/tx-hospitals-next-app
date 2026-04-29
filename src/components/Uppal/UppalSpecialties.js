@@ -77,10 +77,10 @@ const specialtiesData = [
 
 const UppalSpecialties = () => {
     return (
-        <section className="bg-[#fcfafa] py-16 px-6 md:px-10 lg:px-12">
+        <section className="bg-[#fcfafa] py-10 md:py-16 px-6 md:px-10 lg:px-12">
             <div className="max-w-[1400px] mx-auto">
                 {/* Header Section */}
-                <div className="mb-12 max-w-3xl">
+                <div className="mb-8 md:mb-12 max-w-3xl">
                     <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-pink-700 mb-2 block">
                         What We Treat
                     </span>

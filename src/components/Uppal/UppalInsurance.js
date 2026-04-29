@@ -32,9 +32,9 @@ const steps = [
 
 const UppalInsurance = () => {
     return (
-        <section className="bg-[#fcfafa] py-16 px-6 md:px-10 lg:px-12">
+        <section className="bg-[#fcfafa] py-10 md:py-16 px-6 md:px-10 lg:px-12">
             <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-                
+
                 {/* Left Column: Insurance Providers */}
                 <div>
                     <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-pink-700 mb-2 block">
@@ -50,7 +50,7 @@ const UppalInsurance = () => {
 
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                         {insuranceProviders.map((provider, index) => (
-                            <motion.div 
+                            <motion.div
                                 key={index}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
@@ -62,7 +62,7 @@ const UppalInsurance = () => {
                             </motion.div>
                         ))}
                         {/* Special Many More Badge */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
@@ -82,7 +82,7 @@ const UppalInsurance = () => {
 
                     <div className="flex flex-col">
                         {steps.map((step, index) => (
-                            <motion.div 
+                            <motion.div
                                 key={step.id}
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}

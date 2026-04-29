@@ -4,14 +4,14 @@ import { Phone } from 'lucide-react';
 
 const UppalEmergency = () => {
     return (
-        <section className="bg-[#181516] py-16 px-6 md:px-10 lg:px-12 text-white overflow-hidden">
+        <section className="bg-[#181516] py-10 md:py-16 px-6 md:px-10 lg:px-12 text-white overflow-hidden">
             <div className="max-w-[1400px] mx-auto">
                 <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
-                    
+
                     {/* Left Content */}
                     <div className="max-w-2xl">
                         {/* Live Status Badge */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -24,7 +24,7 @@ const UppalEmergency = () => {
                             Available Right Now
                         </motion.div>
 
-                        <motion.h2 
+                        <motion.h2
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -34,7 +34,7 @@ const UppalEmergency = () => {
                             24/7 Emergency Treatment – <span className="text-pink-600">We Never Close</span>
                         </motion.h2>
 
-                        <motion.p 
+                        <motion.p
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -46,14 +46,14 @@ const UppalEmergency = () => {
                     </div>
 
                     {/* Right CTA */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
                         className="flex flex-col items-start lg:items-center"
                     >
-                        <a 
+                        <a
                             href="tel:9144514459"
                             className="inline-flex items-center gap-3 bg-white hover:bg-gray-50 text-pink-700 px-6 md:px-8 py-4 rounded-full font-bold text-lg md:text-xl transition-transform transform hover:scale-105 shadow-xl w-full sm:w-auto justify-center border border-transparent hover:border-pink-100"
                         >

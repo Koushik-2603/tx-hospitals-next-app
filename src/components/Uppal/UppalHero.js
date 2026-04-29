@@ -31,12 +31,12 @@ const UppalHero = () => {
     ];
 
     return (
-        <section className="relative w-full bg-white overflow-hidden py-8 lg:py-12 px-6 md:px-10 lg:px-12">
+        <section className="relative w-full bg-white overflow-hidden py-6 lg:py-12 px-6 md:px-10 lg:px-12">
             <div className="max-w-[1400px] mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                    
+
                     {/* Left Content */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -48,7 +48,7 @@ const UppalHero = () => {
                             </span>
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
                                 Your Trusted <span className="text-pink-700 relative inline-block">Multi-Specialty
-                                     <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
+                                    <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
                                 </span> Hospital in Uppal
                             </h1>
                         </div>
@@ -59,7 +59,7 @@ const UppalHero = () => {
 
                         <div className="space-y-3 pt-2">
                             {features.map((feature, index) => (
-                                <motion.div 
+                                <motion.div
                                     key={index}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -75,13 +75,13 @@ const UppalHero = () => {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                            <button 
+                            <button
                                 onClick={() => setIsModalOpen(true)}
                                 className="bg-pink-700 text-white px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-800 transition-all transform hover:scale-105 shadow-md shadow-pink-200"
                             >
                                 Book an Appointment
                             </button>
-                            <a 
+                            <a
                                 href="tel:9144514459"
                                 className="border-2 border-pink-700 text-pink-700 px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-50 transition-all transform hover:scale-105 text-center"
                             >
@@ -91,24 +91,24 @@ const UppalHero = () => {
                     </motion.div>
 
                     {/* Right Image Section */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
                         className="relative max-w-md lg:max-w-lg mx-auto w-full mt-8 lg:mt-0"
                     >
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl z-10 border-4 border-white">
-                            <Image 
-                                src="/assets/Our Location/Uppal Location Image.png" 
-                                alt="TX Hospitals Uppal" 
-                                width={600} 
+                            <Image
+                                src="/assets/Our Location/Uppal Location Image.png"
+                                alt="TX Hospitals Uppal"
+                                width={600}
                                 height={450}
                                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
                             />
                         </div>
 
                         {/* Floating Card 1: 24/7 Emergency */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.6, duration: 0.6 }}
@@ -119,7 +119,7 @@ const UppalHero = () => {
                         </motion.div>
 
                         {/* Floating Card 2: Trusted by Uppal */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.8, duration: 0.6 }}
@@ -139,11 +139,11 @@ const UppalHero = () => {
                     </motion.div>
                 </div>
             </div>
-            
+
             {isModalOpen && (
-                <BookAppointmentForm 
-                    showModal={isModalOpen} 
-                    setShowModal={setIsModalOpen} 
+                <BookAppointmentForm
+                    showModal={isModalOpen}
+                    setShowModal={setIsModalOpen}
                 />
             )}
         </section>

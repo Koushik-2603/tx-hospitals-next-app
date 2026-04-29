@@ -34,10 +34,10 @@ const UppalFAQ = () => {
     };
 
     return (
-        <section className="bg-white py-16 px-6 md:px-10 lg:px-12">
+        <section className="bg-white py-10 md:py-16 px-6 md:px-10 lg:px-12">
             <div className="max-w-4xl mx-auto">
                 {/* Header Section */}
-                <div className="text-center mb-12">
+                <div className="text-center mb-8 md:mb-12">
                     <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-pink-700 mb-3 block">
                         Common Questions
                     </span>
@@ -70,7 +70,7 @@ const UppalFAQ = () => {
                                         <ChevronDown size={20} />
                                     </motion.div>
                                 </button>
-                                
+
                                 <AnimatePresence>
                                     {isOpen && (
                                         <motion.div

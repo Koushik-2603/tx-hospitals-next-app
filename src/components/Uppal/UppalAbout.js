@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const UppalAbout = () => {
     return (
-        <section className="bg-white py-16 px-6 md:px-10 lg:px-12">
+        <section className="bg-white py-10 md:py-16 px-6 md:px-10 lg:px-12">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-20">
                 {/* Left Side - Image */}
                 <div className="w-full md:w-1/2 relative h-[300px] sm:h-[400px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg border border-gray-100">
@@ -20,7 +20,7 @@ const UppalAbout = () => {
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                         About <span className="text-pink-700">TX Hospitals, Uppal</span>
                     </h2>
-                    
+
                     {/* Pink Underline Accent */}
                     <div className="w-16 h-1 bg-pink-700 mb-8 rounded-full"></div>
 
@@ -28,7 +28,7 @@ const UppalAbout = () => {
                         <p>
                             TX Hospitals Uppal is a fully equipped multi-specialty hospital serving the communities of Uppal, Nagole, Boduppal, Kothapet, Habsiguda, Ramanthapur and surrounding areas of Hyderabad. Our goal is simple: bring world-class medical care at affordable costs.
                         </p>
-                        
+
                         <p>
                             With 50+ doctors, 100+ beds, advanced operation theatres, a modern ICU, and a 24/7 emergency department, TX Hospitals Uppal is designed to handle everything, from a routine fever check to a complex surgery, without you having to travel across the city.
                         </p>

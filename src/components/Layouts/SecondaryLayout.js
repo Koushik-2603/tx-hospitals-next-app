@@ -32,7 +32,7 @@ export default function SecondaryLayout({ children }) {
                 variant="secondary"
             />
             <SocialSidebar />
-            <main className="pt-24">
+            <main className="pt-20 md:pt-24">
                 {children}
             </main>
             <CallbackFooterSection />
