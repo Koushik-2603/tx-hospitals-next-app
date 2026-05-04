@@ -56,6 +56,8 @@ const UppalCTA = () => {
                 <BookAppointmentForm
                     showModal={isModalOpen}
                     setShowModal={setIsModalOpen}
+                    redirectUrl="/uppal/thank-you"
+                    defaultLocation="TX Hospitals Uppal"
                 />
             )}
         </section>

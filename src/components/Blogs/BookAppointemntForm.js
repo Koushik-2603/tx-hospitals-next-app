@@ -3,14 +3,14 @@ import { IoClose } from "react-icons/io5";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 
-const BookAppointmentForm = ({ showModal, setShowModal }) => {
+const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-you", defaultLocation = "" }) => {
     const router = useRouter();
 
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
         date: "",
-        location: "",
+        location: defaultLocation,
     });
 
     const handleChange = (e) => {
@@ -23,7 +23,7 @@ const BookAppointmentForm = ({ showModal, setShowModal }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        router.push("/thank-you");
+        router.push(redirectUrl);
     };
 
     const locations = [
@@ -103,7 +103,7 @@ const BookAppointmentForm = ({ showModal, setShowModal }) => {
                                 </div>
 
                                 {/* Date and Location Side by Side */}
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className={defaultLocation ? "grid grid-cols-1 gap-4" : "grid grid-cols-2 gap-4"}>
                                     <div className="space-y-1">
                                         <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Date</label>
                                         <input
@@ -113,19 +113,24 @@ const BookAppointmentForm = ({ showModal, setShowModal }) => {
                                             className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
                                         />
                                     </div>
-                                    <div className="space-y-1">
-                                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Center</label>
-                                        <select
-                                            name="location"
-                                            required
-                                            className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm appearance-none cursor-pointer"
-                                        >
-                                            <option value="">Choose</option>
-                                            {locations.map(loc => (
-                                                <option key={loc} value={loc}>{loc}</option>
-                                            ))}
-                                        </select>
-                                    </div>
+                                    {!defaultLocation ? (
+                                        <div className="space-y-1">
+                                            <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Center</label>
+                                            <select
+                                                name="location"
+                                                required
+                                                defaultValue={formData.location}
+                                                className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm appearance-none cursor-pointer"
+                                            >
+                                                <option value="">Choose</option>
+                                                {locations.map(loc => (
+                                                    <option key={loc} value={loc}>{loc}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    ) : (
+                                        <input type="hidden" name="location" value={defaultLocation} />
+                                    )}
                                 </div>
 
                                 {/* Submit Button */}
