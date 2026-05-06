@@ -205,13 +205,13 @@ export default function AppointmentModal({ closeModal, doctorData }) {
 
     return (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[9999] px-4 py-4 overflow-hidden font-sans">
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, scale: 0.98, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 className="bg-white rounded-3xl w-full max-w-4xl overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[85vh] border border-gray-100"
             >
                 {/* Close Button */}
-                <button 
+                <button
                     onClick={closeModal}
                     className="absolute top-5 right-5 z-30 p-2 bg-gray-50 hover:bg-pink-100 hover:text-pink-600 rounded-full transition-all text-gray-400"
                 >
@@ -225,11 +225,11 @@ export default function AppointmentModal({ closeModal, doctorData }) {
                         <div className="mb-8">
                             <div className="w-16 h-16 bg-white/20 rounded-2xl p-1 shadow-inner border border-white/30 mb-4 overflow-hidden">
                                 {doctorData?.doctorImage ? (
-                                    <Image 
-                                        src={doctorData.doctorImage} 
-                                        alt={doctorData.name} 
-                                        width={64} 
-                                        height={64} 
+                                    <Image
+                                        src={doctorData.doctorImage}
+                                        alt={doctorData.name}
+                                        width={64}
+                                        height={64}
                                         className="object-cover rounded-xl"
                                     />
                                 ) : (
@@ -296,7 +296,7 @@ export default function AppointmentModal({ closeModal, doctorData }) {
                                                 const isPast = dateObj < new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate());
                                                 const isSelected = selectedDate === day;
                                                 const isSun = isSundayDate(year, month, day);
-                                                
+
                                                 return (
                                                     <button
                                                         key={index}
@@ -366,7 +366,7 @@ export default function AppointmentModal({ closeModal, doctorData }) {
                                         <h2 className="text-xl font-bold text-gray-900">{step === 2 ? 'Mobile Auth' : 'OTP Verification'}</h2>
                                         <p className="text-gray-400 text-[11px] mt-1">{step === 2 ? 'Enter your 10-digit mobile number' : `Validation code sent to +91 ${mobileNumber}`}</p>
                                     </div>
-                                    
+
                                     <div className="space-y-4">
                                         <div className="relative">
                                             {step === 2 ? (
@@ -402,7 +402,7 @@ export default function AppointmentModal({ closeModal, doctorData }) {
                                         >
                                             {step === 2 ? 'Send Code' : 'Verify & Proceed'}
                                         </button>
-                                        
+
                                         <button onClick={() => setStep(step - 1)} className="w-full text-[11px] font-black uppercase tracking-[0.2em] text-gray-500 hover:text-pink-700 transition-colors py-4">Return to Previous</button>
                                     </div>
                                 </div>
