@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
 import CONFIG from "@/config";
+import { toast } from "react-toastify";
 
 const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-you", defaultLocation = "" }) => {
     const router = useRouter();
@@ -13,8 +15,7 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
         date: "",
         location: defaultLocation,
     });
-
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,41 +27,43 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
-        
+
+        // Validation for 10-digit mobile number
+        const phoneRegex = /^[6-9]\d{9}$/;
+        if (!phoneRegex.test(formData.phone)) {
+            toast.error("Please enter a valid 10-digit mobile number");
+            return;
+        }
+
+        setLoading(true);
+        const location = formData.location || defaultLocation;
+        const isUppal = location?.toLowerCase().includes("uppal");
+
         try {
             const payload = {
                 to: "crm.txhospitals@gmail.com, manager@txhospitals.com, frontdesk@txhospitals.com",
-                cc: "info.txhospitals@gmail.com, manidhar139@gmail.com",
-                subject: "New Appointment Inquiry",
+                cc: isUppal ? "info.txhospitals@gmail.com, manidhar139@gmail.com" : "info.txhospitals@gmail.com",
+                subject: `New Inquiry from ${location}`,
                 html: `
-                    <h3>New Appointment Booking</h3>
+                    <h3>New Inquiry</h3>
                     <p><strong>Name:</strong> ${formData.name}</p>
                     <p><strong>Mobile:</strong> ${formData.phone}</p>
                     <p><strong>Date:</strong> ${formData.date}</p>
-                    <p><strong>Location:</strong> ${formData.location || "TX Hospitals Uppal"}</p>
+                    <p><strong>Location:</strong> ${location}</p>
                 `,
-                page: "Book Appointment Form",
-                location: formData.location || "TX Hospitals Uppal",
+                page: document.title || "Book Appointment Form",
+                location: location,
                 name: formData.name,
-                mobile: formData.phone,
-                date: formData.date
+                mobile: formData.phone
             };
-
-            await fetch(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
-            });
-
+            await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
+            toast.success("Appointment request submitted successfully!");
             router.push(redirectUrl);
         } catch (error) {
-            console.error('Error submitting form:', error);
-            alert("Failed to submit form. Please try again.");
+            console.error("Error submitting form:", error);
+            toast.error("Something went wrong. Please try again.");
         } finally {
-            setIsSubmitting(false);
+            setLoading(false);
         }
     };
 
@@ -107,9 +110,14 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                         {/* Form Body */}
                         <div className="p-6 md:p-8">
                             <form
+                                action="https://formsubmit.co/crm.txhospitals@gmail.com"
+                                method="POST"
                                 onSubmit={handleSubmit}
                                 className="space-y-3.5"
                             >
+                                {/* Hidden Fields */}
+                                <input type="hidden" name="_cc" value="info.txhospitals@gmail.com" />
+                                <input type="hidden" name="_captcha" value="false" />
 
                                 {/* Patient Name */}
                                 <div className="space-y-1">
@@ -176,10 +184,17 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                                 {/* Submit Button */}
                                 <button
                                     type="submit"
-                                    disabled={isSubmitting}
-                                    className={`w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 rounded-xl shadow-xl transition-all uppercase tracking-[0.2em] mt-1 text-xs ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'active:scale-95'}`}
+                                    disabled={loading}
+                                    className={`w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 rounded-xl shadow-xl transition-all active:scale-95 text-xs uppercase tracking-[0.2em] mt-1 flex items-center justify-center ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                                 >
-                                    {isSubmitting ? "Submitting..." : "Confirm Appointment"}
+                                    {loading ? (
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                            <span>Processing...</span>
+                                        </div>
+                                    ) : (
+                                        "Confirm Appointment"
+                                    )}
                                 </button>
                             </form>
                         </div>

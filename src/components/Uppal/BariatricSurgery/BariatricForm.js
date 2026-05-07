@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import CONFIG from "@/config";
+import axios from 'axios';
+import CONFIG from '@/config';
+import { toast } from 'react-toastify';
 
 const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
     const router = useRouter();
@@ -10,8 +12,7 @@ const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
         phone: '',
         weight: ''
     });
-
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,42 +21,41 @@ const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
-        
+
+        // Validation for 10-digit mobile number
+        const phoneRegex = /^[6-9]\d{9}$/;
+        if (!phoneRegex.test(formData.phone)) {
+            toast.error("Please enter a valid 10-digit mobile number");
+            return;
+        }
+
+        setLoading(true);
         try {
             const payload = {
                 to: "crm.txhospitals@gmail.com, manager@txhospitals.com, frontdesk@txhospitals.com",
                 cc: "info.txhospitals@gmail.com, manidhar139@gmail.com",
-                subject: "New Inquiry - Bariatric Surgery Uppal",
+                subject: "New Inquiry from Uppal Branch - Bariatric Surgery",
                 html: `
-                    <h3>New Inquiry</h3>
+                    <h3>New Inquiry - Bariatric Surgery</h3>
                     <p><strong>Name:</strong> ${formData.name}</p>
                     <p><strong>Mobile:</strong> ${formData.phone}</p>
-                    <p><strong>Weight:</strong> ${formData.weight || "Not specified"}</p>
+                    <p><strong>Weight:</strong> ${formData.weight} kg</p>
                     <p><strong>Location:</strong> TX Hospitals Uppal</p>
-                    <p><strong>Page:</strong> Bariatric Surgery Landing Page</p>
                 `,
-                page: "Bariatric Surgery Uppal",
+                page: document.title || "Uppal Bariatric Surgery Page",
                 location: "TX Hospitals Uppal",
                 name: formData.name,
                 mobile: formData.phone,
                 weight: formData.weight
             };
-
-            await fetch(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
-            });
-
+            await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
+            toast.success("Consultation request submitted successfully!");
             router.push(redirectUrl);
         } catch (error) {
-            console.error('Error submitting form:', error);
-            alert("Failed to submit form. Please try again.");
+            console.error('Error submitting bariatric form:', error);
+            toast.error("Something went wrong. Please try again.");
         } finally {
-            setIsSubmitting(false);
+            setLoading(false);
         }
     };
 
@@ -109,10 +109,19 @@ const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
 
                 <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 rounded-xl transition-all transform flex items-center justify-center gap-2 mt-4 shadow-lg shadow-pink-100 text-xs uppercase tracking-widest ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'active:scale-95'}`}
+                    disabled={loading}
+                    className={`w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 rounded-xl transition-all transform active:scale-95 flex items-center justify-center gap-2 mt-4 shadow-lg shadow-pink-100 text-xs uppercase tracking-widest ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                    {isSubmitting ? "Submitting..." : <><span className="text-lg">Book an Appointment</span> <span className="text-lg">→</span></>}
+                    {loading ? (
+                        <>
+                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            <span>Processing...</span>
+                        </>
+                    ) : (
+                        <>
+                            Book an Appointment <span className="text-lg">→</span>
+                        </>
+                    )}
                 </button>
 
                 <div className="flex items-center justify-center gap-2 mt-4 text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em]">
