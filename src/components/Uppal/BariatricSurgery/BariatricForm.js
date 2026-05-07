@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import CONFIG from "@/config";
 
 const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
     const router = useRouter();
@@ -10,15 +11,52 @@ const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
         weight: ''
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form Submitted:', formData);
-        router.push(redirectUrl);
+        setIsSubmitting(true);
+        
+        try {
+            const payload = {
+                to: "crm.txhospitals@gmail.com, manager@txhospitals.com, frontdesk@txhospitals.com",
+                cc: "info.txhospitals@gmail.com, manidhar139@gmail.com",
+                subject: "New Inquiry - Bariatric Surgery Uppal",
+                html: `
+                    <h3>New Inquiry</h3>
+                    <p><strong>Name:</strong> ${formData.name}</p>
+                    <p><strong>Mobile:</strong> ${formData.phone}</p>
+                    <p><strong>Weight:</strong> ${formData.weight || "Not specified"}</p>
+                    <p><strong>Location:</strong> TX Hospitals Uppal</p>
+                    <p><strong>Page:</strong> Bariatric Surgery Landing Page</p>
+                `,
+                page: "Bariatric Surgery Uppal",
+                location: "TX Hospitals Uppal",
+                name: formData.name,
+                mobile: formData.phone,
+                weight: formData.weight
+            };
+
+            await fetch(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            router.push(redirectUrl);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert("Failed to submit form. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -71,9 +109,10 @@ const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
 
                 <button
                     type="submit"
-                    className="w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 rounded-xl transition-all transform active:scale-95 flex items-center justify-center gap-2 mt-4 shadow-lg shadow-pink-100 text-xs uppercase tracking-widest"
+                    disabled={isSubmitting}
+                    className={`w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 rounded-xl transition-all transform flex items-center justify-center gap-2 mt-4 shadow-lg shadow-pink-100 text-xs uppercase tracking-widest ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'active:scale-95'}`}
                 >
-                    Book an Appointment <span className="text-lg">→</span>
+                    {isSubmitting ? "Submitting..." : <><span className="text-lg">Book an Appointment</span> <span className="text-lg">→</span></>}
                 </button>
 
                 <div className="flex items-center justify-center gap-2 mt-4 text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em]">

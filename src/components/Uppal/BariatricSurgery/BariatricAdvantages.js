@@ -46,13 +46,13 @@ const BariatricAdvantages = ({
         <section className="bg-white py-8 md:py-16 px-6 font-inter">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-8">
-                    <span className="text-pink-700 font-bold text-xs md:text-sm uppercase tracking-widest block mb-2">
+                    <span className="text-pink-700 font-bold text-sm md:text-base uppercase tracking-widest block mb-2">
                         {badge}
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+                    <h2 className="text-[32px] md:text-[38px] font-extrabold text-gray-900 mb-4">
                         {title}
                     </h2>
-                    <p className="text-gray-600 text-sm md:text-base max-w-2xl leading-relaxed font-medium">
+                    <p className="text-gray-600 text-base md:text-lg max-w-2xl leading-relaxed font-medium">
                         {subtitle}
                     </p>
                 </div>
@@ -69,11 +69,11 @@ const BariatricAdvantages = ({
                         >
                             <div className="flex items-start gap-3 mb-3">
                                 <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                                <h3 className="text-sm md:text-base font-extrabold text-gray-900 leading-tight">
+                                <h3 className="text-base md:text-lg font-extrabold text-gray-900 leading-tight">
                                     {adv.title}
                                 </h3>
                             </div>
-                            <p className="text-gray-500 text-xs md:text-[13px] leading-relaxed font-medium">
+                            <p className="text-gray-500 text-sm md:text-[15px] leading-relaxed font-medium">
                                 {adv.description}
                             </p>
                         </motion.div>
@@ -83,7 +83,7 @@ const BariatricAdvantages = ({
                 <div className="flex justify-center">
                     <button 
                         onClick={() => onBookClick()}
-                        className="bg-pink-700 hover:bg-pink-800 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-xl text-sm md:text-base"
+                        className="bg-pink-700 hover:bg-pink-800 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-xl text-base md:text-lg"
                     >
                         Book an Appointment
                     </button>

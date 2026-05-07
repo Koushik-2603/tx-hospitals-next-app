@@ -8,7 +8,7 @@ const DoctorCard = ({
     designation,
     experience,
     imageSrc,
-    profileLink = "#",
+    profileLink = null,
     onBookClick
 }) => {
     return (
@@ -53,9 +53,11 @@ const DoctorCard = ({
                     >
                         Book Appointment
                     </button>
-                    <Link href={profileLink} className="block w-full text-center bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold py-2.5 rounded-lg text-sm transition-colors">
-                        View Profile
-                    </Link>
+                    {profileLink && (
+                        <Link href={profileLink} className="block w-full text-center bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold py-2.5 rounded-lg text-sm transition-colors">
+                            View Profile
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>

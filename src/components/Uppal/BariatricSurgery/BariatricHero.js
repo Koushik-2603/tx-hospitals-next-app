@@ -30,15 +30,15 @@ const BariatricHero = ({
                         transition={{ duration: 0.6 }}
                         className="flex flex-col items-start text-left"
                     >
-                        <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
+                        <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs md:text-sm font-bold uppercase tracking-widest mb-4">
                             {badge}
                         </span>
                         
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight tracking-tight">
+                        <h1 className="text-[32px] md:text-[38px] lg:text-[50px] font-extrabold mb-4 leading-tight tracking-tight">
                             {title}
                         </h1>
                         
-                        <p className="text-sm md:text-base text-pink-50/90 mb-8 max-w-xl leading-relaxed">
+                        <p className="text-base md:text-lg text-pink-50/90 mb-8 max-w-xl leading-relaxed">
                             {subtitle}
                         </p>
                         
@@ -54,14 +54,14 @@ const BariatricHero = ({
                                     <div className="bg-white rounded-full p-0.5 shrink-0">
                                         <CheckCircle2 className="w-3 h-3 text-pink-700" fill="currentColor" stroke="white" />
                                     </div>
-                                    <span className="text-xs md:text-sm font-semibold">{feature}</span>
+                                    <span className="text-sm md:text-base font-semibold">{feature}</span>
                                 </motion.div>
                             ))}
                         </div>
                         
                         <button 
                             onClick={onBookClick}
-                            className="bg-white text-pink-700 hover:bg-pink-50 font-bold py-3.5 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-sm md:text-base uppercase tracking-wider"
+                            className="bg-white text-pink-700 hover:bg-pink-50 font-bold py-3.5 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg uppercase tracking-wider"
                         >
                             {buttonText}
                         </button>

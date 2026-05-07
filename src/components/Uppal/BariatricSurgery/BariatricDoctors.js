@@ -53,7 +53,6 @@ const BariatricDoctors = ({
                                 designation={`${doctor.designation} (${doctor.qualifications})`}
                                 experience={doctor.experience}
                                 imageSrc={doctor.image}
-                                profileLink={doctor.url}
                                 onBookClick={handleBookAppointment}
                             />
                         </motion.div>

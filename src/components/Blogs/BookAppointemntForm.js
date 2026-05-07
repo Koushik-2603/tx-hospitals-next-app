@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
+import CONFIG from "@/config";
 
 const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-you", defaultLocation = "" }) => {
     const router = useRouter();
@@ -13,6 +14,8 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
         location: defaultLocation,
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -21,9 +24,44 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        router.push(redirectUrl);
+        setIsSubmitting(true);
+        
+        try {
+            const payload = {
+                to: "crm.txhospitals@gmail.com, manager@txhospitals.com, frontdesk@txhospitals.com",
+                cc: "info.txhospitals@gmail.com, manidhar139@gmail.com",
+                subject: "New Appointment Inquiry",
+                html: `
+                    <h3>New Appointment Booking</h3>
+                    <p><strong>Name:</strong> ${formData.name}</p>
+                    <p><strong>Mobile:</strong> ${formData.phone}</p>
+                    <p><strong>Date:</strong> ${formData.date}</p>
+                    <p><strong>Location:</strong> ${formData.location || "TX Hospitals Uppal"}</p>
+                `,
+                page: "Book Appointment Form",
+                location: formData.location || "TX Hospitals Uppal",
+                name: formData.name,
+                mobile: formData.phone,
+                date: formData.date
+            };
+
+            await fetch(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            router.push(redirectUrl);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert("Failed to submit form. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const locations = [
@@ -69,14 +107,9 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                         {/* Form Body */}
                         <div className="p-6 md:p-8">
                             <form
-                                action="https://formsubmit.co/crm.txhospitals@gmail.com"
-                                method="POST"
                                 onSubmit={handleSubmit}
                                 className="space-y-3.5"
                             >
-                                {/* Hidden Fields */}
-                                <input type="hidden" name="_cc" value="info.txhospitals@gmail.com" />
-                                <input type="hidden" name="_captcha" value="false" />
 
                                 {/* Patient Name */}
                                 <div className="space-y-1">
@@ -86,6 +119,8 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                                         name="name"
                                         placeholder="Full Name"
                                         required
+                                        value={formData.name}
+                                        onChange={handleChange}
                                         className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
                                     />
                                 </div>
@@ -98,6 +133,8 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                                         name="phone"
                                         placeholder="Enter Phone"
                                         required
+                                        value={formData.phone}
+                                        onChange={handleChange}
                                         className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
                                     />
                                 </div>
@@ -110,6 +147,8 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                                             type="date"
                                             name="date"
                                             required
+                                            value={formData.date}
+                                            onChange={handleChange}
                                             className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
                                         />
                                     </div>
@@ -119,7 +158,8 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                                             <select
                                                 name="location"
                                                 required
-                                                defaultValue={formData.location}
+                                                value={formData.location}
+                                                onChange={handleChange}
                                                 className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm appearance-none cursor-pointer"
                                             >
                                                 <option value="">Choose</option>
@@ -136,9 +176,10 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                                 {/* Submit Button */}
                                 <button
                                     type="submit"
-                                    className="w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 rounded-xl shadow-xl transition-all active:scale-95 text-xs uppercase tracking-[0.2em] mt-1"
+                                    disabled={isSubmitting}
+                                    className={`w-full bg-pink-700 hover:bg-pink-800 text-white font-bold py-3.5 rounded-xl shadow-xl transition-all uppercase tracking-[0.2em] mt-1 text-xs ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'active:scale-95'}`}
                                 >
-                                    Confirm Appointment
+                                    {isSubmitting ? "Submitting..." : "Confirm Appointment"}
                                 </button>
                             </form>
                         </div>
