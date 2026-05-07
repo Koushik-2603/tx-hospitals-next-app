@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
-const BariatricWhyChoose = ({ 
+const BariatricWhyChoose = ({
     badge = "Our Promise",
     title = "Why Choose TX Hospitals?",
     subtitle = "The only dedicated bariatric hospital in Uppal — with the experience, technology, and care you deserve.",
@@ -36,7 +36,6 @@ const BariatricWhyChoose = ({
         "Pre-surgery diet planning & clearance",
         "Minimally invasive laparoscopic surgery",
         "1-3 day hospital stay with full care",
-        "6 months nutrition & weight tracking support",
         "Lifetime doctor follow-ups post procedure"
     ],
     onBookClick
@@ -57,7 +56,7 @@ const BariatricWhyChoose = ({
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-                    
+
                     {/* Left Column: Reasons */}
                     <div className="space-y-4">
                         {reasons.map((reason, index) => (
@@ -107,7 +106,7 @@ const BariatricWhyChoose = ({
                             ))}
                         </ul>
 
-                        <button 
+                        <button
                             onClick={() => onBookClick()}
                             className="bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-10 rounded-2xl transition-all transform hover:scale-105 shadow-xl relative z-10 text-sm md:text-base"
                         >
