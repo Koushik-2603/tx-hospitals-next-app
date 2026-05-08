@@ -50,11 +50,14 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                     <p><strong>Mobile:</strong> ${formData.phone}</p>
                     <p><strong>Date:</strong> ${formData.date}</p>
                     <p><strong>Location:</strong> ${location}</p>
+                    <p><strong>Page:</strong> ${document.title || "Book Appointment Form"}</p>
+                    <p><strong>Date:</strong> ${formData.date}</p>
                 `,
                 page: document.title || "Book Appointment Form",
                 location: location,
                 name: formData.name,
-                mobile: formData.phone
+                mobile: formData.phone,
+                date: formData.date
             };
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
             toast.success("Appointment request submitted successfully!");

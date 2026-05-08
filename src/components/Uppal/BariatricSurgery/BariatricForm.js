@@ -41,12 +41,15 @@ const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
                     <p><strong>Mobile:</strong> ${formData.phone}</p>
                     <p><strong>Weight:</strong> ${formData.weight} kg</p>
                     <p><strong>Location:</strong> TX Hospitals Uppal</p>
+                    <p><strong>Page:</strong> ${document.title || "Uppal Bariatric Surgery Page"}</p>
+                    <p><strong>Date:</strong> ${formData.date}</p>  
                 `,
                 page: document.title || "Uppal Bariatric Surgery Page",
                 location: "TX Hospitals Uppal",
                 name: formData.name,
                 mobile: formData.phone,
-                weight: formData.weight
+                weight: formData.weight,
+                date: formData.date
             };
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
             toast.success("Consultation request submitted successfully!");
