@@ -39,7 +39,10 @@ const staticRoutes = [
   "/international-patient-services/",
   "/thank-you/",
   "/biomedical-wastage/",
-  "/uppal/"
+  "/uppal/",
+  "/uppal/bariatric-surgery/",
+  "/uppal/gastro-hospital/",
+  "/uppal/hernia-surgery/"
 ];
 
 const COERoutes = [
