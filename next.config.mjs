@@ -28,6 +28,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'tx-hospital-secondopinion-images.s3.ap-south-2.amazonaws.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'flagcdn.com',
       }
     ],
