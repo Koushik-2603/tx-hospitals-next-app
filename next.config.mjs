@@ -20,6 +20,14 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'tx-hospital-healthpackages-images.s3.ap-south-2.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'flagcdn.com',
       }
     ],
