@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import WhatsAppButton from '../WhatsAppButton';
 
 const BariatricCTA = ({ 
     title = "Get Right Diagnosis, Treatment & Cost Estimate Details to Make a Fully Informed Decision",
@@ -17,15 +18,18 @@ const BariatricCTA = ({
                     {title}
                 </motion.h2>
 
-                <motion.button
-                    onClick={onBookClick}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-2xl text-sm md:text-base uppercase tracking-wider"
-                >
-                    Book an Appointment
-                </motion.button>
+                <div className="flex flex-row items-center justify-center gap-4">
+                    <motion.button
+                        onClick={onBookClick}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-2xl text-sm md:text-base uppercase tracking-wider"
+                    >
+                        Free Doctor Consultation
+                    </motion.button>
+                    <WhatsAppButton sizeClass="py-4 px-10 text-sm md:text-base" />
+                </div>
             </div>
             
             {/* Background pattern */}

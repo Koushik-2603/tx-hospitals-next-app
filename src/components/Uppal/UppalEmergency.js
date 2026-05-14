@@ -54,7 +54,7 @@ const UppalEmergency = () => {
                         className="flex flex-col items-start lg:items-center"
                     >
                         <a
-                            href="tel:9144514459"
+                            href="tel:9247903419"
                             className="inline-flex items-center gap-3 bg-white hover:bg-gray-50 text-pink-700 px-6 md:px-8 py-4 rounded-full font-bold text-lg md:text-xl transition-transform transform hover:scale-105 shadow-xl w-full sm:w-auto justify-center border border-transparent hover:border-pink-100"
                         >
                             <Phone className="w-5 h-5 md:w-6 md:h-6 fill-current" />

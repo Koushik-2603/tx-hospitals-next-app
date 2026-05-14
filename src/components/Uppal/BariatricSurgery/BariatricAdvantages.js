@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import WhatsAppButton from '../WhatsAppButton';
 import { CheckCircle2 } from 'lucide-react';
 
 const BariatricAdvantages = ({ 
@@ -80,13 +81,14 @@ const BariatricAdvantages = ({
                     ))}
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex flex-row justify-center gap-4">
                     <button 
                         onClick={() => onBookClick()}
                         className="bg-pink-700 hover:bg-pink-800 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-xl text-base md:text-lg"
                     >
-                        Book an Appointment
+                        Free Doctor Consultation
                     </button>
+                    <WhatsAppButton sizeClass="py-4 px-10 text-base md:text-lg" />
                 </div>
             </div>
         </section>

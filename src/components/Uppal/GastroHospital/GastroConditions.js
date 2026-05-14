@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import WhatsAppButton from '../WhatsAppButton';
 
 const GastroConditions = ({ onBookClick }) => {
     const conditions = [
@@ -105,13 +106,14 @@ const GastroConditions = ({ onBookClick }) => {
                     </p>
                 </motion.div>
 
-                <div className="mt-12 flex justify-center">
+                <div className="mt-12 flex flex-row justify-center gap-4">
                     <button
                         onClick={onBookClick}
                         className="bg-[#be185d] hover:bg-[#a2144e] text-white font-bold py-4 px-12 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg"
                     >
-                        Book an Appointment
+                        Free Doctor Consultation
                     </button>
+                    <WhatsAppButton sizeClass="py-4 px-12 text-base md:text-lg" />
                 </div>
             </div>
         </section>

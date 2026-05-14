@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import WhatsAppButton from '../WhatsAppButton';
 
 const GastroFinalCTA = ({ onBookClick }) => {
     return (
@@ -22,16 +23,21 @@ const GastroFinalCTA = ({ onBookClick }) => {
                 >
                     Recovery doesn't end at discharge. Diet guidance, medication review, and follow-up care are all part of your plan.
                 </motion.p>
-                <motion.button
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    onClick={onBookClick}
-                    className="bg-white text-[#be185d] hover:bg-pink-50 font-bold py-4 px-12 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg"
-                >
-                    Book an Appointment
-                </motion.button>
+                <div className="flex flex-row items-center justify-center gap-4">
+                    <motion.button
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        whileHover={{ scale: 1.05, y: -4 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={onBookClick}
+                        className="bg-white text-[#be185d] hover:bg-pink-50 font-bold py-4 px-12 rounded-full transition-all duration-300 ease-in-out shadow-xl hover:shadow-2xl text-base md:text-lg"
+                    >
+                        Free Doctor Consultation
+                    </motion.button>
+                    <WhatsAppButton sizeClass="py-4 px-12 text-base md:text-lg" />
+                </div>
             </div>
         </section>
     );

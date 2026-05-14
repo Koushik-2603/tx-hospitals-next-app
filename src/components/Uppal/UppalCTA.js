@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import BookAppointmentForm from '@/components/Blogs/BookAppointemntForm';
+import WhatsAppButton from './WhatsAppButton';
 
 const UppalCTA = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,18 +37,19 @@ const UppalCTA = () => {
                     className="flex flex-col sm:flex-row justify-center items-center gap-4"
                 >
                     <a
-                        href="tel:9144514459"
-                        className="bg-white text-pink-700 border border-white hover:bg-gray-50 px-8 py-3.5 rounded-xl font-bold text-sm md:text-base transition-all transform hover:scale-105 w-full sm:w-auto shadow-lg"
+                        href="tel:9247903419"
+                        className="bg-white text-pink-700 border border-white hover:bg-gray-50 px-8 py-3.5 rounded-xl font-bold text-sm md:text-base transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 w-full sm:w-auto shadow-lg hover:shadow-xl"
                     >
-                        Call: 91 44514459
+                        Call: 9247903419
                     </a>
 
                     <button
                         onClick={() => setIsModalOpen(true)}
-                        className="bg-transparent border border-white text-white hover:bg-white hover:text-pink-700 px-8 py-3.5 rounded-xl font-bold text-sm md:text-base transition-all transform hover:scale-105 w-full sm:w-auto shadow-lg"
+                        className="bg-transparent border border-white text-white hover:bg-white hover:text-pink-700 px-8 py-3.5 rounded-xl font-bold text-sm md:text-base transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 w-full sm:w-auto shadow-lg hover:shadow-2xl"
                     >
-                        Book An Appointment
+                        Free Doctor Consultation
                     </button>
+                    <WhatsAppButton sizeClass="px-8 py-3.5 text-sm md:text-base" />
                 </motion.div>
             </div>
 

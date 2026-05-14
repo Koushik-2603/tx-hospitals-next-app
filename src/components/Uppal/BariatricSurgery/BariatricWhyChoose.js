@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import WhatsAppButton from '../WhatsAppButton';
 
 const BariatricWhyChoose = ({
     badge = "Our Promise",
@@ -106,12 +107,15 @@ const BariatricWhyChoose = ({
                             ))}
                         </ul>
 
-                        <button
-                            onClick={() => onBookClick()}
-                            className="bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-10 rounded-2xl transition-all transform hover:scale-105 shadow-xl relative z-10 text-sm md:text-base"
-                        >
-                            Book an Appointment
-                        </button>
+                        <div className="flex flex-col gap-4 relative z-10">
+                            <button
+                                onClick={() => onBookClick()}
+                                className="w-full bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-10 rounded-2xl transition-all transform hover:scale-105 shadow-xl text-sm md:text-base"
+                            >
+                                Free Doctor Consultation
+                            </button>
+                            <WhatsAppButton sizeClass="py-4 px-10 text-sm md:text-base" className="!w-full rounded-2xl" />
+                        </div>
 
                         {/* Decorative Background Element */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>

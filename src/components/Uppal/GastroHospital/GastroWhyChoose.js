@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import WhatsAppButton from '../WhatsAppButton';
 
 const GastroWhyChoose = ({
     badge = "Our Promise",
@@ -106,12 +107,15 @@ const GastroWhyChoose = ({
                             ))}
                         </ul>
 
-                        <button
-                            onClick={() => onBookClick()}
-                            className="bg-white text-[#be185d] hover:bg-pink-50 font-extrabold py-4 px-10 rounded-2xl transition-all transform hover:scale-105 shadow-xl relative z-10 text-sm md:text-base"
-                        >
-                            Book an Appointment
-                        </button>
+                        <div className="flex flex-col gap-4 relative z-10">
+                            <button
+                                onClick={() => setIsModalOpen(true)}
+                                className="bg-pink-700 text-white px-8 py-3.5 rounded-2xl font-bold text-base hover:bg-pink-800 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-md hover:shadow-xl hover:shadow-pink-500/30 w-full"
+                            >
+                                Free Doctor Consultation
+                            </button>
+                            <WhatsAppButton sizeClass="px-8 py-3.5 text-base" className="!w-full rounded-2xl" />
+                        </div>
 
                         {/* Decorative Background Element */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>

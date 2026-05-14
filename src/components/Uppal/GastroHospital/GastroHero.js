@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
+import WhatsAppButton from '../WhatsAppButton';
 import GastroForm from './GastroForm';
 
 const GastroHero = ({ 
@@ -60,19 +61,20 @@ const GastroHero = ({
                             ))}
                         </div>
                         
-                        <div className="flex flex-col gap-6">
+                        <div className="flex flex-row items-center gap-4">
                             <button 
                                 onClick={onBookClick}
-                                className="bg-white text-[#be185d] hover:bg-pink-50 font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg uppercase tracking-wider w-fit"
+                                className="bg-white text-[#be185d] hover:bg-pink-50 font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg uppercase tracking-wider shrink-0"
                             >
                                 {buttonText}
                             </button>
-                            
-                            <p className="text-pink-100/80 text-sm md:text-base font-medium flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 bg-pink-300 rounded-full animate-pulse"></span>
-                                {footerNote}
-                            </p>
+                            <WhatsAppButton sizeClass="py-4 px-10 text-base md:text-lg" />
                         </div>
+
+                        <p className="text-pink-100/80 text-sm md:text-base font-medium flex items-center gap-2 mt-4">
+                            <span className="w-1.5 h-1.5 bg-pink-300 rounded-full animate-pulse"></span>
+                            {footerNote}
+                        </p>
                     </motion.div>
                     
                     {/* Right Form */}

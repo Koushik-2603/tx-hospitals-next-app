@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import WhatsAppButton from '../WhatsAppButton';
 
 const BariatricScience = ({ 
     badge = "The Science",
@@ -64,13 +65,14 @@ const BariatricScience = ({
                     ))}
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex flex-row justify-center gap-4">
                     <button 
                         onClick={() => onBookClick()}
-                        className="bg-white border-2 border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white font-extrabold py-3.5 px-10 rounded-full transition-all transform hover:scale-105 shadow-lg text-sm md:text-base"
+                        className="bg-white border-2 border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white font-extrabold py-3.5 px-10 rounded-full transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-lg hover:shadow-pink-500/20 text-sm md:text-base"
                     >
-                        Book an Appointment
+                        Free Doctor Consultation
                     </button>
+                    <WhatsAppButton sizeClass="py-3.5 px-10 text-sm md:text-base" />
                 </div>
             </div>
         </section>

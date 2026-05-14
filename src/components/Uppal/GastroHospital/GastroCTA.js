@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import WhatsAppButton from '../WhatsAppButton';
 
 const GastroCTA = ({ onBookClick }) => {
     return (
@@ -18,18 +19,19 @@ const GastroCTA = ({ onBookClick }) => {
                         <p className="text-gray-400 text-base md:text-xl mb-10 leading-relaxed">
                             Don't wait for digestive issues to get worse. Expert care is just a click away. Book your consultation today.
                         </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <div className="flex flex-row items-center justify-center gap-4">
                             <button
                                 onClick={onBookClick}
                                 className="w-full sm:w-auto bg-[#be185d] hover:bg-[#a2144e] text-white font-bold py-4 px-12 rounded-full transition-all transform hover:scale-105 text-lg"
                             >
-                                Book an Appointment
+                                Free Doctor Consultation
                             </button>
+                            <WhatsAppButton sizeClass="py-4 px-12 text-lg" />
                             <a
-                                href="tel:+919000123456"
+                                href="tel:9247903419"
                                 className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-12 rounded-full transition-all text-lg border border-white/10 backdrop-blur-sm"
                             >
-                                Call: +91 90001 23456
+                                Call: 9247903419
                             </a>
                         </div>
                     </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Clock, ShieldCheck, CreditCard, Bed, ArrowRight, Trophy } from 'lucide-react';
 import Image from 'next/image';
+import WhatsAppButton from './WhatsAppButton';
 import BookAppointmentForm from '@/components/Blogs/BookAppointemntForm';
 
 const UppalHero = () => {
@@ -74,16 +75,17 @@ const UppalHero = () => {
                             ))}
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                        <div className="flex flex-row items-center gap-4 pt-6">
                             <button
                                 onClick={() => setIsModalOpen(true)}
-                                className="bg-pink-700 text-white px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-800 transition-all transform hover:scale-105 shadow-md shadow-pink-200"
+                                className="bg-pink-700 text-white px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-800 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-md hover:shadow-xl hover:shadow-pink-500/30 shrink-0"
                             >
                                 Book an Appointment
                             </button>
+                            <WhatsAppButton sizeClass="px-6 py-3 text-base" />
                             <a
-                                href="tel:9144514459"
-                                className="border-2 border-pink-700 text-pink-700 px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-50 transition-all transform hover:scale-105 text-center"
+                                href="tel:9247903419"
+                                className="border-2 border-pink-700 text-pink-700 px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-50 transition-all transform hover:scale-105 text-center shrink-0"
                             >
                                 Call Now
                             </a>

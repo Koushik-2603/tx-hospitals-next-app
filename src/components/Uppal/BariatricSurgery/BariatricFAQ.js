@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import WhatsAppButton from '../WhatsAppButton';
 
 const BariatricFAQ = ({ 
     badge = "Your Questions Answered",
@@ -79,13 +80,14 @@ const BariatricFAQ = ({
                     ))}
                 </div>
 
-                <div className="flex justify-center lg:justify-start">
+                <div className="flex flex-row items-center gap-4">
                     <button 
                         onClick={() => onBookClick()}
                         className="bg-pink-700 hover:bg-pink-800 text-white font-bold py-4 px-10 rounded-2xl transition-all transform hover:scale-105 shadow-xl text-sm md:text-base"
                     >
-                        Book an Appointment
+                        Free Doctor Consultation
                     </button>
+                    <WhatsAppButton sizeClass="py-4 px-10 text-sm md:text-base" />
                 </div>
             </div>
         </section>

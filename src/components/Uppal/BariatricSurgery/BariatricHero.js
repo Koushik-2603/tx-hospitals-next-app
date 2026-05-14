@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
+import WhatsAppButton from '../WhatsAppButton';
 import BariatricForm from './BariatricForm';
 
 const BariatricHero = ({ 
@@ -59,12 +60,15 @@ const BariatricHero = ({
                             ))}
                         </div>
                         
-                        <button 
-                            onClick={onBookClick}
-                            className="bg-white text-pink-700 hover:bg-pink-50 font-bold py-3.5 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg uppercase tracking-wider"
-                        >
-                            {buttonText}
-                        </button>
+                        <div className="flex flex-row items-center gap-4">
+                            <button 
+                                onClick={onBookClick}
+                                className="bg-white text-pink-700 hover:bg-pink-50 font-bold py-3.5 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg uppercase tracking-wider shrink-0"
+                            >
+                                {buttonText}
+                            </button>
+                            <WhatsAppButton sizeClass="py-3.5 px-10 text-base md:text-lg" />
+                        </div>
                     </motion.div>
                     
                     {/* Right Form */}

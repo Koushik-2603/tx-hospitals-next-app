@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import WhatsAppButton from '../WhatsAppButton';
 
 const BariatricFooter = ({ onBookClick }) => {
     return (
@@ -25,16 +26,19 @@ const BariatricFooter = ({ onBookClick }) => {
                     >
                         Join thousands of patients who transformed their lives at TX Hospitals — the only bariatric hospital in Uppal.
                     </motion.p>
-                    <motion.button
-                        onClick={() => onBookClick()}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-12 rounded-full transition-all transform hover:scale-105 shadow-2xl text-base md:text-lg"
-                    >
-                        Book an Appointment
-                    </motion.button>
+                    <div className="flex flex-row justify-center gap-4">
+                        <motion.button
+                            onClick={() => onBookClick()}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-12 rounded-full transition-all transform hover:scale-105 shadow-2xl text-base md:text-lg"
+                        >
+                            Free Doctor Consultation
+                        </motion.button>
+                        <WhatsAppButton sizeClass="py-4 px-12 text-base md:text-lg" />
+                    </div>
                 </div>
             </div>
 

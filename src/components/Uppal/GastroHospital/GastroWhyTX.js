@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
+import WhatsAppButton from '../WhatsAppButton';
 
 const GastroWhyTX = ({ onBookClick }) => {
     const features = [
@@ -101,12 +102,15 @@ const GastroWhyTX = ({ onBookClick }) => {
                             ))}
                         </div>
 
-                        <button
-                            onClick={onBookClick}
-                            className="w-full bg-white text-[#be185d] hover:bg-pink-50 font-extrabold py-4 rounded-2xl transition-all transform hover:scale-105 shadow-xl text-sm md:text-base uppercase tracking-wider"
-                        >
-                            Book an Appointment
-                        </button>
+                        <div className="flex flex-col gap-4">
+                            <button
+                                onClick={onBookClick}
+                                className="bg-white text-[#be185d] px-8 py-3.5 rounded-2xl font-bold text-base hover:bg-pink-50 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-md hover:shadow-xl w-full"
+                            >
+                                Free Doctor Consultation
+                            </button>
+                            <WhatsAppButton sizeClass="px-8 py-3.5 text-base" className="!w-full rounded-2xl" />
+                        </div>
                     </motion.div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import WhatsAppButton from '../WhatsAppButton';
 
 const HerniaProcedure = ({ onBookClick }) => {
     const duringSurgery = [
@@ -112,13 +113,14 @@ const HerniaProcedure = ({ onBookClick }) => {
                     </motion.div>
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex flex-row justify-center gap-4">
                     <button
                         onClick={onBookClick}
-                        className="bg-white text-[#be185d] hover:bg-pink-50 font-extrabold py-4 px-12 rounded-full transition-all shadow-2xl text-base md:text-lg uppercase tracking-wider transform hover:scale-105"
+                        className="bg-white text-[#be185d] hover:bg-pink-50 font-extrabold py-4 px-12 rounded-full transition-all duration-300 ease-in-out shadow-2xl hover:shadow-pink-500/20 text-base md:text-lg uppercase tracking-wider transform hover:-translate-y-1 hover:scale-105"
                     >
-                        Book an Appointment
+                        Free Doctor Consultation
                     </button>
+                    <WhatsAppButton sizeClass="py-4 px-12 text-base md:text-lg" />
                 </div>
             </div>
 
