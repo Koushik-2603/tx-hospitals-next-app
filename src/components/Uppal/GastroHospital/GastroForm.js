@@ -87,7 +87,6 @@ const GastroForm = ({ redirectUrl = "/thank-you-uppal" }) => {
             className="bg-white p-5 md:p-7 rounded-2xl shadow-2xl w-full max-w-[420px] mx-auto border border-gray-100"
         >
             <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-1 leading-tight">Consult a Gastro Specialist</h2>
-            <p className="text-gray-500 text-[11px] md:text-xs font-medium mb-5">Our expert will call you back within 30 minutes.</p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-1">
@@ -158,7 +157,7 @@ const GastroForm = ({ redirectUrl = "/thank-you-uppal" }) => {
                         </>
                     ) : (
                         <>
-                            Book an Appointment <span className="text-lg">→</span>
+                            Get a Free Second Opinion <span className="text-lg">→</span>
                         </>
                     )}
                 </button>

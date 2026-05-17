@@ -4,7 +4,7 @@ import { CheckCircle2 } from 'lucide-react';
 import WhatsAppButton from '../WhatsAppButton';
 import BariatricForm from './BariatricForm';
 
-const BariatricHero = ({ 
+const BariatricHero = ({
     badge = "The Only Bariatric Hospital in Uppal",
     title = "Bariatric Weight Loss Surgery in Uppal",
     subtitle = "The only bariatric hospital in Uppal. Trusted by thousands of patients across Hyderabad.",
@@ -16,14 +16,14 @@ const BariatricHero = ({
         "All insurances accepted",
         "No Cost EMI available"
     ],
-    buttonText = "Book an Appointment",
+    buttonText = "Get a Free Second Opinion",
     onBookClick
 }) => {
     return (
         <section className="bg-pink-700 py-10 lg:py-14 px-4 md:px-10 lg:px-12 text-white relative overflow-hidden font-inter">
             <div className="max-w-[1400px] mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                    
+
                     {/* Left Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -34,18 +34,18 @@ const BariatricHero = ({
                         <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs md:text-sm font-bold uppercase tracking-widest mb-4">
                             {badge}
                         </span>
-                        
+
                         <h1 className="text-[32px] md:text-[38px] lg:text-[50px] font-extrabold mb-4 leading-tight tracking-tight">
                             {title}
                         </h1>
-                        
+
                         <p className="text-base md:text-lg text-pink-50/90 mb-8 max-w-xl leading-relaxed">
                             {subtitle}
                         </p>
-                        
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 w-full max-w-2xl">
                             {features.map((feature, index) => (
-                                <motion.div 
+                                <motion.div
                                     key={index}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -59,9 +59,9 @@ const BariatricHero = ({
                                 </motion.div>
                             ))}
                         </div>
-                        
+
                         <div className="flex flex-row items-center gap-4">
-                            <button 
+                            <button
                                 onClick={onBookClick}
                                 className="bg-white text-pink-700 hover:bg-pink-50 font-bold py-3.5 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg uppercase tracking-wider shrink-0"
                             >
@@ -70,7 +70,7 @@ const BariatricHero = ({
                             <WhatsAppButton sizeClass="py-3.5 px-10 text-base md:text-lg" />
                         </div>
                     </motion.div>
-                    
+
                     {/* Right Form */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -82,7 +82,7 @@ const BariatricHero = ({
                     </motion.div>
                 </div>
             </div>
-            
+
             {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent -skew-x-12 transform translate-x-1/4 pointer-events-none"></div>
         </section>

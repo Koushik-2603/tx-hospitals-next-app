@@ -192,11 +192,10 @@ export default function SODetailsPage({ surgeryData }) {
                                 {surgeryData?.soTitle}
                             </h2>
                         </div>
-                        <section className="relative w-full bg-[#910114] overflow-hidden">
+                        <section className="relative w-full bg-pink-900/50 overflow-hidden">
                             <div className="absolute inset-0">
                                 <Image
                                     src={surgeryData?.soField[0]?.image}
-                                    alt={surgeryData?.soTitle}
                                     fill
                                     priority
                                     className="object-cover opacity-20"

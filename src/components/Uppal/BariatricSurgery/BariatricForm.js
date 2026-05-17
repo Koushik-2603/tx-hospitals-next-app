@@ -122,7 +122,7 @@ const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
                         </>
                     ) : (
                         <>
-                            Book an Appointment <span className="text-lg">→</span>
+                            Get a Free Second Opinion <span className="text-lg">→</span>
                         </>
                     )}
                 </button>

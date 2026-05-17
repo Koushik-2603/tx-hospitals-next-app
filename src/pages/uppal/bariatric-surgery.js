@@ -55,7 +55,7 @@ const BariatricSurgeryPage = () => {
             "All insurances accepted",
             "No Cost EMI available"
         ],
-        buttonText: "Book an Appointment",
+        buttonText: "Get a Free Second Opinion",
         onBookClick: () => handleBookAppointment()
     };
 

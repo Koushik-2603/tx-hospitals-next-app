@@ -18,7 +18,7 @@ const HerniaHero = ({ onBookClick }) => {
         <section className="bg-[#be185d] py-10 lg:py-16 px-4 md:px-10 lg:px-12 text-white relative overflow-hidden font-inter">
             <div className="max-w-[1400px] mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                    
+
                     {/* Left Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -29,18 +29,18 @@ const HerniaHero = ({ onBookClick }) => {
                         <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
                             Top Hernia Surgeons in Uppal
                         </span>
-                        
+
                         <h1 className="text-[32px] md:text-[38px] lg:text-[50px] font-extrabold mb-4 leading-tight tracking-tight">
                             Specialists in Hernia Surgery at Uppal
                         </h1>
-                        
+
                         <p className="text-base md:text-lg text-pink-50/90 mb-8 max-w-xl leading-relaxed font-medium">
                             From your first consultation to full recovery, our hernia specialists in Uppal walk every step with you.
                         </p>
-                        
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-10 w-full max-w-2xl">
                             {features.map((feature, index) => (
-                                <motion.div 
+                                <motion.div
                                     key={index}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -54,18 +54,18 @@ const HerniaHero = ({ onBookClick }) => {
                                 </motion.div>
                             ))}
                         </div>
-                        
+
                         <div className="flex flex-row items-center gap-4">
-                            <button 
+                            <button
                                 onClick={onBookClick}
                                 className="bg-white text-[#be185d] hover:bg-pink-50 font-extrabold py-4 px-12 rounded-full transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-xl hover:shadow-2xl text-base md:text-lg uppercase tracking-wider shrink-0"
                             >
-                                Book an Appointment
+                                Get a Free Second Opinion
                             </button>
                             <WhatsAppButton sizeClass="py-4 px-12 text-base md:text-lg" />
                         </div>
                     </motion.div>
-                    
+
                     {/* Right Form */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -77,7 +77,7 @@ const HerniaHero = ({ onBookClick }) => {
                     </motion.div>
                 </div>
             </div>
-            
+
             {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/10 to-transparent -skew-x-12 transform translate-x-1/4 pointer-events-none opacity-50"></div>
             <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>

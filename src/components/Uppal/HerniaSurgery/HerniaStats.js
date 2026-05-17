@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const HerniaStats = ({ stats = [
-    { value: "20+", label: "Years of Experience" },
+    { value: "25+", label: "Years of Experience" },
     { value: "50+", label: "Expert Doctors" },
     { value: "4.8★", label: "Rated by Patients" },
     { value: "1,00,000+", label: "Patients Treated" }

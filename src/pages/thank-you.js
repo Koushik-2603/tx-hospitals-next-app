@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from "next/head";
 import SecondaryLayout from '@/components/Layouts/SecondaryLayout';
 import ThankYouPage from '@/components/HomePage/Thankyou';
 
 export default function Doctors_Page() {
+    useEffect(() => {
+        if (typeof window !== 'undefined' && window.fbq) {
+            window.fbq('track', 'Lead');
+        }
+    }, []);
+
     return (
         <>
             <Head>
