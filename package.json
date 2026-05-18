@@ -23,6 +23,7 @@
     "framer-motion": "^12.4.10",
     "franc": "^6.2.0",
     "heroicons": "^2.2.0",
+    "jimp": "^0.16.1",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "lucide-react": "^0.475.0",

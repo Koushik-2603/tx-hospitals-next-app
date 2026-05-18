@@ -22,7 +22,7 @@ export default function KachigudaCTA() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-white text-2xl md:text-3xl font-bold tracking-tight leading-tight"
+                    className="text-white text-2xl md:text-3xl font-bold  leading-tight"
                 >
                     Ready to Get World-Class Care in Kachiguda?
                 </motion.h2>
