@@ -21,8 +21,8 @@ export default function ThankYouPage() {
 
     const containerVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: { 
-            opacity: 1, 
+        visible: {
+            opacity: 1,
             y: 0,
             transition: { duration: 0.6, ease: "easeOut" }
         }
@@ -31,7 +31,7 @@ export default function ThankYouPage() {
     return (
         <div className="min-h-[80vh] flex items-center justify-center p-6 bg-gray-50/50">
             {isAppointment ? (
-                <motion.div 
+                <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
@@ -39,7 +39,7 @@ export default function ThankYouPage() {
                 >
                     {/* Header Banner */}
                     <div className="bg-pink-700 p-8 text-center relative overflow-hidden">
-                        <motion.div 
+                        <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
@@ -68,9 +68,9 @@ export default function ThankYouPage() {
                                     </div>
                                     <span className="text-sm font-semibold text-gray-500">Name</span>
                                 </div>
-                                <span className="text-gray-900 font-bold text-sm tracking-tight">{name}</span>
+                                <span className="text-gray-900 font-bold text-sm ">{name}</span>
                             </div>
-                            
+
                             <div className="flex items-center justify-between text-left">
                                 <div className="flex items-center gap-3">
                                     <div className="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center text-pink-700">
@@ -78,7 +78,7 @@ export default function ThankYouPage() {
                                     </div>
                                     <span className="text-sm font-semibold text-gray-500">Phone</span>
                                 </div>
-                                <span className="text-gray-900 font-bold text-sm tracking-tight">{mobile}</span>
+                                <span className="text-gray-900 font-bold text-sm ">{mobile}</span>
                             </div>
 
                             <div className="flex items-center justify-between text-left">
@@ -88,7 +88,7 @@ export default function ThankYouPage() {
                                     </div>
                                     <span className="text-sm font-semibold text-gray-500">Email</span>
                                 </div>
-                                <span className="text-gray-900 font-bold text-sm tracking-tight truncate ml-4">{email}</span>
+                                <span className="text-gray-900 font-bold text-sm  truncate ml-4">{email}</span>
                             </div>
                         </div>
 
@@ -99,7 +99,7 @@ export default function ThankYouPage() {
                     </div>
                 </motion.div>
             ) : (
-                <motion.div 
+                <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
@@ -110,14 +110,14 @@ export default function ThankYouPage() {
                             <CheckCircle size={48} className="text-pink-700" />
                         </div>
                     </div>
-                    
-                    <h1 className={`${isMobile ? 'text-5xl' : 'text-7xl'} font-bold text-pink-700 mb-4 tracking-tighter`}>
+
+                    <h1 className={`${isMobile ? 'text-5xl' : 'text-7xl'} font-bold text-pink-700 mb-4 er`}>
                         Thank You
                     </h1>
                     <p className={`${isMobile ? 'text-2xl' : 'text-5xl'} font-semibold text-black mb-8 leading-tight`}>
                         Your form submitted successfully
                     </p>
-                    
+
                     <Link href="/" className="inline-flex items-center gap-2 bg-pink-700 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-pink-800 transition-all shadow-xl active:scale-95">
                         <Home size={20} />
                         Home

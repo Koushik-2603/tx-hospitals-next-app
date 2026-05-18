@@ -204,7 +204,7 @@ export default function AppointmentModal({ closeModal, doctorData }) {
     ];
 
     return (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[9999] px-4 py-4 overflow-hidden font-sans">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[999999] px-4 py-4 overflow-hidden font-sans">
             <motion.div
                 initial={{ opacity: 0, scale: 0.98, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -270,7 +270,7 @@ export default function AppointmentModal({ closeModal, doctorData }) {
                                 className="h-full"
                             >
                                 <div className="mb-6">
-                                    <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Book <span className="text-pink-700">Appointment</span></h2>
+                                    <h2 className="text-2xl font-bold text-gray-900 ">Book <span className="text-pink-700">Appointment</span></h2>
                                     <p className="text-gray-400 text-xs mt-1">Select your preferred date and available time slot.</p>
                                 </div>
 
@@ -417,7 +417,7 @@ export default function AppointmentModal({ closeModal, doctorData }) {
                                 className="h-full"
                             >
                                 <div className="mb-6">
-                                    <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Patient <span className="text-pink-700">Details</span></h2>
+                                    <h2 className="text-2xl font-bold text-gray-900 ">Patient <span className="text-pink-700">Details</span></h2>
                                     <p className="text-gray-400 text-xs mt-1">Complete your profile for the medical records.</p>
                                 </div>
 

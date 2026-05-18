@@ -36,7 +36,7 @@ const GastroHero = ({
                             {badge}
                         </span>
 
-                        <h1 className="text-[32px] md:text-[38px] lg:text-[50px] font-extrabold mb-4 leading-tight tracking-tight">
+                        <h1 className="text-[32px] md:text-[38px] lg:text-[50px] font-extrabold mb-4 leading-tight ">
                             {title}
                         </h1>
 
@@ -56,7 +56,7 @@ const GastroHero = ({
                                     <div className="bg-white rounded-full p-0.5 shrink-0 shadow-sm">
                                         <CheckCircle2 className="w-3.5 h-3.5 text-[#be185d]" fill="currentColor" stroke="white" />
                                     </div>
-                                    <span className="text-sm md:text-[15px] font-semibold tracking-tight">{feature}</span>
+                                    <span className="text-sm md:text-[15px] font-semibold ">{feature}</span>
                                 </motion.div>
                             ))}
                         </div>

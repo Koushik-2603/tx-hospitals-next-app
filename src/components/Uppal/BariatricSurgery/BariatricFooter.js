@@ -9,15 +9,15 @@ const BariatricFooter = ({ onBookClick }) => {
             {/* Final CTA Section */}
             <div className="bg-pink-700 py-12 md:py-16 px-6 text-center text-white">
                 <div className="max-w-4xl mx-auto">
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight"
+                        className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 "
                     >
                         Ready to Start Your Weight Loss Journey?
                     </motion.h2>
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -50,15 +50,15 @@ const BariatricFooter = ({ onBookClick }) => {
                             TX
                         </div>
                         <div className="text-left">
-                            <h3 className="text-xl font-extrabold tracking-tight leading-none mb-1">TX Hospitals</h3>
+                            <h3 className="text-xl font-extrabold  leading-none mb-1">TX Hospitals</h3>
                             <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
                                 The Only Bariatric Hospital in Uppal, Hyderabad
                             </p>
                         </div>
                     </div>
-                    
+
                     <div className="w-full h-px bg-white/5 mb-8"></div>
-                    
+
                     <div className="text-center space-y-2">
                         <p className="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em]">
                             © 2025 TX Hospitals. All rights reserved. | NABH Accredited

@@ -42,7 +42,7 @@ export default function DiseaseSearch() {
                 <div className="w-full px-3 py-4 bg-white overflow-hidden">
                     <div className="max-w-6xl mx-auto grid grid-cols-1 gap-8 items-start">
                         {/* Left: Alphabet grid */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -51,7 +51,7 @@ export default function DiseaseSearch() {
                             <h2 className="text-lg font-bold text-gray-800 mb-4 px-1">
                                 Find Diseases & Conditions By Alphabet
                             </h2>
-                            <motion.div 
+                            <motion.div
                                 variants={containerVariants}
                                 initial="hidden"
                                 whileInView="visible"
@@ -116,7 +116,7 @@ export default function DiseaseSearch() {
                 <div className="w-full px-6 py-8 bg-white overflow-hidden">
                     <div className="max-w-6xl mx-auto grid grid-cols-2 gap-16 items-start">
                         {/* Left: Alphabet grid */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5 }}
@@ -126,10 +126,10 @@ export default function DiseaseSearch() {
                             <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100/50 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-4 border border-pink-200">
                                 Global Conditions
                             </span>
-                            <h2 className="text-3xl font-extrabold text-gray-900 mb-8 tracking-tight">
+                            <h2 className="text-3xl font-extrabold text-gray-900 mb-8 ">
                                 Find Diseases By <span className="text-pink-700">Alphabet</span>
                             </h2>
-                            <motion.div 
+                            <motion.div
                                 variants={containerVariants}
                                 initial="hidden"
                                 whileInView="visible"
@@ -168,10 +168,10 @@ export default function DiseaseSearch() {
                             viewport={{ once: true }}
                             className="pt-4"
                         >
-                             <span className="inline-block px-4 py-1.5 rounded-full bg-pink-50 text-pink-600 text-[10px] font-bold uppercase tracking-widest mb-4 border border-pink-100">
+                            <span className="inline-block px-4 py-1.5 rounded-full bg-pink-50 text-pink-600 text-[10px] font-bold uppercase tracking-widest mb-4 border border-pink-100">
                                 Search Engine
                             </span>
-                            <h2 className="text-4xl font-extrabold text-gray-900 mb-8 tracking-tight">
+                            <h2 className="text-4xl font-extrabold text-gray-900 mb-8 ">
                                 Medical <span className="text-pink-700">Database</span>
                             </h2>
                             <form onSubmit={handleSearch} className="flex items-center w-full max-w-md mb-6 bg-white rounded-full border border-gray-200 overflow-hidden shadow-sm focus-within:shadow-md focus-within:border-pink-500 transition-all">
@@ -191,7 +191,7 @@ export default function DiseaseSearch() {
                                     <FiSearch size={24} />
                                 </motion.button>
                             </form>
-                            <motion.p 
+                            <motion.p
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: 0.2 }}

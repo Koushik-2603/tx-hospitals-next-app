@@ -10,7 +10,7 @@ const HerniaFooter = () => {
                     </div>
                     <div>
                         <h4 className="text-xl font-extrabold leading-tight">TX Hospitals</h4>
-                        <p className="text-gray-500 text-xs md:text-sm font-medium tracking-tight">
+                        <p className="text-gray-500 text-xs md:text-sm font-medium ">
                             Hernia Surgery Specialists - Near Uppal Bus Stop, Hyderabad
                         </p>
                     </div>

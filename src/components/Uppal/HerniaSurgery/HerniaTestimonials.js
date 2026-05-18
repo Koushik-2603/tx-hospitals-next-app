@@ -74,7 +74,7 @@ const HerniaTestimonials = () => {
                             </div>
 
                             <div className="mb-4">
-                                <span className="inline-block bg-pink-50 text-[#be185d] text-[10px] md:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-tight">
+                                <span className="inline-block bg-pink-50 text-[#be185d] text-[10px] md:text-xs font-bold px-3 py-1 rounded-full uppercase ">
                                     {item.badge}
                                 </span>
                             </div>
@@ -84,9 +84,9 @@ const HerniaTestimonials = () => {
                             </p>
 
                             <div className="mt-auto flex items-center gap-2">
-                                <img 
-                                    src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" 
-                                    alt="Google" 
+                                <img
+                                    src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png"
+                                    alt="Google"
                                     className="w-4 h-4 object-contain"
                                 />
                                 <span className="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-widest">Google Review · Verified Patient</span>

@@ -30,7 +30,7 @@ const HerniaHero = ({ onBookClick }) => {
                             Top Hernia Surgeons in Uppal
                         </span>
 
-                        <h1 className="text-[32px] md:text-[38px] lg:text-[50px] font-extrabold mb-4 leading-tight tracking-tight">
+                        <h1 className="text-[32px] md:text-[38px] lg:text-[50px] font-extrabold mb-4 leading-tight ">
                             Specialists in Hernia Surgery at Uppal
                         </h1>
 
@@ -50,7 +50,7 @@ const HerniaHero = ({ onBookClick }) => {
                                     <div className="bg-white rounded-full p-0.5 shrink-0 shadow-sm">
                                         <CheckCircle2 className="w-3.5 h-3.5 text-[#be185d]" fill="currentColor" stroke="white" />
                                     </div>
-                                    <span className="text-sm md:text-[15px] font-bold tracking-tight">{feature}</span>
+                                    <span className="text-sm md:text-[15px] font-bold ">{feature}</span>
                                 </motion.div>
                             ))}
                         </div>

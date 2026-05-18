@@ -10,7 +10,7 @@ const GastroFooter = () => {
                         TX
                     </div>
                     <div>
-                        <h4 className="text-xl font-bold tracking-tight">TX Hospitals</h4>
+                        <h4 className="text-xl font-bold ">TX Hospitals</h4>
                         <p className="text-gray-500 text-xs font-medium uppercase tracking-wider">
                             Gastroenterology Center, Uppal, Hyderabad
                         </p>

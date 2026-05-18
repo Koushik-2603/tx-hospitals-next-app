@@ -57,13 +57,13 @@ export default function LocationsCarousel({ locations }) {
                                     <MapPin className="w-4 h-4 text-pink-600" />
                                 </div>
                             </div>
-                            
+
                             <div className="p-5 text-left bg-white">
                                 <span className="text-[10px] uppercase tracking-widest font-bold text-pink-600 mb-1 block">Hospital Location</span>
                                 <h3 className="text-[15px] font-bold text-gray-900 leading-tight mb-3 line-clamp-2 h-10">
                                     {loc.name}
                                 </h3>
-                                
+
                                 <div className="flex items-center justify-between mt-2 pt-3 border-t border-gray-50">
                                     <div className="flex items-center gap-1.5">
                                         <div className="bg-yellow-50 p-1 rounded-md">
@@ -73,8 +73,8 @@ export default function LocationsCarousel({ locations }) {
                                             {loc.rating}
                                         </span>
                                     </div>
-                                    
-                                    <div className="flex items-center gap-1 text-pink-600 font-bold text-[11px] uppercase tracking-tight">
+
+                                    <div className="flex items-center gap-1 text-pink-600 font-bold text-[11px] uppercase ">
                                         Visit
                                         <ChevronRight className="w-3.5 h-3.5" />
                                     </div>
@@ -107,10 +107,10 @@ export default function LocationsCarousel({ locations }) {
                     <button
                         key={index}
                         onClick={() => setCurrent(index)}
-                        className={`transition-all duration-500 rounded-full ${current === index 
-                            ? "bg-white w-8 h-2.5 shadow-lg shadow-white/30" 
+                        className={`transition-all duration-500 rounded-full ${current === index
+                            ? "bg-white w-8 h-2.5 shadow-lg shadow-white/30"
                             : "bg-white/40 w-2.5 h-2.5 hover:bg-white/60"
-                        }`}
+                            }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
                 ))}

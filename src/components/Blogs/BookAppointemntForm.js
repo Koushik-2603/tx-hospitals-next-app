@@ -98,7 +98,7 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                     >
                         {/* Branded Header */}
                         <div className="bg-pink-700 py-4 px-8 text-white text-center relative">
-                            <h2 className="text-xl font-bold tracking-tight">Book Appointment</h2>
+                            <h2 className="text-xl font-bold ">Book Appointment</h2>
                             <p className="text-pink-100/60 text-[9px] font-bold uppercase tracking-[0.2em] mt-0.5">Direct Medical Consultation</p>
 
                             <button

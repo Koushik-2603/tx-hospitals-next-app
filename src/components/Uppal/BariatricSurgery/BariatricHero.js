@@ -35,7 +35,7 @@ const BariatricHero = ({
                             {badge}
                         </span>
 
-                        <h1 className="text-[32px] md:text-[38px] lg:text-[50px] font-extrabold mb-4 leading-tight tracking-tight">
+                        <h1 className="text-[32px] md:text-[38px] lg:text-[50px] font-extrabold mb-4 leading-tight ">
                             {title}
                         </h1>
 

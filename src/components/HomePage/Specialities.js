@@ -46,9 +46,9 @@ const containerVariants = {
 
 const cardVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { 
-        opacity: 1, 
-        y: 0, 
+    visible: {
+        opacity: 1,
+        y: 0,
         transition: { type: "spring", stiffness: 150, damping: 15 }
     }
 };
@@ -78,14 +78,14 @@ export default function Specialities() {
                     <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-3 border border-pink-200">
                         Clinical Excellence
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 ">
                         Our <span className="text-pink-700 relative inline-block">Specialties
-                             <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
+                            <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
                         </span>
                     </h2>
                 </motion.div>
-                
-                <motion.p 
+
+                <motion.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -111,7 +111,7 @@ export default function Specialities() {
                 ) : (
                     <div>
                         {/* Cards Grid (Original Columns/Alignment) */}
-                        <motion.div 
+                        <motion.div
                             variants={containerVariants}
                             initial="hidden"
                             whileInView="visible"
@@ -140,7 +140,7 @@ export default function Specialities() {
                                         <p className="text-gray-600 text-sm leading-snug mb-6 line-clamp-3">
                                             {item.desc}
                                         </p>
-                                        
+
                                         <motion.button
                                             whileHover={{ scale: 1.1, rotate: 90 }}
                                             whileTap={{ scale: 0.9 }}

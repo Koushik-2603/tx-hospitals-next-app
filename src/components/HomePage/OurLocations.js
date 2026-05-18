@@ -46,7 +46,7 @@ export default function OurLocations() {
             {/* Mobile View (sm and md) */}
             <div className="lg:hidden bg-pink-700 py-8 px-4">
                 <div className="text-center relative z-10 mb-6">
-                    <h2 className="text-3xl font-bold text-white mb-2 tracking-tight">
+                    <h2 className="text-3xl font-bold text-white mb-2 ">
                         Our Locations
                     </h2>
                     <p className="text-white/90 text-sm font-medium">
@@ -67,7 +67,7 @@ export default function OurLocations() {
                 <div className="flex lg:flex-row items-center justify-between mx-auto relative max-w-7xl px-8 xl:px-16 py-10 gap-10">
                     {/* Heading + Image Column (Original Alignment) */}
                     <div className="flex flex-col items-start gap-10 relative z-10 w-full lg:w-1/3">
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -76,7 +76,7 @@ export default function OurLocations() {
                             <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest mb-4 border border-white/30">
                                 Trusted Network
                             </span>
-                            <h2 className="text-5xl xl:text-6xl font-extrabold text-white leading-tight tracking-tight">
+                            <h2 className="text-5xl xl:text-6xl font-extrabold text-white leading-tight ">
                                 Our <br /> <span className="text-pink-100">Locations</span>
                             </h2>
                             <p className="text-white text-lg xl:text-xl mt-6 opacity-90 max-w-[280px] font-medium leading-relaxed">
@@ -105,7 +105,7 @@ export default function OurLocations() {
                         {/* Bottom Row: 3 Cards */}
                         <div className="flex gap-6 justify-center xl:justify-start">
                             {locations.slice(2).map((loc, i) => (
-                                <LocationItem key={i + 2} loc={loc} i={i+2} router={router} />
+                                <LocationItem key={i + 2} loc={loc} i={i + 2} router={router} />
                             ))}
                         </div>
                     </div>
@@ -134,7 +134,7 @@ function LocationItem({ loc, i, router }) {
                     className="object-cover transition duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
+
                 {/* Visual indicator on hover */}
                 <div className="absolute top-2 right-2 p-1.5 bg-white/90 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-50 group-hover:scale-100 shadow-md">
                     <MapPin className="w-3.5 h-3.5 text-pink-600" />
@@ -146,15 +146,15 @@ function LocationItem({ loc, i, router }) {
                 <h3 className="text-sm xl:text-base font-bold text-gray-800 leading-tight mb-3 line-clamp-2 h-10 xl:h-12 group-hover:text-pink-700 transition-colors">
                     {loc.name}
                 </h3>
-                
+
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1.5">
-                       <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                        <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                         <span className="text-sm font-bold text-gray-700">
                             {loc.rating}
                         </span>
                     </div>
-                    
+
                     <div className="w-7 h-7 rounded-full bg-pink-50 flex items-center justify-center group-hover:bg-pink-600 group-hover:text-white transition-all">
                         <ChevronRight className="w-4 h-4 text-pink-600 group-hover:text-white" />
                     </div>

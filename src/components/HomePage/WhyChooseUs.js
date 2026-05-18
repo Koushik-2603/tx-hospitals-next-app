@@ -73,8 +73,8 @@ const containerVariants = {
 
 const cardVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-        opacity: 1, 
+    visible: {
+        opacity: 1,
         scale: 1,
         transition: { type: "spring", stiffness: 160, damping: 14 }
     }
@@ -97,17 +97,17 @@ function StatCard({ item, index }) {
                 <h4 className={`font-semibold mt-1 ${isMobile ? 'text-sm' : 'text-lg'}`}>{item.title}</h4>
                 <p className={`text-gray-600 mt-2 ${isMobile ? 'text-[10px] leading-tight' : 'text-sm'}`}>{item.desc}</p>
             </div>
-            <motion.div 
+            <motion.div
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
                 className="ml-4 flex-shrink-0"
             >
-                <Image 
-                    src={item.icon} 
-                    alt={item.title} 
-                    width={isMobile ? 40 : 70} 
-                    height={isMobile ? 40 : 70} 
-                    className="object-contain" 
+                <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={isMobile ? 40 : 70}
+                    height={isMobile ? 40 : 70}
+                    className="object-contain"
                 />
             </motion.div>
         </motion.div>
@@ -140,14 +140,14 @@ export default function WhyChooseUs() {
                     <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest mb-4 border border-white/30">
                         Our Commitment
                     </span>
-                    <h2 className={`font-extrabold mb-4 tracking-tight ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
+                    <h2 className={`font-extrabold mb-4  ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
                         Why Choose <span className="text-white relative">Us?
                             <span className="absolute -bottom-2 left-0 w-full h-1 bg-white/40 rounded-full"></span>
                         </span>
                     </h2>
                 </motion.div>
-                
-                <motion.p 
+
+                <motion.p
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
                     transition={{ duration: 0.4, delay: 0.1 }}
@@ -156,7 +156,7 @@ export default function WhyChooseUs() {
                     Redefining healthcare by combining clinical excellence, advanced technology and patient-first values. Trusted for holistic, world-class healthcare.
                 </motion.p>
 
-                <motion.div 
+                <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}

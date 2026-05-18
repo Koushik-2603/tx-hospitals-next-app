@@ -63,9 +63,9 @@ export default function HealthLibrary() {
                     <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-3 border border-pink-200">
                         Expert Articles
                     </span>
-                    <h2 className={`font-extrabold text-gray-900 tracking-tight mb-4 ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
+                    <h2 className={`font-extrabold text-gray-900  mb-4 ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
                         Health <span className="text-pink-700 relative">Library
-                             <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
+                            <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
                         </span>
                     </h2>
                     <p className={`max-w-2xl mx-auto text-gray-600 font-medium leading-relaxed ${isMobile ? 'text-sm px-2' : 'text-lg'}`}>
@@ -74,7 +74,7 @@ export default function HealthLibrary() {
                 </motion.div>
 
                 {/* Blog Grid */}
-                <motion.div 
+                <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -102,7 +102,7 @@ export default function HealthLibrary() {
                 </motion.div>
 
                 {/* Show More Button */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}

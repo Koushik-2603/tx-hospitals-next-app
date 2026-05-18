@@ -55,19 +55,19 @@ export default function FAQ() {
                     <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-3 border border-pink-200">
                         Common Queries
                     </span>
-                    <h2 className={`font-extrabold text-gray-900 tracking-tight mb-4 ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
+                    <h2 className={`font-extrabold text-gray-900  mb-4 ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
                         Frequently Asked <span className="text-pink-700 relative">Questions
-                             <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
+                            <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
                         </span>
                     </h2>
                 </motion.div>
 
                 <FAQSchema faqs={faqs} />
-                
+
                 {/* FAQ List */}
                 <div className="space-y-4">
                     {faqs.map((faq, idx) => (
-                        <motion.div 
+                        <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
