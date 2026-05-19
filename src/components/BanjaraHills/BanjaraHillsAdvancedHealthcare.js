@@ -50,7 +50,7 @@ export default function BanjaraHillsAdvancedHealthcare() {
             <div className="max-w-[1400px] mx-auto">
                 {/* Section Header */}
                 <div className="mb-10 text-left">
-                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 ">
                         Advanced Multispeciality Healthcare in Banjara Hills
                     </h2>
                 </div>
@@ -69,8 +69,8 @@ export default function BanjaraHillsAdvancedHealthcare() {
                             <div className="flex gap-4 items-start">
                                 {/* Crimson Circle Container */}
                                 <div className="w-14 h-14 rounded-full bg-[#b3204d] shrink-0 flex items-center justify-center p-3 shadow-sm group-hover:scale-105 transition-transform duration-300">
-                                    <img 
-                                        src={card.icon} 
+                                    <img
+                                        src={card.icon}
                                         alt={card.title}
                                         className="w-full h-full object-contain"
                                         style={{ filter: 'brightness(0) invert(1)' }}
@@ -79,7 +79,7 @@ export default function BanjaraHillsAdvancedHealthcare() {
 
                                 {/* Content Info */}
                                 <div className="flex flex-col text-left">
-                                    <h3 className="text-base font-bold text-gray-900 leading-tight tracking-tight">
+                                    <h3 className="text-base font-bold text-gray-900 leading-tight ">
                                         {card.title}
                                     </h3>
                                     <p className="text-xs md:text-sm text-gray-500 leading-relaxed mt-2">

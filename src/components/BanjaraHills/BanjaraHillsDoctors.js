@@ -101,7 +101,7 @@ export default function BanjaraHillsDoctors() {
             <div className="max-w-[1400px] mx-auto">
                 {/* Header row */}
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900 ">
                         Expert Doctors at TX Hospitals Banjara Hills
                     </h2>
                     <Link
@@ -146,7 +146,7 @@ export default function BanjaraHillsDoctors() {
                             </div>
 
                             {/* Experience Info */}
-                            <div className="text-[11px] font-bold text-gray-800 tracking-tight my-2 bg-gray-50 px-3 py-1 rounded-full border border-gray-100/80">
+                            <div className="text-[11px] font-bold text-gray-800  my-2 bg-gray-50 px-3 py-1 rounded-full border border-gray-100/80">
                                 {doctor.experience}
                             </div>
 

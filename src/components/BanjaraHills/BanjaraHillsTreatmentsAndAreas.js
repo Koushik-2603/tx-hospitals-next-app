@@ -130,7 +130,7 @@ export default function BanjaraHillsTreatmentsAndAreas() {
                                         key={idx}
                                         className="bg-white rounded-2xl py-3.5 px-4 flex items-center justify-center text-center shadow-[0_2px_10px_rgba(0,0,0,0.01)] border border-gray-50/50 hover:shadow-md hover:scale-[1.03] transition-all duration-300 cursor-pointer"
                                     >
-                                        <span className="text-xs sm:text-sm font-bold text-gray-800 tracking-tight">
+                                        <span className="text-xs sm:text-sm font-bold text-gray-800 ">
                                             {area}
                                         </span>
                                     </div>

@@ -41,11 +41,11 @@ export default function BanjaraHillsSpecialities() {
             <div className="max-w-[1400px] mx-auto">
                 {/* Header row */}
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900 ">
                         Our Specialities
                     </h2>
-                    <Link 
-                        href="/specialities" 
+                    <Link
+                        href="/specialities"
                         className="text-[#b3204d] hover:text-[#971b41] font-bold text-sm transition-colors duration-300 hover:underline decoration-2 underline-offset-4"
                     >
                         View All Specialities
@@ -64,8 +64,8 @@ export default function BanjaraHillsSpecialities() {
                         >
                             {/* Icon Container */}
                             <div className="w-16 h-16 rounded-2xl bg-pink-50/50 flex items-center justify-center p-3 mb-4 group-hover:scale-105 transition-transform duration-300">
-                                <img 
-                                    src={spec.icon} 
+                                <img
+                                    src={spec.icon}
                                     alt={spec.title}
                                     className="w-full h-full object-contain transition-all duration-300"
                                     style={{ filter: 'invert(18%) sepia(88%) saturate(3474%) hue-rotate(330deg) brightness(87%) contrast(93%)' }}
