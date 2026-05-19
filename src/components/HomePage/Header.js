@@ -41,7 +41,7 @@ export default function HospitalHero() {
         <>
             {isMobile ? (
                 <div className="w-full font-san">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6 }}
@@ -49,7 +49,8 @@ export default function HospitalHero() {
                     >
                         <video
                             className="absolute w-full h-full object-cover object-top"
-                            src="/assets/TX HOSPITAL SHORT VIDEO WEBSITE 20260216.mp4"
+                            // src="https://tx-hospital-images.s3.ap-south-2.amazonaws.com/images/2%20srikanth%20out.mp4"
+                            src="https://tx-hospital-images.s3.ap-south-2.amazonaws.com/images/3+srikanth+out.mp4"
                             autoPlay
                             muted
                             loop
@@ -105,7 +106,8 @@ export default function HospitalHero() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8 }}
                             className="absolute w-full h-full object-cover object-top"
-                            src="/assets/TX HOSPITAL SHORT VIDEO WEBSITE 20260216.mp4"
+                            // src="https://tx-hospital-images.s3.ap-south-2.amazonaws.com/images/2%20srikanth%20out.mp4"
+                            src="https://tx-hospital-images.s3.ap-south-2.amazonaws.com/images/3+srikanth+out.mp4"
                             autoPlay
                             muted
                             loop
@@ -121,11 +123,11 @@ export default function HospitalHero() {
                             />
 
                             <div className="mt-auto flex flex-col items-center gap-6 w-full pb-12">
-                                <motion.form 
+                                <motion.form
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: 0.2 }}
-                                    onSubmit={handleHeroSearch} 
+                                    onSubmit={handleHeroSearch}
                                     className="flex flex-row items-center justify-center gap-4 w-full max-w-4xl mx-auto"
                                 >
                                     <div className="flex flex-1 relative group">
