@@ -93,8 +93,6 @@ export default function KachigudaMap() {
                                     </h3>
                                     <p className="text-sm font-semibold text-gray-600 mt-2 leading-none">
                                         <a href="tel:04048108108" className="hover:text-pink-700 transition-colors">91-44514459</a>
-                                        <span className="mx-2 text-slate-300">|</span>
-                                        <a href="tel:+919876543210" className="hover:text-pink-700 transition-colors">+91 98765 43210</a>
                                     </p>
                                 </div>
                             </div>

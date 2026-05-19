@@ -37,11 +37,11 @@ const BanjaraHillsFaqsAndVisit = () => {
     return (
         <section className="py-4 md:py-6 px-4 md:px-8 bg-white overflow-hidden">
             <div className="max-w-[1440px] mx-auto">
-                
+
                 {/* Unified Premium Card exactly like the mockup */}
                 <div className="bg-white border border-gray-200 rounded-[32px] p-6 md:p-8 shadow-[0_4px_25px_rgba(0,0,0,0.01)]">
                     <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
-                        
+
                         {/* Left Column: Frequently Asked Questions (FAQs) */}
                         <div className="w-full lg:w-[50%] flex flex-col">
                             <h2 className="text-gray-900 text-xl md:text-[22px] font-bold mb-6 leading-tight">
@@ -64,7 +64,7 @@ const BanjaraHillsFaqsAndVisit = () => {
                                                 <span className="text-gray-900 text-[13px] md:text-sm font-bold leading-snug">
                                                     {faq.question}
                                                 </span>
-                                                
+
                                                 {/* Toggle Plus/Minus Icon with clean brand color */}
                                                 <div className="shrink-0 w-6 h-6 rounded-full bg-gray-50 flex items-center justify-center text-gray-800 border border-gray-100">
                                                     {isOpen ? (
@@ -104,10 +104,10 @@ const BanjaraHillsFaqsAndVisit = () => {
 
                             {/* Nested Horizontal Layout for Details & Map */}
                             <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch h-full">
-                                
+
                                 {/* Contact Details Stack */}
                                 <div className="w-full md:w-[45%] flex flex-col gap-5 justify-between">
-                                    
+
                                     {/* Address Block */}
                                     <div className="flex gap-3">
                                         <div className="shrink-0 mt-0.5">
@@ -133,7 +133,7 @@ const BanjaraHillsFaqsAndVisit = () => {
                                                 Phone
                                             </h4>
                                             <p className="text-gray-700 text-xs font-semibold leading-none">
-                                                9100 48 1080
+                                                9144514459
                                             </p>
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@ const BanjaraHillsFaqsAndVisit = () => {
 
                                 {/* Map Box */}
                                 <div className="w-full md:w-[55%] relative rounded-2xl overflow-hidden border border-gray-200 min-h-[250px] flex shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                                    
+
                                     {/* Floating Open in Maps Button */}
                                     <a
                                         href="https://www.google.com/maps/search/?api=1&query=TX+Hospitals+Banjara+Hills+Hyderabad"

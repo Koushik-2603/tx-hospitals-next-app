@@ -148,7 +148,6 @@ const KachigudaHero = () => {
                                         required
                                         value={formData.name}
                                         onChange={handleChange}
-                                        placeholder="e.g. Ramesh Kumar"
                                         className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl py-3 px-4 text-gray-900 font-bold placeholder:text-gray-400 focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/5 transition-all text-sm"
                                     />
                                 </div>
@@ -162,7 +161,7 @@ const KachigudaHero = () => {
                                         required
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        placeholder="+91 98765 43210"
+                                        placeholder="+91"
                                         className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl py-3 px-4 text-gray-900 font-bold placeholder:text-gray-400 focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/5 transition-all text-sm"
                                     />
                                 </div>
@@ -175,7 +174,6 @@ const KachigudaHero = () => {
                                         name="speciality"
                                         value={formData.speciality}
                                         onChange={handleChange}
-                                        placeholder="e.g. Cardiology, Ortho..."
                                         className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl py-3 px-4 text-gray-900 font-bold placeholder:text-gray-400 focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/5 transition-all text-sm"
                                     />
                                 </div>

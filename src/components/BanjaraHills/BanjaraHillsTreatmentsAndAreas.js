@@ -62,8 +62,8 @@ export default function BanjaraHillsTreatmentsAndAreas() {
                                 <h2 className="text-xl md:text-2xl font-bold text-gray-900 leading-tight max-w-[70%]">
                                     Advanced Procedures & Treatments in Banjara Hills
                                 </h2>
-                                <Link 
-                                    href="/services/" 
+                                <Link
+                                    href="/services/"
                                     className="text-[#b3204d] hover:text-[#971b41] font-bold text-xs sm:text-sm whitespace-nowrap transition-colors mt-1"
                                 >
                                     View All Treatments →
@@ -73,13 +73,13 @@ export default function BanjaraHillsTreatmentsAndAreas() {
                             {/* Treatments Grid - updated to 3-column layout */}
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 {treatments.map((t, idx) => (
-                                    <div 
+                                    <div
                                         key={idx}
                                         className="bg-white rounded-2xl p-4 flex items-center gap-4 hover:shadow-md hover:scale-[1.01] transition-all duration-300 group cursor-pointer border border-transparent hover:border-pink-100"
                                     >
                                         {/* Dynamic SVG Mask Icon Container */}
                                         <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 bg-[#fff0f2] group-hover:bg-[#b3204d]">
-                                            <div 
+                                            <div
                                                 className="w-6 h-6 transition-colors duration-300"
                                                 style={{
                                                     backgroundColor: '#b3204d',
@@ -106,11 +106,7 @@ export default function BanjaraHillsTreatmentsAndAreas() {
                                         </div>
 
                                         {/* Text content */}
-                                        <span className={`text-sm font-bold leading-snug ${
-                                            t.isPink 
-                                                ? 'text-[#b3204d]' 
-                                                : 'text-gray-800'
-                                        }`}>
+                                        <span className="text-sm font-bold leading-snug text-gray-800">
                                             {t.title}
                                         </span>
                                     </div>
@@ -130,7 +126,7 @@ export default function BanjaraHillsTreatmentsAndAreas() {
                             {/* Areas Grid */}
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                 {areas.map((area, idx) => (
-                                    <div 
+                                    <div
                                         key={idx}
                                         className="bg-white rounded-2xl py-3.5 px-4 flex items-center justify-center text-center shadow-[0_2px_10px_rgba(0,0,0,0.01)] border border-gray-50/50 hover:shadow-md hover:scale-[1.03] transition-all duration-300 cursor-pointer"
                                     >
