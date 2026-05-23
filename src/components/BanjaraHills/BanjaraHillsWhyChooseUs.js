@@ -33,13 +33,13 @@ const BanjaraHillsWhyChooseUs = () => {
 
     // High Quality Official Google SVG Logo
     const GoogleOfficialLogo = () => (
-        <svg viewBox="0 0 272 92" width="110" height="38" xmlns="http://www.w3.org/2000/svg">
-            <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.3 81.24 25 93.5 25s22.25 9.3 22.25 22.18zm-9.74 0c0-7.62-5.7-12.87-12.51-12.87S81 39.56 81 47.18c0 7.51 5.7 12.87 12.51 12.87s12.5-5.36 12.5-12.87z" fill="#EA4335" />
-            <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.88 9.99-22.18 22.25-22.18s22.25 9.3 22.25 22.18zm-9.74 0c0-7.62-5.7-12.87-12.51-12.87s-12.51 5.25-12.51 12.87c0 7.51 5.7 12.87 12.51 12.87s12.51-5.36 12.51-12.87z" fill="#FBBC05" />
-            <path d="M209.75 26.3v40.42c0 16.64-9.8 23.46-21.36 23.46-10.87 0-17.18-7.3-19.66-13.41l8.47-3.52c1.51 3.61 5.21 7.87 11.19 7.87 7.29 0 11.66-4.51 11.66-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.07 0-12.52 10.16-22.27 21.25-22.27 5.3 0 9.5 2.35 11.68 4.99h.34V26.3h9.74zm-9.07 21.01c0-7.39-4.96-12.87-11.17-12.87-6.39 0-11.68 5.48-11.68 12.87 0 7.28 5.29 12.76 11.68 12.76 6.22 0 11.17-5.37 11.17-12.76z" fill="#4285F4" />
-            <path d="M224.25 4.3h9.74V68.3h-9.74z" fill="#34A853" />
-            <path d="M262.25 54.19l7.73 5.15c-2.52 3.73-8.57 10-18.73 10-12.77 0-22.25-9.98-22.25-22.18 0-13.11 9.57-22.18 21.14-22.18 11.69 0 17.29 9.3 19.14 14.12l1.01 2.51-29.35 12.15c2.25 4.43 5.8 6.7 10.77 6.7 4.97 0 8.32-2.45 10.55-5.91zm-21.84-7.53l19.59-8.11c-1.12-2.82-4.38-4.83-8.29-4.83-5.01 0-11.51 4.47-11.3 12.94z" fill="#EA4335" />
-            <path d="M35.25 41.3v-9.5h43.76c.41 2.11.69 4.67.69 7.42 0 9.17-2.52 21.12-10.76 29.36-7.98 8.42-18.15 12.93-31.54 12.93C16.89 81.51 0 64.62 0 44S16.89 6.49 37.4 6.49c11.29 0 20.31 4.42 27.27 10.97l-6.88 6.88c-4.86-4.54-11.83-7.83-20.39-7.83-16.51 0-30.08 13.39-30.08 29.9s13.57 29.91 30.08 29.91c10.87 0 17.18-4.35 21.12-8.29 3.09-3.09 5.09-7.56 5.8-13.63H35.25z" fill="#4285F4" />
+        <svg viewBox="0 0 220 62" width="110" height="31" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#4285F4" d="M23.4 46.9c-12.5 0-23-10.2-23-22.7s10.5-22.7 23-22.7c6.9 0 11.9 2.7 15.6 6.3l-4.4 4.4c-2.7-2.5-6.3-4.4-11.2-4.4-9.3 0-16.4 7.3-16.4 16.5s7.1 16.5 16.3 16.5c5.9 0 9.3-2.4 11.5-4.5 1.8-1.8 2.9-4.3 3.4-7.8H23.5v-6.2h20.7c.2 1.1.3 2.4.3 3.9 0 4.7-1.3 10.4-5.4 14.5-3.9 4.1-9 6.3-15.7 6.3z" />
+            <path fill="#EA4335" d="M76.1 32.3c0 8.4-6.6 14.6-14.7 14.6S46.7 40.7 46.7 32.3c0-8.5 6.6-14.6 14.7-14.6 8.1-.1 14.7 6.1 14.7 14.6zm-6.4 0c0-5.3-3.8-8.9-8.3-8.9-4.4 0-8.3 3.6-8.3 8.9 0 5.2 3.8 8.9 8.3 8.9 4.5-.1 8.3-3.7 8.3-8.9z" />
+            <path fill="#FBBC05" d="M114.4 32.3c0 8.4-6.6 14.6-14.7 14.6s-14.7-6.2-14.7-14.6c0-8.5 6.6-14.6 14.7-14.6 8.1-.1 14.7 6.1 14.7 14.6zm-6.5 0c0-5.3-3.8-8.9-8.3-8.9-4.4 0-8.3 3.6-8.3 8.9 0 5.2 3.8 8.9 8.3 8.9 4.5-.1 8.3-3.7 8.3-8.9z" />
+            <path fill="#4285F4" d="M151.4 18.5v26.3c0 10.8-6.4 15.2-13.9 15.2-7.1 0-11.4-4.8-13-8.6l5.6-2.3c1 2.4 3.4 5.2 7.4 5.2 4.8 0 7.8-3 7.8-8.6v-2.1h-.2c-1.4 1.8-4.2 3.3-7.7 3.3-7.3 0-14-6.4-14-14.6 0-8.3 6.7-14.7 14-14.7 3.5 0 6.3 1.6 7.7 3.3h.2v-2.4h6.1zm-5.7 13.8c0-5.2-3.4-8.9-7.8-8.9s-8.1 3.8-8.1 8.9c0 5.1 3.7 8.8 8.1 8.8 4.4 0 7.8-3.7 7.8-8.8z" />
+            <path fill="#34A853" d="M167.4 1.3V46h-6.2V1.3h6.2z" />
+            <path fill="#EA4335" d="M192.3 35.3l5 3.3c-1.6 2.4-5.5 6.5-12.2 6.5-8.3 0-14.5-6.4-14.5-14.6 0-8.7 6.3-14.6 13.8-14.6 7.6 0 11.3 6 12.5 9.3l.7 1.7-19.6 8.1c1.5 2.9 3.8 4.4 7.1 4.4s5.5-1.7 7.2-4.1zm-15.3-5.3l13.1-5.4c-.7-1.8-2.9-3.1-5.4-3.1-3.4 0-7.9 2.9-7.7 8.5z" />
         </svg>
     );
 
@@ -76,13 +76,13 @@ const BanjaraHillsWhyChooseUs = () => {
                     >
                         {/* Text Content wrapped to stay strictly on the left 64% */}
                         <div className="relative z-10 w-[64%] pb-4 pr-2">
-                            <h2 className="text-white text-lg md:text-[20px] font-bold mb-4 leading-tight">
+                            <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-bold mb-4 leading-tight">
                                 Why Patients Choose TX Hospitals
                             </h2>
 
                             <ul className="space-y-3">
                                 {whyPoints.map((point, index) => (
-                                    <li key={index} className="flex items-center gap-3 text-white text-xs md:text-[13px] font-semibold leading-tight">
+                                    <li key={index} className="flex items-center gap-3 text-white text-sm font-semibold leading-tight">
                                         {/* Solid white circle with pink check icon */}
                                         <div className="bg-white rounded-full w-5 h-5 shrink-0 flex items-center justify-center">
                                             <Check className="w-3 h-3 text-[#b3204d]" strokeWidth={4.5} />
@@ -116,7 +116,7 @@ const BanjaraHillsWhyChooseUs = () => {
                         className="bg-white border border-gray-200 rounded-[32px] p-6 md:p-8 lg:w-[65%] xl:w-[64%] flex flex-col gap-6 shadow-[0_4px_25px_rgba(0,0,0,0.01)]"
                     >
                         {/* Main Title */}
-                        <h2 className="text-gray-900 text-lg md:text-[19px] font-bold leading-tight">
+                        <h2 className="text-gray-900 text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
                             Why Patients Choose TX Hospitals Banjara Hills
                         </h2>
 
@@ -136,7 +136,7 @@ const BanjaraHillsWhyChooseUs = () => {
                                     </div>
                                 </div>
 
-                                <span className="text-gray-700 font-bold text-xs md:text-xs mt-2 block">
+                                <span className="text-gray-700 font-bold text-sm mt-2 block">
                                     Based on 1200+ reviews
                                 </span>
                             </div>
@@ -153,17 +153,17 @@ const BanjaraHillsWhyChooseUs = () => {
                                             <div className="flex items-center gap-2.5 mb-3.5">
                                                 <AvatarPlaceholder />
                                                 <div className="min-w-0">
-                                                    <h4 className="text-[11px] md:text-xs font-bold text-gray-900 truncate leading-none">
+                                                    <h4 className="text-sm font-bold text-gray-900 truncate leading-none">
                                                         {review.name}
                                                     </h4>
-                                                    <span className="text-[9px] md:text-[10px] text-gray-500 mt-1 block">
+                                                    <span className="text-xs text-gray-500 mt-1 block">
                                                         {review.time}
                                                     </span>
                                                 </div>
                                             </div>
 
                                             {/* Review Body */}
-                                            <p className="text-gray-700 text-[10px] md:text-[11px] lg:text-xs leading-relaxed mb-6 font-medium">
+                                            <p className="text-gray-700 text-sm leading-relaxed mb-6 font-medium">
                                                 "{review.text}"
                                             </p>
                                         </div>

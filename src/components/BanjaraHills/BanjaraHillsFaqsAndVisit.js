@@ -44,7 +44,7 @@ const BanjaraHillsFaqsAndVisit = () => {
 
                         {/* Left Column: Frequently Asked Questions (FAQs) */}
                         <div className="w-full lg:w-[50%] flex flex-col">
-                            <h2 className="text-gray-900 text-xl md:text-[22px] font-bold mb-6 leading-tight">
+                            <h2 className="text-gray-900 text-xl md:text-2xl lg:text-3xl font-bold mb-6 leading-tight">
                                 Frequently Asked Questions
                             </h2>
 
@@ -61,7 +61,7 @@ const BanjaraHillsFaqsAndVisit = () => {
                                                 onClick={() => toggleFaq(index)}
                                                 className="w-full flex justify-between items-center p-4 text-left gap-4 transition-all"
                                             >
-                                                <span className="text-gray-900 text-[13px] md:text-sm font-bold leading-snug">
+                                                <span className="text-gray-900 text-sm md:text-base font-bold leading-snug">
                                                     {faq.question}
                                                 </span>
 
@@ -84,7 +84,7 @@ const BanjaraHillsFaqsAndVisit = () => {
                                                         exit={{ height: 0, opacity: 0 }}
                                                         transition={{ duration: 0.25, ease: "easeInOut" }}
                                                     >
-                                                        <div className="px-4 pb-4 pt-0 text-gray-700 text-xs md:text-[13px] leading-relaxed font-semibold border-t border-gray-100 bg-gray-50/30">
+                                                        <div className="px-4 pb-4 pt-0 text-gray-700 text-sm leading-relaxed font-semibold border-t border-gray-100 bg-gray-50/30">
                                                             {faq.answer}
                                                         </div>
                                                     </motion.div>
@@ -98,7 +98,7 @@ const BanjaraHillsFaqsAndVisit = () => {
 
                         {/* Right Column: Visit Details & Interactive Map */}
                         <div className="w-full lg:w-[50%] flex flex-col">
-                            <h2 className="text-gray-900 text-xl md:text-[22px] font-bold mb-6 leading-tight">
+                            <h2 className="text-gray-900 text-xl md:text-2xl lg:text-3xl font-bold mb-6 leading-tight">
                                 Visit TX Hospitals Banjara Hills
                             </h2>
 
@@ -117,7 +117,7 @@ const BanjaraHillsFaqsAndVisit = () => {
                                             <h4 className="text-gray-900 text-sm font-bold leading-none mb-1.5">
                                                 Address
                                             </h4>
-                                            <p className="text-gray-700 text-xs font-semibold leading-relaxed">
+                                            <p className="text-gray-700 text-sm font-semibold leading-relaxed">
                                                 8-2-315/B/1A/1/13A, Road No. 12, Banjara Hills, Hyderabad - 500034, Telangana, India
                                             </p>
                                         </div>
@@ -132,7 +132,7 @@ const BanjaraHillsFaqsAndVisit = () => {
                                             <h4 className="text-gray-900 text-sm font-bold leading-none mb-1.5">
                                                 Phone
                                             </h4>
-                                            <p className="text-gray-700 text-xs font-semibold leading-none">
+                                            <p className="text-gray-700 text-sm font-semibold leading-none">
                                                 9144514459
                                             </p>
                                         </div>
@@ -147,7 +147,7 @@ const BanjaraHillsFaqsAndVisit = () => {
                                             <h4 className="text-gray-900 text-sm font-bold leading-none mb-1.5">
                                                 Email
                                             </h4>
-                                            <p className="text-gray-700 text-xs font-semibold leading-none">
+                                            <p className="text-gray-700 text-sm font-semibold leading-none">
                                                 info@txhospitals.in
                                             </p>
                                         </div>
@@ -162,7 +162,7 @@ const BanjaraHillsFaqsAndVisit = () => {
                                             <h4 className="text-gray-900 text-sm font-bold leading-none mb-1.5">
                                                 Timings
                                             </h4>
-                                            <p className="text-gray-700 text-xs font-semibold leading-none">
+                                            <p className="text-gray-700 text-sm font-semibold leading-none">
                                                 24/7 Open
                                             </p>
                                         </div>

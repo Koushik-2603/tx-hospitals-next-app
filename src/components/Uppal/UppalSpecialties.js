@@ -11,67 +11,80 @@ const specialtiesData = [
     {
         title: "Cardiology",
         icon: <Heart size={32} />,
-        desc: "Heart care, ECG, echo, cardiac consultations & interventions by expert cardiologists near you."
+        desc: "Heart care, ECG, echo, cardiac consultations & interventions by expert cardiologists near you.",
+        path: "/specialities/cardiac-sciences"
     },
     {
         title: "Orthopedics",
         icon: <Bone size={32} />,
-        desc: "Bone, joint & spine treatment. Fractures, joint replacements, sports injuries & physiotherapy."
+        desc: "Bone, joint & spine treatment. Fractures, joint replacements, sports injuries & physiotherapy.",
+        path: "/specialities/orthopaedics"
     },
     {
         title: "Neurology",
         icon: <Brain size={32} />,
-        desc: "Brain & nervous system care, stroke, epilepsy, migraines and neurological disorders."
+        desc: "Brain & nervous system care, stroke, epilepsy, migraines and neurological disorders.",
+        path: "/specialities/neuro-sciences"
     },
     {
         title: "Gastroenterology",
         icon: <Activity size={32} />,
-        desc: "Digestive health, liver care, endoscopy, colonoscopy & hernia surgery by expert GI doctors."
+        desc: "Digestive health, liver care, endoscopy, colonoscopy & hernia surgery by expert GI doctors.",
+        path: "/specialities/gastro-sciences"
     },
     {
         title: "Oncology",
         icon: <ShieldPlus size={32} />,
-        desc: "Cancer diagnosis, treatment & support, chemotherapy, surgical oncology & palliative care."
+        desc: "Cancer diagnosis, treatment & support, chemotherapy, surgical oncology & palliative care.",
+        path: "/specialities/oncology"
     },
     {
         title: "Pulmonology",
         icon: <Wind size={32} />,
-        desc: "Lung & respiratory care, asthma, COPD, sleep apnea, bronchoscopy & chest infections."
+        desc: "Lung & respiratory care, asthma, COPD, sleep apnea, bronchoscopy & chest infections.",
+        path: "/specialities/pulmonology"
     },
     {
         title: "Nephrology",
         icon: <Droplet size={32} />,
-        desc: "Kidney care, dialysis, chronic kidney disease management & transplant coordination."
+        desc: "Kidney care, dialysis, chronic kidney disease management & transplant coordination.",
+        path: "/specialities/nephrology"
     },
     {
         title: "Urology",
         icon: <Microscope size={32} />,
-        desc: "Urinary tract, kidney stones, prostate & bladder conditions, minimally invasive surgeries."
+        desc: "Urinary tract, kidney stones, prostate & bladder conditions, minimally invasive surgeries.",
+        path: "/specialities/urology"
     },
     {
         title: "ENT",
         icon: <Ear size={32} />,
-        desc: "Ear, nose & throat care, hearing loss, sinus infections, tonsil surgery & voice disorders."
+        desc: "Ear, nose & throat care, hearing loss, sinus infections, tonsil surgery & voice disorders.",
+        path: "/specialities/ent"
     },
     {
         title: "Internal Medicine",
         icon: <Stethoscope size={32} />,
-        desc: "General physician consultations, diabetes, thyroid, hypertension & chronic disease management."
+        desc: "General physician consultations, diabetes, thyroid, hypertension & chronic disease management.",
+        path: "/specialities/internal-medicine"
     },
     {
         title: "Dermatology",
         icon: <User size={32} />,
-        desc: "Skin, hair & nail conditions, acne, psoriasis, eczema, laser therapy & cosmetic dermatology."
+        desc: "Skin, hair & nail conditions, acne, psoriasis, eczema, laser therapy & cosmetic dermatology.",
+        path: "/specialities/dermatology-cosmetic-care"
     },
     {
         title: "Dental",
         icon: <Smile size={32} />,
-        desc: "Complete dental care, cleaning, fillings, root canals, implants & orthodontic treatments."
+        desc: "Complete dental care, cleaning, fillings, root canals, implants & orthodontic treatments.",
+        path: "/specialities/dental-and-maxillofacial-care"
     },
     {
         title: "Ophthalmology",
         icon: <Eye size={32} />,
-        desc: "Eye care, cataract, glaucoma, retinal disorders, LASIK & routine eye examinations."
+        desc: "Eye care, cataract, glaucoma, retinal disorders, LASIK & routine eye examinations.",
+        path: "/specialities/eye-ophthalmology"
     }
 ];
 
@@ -96,29 +109,30 @@ const UppalSpecialties = () => {
                 {/* Specialties Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-4">
                     {specialtiesData.map((spec, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.05 }}
-                            className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col h-full relative overflow-hidden group"
-                        >
-                            {/* Bottom Border Accent */}
-                            <div className="absolute bottom-0 left-0 w-full h-[3px] bg-pink-700 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
-                            <div className="absolute bottom-0 left-0 w-full h-[3px] bg-pink-700/20"></div>
+                        <Link href={spec.path} key={index} className="flex h-full w-full">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.05 }}
+                                className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col h-full w-full relative overflow-hidden group cursor-pointer"
+                            >
+                                {/* Bottom Border Accent */}
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-pink-700 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-pink-700/20"></div>
 
-                            {/* Icon */}
-                            <div className="w-14 h-14 rounded-xl bg-pink-50 flex items-center justify-center text-pink-700 mb-6 transition-transform group-hover:scale-110 duration-300">
-                                {spec.icon}
-                            </div>
+                                {/* Icon */}
+                                <div className="w-14 h-14 rounded-xl bg-pink-50 flex items-center justify-center text-pink-700 mb-6 transition-transform group-hover:scale-110 duration-300">
+                                    {spec.icon}
+                                </div>
 
-                            {/* Content */}
-                            <h3 className="font-bold text-gray-900 text-2xl mb-3">{spec.title}</h3>
-                            <p className="text-lg text-gray-600 leading-relaxed flex-grow">
-                                {spec.desc}
-                            </p>
-                        </motion.div>
+                                {/* Content */}
+                                <h3 className="font-bold text-gray-900 text-2xl mb-3">{spec.title}</h3>
+                                <p className="text-lg text-gray-600 leading-relaxed flex-grow">
+                                    {spec.desc}
+                                </p>
+                            </motion.div>
+                        </Link>
                     ))}
                 </div>
             </div>

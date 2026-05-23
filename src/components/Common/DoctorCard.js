@@ -36,13 +36,13 @@ const DoctorCard = ({
                         {specialty}
                     </span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1 line-clamp-2 leading-tight">{name}</h3>
-                <p className="text-sm text-gray-500 mb-4 line-clamp-2">{designation}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 line-clamp-2 leading-tight group-hover:text-pink-700 transition-colors duration-300">{name}</h3>
+                <p className="text-xs sm:text-sm text-gray-600 font-semibold mb-4 line-clamp-2">{designation}</p>
 
-                <div className="flex items-start gap-1.5 text-pink-600 mb-6">
-                    <Award size={14} className="fill-pink-100 mt-1 flex-shrink-0" />
-                    <span className="text-sm font-bold leading-tight">
-                        {experience ? experience.toString().replace(/years?|experience/gi, '').trim() : '0'} Years <br /> Experience
+                <div className="flex items-start gap-2 text-pink-600 mb-6 bg-pink-50/30 px-3 py-2 rounded-xl border border-pink-100/30">
+                    <Award size={18} className="fill-pink-100 mt-0.5 flex-shrink-0 text-pink-700" />
+                    <span className="text-sm sm:text-base font-bold leading-snug text-pink-700">
+                        {experience ? experience.toString().replace(/years?|experience/gi, '').trim() : '0'} Years Experience
                     </span>
                 </div>
 

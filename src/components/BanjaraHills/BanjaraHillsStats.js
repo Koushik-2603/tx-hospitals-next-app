@@ -54,7 +54,7 @@ export default function BanjaraHillsStats() {
                                         <span className="text-2xl lg:text-3xl font-bold text-gray-900  leading-none">
                                             {item.number}
                                         </span>
-                                        <span className="text-xs lg:text-sm font-medium text-gray-500 tracking-wide mt-1.5 whitespace-nowrap">
+                                        <span className="text-sm font-medium text-gray-500 tracking-wide mt-1.5 whitespace-nowrap">
                                             {item.label}
                                         </span>
                                     </div>
@@ -81,7 +81,7 @@ export default function BanjaraHillsStats() {
                                     <span className="text-2xl font-bold text-gray-900  leading-none">
                                         24/7
                                     </span>
-                                    <span className="text-xs font-medium text-gray-500 tracking-wide mt-1.5 whitespace-nowrap">
+                                    <span className="text-sm font-medium text-gray-500 tracking-wide mt-1.5 whitespace-nowrap">
                                         Emergency Care
                                     </span>
                                 </div>

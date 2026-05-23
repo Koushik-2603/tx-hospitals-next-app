@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function SpecialitiesCarousel({ specialities }) {
     const router = useRouter();
@@ -34,35 +35,36 @@ export default function SpecialitiesCarousel({ specialities }) {
             >
                 {specialities.map((item, index) => (
                     <div key={index} className="w-full flex-shrink-0 flex justify-center">
-                        <div className="relative bg-white border border-gray-300 shadow-md rounded-lg overflow-visible w-[250px] text-center pt-24 mb-8">
-                            {/* Image */}
-                            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-lg overflow-hidden shadow-md">
-                                <Image
-                                    src={item.img}
-                                    alt={item.title}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
+                        <Link href={item.path} className="block cursor-pointer">
+                            <div className="relative bg-white border border-gray-300 shadow-md rounded-lg overflow-visible w-[250px] text-center pt-24 mb-8">
+                                {/* Image */}
+                                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-lg overflow-hidden shadow-md">
+                                    <Image
+                                        src={item.img}
+                                        alt={item.title}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
 
-                            {/* Text */}
-                            <div className="p-4">
-                                <h3 className="text-lg font-bold text-gray-900">{item.title}</h3>
-                                <p className="text-gray-600 text-xs mt-2 leading-snug">
-                                    {item.desc}
-                                </p>
-                            </div>
+                                {/* Text */}
+                                <div className="p-4">
+                                    <h3 className="text-lg font-bold text-gray-900">{item.title}</h3>
+                                    <p className="text-gray-600 text-xs mt-2 leading-snug">
+                                        {item.desc}
+                                    </p>
+                                </div>
 
-                            {/* Button */}
-                            <div className="flex justify-center pb-4">
-                                <button
-                                    className="flex items-center justify-center w-7 h-7 bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow-md"
-                                    onClick={() => handleNavigate(item.path)}
-                                >
-                                    <FiChevronRight size={16} />
-                                </button>
+                                {/* Button Container */}
+                                <div className="flex justify-center pb-4">
+                                    <div
+                                        className="flex items-center justify-center w-7 h-7 bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow-md"
+                                    >
+                                        <FiChevronRight size={16} />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 ))}
             </div>

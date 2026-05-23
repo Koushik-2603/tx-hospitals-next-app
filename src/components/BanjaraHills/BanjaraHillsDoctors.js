@@ -101,7 +101,7 @@ export default function BanjaraHillsDoctors() {
             <div className="max-w-[1400px] mx-auto">
                 {/* Header row */}
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900 ">
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">
                         Expert Doctors at TX Hospitals Banjara Hills
                     </h2>
                     <Link
@@ -137,21 +137,21 @@ export default function BanjaraHillsDoctors() {
 
                             {/* Name & Credentials */}
                             <div className="flex flex-col items-center flex-1 justify-center space-y-2">
-                                <h3 className="text-sm font-bold text-gray-900 group-hover:text-[#b3204d] transition-colors duration-300 leading-tight">
+                                <h3 className="text-base md:text-lg font-bold text-gray-900 group-hover:text-[#b3204d] transition-colors duration-300 leading-tight">
                                     {doctor.name}
                                 </h3>
-                                <p className="text-[11px] text-gray-400 font-medium px-2 leading-relaxed">
+                                <p className="text-sm text-gray-500 font-medium px-2 leading-relaxed">
                                     {doctor.qualification}
                                 </p>
                             </div>
 
                             {/* Experience Info */}
-                            <div className="text-[11px] font-bold text-gray-800  my-2 bg-gray-50 px-3 py-1 rounded-full border border-gray-100/80">
+                            <div className="text-sm md:text-base font-bold text-pink-700 my-2 bg-pink-50/50 px-4 py-1.5 rounded-full border border-pink-100/50 shadow-sm">
                                 {doctor.experience}
                             </div>
 
                             {/* Designation (wrapped to prevent overflow) */}
-                            <div className="text-xs font-bold text-[#b3204d] mt-2 px-2 text-center leading-tight">
+                            <div className="text-sm md:text-base font-bold text-[#b3204d] mt-2 px-2 text-center leading-tight">
                                 {doctor.designation}
                             </div>
                         </motion.div>

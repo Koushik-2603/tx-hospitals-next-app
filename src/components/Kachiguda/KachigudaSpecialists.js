@@ -221,15 +221,15 @@ export default function KachigudaSpecialists() {
                                 </div>
 
                                 {/* Doctor Info */}
-                                <h3 className="text-lg font-bold text-pink-700 mt-6 leading-snug hover:text-pink-800 transition-colors duration-300">
+                                <h3 className="text-lg md:text-xl font-bold text-pink-700 mt-6 leading-snug hover:text-pink-800 transition-colors duration-300">
                                     {doc.name}
                                 </h3>
 
-                                <p className="text-gray-600 text-xs font-semibold uppercase tracking-wider mt-1 px-2 line-clamp-1">
+                                <p className="text-gray-600 text-xs md:text-sm font-semibold uppercase tracking-wider mt-1 px-2 line-clamp-1">
                                     {doc.specialty}
                                 </p>
 
-                                <span className="text-gray-700 text-[11px] font-bold mt-1 tracking-wide uppercase">
+                                <span className="text-xs md:text-sm font-bold text-[#8b006a] bg-purple-50/50 px-4 py-1.5 rounded-full border border-purple-100/50 shadow-sm mt-3 tracking-wide uppercase inline-block">
                                     {doc.experience} Experience
                                 </span>
 

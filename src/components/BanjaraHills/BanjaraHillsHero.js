@@ -207,7 +207,7 @@ const BanjaraHillsHero = () => {
                                     transition={{ delay: idx * 0.1, duration: 0.6 }}
                                     className="flex flex-col items-center text-center space-y-2"
                                 >
-                                    <div className="w-10 h-10 sm:w-14 sm:h-14 bg-pink-50/50 rounded-xl sm:rounded-2xl flex items-center justify-center p-1.5 sm:p-2.5 hover:scale-105 transition-transform duration-300">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-pink-50/50 rounded-xl sm:rounded-2xl flex items-center justify-center p-2 sm:p-3 hover:scale-105 transition-transform duration-300">
                                         <img
                                             src={feature.icon}
                                             alt={feature.text}
@@ -215,7 +215,7 @@ const BanjaraHillsHero = () => {
                                             style={{ filter: 'invert(18%) sepia(88%) saturate(3474%) hue-rotate(330deg) brightness(87%) contrast(93%)' }}
                                         />
                                     </div>
-                                    <span className="text-[9px] sm:text-xs font-bold text-gray-800 leading-tight">
+                                    <span className="text-[10px] sm:text-xs md:text-sm font-bold text-gray-800 leading-tight">
                                         {feature.text}
                                     </span>
                                 </motion.div>
@@ -233,7 +233,7 @@ const BanjaraHillsHero = () => {
                                     <FaPhoneAlt size={16} />
                                 </div>
                                 <div className="text-left leading-tight text-sm font-bold">
-                                    <div className="text-xs font-semibold text-white/90">Call Now</div>
+                                    <div className="text-sm font-semibold text-white/90">Call Now</div>
                                     <div className="text-base font-bold">9144514459</div>
                                 </div>
                             </a>
@@ -282,7 +282,7 @@ const BanjaraHillsHero = () => {
                                     <h2 className="text-2xl md:text-3xl font-bold text-gray-900 ">
                                         Book Your Consultation
                                     </h2>
-                                    <p className="text-gray-600 text-sm font-medium">
+                                    <p className="text-gray-600 text-base font-medium">
                                         Talk to our medical specialists
                                     </p>
                                 </div>
@@ -382,7 +382,7 @@ const BanjaraHillsHero = () => {
                                     <button
                                         type="submit"
                                         disabled={loading}
-                                        className={`w-full bg-[#b3204d] hover:bg-[#971b41] text-white font-bold py-4 rounded-xl transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2 mt-6 shadow-lg shadow-pink-900/10 text-xs uppercase tracking-widest ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                        className={`w-full bg-[#b3204d] hover:bg-[#971b41] text-white font-bold py-4 rounded-xl transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2 mt-6 shadow-lg shadow-pink-900/10 text-sm uppercase tracking-widest ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                                     >
                                         {loading ? (
                                             <>
@@ -397,7 +397,7 @@ const BanjaraHillsHero = () => {
                                     {/* Or line */}
                                     <div className="relative flex items-center justify-center my-4">
                                         <div className="border-t border-gray-200 w-full"></div>
-                                        <span className="absolute bg-white px-3 text-xs font-bold text-gray-500 uppercase tracking-widest">Or</span>
+                                        <span className="absolute bg-white px-3 text-sm font-bold text-gray-500 uppercase tracking-widest">Or</span>
                                     </div>
 
                                     {/* Whatsapp button inside Form Card */}

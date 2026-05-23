@@ -6,6 +6,7 @@ import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import SpecialitiesCarousel from "@/components/HomePage/SpecialitiesCarousel";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const specialities = [
     {
@@ -119,38 +120,40 @@ export default function Specialities() {
                             className="grid grid-cols-4 gap-6 pt-16"
                         >
                             {specialities.map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    variants={cardVariants}
-                                    whileHover={{ y: -10 }}
-                                    className="relative bg-white border border-gray-200 shadow-lg rounded-[2rem] overflow-visible w-full max-w-[260px] text-center mx-auto pt-24 pb-6 transition-all duration-300"
-                                >
-                                    {/* Icon Container (Original Offset Look) */}
-                                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-3xl overflow-hidden shadow-xl border-4 border-white transition-transform duration-500 group-hover:scale-105">
-                                        <Image
-                                            src={item.img}
-                                            alt={item.title}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
+                                <Link href={item.path} key={index} className="flex w-full max-w-[260px] mx-auto h-full">
+                                    <motion.div
+                                        variants={cardVariants}
+                                        whileHover={{ y: -10 }}
+                                        className="relative bg-white border border-gray-200 shadow-lg rounded-[2rem] overflow-visible w-full text-center pt-24 pb-6 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between h-full"
+                                    >
+                                        {/* Icon Container (Original Offset Look) */}
+                                        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-3xl overflow-hidden shadow-xl border-4 border-white transition-transform duration-500 group-hover:scale-105">
+                                            <Image
+                                                src={item.img}
+                                                alt={item.title}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
 
-                                    <div className="p-4 flex flex-col items-center">
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                                        <p className="text-gray-600 text-sm leading-snug mb-6 line-clamp-3">
-                                            {item.desc}
-                                        </p>
+                                        <div className="p-4 flex flex-col items-center h-full justify-between">
+                                            <div className="flex flex-col items-center">
+                                                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                                                <p className="text-gray-600 text-sm leading-snug mb-6 line-clamp-3">
+                                                    {item.desc}
+                                                </p>
+                                            </div>
 
-                                        <motion.button
-                                            whileHover={{ scale: 1.1, rotate: 90 }}
-                                            whileTap={{ scale: 0.9 }}
-                                            className="flex items-center justify-center w-8 h-8 bg-pink-600 text-white rounded-full shadow-md hover:bg-pink-700 transition-colors"
-                                            onClick={() => handleNavigate(item.path)}
-                                        >
-                                            <FiChevronRight size={18} />
-                                        </motion.button>
-                                    </div>
-                                </motion.div>
+                                            <motion.span
+                                                whileHover={{ scale: 1.1, rotate: 90 }}
+                                                whileTap={{ scale: 0.9 }}
+                                                className="flex items-center justify-center w-8 h-8 bg-pink-600 text-white rounded-full shadow-md hover:bg-pink-700 transition-colors mt-auto"
+                                            >
+                                                <FiChevronRight size={18} />
+                                            </motion.span>
+                                        </div>
+                                    </motion.div>
+                                </Link>
                             ))}
                         </motion.div>
 

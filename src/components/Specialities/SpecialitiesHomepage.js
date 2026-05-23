@@ -3,6 +3,7 @@ import { FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
 import useIsMobile from "@/hooks/useIsMobile";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const specialities = [
     {
@@ -203,7 +204,7 @@ export default function SpecialitiesHomepage() {
                         </h2>
                         <div className="grid grid-cols-1 gap-20 px-6 pt-14 justify-items-center">
                             {specialities.map((item, index) => (
-                                <div key={index} className="w-full flex-shrink-0 flex justify-center">
+                                <Link href={item.path} key={index} className="w-full flex-shrink-0 flex justify-center cursor-pointer">
                                     <div className="relative bg-white border border-gray-300 shadow-md rounded-lg overflow-visible w-[300px] text-center pt-24 mb-8">
                                         {/* Image */}
                                         <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-lg overflow-hidden shadow-md">
@@ -225,15 +226,14 @@ export default function SpecialitiesHomepage() {
 
                                         {/* Button */}
                                         <div className="flex justify-center pb-4">
-                                            <button
-                                                onClick={() => handleNavigate(item.path)}
+                                            <div
                                                 className="flex items-center justify-center w-7 h-7 bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow-md"
                                             >
                                                 <FiChevronRight size={16} />
-                                            </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </section>
@@ -359,33 +359,35 @@ export default function SpecialitiesHomepage() {
                         </h2>
                         <div className="grid grid-cols-4 gap-20 px-12 pt-14 justify-items-center">
                             {specialities.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="relative bg-white border border-gray-400 shadow-2xl rounded-2xl overflow-visible w-[250px] text-center mx-auto pt-24"
-                                >
-                                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-xl overflow-hidden">
-                                        <Image
-                                            src={item.img}
-                                            alt={item.title}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
+                                <Link href={item.path} key={index} className="block cursor-pointer">
+                                    <div
+                                        className="relative bg-white border border-gray-400 shadow-2xl rounded-2xl overflow-visible w-[250px] text-center mx-auto pt-24 h-full flex flex-col justify-between"
+                                    >
+                                        <div>
+                                            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-xl overflow-hidden">
+                                                <Image
+                                                    src={item.img}
+                                                    alt={item.title}
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
 
-                                    <div className="p-4">
-                                        <h3 className="text-lg font-bold text-gray-900">{item.title}</h3>
-                                        <p className="text-gray-600 text-sm mt-2 leading-snug">{item.desc}</p>
-                                    </div>
+                                            <div className="p-4">
+                                                <h3 className="text-lg font-bold text-gray-900">{item.title}</h3>
+                                                <p className="text-gray-600 text-sm mt-2 leading-snug">{item.desc}</p>
+                                            </div>
+                                        </div>
 
-                                    <div className="flex justify-center pb-4">
-                                        <button
-                                            onClick={() => handleNavigate(item.path)}
-                                            className="flex items-center justify-center w-7 h-7 bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow-md"
-                                        >
-                                            <FiChevronRight size={16} />
-                                        </button>
+                                        <div className="flex justify-center pb-4">
+                                            <div
+                                                className="flex items-center justify-center w-7 h-7 bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow-md"
+                                            >
+                                                <FiChevronRight size={16} />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </section>
