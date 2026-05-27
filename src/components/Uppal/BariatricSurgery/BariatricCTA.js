@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import WhatsAppButton from '../WhatsAppButton';
 
-const BariatricCTA = ({ 
+const BariatricCTA = ({
     title = "Get Right Diagnosis, Treatment & Cost Estimate Details to Make a Fully Informed Decision",
     onBookClick
 }) => {
@@ -18,20 +18,23 @@ const BariatricCTA = ({
                     {title}
                 </motion.h2>
 
-                <div className="flex flex-row items-center justify-center gap-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full">
                     <motion.button
                         onClick={onBookClick}
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-2xl text-sm md:text-base uppercase tracking-wider"
+                        className="w-full sm:w-auto bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-6 md:px-10 rounded-full transition-all transform hover:scale-105 shadow-2xl text-sm md:text-base lg:text-lg uppercase tracking-wider"
                     >
                         Free Doctor Consultation
                     </motion.button>
-                    <WhatsAppButton sizeClass="py-4 px-10 text-sm md:text-base" />
+
+                    <div className="w-full sm:w-auto">
+                        <WhatsAppButton sizeClass="w-full sm:w-auto py-4 px-6 md:px-10 text-sm md:text-base lg:text-lg" />
+                    </div>
                 </div>
             </div>
-            
+
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-10 pointer-events-none">
                 <div className="absolute top-0 left-0 w-64 h-64 border-4 border-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>

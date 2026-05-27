@@ -26,18 +26,21 @@ const BariatricFooter = ({ onBookClick }) => {
                     >
                         Join thousands of patients who transformed their lives at TX Hospitals — the only bariatric hospital in Uppal.
                     </motion.p>
-                    <div className="flex flex-row justify-center gap-4">
+                    <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 w-full">
                         <motion.button
                             onClick={() => onBookClick()}
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-12 rounded-full transition-all transform hover:scale-105 shadow-2xl text-base md:text-lg"
+                            className="w-full sm:w-auto bg-white text-pink-700 hover:bg-pink-50 font-extrabold py-4 px-6 md:px-12 rounded-full transition-all transform hover:scale-105 shadow-2xl text-sm md:text-base lg:text-lg"
                         >
                             Free Doctor Consultation
                         </motion.button>
-                        <WhatsAppButton sizeClass="py-4 px-12 text-base md:text-lg" />
+
+                        <div className="w-full sm:w-auto">
+                            <WhatsAppButton sizeClass="w-full sm:w-auto py-4 px-6 md:px-12 text-sm md:text-base lg:text-lg" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,7 +49,7 @@ const BariatricFooter = ({ onBookClick }) => {
             <div className="bg-[#111111] py-12 px-6 text-white border-t border-white/5">
                 <div className="max-w-7xl mx-auto flex flex-col items-center">
                     <div className="flex items-center gap-4 mb-8">
-                        <div className="w-10 h-10 bg-pink-700 rounded-lg flex items-center justify-center font-bold text-lg">
+                        <div className="bg-[#be185d] p-3 rounded-xl flex items-center justify-center font-bold text-xl">
                             TX
                         </div>
                         <div className="text-left">

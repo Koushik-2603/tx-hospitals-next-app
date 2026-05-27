@@ -74,18 +74,21 @@ const UppalHero = () => {
                                 </motion.div>
                             ))}
                         </div>
-
-                        <div className="flex flex-row items-center gap-4 pt-6">
+                        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-6 w-full sm:w-auto">
                             <button
                                 onClick={() => setIsModalOpen(true)}
-                                className="bg-pink-700 text-white px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-800 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-md hover:shadow-xl hover:shadow-pink-500/30 shrink-0"
+                                className="w-full sm:w-auto bg-pink-700 text-white px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-800 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-md hover:shadow-xl hover:shadow-pink-500/30 shrink-0"
                             >
                                 Book an Appointment
                             </button>
-                            <WhatsAppButton sizeClass="px-6 py-3 text-base" />
+
+                            <div className="w-full sm:w-auto">
+                                <WhatsAppButton sizeClass="w-full sm:w-auto px-6 py-3 text-base" />
+                            </div>
+
                             <a
                                 href="tel:9247903419"
-                                className="border-2 border-pink-700 text-pink-700 px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-50 transition-all transform hover:scale-105 text-center shrink-0"
+                                className="w-full sm:w-auto border-2 border-pink-700 text-pink-700 px-6 py-3 rounded-xl font-bold text-base hover:bg-pink-50 transition-all transform hover:scale-105 text-center shrink-0"
                             >
                                 Call Now
                             </a>

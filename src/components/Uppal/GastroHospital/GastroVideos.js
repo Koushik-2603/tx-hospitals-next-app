@@ -48,14 +48,17 @@ const GastroVideos = ({ onBookClick }) => {
                     ))}
                 </div>
 
-                <div className="mt-16 flex flex-row justify-center gap-4">
+                <div className="mt-16 flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 w-full">
                     <button
                         onClick={onBookClick}
-                        className="bg-[#be185d] hover:bg-[#a2144e] text-white font-bold py-4 px-12 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg"
+                        className="w-full sm:w-auto bg-[#be185d] hover:bg-[#a2144e] text-white font-bold py-4 px-6 md:px-12 rounded-full transition-all transform hover:scale-105 shadow-xl text-sm md:text-base lg:text-lg"
                     >
                         Free Doctor Consultation
                     </button>
-                    <WhatsAppButton sizeClass="py-4 px-12 text-base md:text-lg" />
+
+                    <div className="w-full sm:w-auto">
+                        <WhatsAppButton sizeClass="w-full sm:w-auto py-4 px-6 md:px-12 text-sm md:text-base lg:text-lg" />
+                    </div>
                 </div>
             </div>
         </section>

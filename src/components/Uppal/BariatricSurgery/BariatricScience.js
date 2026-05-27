@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import WhatsAppButton from '../WhatsAppButton';
 
-const BariatricScience = ({ 
+const BariatricScience = ({
     badge = "The Science",
     title = "How Does Bariatric Surgery Reduce Weight?",
     subtitle = "Three powerful mechanisms working together for permanent, sustainable weight loss.",
@@ -65,14 +65,17 @@ const BariatricScience = ({
                     ))}
                 </div>
 
-                <div className="flex flex-row justify-center gap-4">
-                    <button 
+                <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 w-full">
+                    <button
                         onClick={() => onBookClick()}
-                        className="bg-white border-2 border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white font-extrabold py-3.5 px-10 rounded-full transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-lg hover:shadow-pink-500/20 text-sm md:text-base"
+                        className="w-full sm:w-auto bg-white border-2 border-pink-700 text-pink-700 hover:bg-pink-700 hover:text-white font-extrabold py-3.5 px-6 md:px-10 rounded-full transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-lg hover:shadow-pink-500/20 text-sm md:text-base lg:text-lg"
                     >
                         Free Doctor Consultation
                     </button>
-                    <WhatsAppButton sizeClass="py-3.5 px-10 text-sm md:text-base" />
+
+                    <div className="w-full sm:w-auto">
+                        <WhatsAppButton sizeClass="w-full sm:w-auto py-3.5 px-6 md:px-10 text-sm md:text-base lg:text-lg" />
+                    </div>
                 </div>
             </div>
         </section>

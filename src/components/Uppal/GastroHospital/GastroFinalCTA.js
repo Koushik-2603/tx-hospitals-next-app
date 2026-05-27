@@ -6,7 +6,7 @@ const GastroFinalCTA = ({ onBookClick }) => {
     return (
         <section className="bg-[#be185d] py-8 md:py-16 px-6 text-white text-center font-inter">
             <div className="max-w-4xl mx-auto">
-                <motion.h2 
+                <motion.h2
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -14,7 +14,7 @@ const GastroFinalCTA = ({ onBookClick }) => {
                 >
                     One Hospital for All Your Gastro Health Needs
                 </motion.h2>
-                <motion.p 
+                <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -23,7 +23,7 @@ const GastroFinalCTA = ({ onBookClick }) => {
                 >
                     Recovery doesn't end at discharge. Diet guidance, medication review, and follow-up care are all part of your plan.
                 </motion.p>
-                <div className="flex flex-row items-center justify-center gap-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full">
                     <motion.button
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -32,11 +32,14 @@ const GastroFinalCTA = ({ onBookClick }) => {
                         whileHover={{ scale: 1.05, y: -4 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={onBookClick}
-                        className="bg-white text-[#be185d] hover:bg-pink-50 font-bold py-4 px-12 rounded-full transition-all duration-300 ease-in-out shadow-xl hover:shadow-2xl text-base md:text-lg"
+                        className="w-full sm:w-auto bg-white text-[#be185d] hover:bg-pink-50 font-bold py-4 px-6 md:px-12 rounded-full transition-all duration-300 ease-in-out shadow-xl hover:shadow-2xl text-sm md:text-base lg:text-lg"
                     >
                         Free Doctor Consultation
                     </motion.button>
-                    <WhatsAppButton sizeClass="py-4 px-12 text-base md:text-lg" />
+
+                    <div className="w-full sm:w-auto">
+                        <WhatsAppButton sizeClass="w-full sm:w-auto py-4 px-6 md:px-12 text-sm md:text-base lg:text-lg" />
+                    </div>
                 </div>
             </div>
         </section>

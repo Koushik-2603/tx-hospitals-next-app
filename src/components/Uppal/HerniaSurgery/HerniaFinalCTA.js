@@ -23,7 +23,7 @@ const HerniaFinalCTA = ({ onBookClick }) => {
                 >
                     Hernia surgery planned in time is safe, quick, and minimally disruptive. Get seen by an expert hernia surgeon in Uppal today.
                 </motion.p>
-                <div className="flex flex-row items-center justify-center gap-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full">
                     <motion.button
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -32,11 +32,14 @@ const HerniaFinalCTA = ({ onBookClick }) => {
                         whileHover={{ scale: 1.05, y: -4 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={onBookClick}
-                        className="bg-white text-[#be185d] hover:bg-pink-50 font-extrabold py-3 md:py-4 px-8 md:px-12 rounded-full transition-all duration-300 ease-in-out shadow-xl hover:shadow-2xl text-sm md:text-lg uppercase tracking-wider"
+                        className="w-full sm:w-auto bg-white text-[#be185d] hover:bg-pink-50 font-extrabold py-3 md:py-4 px-6 md:px-12 rounded-full transition-all duration-300 ease-in-out shadow-xl hover:shadow-2xl text-sm md:text-base lg:text-lg uppercase tracking-wider"
                     >
                         Free Doctor Consultation
                     </motion.button>
-                    <WhatsAppButton sizeClass="py-3 md:py-4 px-8 md:px-12 text-sm md:text-lg" />
+
+                    <div className="w-full sm:w-auto">
+                        <WhatsAppButton sizeClass="w-full sm:w-auto py-3 md:py-4 px-6 md:px-12 text-sm md:text-base lg:text-lg" />
+                    </div>
                 </div>
             </div>
         </section>

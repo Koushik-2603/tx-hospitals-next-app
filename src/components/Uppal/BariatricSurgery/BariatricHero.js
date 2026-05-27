@@ -60,14 +60,17 @@ const BariatricHero = ({
                             ))}
                         </div>
 
-                        <div className="flex flex-row items-center gap-4">
+                        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
                             <button
                                 onClick={onBookClick}
-                                className="bg-white text-pink-700 hover:bg-pink-50 font-bold py-3.5 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-base md:text-lg uppercase tracking-wider shrink-0"
+                                className="w-full sm:w-auto bg-white text-pink-700 hover:bg-pink-50 font-bold py-3.5 px-6 md:px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-sm md:text-base lg:text-lg uppercase tracking-wider"
                             >
                                 {buttonText}
                             </button>
-                            <WhatsAppButton sizeClass="py-3.5 px-10 text-base md:text-lg" />
+
+                            <div className="w-full sm:w-auto">
+                                <WhatsAppButton sizeClass="w-full sm:w-auto py-3.5 px-6 md:px-10 text-sm md:text-base lg:text-lg" />
+                            </div>
                         </div>
                     </motion.div>
 

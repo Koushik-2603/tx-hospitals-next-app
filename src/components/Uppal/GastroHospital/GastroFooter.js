@@ -6,7 +6,7 @@ const GastroFooter = () => {
         <footer className="bg-[#111111] text-white py-12 px-6 font-inter">
             <div className="max-w-7xl mx-auto flex flex-col items-center">
                 <div className="flex items-center gap-4 mb-8">
-                    <div className="bg-[#be185d] w-12 h-12 rounded-xl flex items-center justify-center text-white font-extrabold text-xl shadow-lg">
+                    <div className="bg-[#be185d] p-3 rounded-xl flex items-center justify-center font-bold text-xl">
                         TX
                     </div>
                     <div>

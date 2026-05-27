@@ -113,14 +113,17 @@ const HerniaProcedure = ({ onBookClick }) => {
                     </motion.div>
                 </div>
 
-                <div className="flex flex-row justify-center gap-4">
+                <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 w-full">
                     <button
                         onClick={onBookClick}
-                        className="bg-white text-[#be185d] hover:bg-pink-50 font-extrabold py-4 px-12 rounded-full transition-all duration-300 ease-in-out shadow-2xl hover:shadow-pink-500/20 text-base md:text-lg uppercase tracking-wider transform hover:-translate-y-1 hover:scale-105"
+                        className="w-full sm:w-auto bg-white text-[#be185d] hover:bg-pink-50 font-extrabold py-4 px-6 md:px-12 rounded-full transition-all duration-300 ease-in-out shadow-2xl hover:shadow-pink-500/20 text-sm md:text-base lg:text-lg uppercase tracking-wider transform hover:-translate-y-1 hover:scale-105"
                     >
                         Free Doctor Consultation
                     </button>
-                    <WhatsAppButton sizeClass="py-4 px-12 text-base md:text-lg" />
+
+                    <div className="w-full sm:w-auto">
+                        <WhatsAppButton sizeClass="w-full sm:w-auto py-4 px-6 md:px-12 text-sm md:text-base lg:text-lg" />
+                    </div>
                 </div>
             </div>
 

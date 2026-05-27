@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import WhatsAppButton from '../WhatsAppButton';
 
-const BariatricFAQ = ({ 
+const BariatricFAQ = ({
     badge = "Your Questions Answered",
     title = "Frequently Asked Questions",
     faqs = [
@@ -42,8 +42,8 @@ const BariatricFAQ = ({
 
                 <div className="space-y-4 mb-12">
                     {faqs.map((faq, index) => (
-                        <div 
-                            key={index} 
+                        <div
+                            key={index}
                             className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 transition-all hover:shadow-md"
                         >
                             <button
@@ -61,7 +61,7 @@ const BariatricFAQ = ({
                                     <ChevronDown className="w-4 h-4" />
                                 </motion.div>
                             </button>
-                            
+
                             <AnimatePresence>
                                 {activeIndex === index && (
                                     <motion.div
@@ -80,14 +80,17 @@ const BariatricFAQ = ({
                     ))}
                 </div>
 
-                <div className="flex flex-row items-center gap-4">
-                    <button 
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full">
+                    <button
                         onClick={() => onBookClick()}
-                        className="bg-pink-700 hover:bg-pink-800 text-white font-bold py-4 px-10 rounded-2xl transition-all transform hover:scale-105 shadow-xl text-sm md:text-base"
+                        className="w-full sm:w-auto bg-pink-700 hover:bg-pink-800 text-white font-bold py-4 px-6 md:px-10 rounded-2xl transition-all transform hover:scale-105 shadow-xl text-sm md:text-base lg:text-lg"
                     >
                         Free Doctor Consultation
                     </button>
-                    <WhatsAppButton sizeClass="py-4 px-10 text-sm md:text-base" />
+
+                    <div className="w-full sm:w-auto">
+                        <WhatsAppButton sizeClass="w-full sm:w-auto py-4 px-6 md:px-10 text-sm md:text-base lg:text-lg" />
+                    </div>
                 </div>
             </div>
         </section>

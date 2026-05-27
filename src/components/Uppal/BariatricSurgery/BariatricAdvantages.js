@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import WhatsAppButton from '../WhatsAppButton';
 import { CheckCircle2 } from 'lucide-react';
 
-const BariatricAdvantages = ({ 
+const BariatricAdvantages = ({
     badge = "Why It Works",
     title = "Advantages of Bariatric Surgery",
     subtitle = "Not just weight loss, a life-changing solution for obesity and related health conditions.",
@@ -81,14 +81,17 @@ const BariatricAdvantages = ({
                     ))}
                 </div>
 
-                <div className="flex flex-row justify-center gap-4">
-                    <button 
+                <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 w-full">
+                    <button
                         onClick={() => onBookClick()}
-                        className="bg-pink-700 hover:bg-pink-800 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-xl text-base md:text-lg"
+                        className="w-full sm:w-auto bg-pink-700 hover:bg-pink-800 text-white font-bold py-4 px-6 md:px-10 rounded-xl transition-all transform hover:scale-105 shadow-xl text-sm md:text-base lg:text-lg"
                     >
                         Free Doctor Consultation
                     </button>
-                    <WhatsAppButton sizeClass="py-4 px-10 text-base md:text-lg" />
+
+                    <div className="w-full sm:w-auto">
+                        <WhatsAppButton sizeClass="w-full sm:w-auto py-4 px-6 md:px-10 text-sm md:text-base lg:text-lg" />
+                    </div>
                 </div>
             </div>
         </section>
