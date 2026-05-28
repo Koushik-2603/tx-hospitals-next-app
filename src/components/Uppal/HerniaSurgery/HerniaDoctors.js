@@ -9,13 +9,13 @@ const HerniaDoctors = ({ onBookClick }) => {
     const [loading, setLoading] = useState(true);
 
     const doctorDetails = [
-        {
-            name: "Dr. Sai Krishna",
-            url: "dr-k-sai-krishna",
-            designation: "Sr. Consultant - Medical Gastroenterologist",
-            qualifications: "MBBS - MD, DM Gastroenterology",
-            experience: "17+"
-        },
+        // {
+        //     name: "Dr. Sai Krishna",
+        //     url: "dr-k-sai-krishna",
+        //     designation: "Sr. Consultant - Medical Gastroenterologist",
+        //     qualifications: "MBBS - MD, DM Gastroenterology",
+        //     experience: "17+"
+        // },
         {
             name: "Dr. Sudarshan Reddy",
             url: "dr-sudharshan-reddy-komati",
