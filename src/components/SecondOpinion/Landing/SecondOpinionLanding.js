@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Heart, Bone, Brain, Activity, ShieldPlus, Droplet, Microscope, Wind } from "lucide-react";
+import { Heart, Bone, Brain, Activity, ShieldPlus, Droplet, Microscope, Wind, X } from "lucide-react";
+import DoctorCard from "@/components/Common/DoctorCard";
 import SecondOpinionHero from "./SecondOpinionHero";
 import SecondOpinionStats from "./SecondOpinionStats";
+import SecondOpinionForm from "./SecondOpinionForm";
 import { locations, secondOpinion } from "@/utils/dropdownValues";
+import CONFIG from "@/config";
 
-export default function SecondOpinionLanding({ 
+export default function SecondOpinionLanding({
     opinionType = "Second", // Can be "Second" or "First"
     customTitle = "Your Health Decision Deserves the Right Second Opinion",
     customSubtitle = "Get expert evaluation, accurate diagnosis and the right treatment guidance from our senior specialists."
@@ -20,6 +23,21 @@ export default function SecondOpinionLanding({
 
     // Configurable Badge and Brand details
     const badgeText = opinionType === "First" ? "First Opinion" : "Second Opinion";
+
+    // Doctors state
+    const [doctors, setDoctors] = useState([]);
+    const [doctorModalOpen, setDoctorModalOpen] = useState(false);
+
+    // Fetch doctors from API, show first 4
+    useEffect(() => {
+        fetch(`${CONFIG.API_BASE_URL}/getAllDoctors`)
+            .then(res => res.json())
+            .then(data => {
+                const sorted = [...data].sort((a, b) => Number(a.priorityOrder) - Number(b.priorityOrder));
+                setDoctors(sorted.slice(0, 4));
+            })
+            .catch(err => console.error("Error fetching doctors:", err));
+    }, []);
 
     // Achievement stats config (passed as props to Stats component)
     const statsData = [
@@ -126,7 +144,7 @@ export default function SecondOpinionLanding({
     return (
         <div className="w-full min-h-screen bg-white">
             {/* 1. Hero Section (including benefits list, illustration & form) */}
-            <SecondOpinionHero 
+            <SecondOpinionHero
                 opinionType={opinionType}
                 badgeText={badgeText}
                 title={customTitle}
@@ -217,6 +235,74 @@ export default function SecondOpinionLanding({
                     </div>
                 </div>
             </section>
+
+            {/* 3b. Doctors Section */}
+            {doctors.length > 0 && (
+                <section className="bg-[#fcfafa] py-4 md:py-8 px-6 md:px-10 lg:px-12 font-inter">
+                    <div className="max-w-[1400px] mx-auto">
+                        {/* Header — left-aligned like Uppal */}
+                        <div className="mb-8 md:mb-12 max-w-3xl">
+                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-pink-700 mb-2 block">
+                                Meet the Team
+                            </span>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                Our <span className="text-pink-700">Expert Doctors</span>
+                            </h2>
+                            <div className="w-12 h-1 bg-pink-700 mb-6"></div>
+                            <p className="text-sm md:text-base text-gray-600 leading-relaxed font-medium">
+                                Consult with our highly experienced specialists and get the right {opinionType} Opinion for your health concerns.
+                            </p>
+                        </div>
+
+                        {/* Doctors Grid using DoctorCard — same as Uppal */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                            {doctors.map((doctor, index) => (
+                                <DoctorCard
+                                    key={doctor.id || index}
+                                    name={doctor.name}
+                                    specialty={doctor.department}
+                                    designation={doctor.designation}
+                                    experience={doctor.experience}
+                                    imageSrc={doctor.image}
+                                    onBookClick={() => setDoctorModalOpen(true)}
+                                />
+                            ))}
+                        </div>
+
+                        {/* View All Doctors Button */}
+                        <div className="mt-12 flex justify-center">
+                            <Link
+                                href="/find-doctor"
+                                className="border-2 border-pink-700 text-pink-700 px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-pink-700 hover:text-white transition-all transform hover:scale-105"
+                            >
+                                View All Doctors
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* Doctor Appointment Modal with SecondOpinionForm */}
+            {doctorModalOpen && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-2"
+                    onClick={() => setDoctorModalOpen(false)}
+                >
+                    <div
+                        className="relative max-h-[100vh] overflow-y-auto"
+                        onClick={e => e.stopPropagation()}
+                    >
+                        {/* Close button */}
+                        <button
+                            onClick={() => setDoctorModalOpen(false)}
+                            className="absolute top-3 right-3 z-10 bg-white rounded-full p-1.5 shadow-md hover:bg-gray-100 transition"
+                        >
+                            <X className="w-4 h-4 text-gray-600" />
+                        </button>
+                        <SecondOpinionForm opinionType={opinionType} />
+                    </div>
+                </div>
+            )}
 
             {/* 4. Why Choose Us Section */}
             <section className="w-full bg-[#fff5f6] py-14 md:py-16 font-inter">

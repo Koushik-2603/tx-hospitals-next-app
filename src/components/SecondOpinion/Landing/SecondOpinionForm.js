@@ -8,7 +8,7 @@ import axios from "axios";
 export default function SecondOpinionForm({ opinionType = "First" }) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    
+
     // Form state
     const [formData, setFormData] = useState({
         name: "",
@@ -50,7 +50,6 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
         "ENT",
         "Skin & Cosmetic Care",
         "Dental & Maxillofacial",
-        "Ophthalmology",
         "Anaesthesia & Pain Management"
     ];
 
@@ -73,7 +72,7 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
     // Handle standard input changes
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
-        
+
         if (name === "mobile") {
             const numericValue = value.replace(/\D/g, "").slice(0, 10);
             setFormData((prev) => ({ ...prev, [name]: numericValue }));
@@ -103,7 +102,7 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
 
         try {
             const endpoint = `${CONFIG.API_BASE_URL}/send-email/dynamic-form`;
-            
+
             // Replicate structure from dynamic-form integrations (e.g. Uppal forms)
             const payload = {
                 to: "crm.txhospitals@gmail.com, manager@txhospitals.com, frontdesk@txhospitals.com",
@@ -146,7 +145,7 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
     };
 
     return (
-        <div className="bg-white rounded-2xl shadow-[0_15px_45px_rgba(0,0,0,0.06)] border border-gray-100 p-4 sm:p-5 w-full max-w-[390px] transition-all hover:shadow-[0_20px_55px_rgba(0,0,0,0.1)]">
+        <div className="bg-white rounded-2xl shadow-[0_15px_45px_rgba(0,0,0,0.06)] border border-gray-100 p-2 sm:p-3 w-full max-w-[390px] transition-all hover:shadow-[0_20px_55px_rgba(0,0,0,0.1)]">
             {/* Form Headers */}
             <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight leading-tight">
                 Book Your <span className="text-[#b01640]">{opinionType} Opinion</span> Consultation
@@ -221,7 +220,7 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
 
                 {/* Searchable Select Specialty */}
                 <div className="relative" ref={specialtyRef}>
-                    <div 
+                    <div
                         onClick={() => setIsSpecialtyOpen(!isSpecialtyOpen)}
                         className="w-full text-xs md:text-sm border border-gray-200 rounded-lg px-3.5 py-2 text-gray-700 bg-white cursor-pointer flex justify-between items-center transition-all focus:outline-none font-inter"
                     >
@@ -243,7 +242,7 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
                                 onChange={(e) => setSpecialtySearch(e.target.value)}
                                 className="w-full text-xs border border-gray-200 rounded-md px-3 py-1.5 mb-2 focus:outline-none focus:ring-2 focus:ring-[#b01640]/25 focus:border-[#b01640] outline-none font-inter"
                             />
-                            
+
                             {/* Options with custom scroll */}
                             <div className="max-h-40 overflow-y-auto divide-y divide-gray-50 select-no-scrollbar">
                                 {filteredSpecialties.length > 0 ? (
