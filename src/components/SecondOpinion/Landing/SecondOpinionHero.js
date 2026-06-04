@@ -5,7 +5,7 @@ import BookAppointmentForm from "@/components/Blogs/BookAppointemntForm";
 import SecondOpinionForm from "./SecondOpinionForm";
 
 export default function SecondOpinionHero({
-    opinionType = "First",
+    opinionType = "FREE SECOND",
     badgeText = "FREE SECOND OPINION",
     title = "Your Health Decision Deserves the Right Second Opinion",
     subtitle = "Get expert evaluation, accurate diagnosis and the right treatment guidance from our senior specialists."

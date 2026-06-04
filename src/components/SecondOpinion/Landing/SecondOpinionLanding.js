@@ -11,7 +11,7 @@ import { locations, secondOpinion } from "@/utils/dropdownValues";
 import CONFIG from "@/config";
 
 export default function SecondOpinionLanding({
-    opinionType = "Second", // Can be "Second" or "First"
+    opinionType = "Free Second", // Can be "Second" or "First"
     customTitle = "Your Health Decision Deserves the Right Second Opinion",
     customSubtitle = "Get expert evaluation, accurate diagnosis and the right treatment guidance from our senior specialists."
 }) {
@@ -22,7 +22,7 @@ export default function SecondOpinionLanding({
         .map(item => ({ name: item.name }));
 
     // Configurable Badge and Brand details
-    const badgeText = opinionType === "First" ? "Free Second Opinion" : "Second Opinion";
+    const badgeText = "Free Second Opinion";
 
     // Doctors state
     const [doctors, setDoctors] = useState([]);
