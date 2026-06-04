@@ -107,19 +107,19 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
             const payload = {
                 to: "crm.txhospitals@gmail.com, manager@txhospitals.com, frontdesk@txhospitals.com",
                 cc: isUppal ? "info.txhospitals@gmail.com, manidhar139@gmail.com" : "info.txhospitals@gmail.com",
-                subject: `New First Opinion Inquiry - ${formData.branch} - ${formData.name}`,
+                subject: `New Second Opinion Inquiry - ${formData.branch} - ${formData.name}`,
                 html: `
-                    <h3>New First Opinion Inquiry</h3>
+                    <h3>New Second Opinion Inquiry</h3>
                     <p><strong>Name:</strong> ${formData.name}</p>
                     <p><strong>Mobile:</strong> ${formData.mobile}</p>
                     <p><strong>Email Address:</strong> ${formData.email || "N/A"}</p>
                     <p><strong>Branch Center:</strong> ${formData.branch}</p>
                     <p><strong>Specialty Selected:</strong> ${formData.specialty}</p>
                     <p><strong>Patient Concern:</strong> ${formData.concern || "N/A"}</p>
-                    <p><strong>Page:</strong> ${document.title || "First Opinion Landing Page"}</p>
+                    <p><strong>Page:</strong> ${document.title || "Free Second Opinion Landing Page"}</p>
                     <p><strong>Submitted At:</strong> ${new Date().toLocaleString()}</p>
                 `,
-                page: document.title || "First Opinion Landing Page",
+                page: document.title || "Free Second Opinion Landing Page",
                 location: formData.branch,
                 name: formData.name,
                 mobile: formData.mobile,

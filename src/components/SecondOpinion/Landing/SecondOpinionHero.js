@@ -6,8 +6,8 @@ import SecondOpinionForm from "./SecondOpinionForm";
 
 export default function SecondOpinionHero({
     opinionType = "First",
-    badgeText = "FIRST OPINION",
-    title = "Your Health Decision Deserves the Right First Opinion",
+    badgeText = "FREE SECOND OPINION",
+    title = "Your Health Decision Deserves the Right Second Opinion",
     subtitle = "Get expert evaluation, accurate diagnosis and the right treatment guidance from our senior specialists."
 }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -136,7 +136,7 @@ export default function SecondOpinionHero({
                     showModal={isModalOpen}
                     setShowModal={setIsModalOpen}
                     redirectUrl="/thank-you/"
-                    defaultLocation="TX Hospitals First Opinion"
+                    defaultLocation="TX Hospitals Second Opinion"
                 />
             )}
         </section>

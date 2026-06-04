@@ -22,7 +22,7 @@ export default function SecondOpinionLanding({
         .map(item => ({ name: item.name }));
 
     // Configurable Badge and Brand details
-    const badgeText = opinionType === "First" ? "First Opinion" : "Second Opinion";
+    const badgeText = opinionType === "First" ? "Free Second Opinion" : "Second Opinion";
 
     // Doctors state
     const [doctors, setDoctors] = useState([]);
@@ -431,7 +431,7 @@ export default function SecondOpinionLanding({
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
                             {
-                                quote: "I was suggested surgery elsewhere, but the first opinion at TX Hospitals helped me avoid an unnecessary procedure.",
+                                quote: "I was suggested surgery elsewhere, but the second opinion at TX Hospitals helped me avoid an unnecessary procedure.",
                                 name: "Rajesh Kumar",
                                 location: "Hyderabad"
                             },
