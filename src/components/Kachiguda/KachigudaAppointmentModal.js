@@ -33,7 +33,7 @@ export default function KachigudaAppointmentModal({ closeModal }) {
         setLoading(true);
         try {
             const payload = {
-                to: "crm.txhospitals@gmail.com, manager@txhospitals.com, frontdesk@txhospitals.com",
+                to: "crm.txhospitals@gmail.com, venudas@txhospitals.in",
                 cc: "info.txhospitals@gmail.com",
                 subject: "New Inquiry from Kachiguda Branch (CTA Banner)",
                 html: `

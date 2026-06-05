@@ -105,7 +105,7 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
 
             // Replicate structure from dynamic-form integrations (e.g. Uppal forms)
             const payload = {
-                to: "crm.txhospitals@gmail.com, manager@txhospitals.com, frontdesk@txhospitals.com",
+                to: "crm.txhospitals@gmail.com, venudas@txhospitals.in",
                 cc: isUppal ? "info.txhospitals@gmail.com, manidhar139@gmail.com" : "info.txhospitals@gmail.com",
                 subject: `New Second Opinion Inquiry - ${formData.branch} - ${formData.name}`,
                 html: `

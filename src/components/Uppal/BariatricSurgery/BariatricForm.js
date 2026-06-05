@@ -32,7 +32,7 @@ const BariatricForm = ({ redirectUrl = "/thank-you-uppal" }) => {
         setLoading(true);
         try {
             const payload = {
-                to: "crm.txhospitals@gmail.com, manager@txhospitals.com, frontdesk@txhospitals.com",
+                to: "crm.txhospitals@gmail.com, venudas@txhospitals.in",
                 cc: "info.txhospitals@gmail.com, manidhar139@gmail.com",
                 subject: "New Inquiry from Uppal Branch - Bariatric Surgery",
                 html: `
