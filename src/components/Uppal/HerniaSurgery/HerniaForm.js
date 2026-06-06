@@ -34,7 +34,7 @@ const HerniaForm = () => {
         try {
             const payload = {
                 to: "txhospitaluppal@gmail.com",
-                cc: ["manidhar139@gmail.com", "vinayaksharma9491@gmail.com"],
+                cc: ["vinayaksharma9491@gmail.com"],
                 subject: `New Hernia Surgery Inquiry - Uppal - ${formData.name}`,
                 form_data: {
                     "Patient Name": formData.name,

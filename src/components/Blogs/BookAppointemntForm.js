@@ -42,7 +42,7 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
         try {
             const payload = {
                 to: "crm.txhospitals@gmail.com, venudas@txhospitals.in",
-                cc: isUppal ? "info.txhospitals@gmail.com, manidhar139@gmail.com" : "info.txhospitals@gmail.com",
+                cc: "info.txhospitals@gmail.com",
                 subject: `New Inquiry from ${location}`,
                 html: `
                     <h3>New Inquiry</h3>

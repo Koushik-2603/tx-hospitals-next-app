@@ -34,7 +34,7 @@ const GastroForm = ({ redirectUrl = "/thank-you-uppal" }) => {
         try {
             const payload = {
                 to: "crm.txhospitals@gmail.com, venudas@txhospitals.in",
-                cc: "info.txhospitals@gmail.com, manidhar139@gmail.com",
+                cc: "info.txhospitals@gmail.com",
                 subject: "New Inquiry from Uppal Branch - Gastro Hospital",
                 html: `
                     <h3>New Inquiry - Gastro Hospital</h3>
