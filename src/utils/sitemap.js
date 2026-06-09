@@ -180,29 +180,31 @@ export const COERoutes = [
 
 export const fetchRoutes = async (key, endpoint) => {
     try {
-        const response = await axios.get(endpoint);
+        const response = await axios.get(endpoint, {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            }
+        });
 
-        switch (key) {
-            case "doctors":
-                return response.data.map((item) => item.url);
-
-            case "blogs":
-            case "healthPackages":
-            case "secondOpinion":
-                return response.data.Items.map((item) => item.url);
-
-            default:
-                return [];
+        let data = response.data;
+        if (data && !Array.isArray(data) && Array.isArray(data.Items)) {
+            data = data.Items;
         }
+
+        if (!Array.isArray(data)) {
+            return [];
+        }
+
+        return data.map((item) => item.url).filter(Boolean);
     } catch (err) {
         console.error(err);
         return [];
     }
 };
 
-export const generateXML = (routes) => {
+export const generateXML = (routes, errorMsg = "") => {
     return `<?xml version="1.0" encoding="UTF-8"?>
-
+${errorMsg ? `<!-- Error: ${errorMsg} -->` : ""}
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     ${routes
