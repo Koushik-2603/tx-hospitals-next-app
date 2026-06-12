@@ -4,7 +4,6 @@ import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import { motion, useInView } from "framer-motion";
 
-// Reusable hook
 const useCountUp = (end, duration = 2000) => {
     const [count, setCount] = useState(0);
     const [done, setDone] = useState(false);
@@ -46,7 +45,7 @@ const useCountUp = (end, duration = 2000) => {
 };
 
 const formatNumber = (num, suffix) => {
-    if (num >= 1000) {
+    if (num >= 100000) {
         return Math.floor(num / 1000) + "K" + (suffix.includes("+") ? "+" : "");
     }
     return num + suffix;
@@ -56,18 +55,16 @@ const stats = [
     { number: 4, suffix: "", title: "Locations", desc: "Delivering advanced, accessible care across Hyderabad.", icon: "/assets/WhyChooseUs/Location icon.png" },
     { number: 500, suffix: "+", title: "Beds", desc: "Modern facilities designed for comprehensive treatment.", icon: "/assets/WhyChooseUs/Bed.png" },
     { number: 100000, suffix: "+", title: "Happy Patients", desc: "A legacy of trust, healing and personalized care for patients and families.", icon: "/assets/WhyChooseUs/Happy Patient Icon.png" },
-    { number: 30000, suffix: "+", title: "Successful Surgeries", desc: "Expertise in complex, robotic and minimally invasive procedures.", icon: "/assets/WhyChooseUs/Surgery Icon.png" },
-    { number: 5000, suffix: "+", title: "International Patients", desc: "A trusted destination for patients from around the world.", icon: "/assets/WhyChooseUs/International Patinet icon.png" },
-    { number: 200, suffix: "+", title: "Doctors", desc: "Experienced doctors dedicated to personalized and expert care.", icon: "/assets/WhyChooseUs/Docotor Icon.png" },
+    { number: 1, suffix: "", title: "Clinical Trial Unit", desc: "Secure Pharmacy, Archival, Monitoring area, Document storage, and Sample Processing Areas with accredited labs & diagnostics Facilities.", icon: "/assets/WhyChooseUs/Location icon.png" },
+    { number: 100, suffix: "+", title: "Investigators", desc: "Qualified investigators delivering ethical, compliant, and patient-centric research.", icon: "/assets/WhyChooseUs/Docotor Icon.png" },
+    { number: 2, suffix: "", title: "Ethics Committee's", desc: "ECCTBEBA - ECR/2011/Inst/TG/2024\nECBHR - EC/NEW/INST/2025/5391", icon: "/assets/WhyChooseUs/Bed.png" },
 ];
 
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: {
-            staggerChildren: 0.08
-        }
+        transition: { staggerChildren: 0.08 }
     }
 };
 
@@ -80,7 +77,7 @@ const cardVariants = {
     }
 };
 
-function StatCard({ item, index }) {
+function StatCard({ item }) {
     const isMobile = useIsMobile();
     const [count, done, countRef] = useCountUp(item.number, 2000);
 
@@ -95,7 +92,7 @@ function StatCard({ item, index }) {
                     {done ? formatNumber(item.number, item.suffix) : count.toLocaleString()}
                 </h3>
                 <h4 className="font-semibold mt-1 text-base sm:text-lg">{item.title}</h4>
-                <p className="text-gray-600 mt-2 text-sm">{item.desc}</p>
+                <p className="text-gray-600 mt-2 whitespace-pre-line text-sm">{item.desc}</p>
             </div>
             <motion.div
                 animate={{ rotate: [0, 5, -5, 0] }}
@@ -114,7 +111,7 @@ function StatCard({ item, index }) {
     );
 }
 
-export default function WhyChooseUs() {
+export default function CRWhyChooseUs() {
     const isMobile = useIsMobile();
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
@@ -126,9 +123,7 @@ export default function WhyChooseUs() {
             ref={sectionRef}
             className={`relative text-white py-10 px-6 bg-cover bg-center overflow-hidden ${isMobile ? 'py-8 px-4' : ''}`}
             style={{ backgroundImage: "url('/assets/WhyChooseUs/BG.png')" }}
-            id="why-choose-us"
         >
-            {/* Background Overlay */}
             <div className="absolute inset-0 bg-pink-900/40 pointer-events-none"></div>
 
             <div className="max-w-6xl mx-auto text-center relative z-10">
@@ -153,7 +148,7 @@ export default function WhyChooseUs() {
                     transition={{ duration: 0.4, delay: 0.1 }}
                     className={`max-w-3xl mx-auto mb-16 text-white/90 font-medium leading-relaxed ${isMobile ? 'text-sm mb-10 px-2' : 'text-xl'}`}
                 >
-                    Redefining healthcare by combining clinical excellence, advanced technology and patient-first values. Trusted for holistic, world-class healthcare.
+                    Redefining clinical research through experienced investigators, advanced infrastructure, regulatory excellence, and a commitment to patient first and scientific integrity.
                 </motion.p>
 
                 <motion.div
@@ -163,7 +158,7 @@ export default function WhyChooseUs() {
                     className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
                 >
                     {stats.map((item, index) => (
-                        <StatCard key={index} item={item} index={index} />
+                        <StatCard key={index} item={item} />
                     ))}
                 </motion.div>
             </div>

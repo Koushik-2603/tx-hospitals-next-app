@@ -336,14 +336,16 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                 ${hoveredSpecialty?.name === item.name ? "bg-pink-100 text-pink-700" : "text-gray-800 hover:bg-gray-100"}`}
                         >
                             <span>{item.name}</span>
-                            <FiChevronRight className={`${hoveredSpecialty?.name === item.name ? "opacity-100" : "opacity-50"}`} />
+                            {item.subItems && item.subItems.length > 0 && (
+                                <FiChevronRight className={`${hoveredSpecialty?.name === item.name ? "opacity-100" : "opacity-50"}`} />
+                            )}
                         </div>
                     ))}
                 </div>
 
                 {/* Column 2: Sub-items of selected Category */}
                 <div className="flex flex-col gap-2 min-w-[220px] border-r border-gray-200 pr-4">
-                    {hoveredSpecialty?.subItems.map((sub, i) => (
+                    {hoveredSpecialty?.subItems?.map((sub, i) => (
                         <button
                             key={i}
                             onClick={() => { handleMenuClick(sub.path); setOpenMenu(null); }}
@@ -609,10 +611,18 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                                         <div className="flex flex-col">
                                                             <button
                                                                 className={`text-sm flex justify-between items-center text-left w-full py-2 transition-colors ${isSubOpen ? 'text-pink-600 font-semibold' : 'text-gray-600 hover:text-pink-500'}`}
-                                                                onClick={() => setMobileOpenSubItem(isSubOpen ? null : `spec-${dept.name}`)}
+                                                                onClick={() => {
+                                                                    if (dept.subItems && dept.subItems.length > 0) {
+                                                                        setMobileOpenSubItem(isSubOpen ? null : `spec-${dept.name}`)
+                                                                    } else if (dept.path) {
+                                                                        handleNavigate(dept.path);
+                                                                    }
+                                                                }}
                                                             >
                                                                 {dept.name}
-                                                                {isSubOpen ? <FiChevronUp className="text-xs" /> : <FiChevronDown className="text-xs" />}
+                                                                {dept.subItems && dept.subItems.length > 0 && (
+                                                                    isSubOpen ? <FiChevronUp className="text-xs" /> : <FiChevronDown className="text-xs" />
+                                                                )}
                                                             </button>
                                                             {isSubOpen && (
                                                                 <ul className="ml-4 space-y-1 border-l border-gray-100 pl-3 py-1">

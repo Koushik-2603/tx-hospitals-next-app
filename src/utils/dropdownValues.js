@@ -68,6 +68,11 @@ export const dropdowns = {
                     { name: "Gynaecology", path: "/specialities/gynecology-hospitals/" },
                     { name: "Paediatrics", path: "/specialities/pediatric-hospitals/" }
                 ]
+            },
+            {
+                name: "Clinical Research",
+                path: "/clinical-search/",
+                subItems: []
             }
         ],
         part3: [
