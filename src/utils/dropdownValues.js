@@ -71,7 +71,7 @@ export const dropdowns = {
             },
             {
                 name: "Clinical Research",
-                path: "/clinical-search/",
+                path: "/clinical-research/",
                 subItems: []
             }
         ],
