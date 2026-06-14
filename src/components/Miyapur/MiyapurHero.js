@@ -67,7 +67,7 @@ const MiyapurHero = () => {
     };
 
     return (
-        <section id="home" className="relative flex overflow-hidden w-full" style={{ marginTop: '25px', minHeight: '560px' }}>
+        <section id="home" className="relative flex overflow-hidden w-full -mt-2 md:mt-0" style={{ minHeight: '560px' }}>
             <div className="relative flex-1 hidden lg:block">
                 <div className="absolute inset-0 bg-cover bg-center">
                     <Image
