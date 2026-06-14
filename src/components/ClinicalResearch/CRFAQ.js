@@ -26,7 +26,7 @@ const faqs = [
     },
     {
         question: "6. How can Sponsors and CROs collaborate with TX Hospitals?",
-        answer: "TX Hospitals offers experienced investigators, dedicated research infrastructure, registered Ethics Committees, regulatory support, and access to diverse patient populations. Sponsors and CROs interested in conducting clinical trials may contact our Clinical Research Unit to discuss feasibility assessments, site capabilities, and collaboration opportunities."
+        answer: "TX Hospitals offers experienced Investigators, dedicated research infrastructure, registered Ethics Committees, regulatory support, and access to diverse patient populations. Sponsors and CROs interested in conducting clinical trials may contact our Clinical Research Unit to discuss feasibility assessments, site capabilities, and collaboration opportunities."
     }
 ];
 

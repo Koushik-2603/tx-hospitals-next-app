@@ -7,6 +7,7 @@ import CRRegulatory from "./CRRegulatory";
 import CRPortfolio from "./CRPortfolio";
 import CRFAQ from "./CRFAQ";
 import CRChairmanMessage from "./CRChairmanMessage";
+import CRContactUs from "./CRContactUs";
 
 export default function ClinicalResearchLanding() {
     return (
@@ -25,6 +26,7 @@ export default function ClinicalResearchLanding() {
             <div className="mb-2 md:mb-4">
                 <CRChairmanMessage />
             </div>
+            <CRContactUs />
         </main>
     );
 }

@@ -159,7 +159,7 @@ const faqs = [
     },
 ];
 
-export default function SpecialitiesHomepage() {
+export default function SpecialitiesHomepage({ isClinicalResearch = false }) {
     const [openIndex, setOpenIndex] = useState(null);
     const isMobile = useIsMobile();
     const router = useRouter();
@@ -173,7 +173,7 @@ export default function SpecialitiesHomepage() {
     };
 
     return (
-        <>
+        <main>
             {isMobile ? (
                 <>
                     <section className="relative w-full -mt-8 h-[300px] flex items-center justify-center text-center overflow-hidden">
@@ -237,97 +237,101 @@ export default function SpecialitiesHomepage() {
                             ))}
                         </div>
                     </section>
-                    <section className="bg-pink-700 text-white rounded-xl p-4 text-center max-w-4xl mx-auto shadow-lg">
-                        <h2 className="text-2xl font-bold mb-2">24/7 Emergency Care</h2>
-                        <p className="text-sm leading-relaxed mb-4">
-                            When every second counts, our emergency department is equipped with
-                            advanced life support systems and staffed by experienced emergency
-                            physicians ready to provide immediate, life-saving care.
-                        </p>
-                        <button className="flex items-center justify-center gap-2 bg-white text-pink-700 font-semibold rounded-full px-6 py-3 mx-auto transition hover:scale-105 hover:shadow-md">
-                            <Image
-                                src="/assets/specialities/7373323.png"
-                                alt="Emergency Icon"
-                                width={24}
-                                height={24}
-                            />
-                            <span className="font-bold text-lg">Emergency Services</span>
-                        </button>
-                    </section>
-                    <section className="bg-white rounded-2xl p-2 mt-2 text-center shadow-2xl">
-                        <h2 className="text-lg font-bold mb-2">Ready to Experience Excellence in Healthcare?</h2>
-                        <p className="text-sm leading-relaxed mb-4">
-                            Schedule an appointment with our specialists or learn more about our
-                            comprehensive medical services. We're here to provide you with
-                            personalized, compassionate care
-                        </p>
-                        <div className="flex items-center justify-center gap-2">
-                            <button className="flex items-center justify-center gap-1 bg-pink-700 text-white font-semibold rounded-full px-4 py-2 transition hover:scale-105 hover:shadow-md">
-                                <Image
-                                    src="/assets/specialities/Book an appointment Icon.png"
-                                    alt="Book Appointment Icon"
-                                    width={20}
-                                    height={20}
-                                />
-                                <span className="font-bold text-xs">Book Appointment</span>
-                            </button>
-                            <button className="flex items-center justify-center gap-2 border border-pink-700 bg-white text-pink-700 font-semibold rounded-full px-4 py-2 transition hover:scale-105 hover:shadow-md">
-                                <Image
-                                    src="/assets/specialities/Call Icon.webp"
-                                    alt="Contact Us Icon"
-                                    width={20}
-                                    height={20}
-                                />
-                                <span className="font-bold text-xs">Contact Us</span>
-                            </button>
-                        </div>
-                    </section>
-                    <section className="py-3 mt-2 px-2">
-                        <div className="max-w-2xl mx-auto">
-                            {/* Heading */}
-                            <h2 className="text-center text-xl font-bold text-pink-700 mb-4">
-                                Frequently Asked Questions (FAQs)
-                            </h2>
+                    {!isClinicalResearch && (
+                        <>
+                            <section className="bg-pink-700 text-white rounded-xl p-4 text-center max-w-4xl mx-auto shadow-lg">
+                                <h2 className="text-2xl font-bold mb-2">24/7 Emergency Care</h2>
+                                <p className="text-sm leading-relaxed mb-4">
+                                    When every second counts, our emergency department is equipped with
+                                    advanced life support systems and staffed by experienced emergency
+                                    physicians ready to provide immediate, life-saving care.
+                                </p>
+                                <button className="flex items-center justify-center gap-2 bg-white text-pink-700 font-semibold rounded-full px-6 py-3 mx-auto transition hover:scale-105 hover:shadow-md">
+                                    <Image
+                                        src="/assets/specialities/7373323.png"
+                                        alt="Emergency Icon"
+                                        width={24}
+                                        height={24}
+                                    />
+                                    <span className="font-bold text-lg">Emergency Services</span>
+                                </button>
+                            </section>
+                            <section className="bg-white rounded-2xl p-2 mt-2 text-center shadow-2xl">
+                                <h2 className="text-lg font-bold mb-2">Ready to Experience Excellence in Healthcare?</h2>
+                                <p className="text-sm leading-relaxed mb-4">
+                                    Schedule an appointment with our specialists or learn more about our
+                                    comprehensive medical services. We're here to provide you with
+                                    personalized, compassionate care
+                                </p>
+                                <div className="flex items-center justify-center gap-2">
+                                    <button className="flex items-center justify-center gap-1 bg-pink-700 text-white font-semibold rounded-full px-4 py-2 transition hover:scale-105 hover:shadow-md">
+                                        <Image
+                                            src="/assets/specialities/Book an appointment Icon.png"
+                                            alt="Book Appointment Icon"
+                                            width={20}
+                                            height={20}
+                                        />
+                                        <span className="font-bold text-xs">Book Appointment</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-2 border border-pink-700 bg-white text-pink-700 font-semibold rounded-full px-4 py-2 transition hover:scale-105 hover:shadow-md">
+                                        <Image
+                                            src="/assets/specialities/Call Icon.webp"
+                                            alt="Contact Us Icon"
+                                            width={20}
+                                            height={20}
+                                        />
+                                        <span className="font-bold text-xs">Contact Us</span>
+                                    </button>
+                                </div>
+                            </section>
+                            <section className="py-3 mt-2 px-2">
+                                <div className="max-w-2xl mx-auto">
+                                    {/* Heading */}
+                                    <h2 className="text-center text-xl font-bold text-pink-700 mb-4">
+                                        Frequently Asked Questions (FAQs)
+                                    </h2>
 
-                            {/* FAQ List */}
-                            <div className="space-y-2">
-                                {faqs.map((faq, idx) => (
-                                    <div key={idx}>
-                                        <button
-                                            onClick={() => toggleFAQ(idx)}
-                                            className={`w-full flex justify-between items-center px-3 py-2 rounded-full border text-sm text-left transition
-                  ${openIndex === idx
-                                                    ? "bg-pink-700 text-white font-medium"
-                                                    : "border-pink-600 text-pink-700 hover:bg-pink-50"
-                                                }`}
-                                        >
-                                            <span>{faq.question}</span>
-                                            <svg
-                                                className={`w-5 h-5 transform transition-transform ${openIndex === idx ? "rotate-180" : ""
-                                                    }`}
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth={2}
-                                                    d="M19 9l-7 7-7-7"
-                                                />
-                                            </svg>
-                                        </button>
+                                    {/* FAQ List */}
+                                    <div className="space-y-2">
+                                        {faqs.map((faq, idx) => (
+                                            <div key={idx}>
+                                                <button
+                                                    onClick={() => toggleFAQ(idx)}
+                                                    className={`w-full flex justify-between items-center px-3 py-2 rounded-full border text-sm text-left transition
+                                        ${openIndex === idx
+                                                            ? "bg-pink-700 text-white font-medium"
+                                                            : "border-pink-600 text-pink-700 hover:bg-pink-50"
+                                                        }`}
+                                                >
+                                                    <span>{faq.question}</span>
+                                                    <svg
+                                                        className={`w-5 h-5 transform transition-transform ${openIndex === idx ? "rotate-180" : ""
+                                                            }`}
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth={2}
+                                                            d="M19 9l-7 7-7-7"
+                                                        />
+                                                    </svg>
+                                                </button>
 
-                                        {openIndex === idx && (
-                                            <div className="px-3 py-2 text-sm    bg-gray-50 text-gray-700 rounded-full">
-                                                {faq.answer}
+                                                {openIndex === idx && (
+                                                    <div className="px-3 py-2 text-sm    bg-gray-50 text-gray-700 rounded-full">
+                                                        {faq.answer}
+                                                    </div>
+                                                )}
                                             </div>
-                                        )}
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
+                                </div>
+                            </section>
+                        </>
+                    )}
                 </>
             ) : (
                 <>
@@ -391,99 +395,103 @@ export default function SpecialitiesHomepage() {
                             ))}
                         </div>
                     </section>
-                    <section className="bg-pink-700 text-white rounded-2xl p-8 text-center max-w-6xl mx-auto shadow-lg">
-                        <h2 className="text-4xl font-bold mb-4">24/7 Emergency Care</h2>
-                        <p className="text-xl leading-relaxed mb-8">
-                            When every second counts, our emergency department is equipped with
-                            advanced life support systems and staffed by experienced emergency
-                            physicians ready to provide immediate, life-saving care.
-                        </p>
-                        <button className="flex items-center justify-center gap-2 bg-white text-pink-700 font-semibold rounded-full px-6 py-3 mx-auto transition hover:scale-105 hover:shadow-md">
-                            <Image
-                                src="/assets/specialities/7373323.png"
-                                alt="Emergency Icon"
-                                width={28}
-                                height={28}
-                            />
-                            <span className="font-bold text-xl">Emergency Services</span>
-                        </button>
-                    </section>
-                    <section className="bg-white rounded-2xl mt-12 p-8 text-center max-w-6xl mx-auto shadow-2xl">
-                        <h2 className="text-4xl font-bold mb-4">Ready to Experience Excellence in Healthcare?</h2>
-                        <p className="text-xl leading-relaxed mb-8">
-                            Schedule an appointment with our specialists or learn more about our
-                            comprehensive medical services. We're here to provide you with
-                            personalized, compassionate care
-                        </p>
-                        <div className="flex items-center justify-center gap-4">
-                            <button className="flex items-center justify-center gap-2 bg-pink-700 text-white font-semibold rounded-full px-6 py-3 transition hover:scale-105 hover:shadow-md">
-                                <Image
-                                    src="/assets/specialities/Book an appointment Icon.png"
-                                    alt="Book Appointment Icon"
-                                    width={28}
-                                    height={28}
-                                />
-                                <span className="font-bold text-xl">Book Appointment</span>
-                            </button>
-                            <button className="flex items-center justify-center gap-2 border border-pink-700 bg-white text-pink-700 font-semibold rounded-full px-6 py-3 transition hover:scale-105 hover:shadow-md">
-                                <Image
-                                    src="/assets/specialities/Call Icon.webp"
-                                    alt="Contact Us Icon"
-                                    width={28}
-                                    height={28}
-                                />
-                                <span className="font-bold text-xl">Contact Us</span>
-                            </button>
-                        </div>
-                    </section>
-                    <section className="py-6 mt-4 px-6">
-                        <div className="max-w-4xl mx-auto">
-                            {/* Heading */}
-                            <h2 className="text-center text-2xl md:text-3xl font-bold text-pink-700 mb-8">
-                                Frequently Asked Questions (FAQs)
-                            </h2>
+                    {!isClinicalResearch && (
+                        <>
+                            <section className="bg-pink-700 text-white rounded-2xl p-8 text-center max-w-6xl mx-auto shadow-lg">
+                                <h2 className="text-4xl font-bold mb-4">24/7 Emergency Care</h2>
+                                <p className="text-xl leading-relaxed mb-8">
+                                    When every second counts, our emergency department is equipped with
+                                    advanced life support systems and staffed by experienced emergency
+                                    physicians ready to provide immediate, life-saving care.
+                                </p>
+                                <button className="flex items-center justify-center gap-2 bg-white text-pink-700 font-semibold rounded-full px-6 py-3 mx-auto transition hover:scale-105 hover:shadow-md">
+                                    <Image
+                                        src="/assets/specialities/7373323.png"
+                                        alt="Emergency Icon"
+                                        width={28}
+                                        height={28}
+                                    />
+                                    <span className="font-bold text-xl">Emergency Services</span>
+                                </button>
+                            </section>
+                            <section className="bg-white rounded-2xl mt-12 p-8 text-center max-w-6xl mx-auto shadow-2xl">
+                                <h2 className="text-4xl font-bold mb-4">Ready to Experience Excellence in Healthcare?</h2>
+                                <p className="text-xl leading-relaxed mb-8">
+                                    Schedule an appointment with our specialists or learn more about our
+                                    comprehensive medical services. We're here to provide you with
+                                    personalized, compassionate care
+                                </p>
+                                <div className="flex items-center justify-center gap-4">
+                                    <button className="flex items-center justify-center gap-2 bg-pink-700 text-white font-semibold rounded-full px-6 py-3 transition hover:scale-105 hover:shadow-md">
+                                        <Image
+                                            src="/assets/specialities/Book an appointment Icon.png"
+                                            alt="Book Appointment Icon"
+                                            width={28}
+                                            height={28}
+                                        />
+                                        <span className="font-bold text-xl">Book Appointment</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-2 border border-pink-700 bg-white text-pink-700 font-semibold rounded-full px-6 py-3 transition hover:scale-105 hover:shadow-md">
+                                        <Image
+                                            src="/assets/specialities/Call Icon.webp"
+                                            alt="Contact Us Icon"
+                                            width={28}
+                                            height={28}
+                                        />
+                                        <span className="font-bold text-xl">Contact Us</span>
+                                    </button>
+                                </div>
+                            </section>
+                            <section className="py-6 mt-4 px-6">
+                                <div className="max-w-4xl mx-auto">
+                                    {/* Heading */}
+                                    <h2 className="text-center text-2xl md:text-3xl font-bold text-pink-700 mb-8">
+                                        Frequently Asked Questions (FAQs)
+                                    </h2>
 
-                            {/* FAQ List */}
-                            <div className="space-y-4">
-                                {faqs.map((faq, idx) => (
-                                    <div key={idx}>
-                                        <button
-                                            onClick={() => toggleFAQ(idx)}
-                                            className={`w-full flex justify-between items-center px-6 py-4 rounded-full border text-left transition
-                  ${openIndex === idx
-                                                    ? "bg-pink-700 text-white font-medium"
-                                                    : "border-pink-600 text-pink-700 hover:bg-pink-50"
-                                                }`}
-                                        >
-                                            <span>{faq.question}</span>
-                                            <svg
-                                                className={`w-5 h-5 transform transition-transform ${openIndex === idx ? "rotate-180" : ""
-                                                    }`}
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth={2}
-                                                    d="M19 9l-7 7-7-7"
-                                                />
-                                            </svg>
-                                        </button>
+                                    {/* FAQ List */}
+                                    <div className="space-y-4">
+                                        {faqs.map((faq, idx) => (
+                                            <div key={idx}>
+                                                <button
+                                                    onClick={() => toggleFAQ(idx)}
+                                                    className={`w-full flex justify-between items-center px-6 py-4 rounded-full border text-left transition
+                                        ${openIndex === idx
+                                                            ? "bg-pink-700 text-white font-medium"
+                                                            : "border-pink-600 text-pink-700 hover:bg-pink-50"
+                                                        }`}
+                                                >
+                                                    <span>{faq.question}</span>
+                                                    <svg
+                                                        className={`w-5 h-5 transform transition-transform ${openIndex === idx ? "rotate-180" : ""
+                                                            }`}
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth={2}
+                                                            d="M19 9l-7 7-7-7"
+                                                        />
+                                                    </svg>
+                                                </button>
 
-                                        {openIndex === idx && (
-                                            <div className="px-6 py-4 bg-gray-50 text-gray-700 rounded-full">
-                                                {faq.answer}
+                                                {openIndex === idx && (
+                                                    <div className="px-6 py-4 bg-gray-50 text-gray-700 rounded-full">
+                                                        {faq.answer}
+                                                    </div>
+                                                )}
                                             </div>
-                                        )}
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
+                                </div>
+                            </section>
+                        </>
+                    )}
                 </>
             )}
-        </>
+        </main>
     );
 }

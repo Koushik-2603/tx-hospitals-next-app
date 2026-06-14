@@ -4,10 +4,13 @@ import Head from "next/head";
 import SecondaryLayout from '@/components/Layouts/SecondaryLayout';
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import useIsMobile from '@/hooks/useIsMobile';
+import { useRouter } from 'next/router';
 
 export default function Specialities() {
 
     const isMobile = useIsMobile();
+    const router = useRouter();
+    const isClinicalResearch = router.query.source === 'clinical-research';
 
     const breadcrumbItems = [
         { label: "Home", href: "/" },
@@ -25,7 +28,7 @@ export default function Specialities() {
                 <div className={`ml-4 absolute z-20 ${isMobile ? "-mt-3" : "mt-8"}`}>
                     <Breadcrumb items={breadcrumbItems} />
                 </div>
-                <SpecialitiesHomepage />
+                <SpecialitiesHomepage isClinicalResearch={isClinicalResearch} />
             </SecondaryLayout>
         </>
     );

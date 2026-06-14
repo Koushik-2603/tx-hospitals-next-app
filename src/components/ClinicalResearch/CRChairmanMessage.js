@@ -1,16 +1,26 @@
 "use client";
 import { motion } from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
+import Image from "next/image";
 
 export default function CRChairmanMessage() {
     const isMobile = useIsMobile();
     if (isMobile === null) return null;
 
     return (
-        <section className={`bg-[#1a0810] text-white w-full ${isMobile ? 'py-16 px-6' : 'py-24 px-12 md:px-24'}`}>
+        <section className={`bg-[#1a0810] text-white w-full ${isMobile ? 'py-8 px-4' : 'py-16 px-12 md:px-24'}`}>
+            <div className="max-w-7xl mx-auto flex justify-center">
+                <Image 
+                    src="/assets/Header/Chairmans message.png" 
+                    alt="Chairman's Message"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto object-contain shadow-2xl rounded-2xl"
+                />
+            </div>
+            {/*
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 md:gap-24 relative items-start">
                 
-                {/* Left Sticky Content */}
                 <div className="w-full md:w-1/3 md:sticky md:top-32">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -54,7 +64,6 @@ export default function CRChairmanMessage() {
                     </motion.div>
                 </div>
 
-                {/* Right Scrollable Content */}
                 <div className="w-full md:w-2/3 flex flex-col gap-6 text-gray-300 font-serif md:text-xl leading-relaxed">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -75,7 +84,7 @@ export default function CRChairmanMessage() {
                     >
                         The Clinical Research Unit at TX Hospitals has been established with a strong focus on 
                         patient safety, ethical conduct, scientific excellence, and regulatory compliance. Supported 
-                        by experienced investigators, dedicated research professionals, modern infrastructure, and 
+                        by experienced Investigators, dedicated research professionals, modern infrastructure, and 
                         registered Ethics Committees, we strive to create a trusted environment for conducting 
                         high-quality clinical research.
                     </motion.p>
@@ -88,7 +97,7 @@ export default function CRChairmanMessage() {
                         Our research initiatives are guided by an experienced clinical research leadership team 
                         whose collective experience spans more than 600 clinical trials and research studies across 
                         leading healthcare institutions. This expertise strengthens our ability to collaborate 
-                        effectively with sponsors, CROs, investigators, and academic partners.
+                        effectively with sponsors, CROs, Investigators, and academic partners.
                     </motion.p>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -112,6 +121,7 @@ export default function CRChairmanMessage() {
                 </div>
 
             </div>
+            */}
         </section>
     );
 }

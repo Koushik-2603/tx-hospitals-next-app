@@ -5,7 +5,7 @@ import CallbackFooterSection from '@/components/HomePage/CallbackFooterSection';
 import SocialSidebar from '@/components/HomePage/SocialSidebar';
 import useIsMobile from "@/hooks/useIsMobile";
 
-export default function SecondaryLayout({ children }) {
+export default function SecondaryLayout({ children, hideFooter = false, isClinicalResearch = false }) {
 
     const [showButton, setShowButton] = useState(false);
     const isMobile = useIsMobile();
@@ -31,11 +31,11 @@ export default function SecondaryLayout({ children }) {
             <HospitalNavbar
                 variant="secondary"
             />
-            <SocialSidebar />
+            <SocialSidebar isClinicalResearch={isClinicalResearch} />
             <main className="pt-20 md:pt-24">
                 {children}
             </main>
-            <CallbackFooterSection />
+            {!hideFooter && <CallbackFooterSection />}
             {showButton && (
                 <button
                     onClick={scrollToTop}

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 
-export default function SocialSidebar() {
+export default function SocialSidebar({ isClinicalResearch = false }) {
 
     const isMobile = useIsMobile();
 
@@ -14,7 +14,10 @@ export default function SocialSidebar() {
         { src: "/assets/FixedIcons/Youtub Logo.png", alt: "YouTube", link: "https://www.youtube.com/@txhospitalsofficial" },
     ];
 
-    const mobileIcons = [
+    const mobileIcons = isClinicalResearch ? [
+        { src: "/assets/FixedIcons/Call Icon .webp", alt: "Call Us", link: "tel:917674014388" },
+        { src: "/assets/FixedIcons/Whatsup Icon.webp", alt: "WhatsApp", link: "https://wa.me/917674014388" },
+    ] : [
         { src: "/assets/FixedIcons/Call Icon .webp", alt: "Call Us", link: "tel:9144514459" },
         { src: "/assets/FixedIcons/Whatsup Icon.webp", alt: "WhatsApp", link: "https://wa.me/9144514459" },
         { src: "/assets/FixedIcons/Doctor Consultant Icon.webp", alt: "Doctors Appointment", link: "https://txhospitals.in/find-doctor/" },

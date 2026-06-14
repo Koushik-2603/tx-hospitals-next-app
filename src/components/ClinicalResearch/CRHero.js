@@ -8,7 +8,7 @@ export default function CRHero() {
     if (isMobile === null) return null;
 
     const stats = [
-        { number: "600", suffix: "+", label: "CLINICAL TRIALS CONDUCTED" },
+        { number: "600+", suffix: " Trials", label: "RESEARCH TEAM EXPERIENCE" },
         { number: "100", suffix: "+", label: "QUALIFIED INVESTIGATORS" },
         { number: "2", suffix: "", label: "REGISTERED ETHICS COMMITTEES" },
         { number: "1", suffix: "", label: "DEDICATED CLINICAL TRIAL UNIT" }
@@ -53,7 +53,7 @@ export default function CRHero() {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className={`max-w-3xl text-gray-300 font-normal leading-relaxed mb-16 ${isMobile ? 'text-sm mb-12' : 'text-lg md:text-xl'}`}
                 >
-                    At TX Hospitals, we combine experienced investigators, strong operational capabilities, regulatory compliance, and advanced infrastructure to support the successful conduct of clinical studies across multiple therapeutic areas.
+                    At TX Hospitals, we combine experienced Investigators, strong operational capabilities, regulatory compliance, and advanced infrastructure to support the successful conduct of clinical studies across multiple therapeutic areas.
                 </motion.p>
                 
                 {/* Statistics Row */}

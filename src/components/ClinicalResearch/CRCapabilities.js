@@ -11,7 +11,7 @@ const capabilities = [
     {
         category: "BIOEQUIVALENCE",
         title: "BA / BE Studies",
-        desc: "Bioavailability and bioequivalence studies with full pharmacokinetic sampling infrastructure."
+        desc: "Bioavailability and Bioequivalence studies with full pharmacokinetic sampling infrastructure."
     },
     {
         category: "INVESTIGATOR INITIATED",
@@ -74,7 +74,7 @@ export default function CRCapabilities() {
                         transition={{ delay: 0.2 }}
                         className={`text-gray-400 font-normal leading-relaxed max-w-2xl ${isMobile ? 'text-sm' : 'text-lg'}`}
                     >
-                        TX Hospitals is equipped to conduct a comprehensive spectrum of clinical studies, supported by accredited infrastructure and experienced investigator teams.
+                        TX Hospitals is equipped to conduct a comprehensive spectrum of clinical studies, supported by Compliant infrastructure and experienced Investigator teams.
                     </motion.p>
                     
                     <motion.div

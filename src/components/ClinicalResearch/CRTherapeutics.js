@@ -61,7 +61,10 @@ export default function CRTherapeutics() {
     if (isMobile === null) return null;
 
     const handleViewMore = () => {
-        router.push("/specialities");
+        router.push(
+            { pathname: "/specialities", query: { source: "clinical-research" } },
+            "/specialities"
+        );
     };
 
     return (
@@ -77,7 +80,7 @@ export default function CRTherapeutics() {
                         Our Focus Areas
                     </span>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 ">
-                        Therapeutic Department <span className="text-pink-700 relative inline-block">Expertise
+                        Therapeutic <span className="text-pink-700 relative inline-block">expertise
                             <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
                         </span>
                     </h2>
