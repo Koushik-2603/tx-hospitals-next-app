@@ -12,6 +12,7 @@ import MiyapurBookConsultation from '@/components/Miyapur/MiyapurBookConsultatio
 import MiyapurLocations from '@/components/Miyapur/MiyapurLocations';
 import MiyapurBlogs from '@/components/Miyapur/MiyapurBlogs';
 import MiyapurFAQ from '@/components/Miyapur/MiyapurFAQ';
+import MiyapurFloatingBar from '@/components/Miyapur/MiyapurFloatingBar';
 
 export default function MiyapurPage() {
     return (
@@ -55,6 +56,7 @@ export default function MiyapurPage() {
                     {/* FAQ Section */}
                     <MiyapurFAQ />
                 </main>
+                <MiyapurFloatingBar />
             </SecondaryLayout>
         </>
     );
