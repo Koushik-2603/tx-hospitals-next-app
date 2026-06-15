@@ -94,7 +94,7 @@ const MiyapurFloatingBar = () => {
     return (
         <>
             {/* Floating Sidebar */}
-            <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-1">
+            <div className="hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-40 flex-col gap-1">
                 {/* Book Appointment */}
                 <div className="group relative flex items-center justify-end">
                     <span 
