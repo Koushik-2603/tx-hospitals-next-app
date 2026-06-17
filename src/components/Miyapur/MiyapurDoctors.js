@@ -12,11 +12,11 @@ const MiyapurDoctors = () => {
                     <h2 className="mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
                         Trusted Specialists for Your <span style={{ color: 'rgb(189, 56, 92)' }}>Healthcare Needs</span>
                     </h2>
-                    <p className="max-w-[600px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
-                        Our team of experienced specialists is dedicated to providing the highest standards of medical care with accurate diagnosis, personalised treatment and a patient-first approach.
+                    <p className="max-w-[800px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
+                        At TX Hospitals, our team of experienced specialities is dedicated to providing the highest standards of medical care. As one of the Top multispeciality hospitals in Miyapur, we focus on accurate diagnosis, personalised treatment and a patient-first approach.
                     </p>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     {/* Doctor 1 */}
                     <div className="bg-white rounded-lg overflow-hidden flex flex-col" style={{ border: '0.5px solid rgb(183, 183, 183)', boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 1px, rgba(0, 0, 0, 0.08) 0px 1px 1.5px' }}>

@@ -24,7 +24,7 @@ export default function Specialities() {
                 <meta name="description" content="TX Hospitals offers world-class multi-specialty care in Hyderabad across Uppal, Kachiguda & Banjara Hills—with advanced diagnostics, expert doctors, and patient-centric services." />
                 <meta name="keywords" content="TX Hospitals Hyderabad, Multi-specialty hospital Hyderabad, Super specialty hospital Hyderabad, Best hospital in Hyderabad, Top Hospitals in Hyderabad" />
             </Head>
-            <SecondaryLayout>
+            <SecondaryLayout isClinicalResearch={isClinicalResearch}>
                 <div className={`ml-4 absolute z-20 ${isMobile ? "-mt-3" : "mt-8"}`}>
                     <Breadcrumb items={breadcrumbItems} />
                 </div>

@@ -3,6 +3,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import HospitalNavbar from '@/components/HomePage/HospitalNavbar';
 import CallbackFooterSection from '@/components/HomePage/CallbackFooterSection';
 import SocialSidebar from '@/components/HomePage/SocialSidebar';
+import CRContactUs from '@/components/ClinicalResearch/CRContactUs';
 import useIsMobile from "@/hooks/useIsMobile";
 
 export default function SecondaryLayout({ children, hideFooter = false, isClinicalResearch = false }) {
@@ -35,7 +36,8 @@ export default function SecondaryLayout({ children, hideFooter = false, isClinic
             <main className="pt-20 md:pt-24">
                 {children}
             </main>
-            {!hideFooter && <CallbackFooterSection />}
+            {!hideFooter && !isClinicalResearch && <CallbackFooterSection />}
+            {!hideFooter && isClinicalResearch && <CRContactUs />}
             {showButton && (
                 <button
                     onClick={scrollToTop}

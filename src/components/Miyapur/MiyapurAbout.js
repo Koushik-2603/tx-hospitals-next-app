@@ -21,16 +21,19 @@ const MiyapurAbout = () => {
                         Welcome to <span style={{ color: 'rgb(189, 56, 92)' }}>TX Hospitals, Miyapur</span>
                     </h2>
                     <p className="mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '17px', fontWeight: 500, color: 'rgb(189, 56, 92)', lineHeight: 1.4 }}>
-                        Care That Feels Close. Expertise You Can Trust.
+                        Care that feels close. Expertise you can trust. Experienced doctors, modern facilities and a patient-first approach under one roof.
                     </p>
                     <p className="mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.75 }}>
                         Good healthcare should not feel far away. At TX Hospitals, Miyapur, we bring quality medical care closer to families in and around Miyapur with experienced doctors, modern facilities and a patient-first approach.
                     </p>
+                    <p className="mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.75 }}>
+                        For people searching for the best hospitals near Miyapur, TX Hospitals offers multispeciality care under one roof, including doctor consultations, emergency support, diagnostics, health checkups, surgical care and follow-up services.
+                    </p>
                     <p className="mb-6" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.75 }}>
-                        Whether it is a sudden illness, a planned surgery or a preventive checkup, our team is here to guide you with clear advice, timely treatment and compassionate care.
+                        Whether it is a sudden illness, regular health concern, planned surgery or preventive checkup, our team is here to guide you with clear advice, timely treatment and compassionate care. At TX Hospitals, Miyapur, we focus on making every patient feel safe, supported and well cared for.
                     </p>
 
-                    <div className="grid grid-cols-4 gap-3">
+                    {/* <div className="grid grid-cols-4 gap-3">
                         <div className="flex flex-col items-center py-3 px-2 rounded-lg" style={{ background: 'rgb(254, 236, 236)' }}>
                             <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '18px', fontWeight: 700, color: 'rgb(189, 56, 92)', lineHeight: 1.2 }}>
                                 15+
@@ -63,7 +66,7 @@ const MiyapurAbout = () => {
                                 Patients Treated
                             </span>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>

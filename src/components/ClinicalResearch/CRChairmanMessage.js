@@ -9,6 +9,7 @@ export default function CRChairmanMessage() {
 
     return (
         <section className={`bg-[#1a0810] text-white w-full ${isMobile ? 'py-8 px-4' : 'py-16 px-12 md:px-24'}`}>
+            {/*
             <div className="max-w-7xl mx-auto flex justify-center">
                 <Image 
                     src="/assets/Header/Chairmans message.png" 
@@ -18,7 +19,8 @@ export default function CRChairmanMessage() {
                     className="w-full h-auto object-contain shadow-2xl rounded-2xl"
                 />
             </div>
-            {/*
+            */}
+            
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 md:gap-24 relative items-start">
                 
                 <div className="w-full md:w-1/3 md:sticky md:top-32">
@@ -70,11 +72,9 @@ export default function CRChairmanMessage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
+                        className="text-pink-600 font-bold text-xl md:text-2xl mb-2"
                     >
-                        At TX Hospitals, we believe that clinical research is fundamental to advancing healthcare 
-                        and improving patient outcomes. Our commitment extends beyond delivering quality medical 
-                        care — we are dedicated to contributing to the development of innovative therapies, medical 
-                        technologies, and evidence-based treatment approaches that benefit patients and society.
+                        Advancing Healthcare. Inspiring Innovation. Transforming Lives.
                     </motion.p>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -82,11 +82,7 @@ export default function CRChairmanMessage() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
                     >
-                        The Clinical Research Unit at TX Hospitals has been established with a strong focus on 
-                        patient safety, ethical conduct, scientific excellence, and regulatory compliance. Supported 
-                        by experienced Investigators, dedicated research professionals, modern infrastructure, and 
-                        registered Ethics Committees, we strive to create a trusted environment for conducting 
-                        high-quality clinical research.
+                        At TX Hospitals, we believe that every breakthrough in medicine begins with a commitment to research. Our Clinical Research Unit is built on the principles of scientific excellence, patient safety, ethical conduct, and regulatory integrity, enabling us to contribute to the development of tomorrow's therapies and healthcare solutions.
                     </motion.p>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -94,10 +90,7 @@ export default function CRChairmanMessage() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.4 }}
                     >
-                        Our research initiatives are guided by an experienced clinical research leadership team 
-                        whose collective experience spans more than 600 clinical trials and research studies across 
-                        leading healthcare institutions. This expertise strengthens our ability to collaborate 
-                        effectively with sponsors, CROs, Investigators, and academic partners.
+                        With a highly experienced research leadership team, skilled investigators, dedicated research professionals, and state-of-the-art infrastructure, TX Hospitals is committed to conducting high-quality clinical research that generates meaningful evidence and improves patient care.
                     </motion.p>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -105,23 +98,29 @@ export default function CRChairmanMessage() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.5 }}
                     >
-                        As we continue to expand our research capabilities, our vision is to establish TX Hospitals 
-                        as a preferred destination for ethical, patient-centric, and scientifically robust clinical 
-                        research that contributes to the future of medicine.
+                        The collective experience of our leadership team spans over 600 clinical trials and research studies across renowned healthcare institutions, bringing deep expertise and global research perspectives to our organization.
                     </motion.p>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.6 }}
+                    >
+                        Our vision is to establish TX Hospitals as a preferred destination for clinical research—where innovation meets compassion, science meets integrity, and every study contributes to advancing the future of medicine.
+                    </motion.p>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.7 }}
                         className="text-pink-700 font-semibold"
                     >
-                        Together, we are advancing healthcare through research, innovation, and excellence.
+                        Together, we are driving discoveries that improve lives and redefine healthcare for generations to come.
                     </motion.p>
                 </div>
 
             </div>
-            */}
+            
         </section>
     );
 }

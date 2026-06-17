@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { FiChevronRight } from "react-icons/fi";
@@ -32,6 +32,84 @@ const specialities = [
         desc: "Expert treatment for kidney diseases, dialysis and renal transplants.",
         img: "/assets/specialities/Urology Image.png",
         path: "/specialities/nephrology"
+    },
+    {
+        title: "Urology",
+        desc: "Advanced care for urinary tract, prostate and bladder disorders.",
+        img: "/assets/specialities/Urology.webp",
+        path: "/specialities/urology"
+    },
+    {
+        title: "Mother & Child Care",
+        desc: "Safe maternity, fertility and paediatric care for every stage of life.",
+        img: "/assets/specialities/Mother & Child.webp",
+        path: "/specialities/mother-child-care"
+    },
+    {
+        title: "Transplant Medicine",
+        desc: "Life-saving organ transplants with expert surgical precision.",
+        img: "/assets/specialities/Transplant.webp",
+        path: "/specialities/transplant-medicine"
+    },
+    {
+        title: "Robotic Sciences",
+        desc: "Robotic-assisted surgeries for greater accuracy and faster recovery.",
+        img: "/assets/specialities/Robotics.webp",
+        path: "/specialities/robotics-science"
+    },
+    {
+        title: "Neurology",
+        desc: "Advanced care for brain, spine and nervous system disorders.",
+        img: "/assets/specialities/Neuro.webp",
+        path: "/specialities/neuro-sciences"
+    },
+    {
+        title: "Oncology",
+        desc: "Complete cancer care with surgery, chemotherapy and radiation.",
+        img: "/assets/specialities/Oncology.webp",
+        path: "/specialities/oncology"
+    },
+    {
+        title: "Pulmonology",
+        desc: "Specialized care for lung and respiratory health.",
+        img: "/assets/specialities/Pulmonology.webp",
+        path: "/specialities/pulmonology"
+    },
+    {
+        title: "ENT",
+        desc: "Expert solutions for ear, nose and throat conditions with modern techniques.",
+        img: "/assets/specialities/ENT.webp",
+        path: "/specialities/ent"
+    },
+    {
+        title: "Internal Medicine",
+        desc: "Preventive and chronic disease management for overall adult health.",
+        img: "/assets/specialities/Internal medicine.webp",
+        path: "/specialities/internal-medicine"
+    },
+    {
+        title: "Skin & Cosmetic Care",
+        desc: "Medical and aesthetic treatments for healthy skin, hair and beauty.",
+        img: "/assets/specialities/Skin.webp",
+        path: "/specialities/dermatology-cosmetic-care"
+    },
+    {
+        title: "Dental & Maxillofacial",
+        desc: "Comprehensive dental, oral and facial procedures including cosmetics.",
+        img: "/assets/specialities/Dental.webp",
+        path: "/specialities/dental-and-maxillofacial-care"
+    },
+    {
+        title: "Anaesthesia & Pain Management",
+        desc: "Safe anaesthesia and advanced pain relief for surgery and chronic pain.",
+        img: "/assets/specialities/Anaesthesia.webp",
+        path: "/specialities/anaesthesia-and-pain-management"
+    },
+    {
+        title: "Eye / Ophthalmology",
+        desc: "Precision diagnosis and treatment for vision and eye disorders.",
+        img: "/assets/specialities/Eye.webp",
+        path: "/specialities/eye-ophthalmology"
     }
 ];
 
@@ -55,21 +133,19 @@ const cardVariants = {
 };
 
 export default function CRTherapeutics() {
+    const [showAll, setShowAll] = useState(false);
     const router = useRouter();
     const isMobile = useIsMobile();
 
-    if (isMobile === null) return null;
+    const visibleSpecialties = showAll ? specialities : specialities.slice(0, 4);
 
-    const handleViewMore = () => {
-        router.push(
-            { pathname: "/specialities", query: { source: "clinical-research" } },
-            "/specialities"
-        );
+    const toggleShowAll = () => {
+        setShowAll(!showAll);
     };
 
     return (
         <section className="bg-gray-50 w-full py-16 px-6 overflow-hidden">
-            <div className="max-w-6xl mx-auto text-center">
+            <div className="max-w-7xl mx-auto text-center">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +169,7 @@ export default function CRTherapeutics() {
                     transition={{ delay: 0.2 }}
                     className="text-lg max-w-3xl mx-auto mb-14 text-gray-600 font-medium leading-relaxed"
                 >
-                    Our clinical research spans multiple therapeutic areas, driven by specialized expertise and state-of-state facilities.
+                    Our clinical research spans multiple therapeutic areas, driven by specialized expertise and state-of-the-art facilities.
                 </motion.p>
 
                 {isMobile ? (
@@ -102,7 +178,7 @@ export default function CRTherapeutics() {
                         <div className="mt-8">
                             <motion.button
                                 whileTap={{ scale: 0.95 }}
-                                onClick={handleViewMore}
+                                onClick={() => router.push('/specialities')}
                                 className="text-pink-700 font-bold underline decoration-2 underline-offset-4 hover:text-pink-800 transition-colors"
                             >
                                 View All Specialities
@@ -112,13 +188,14 @@ export default function CRTherapeutics() {
                 ) : (
                     <div>
                         <motion.div
+                            key={showAll ? 'all' : 'some'}
                             variants={containerVariants}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-100px" }}
-                            className="grid grid-cols-4 gap-6 pt-16"
+                            className="grid grid-cols-4 gap-x-6 gap-y-20 pt-16"
                         >
-                            {specialities.map((item, index) => (
+                            {visibleSpecialties.map((item, index) => (
                                 <Link href={item.path} key={index} className="flex w-full max-w-[260px] mx-auto h-full">
                                     <motion.div
                                         variants={cardVariants}
@@ -134,7 +211,7 @@ export default function CRTherapeutics() {
                                             />
                                         </div>
 
-                                        <div className="p-4 flex flex-col items-center h-full justify-between">
+                                        <div className="p-4 flex flex-col items-center h-full justify-between mt-2">
                                             <div className="flex flex-col items-center">
                                                 <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
                                                 <p className="text-gray-600 text-sm leading-snug mb-6 line-clamp-3">
@@ -159,10 +236,10 @@ export default function CRTherapeutics() {
                             <motion.button
                                 whileHover={{ scale: 1.05, backgroundColor: "#be185d", color: "#fff" }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={handleViewMore}
+                                onClick={toggleShowAll}
                                 className="text-pink-700 font-bold px-8 py-3 rounded-full border-2 border-pink-700 transition-all duration-300 shadow-sm"
                             >
-                                View All Specialities
+                                {showAll ? 'View Less' : 'View All Specialities'}
                             </motion.button>
                         </div>
                     </div>

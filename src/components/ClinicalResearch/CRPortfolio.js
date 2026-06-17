@@ -2,11 +2,75 @@
 import { motion } from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
 
+import { useState, useEffect, useRef } from "react";
+
+const useCountUp = (end, duration = 2000) => {
+    const [count, setCount] = useState(0);
+    const [done, setDone] = useState(false);
+    const ref = useRef(null);
+
+    useEffect(() => {
+        let observer;
+        let started = false;
+
+        const handleIntersect = (entries) => {
+            if (entries[0].isIntersecting && !started) {
+                started = true;
+                let start = 0;
+                const increment = end / (duration / 16);
+                const counter = setInterval(() => {
+                    start += increment;
+                    if (start >= end) {
+                        clearInterval(counter);
+                        setCount(end);
+                        setDone(true);
+                    } else {
+                        setCount(Math.floor(start));
+                    }
+                }, 16);
+            }
+        };
+
+        if (ref.current) {
+            observer = new IntersectionObserver(handleIntersect, { threshold: 0.3 });
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (observer && ref.current) observer.unobserve(ref.current);
+        };
+    }, [end, duration]);
+
+    return [count, done, ref];
+};
+
 const trialStats = [
-    { number: "06", label: "Active Trials" },
-    { number: "06", label: "For EC Approval" },
-    { number: "24", label: "Pipeline Trials" }
+    { number: 6, label: "Active Trials", suffix: "" },
+    { number: 6, label: "For EC Approval", suffix: "" },
+    { number: 24, label: "Pipeline Trials", suffix: "" }
 ];
+
+function PortfolioStatCard({ stat }) {
+    const [count, done, countRef] = useCountUp(stat.number, 2000);
+    const formattedNumber = done ? (stat.number < 10 ? `0${stat.number}` : stat.number) + stat.suffix : (count < 10 ? `0${count}` : count);
+
+    return (
+        <motion.div 
+            whileHover={{ y: -8 }}
+            className="bg-white border border-[#2a0e19]/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl transition-all duration-300 group"
+        >
+            <div className="bg-pink-50 w-24 h-24 rounded-full flex items-center justify-center mb-6 group-hover:bg-pink-100 transition-colors duration-300" ref={countRef}>
+                <span className="font-serif font-medium tracking-wide text-[#d32f58] text-5xl md:text-6xl">
+                    {formattedNumber}
+                </span>
+            </div>
+            <h4 className="text-[#2a0e19] font-bold text-lg md:text-xl mb-3">
+                {stat.label}
+            </h4>
+            <div className="w-10 h-1 bg-pink-200 rounded-full group-hover:w-16 group-hover:bg-[#d32f58] transition-all duration-300"></div>
+        </motion.div>
+    );
+}
 
 export default function CRPortfolio() {
     const isMobile = useIsMobile();
@@ -71,21 +135,7 @@ export default function CRPortfolio() {
                     className={`grid gap-6 md:gap-10 w-full max-w-5xl ${isMobile ? 'grid-cols-1' : 'grid-cols-3'} mt-8`}
                 >
                     {trialStats.map((stat, idx) => (
-                        <motion.div 
-                            key={idx} 
-                            whileHover={{ y: -8 }}
-                            className="bg-white border border-[#2a0e19]/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl transition-all duration-300 group"
-                        >
-                            <div className="bg-pink-50 w-24 h-24 rounded-full flex items-center justify-center mb-6 group-hover:bg-pink-100 transition-colors duration-300">
-                                <span className="font-serif font-medium tracking-wide text-[#d32f58] text-5xl md:text-6xl">
-                                    {stat.number}
-                                </span>
-                            </div>
-                            <h4 className="text-[#2a0e19] font-bold text-lg md:text-xl mb-3">
-                                {stat.label}
-                            </h4>
-                            <div className="w-10 h-1 bg-pink-200 rounded-full group-hover:w-16 group-hover:bg-[#d32f58] transition-all duration-300"></div>
-                        </motion.div>
+                        <PortfolioStatCard key={idx} stat={stat} />
                     ))}
                 </motion.div>
 

@@ -17,16 +17,32 @@ const faqs = [
         answer: "Patient safety is our highest priority. All clinical trials conducted at TX Hospitals are reviewed and approved by registered Ethics Committees and are conducted in accordance with Good Clinical Practice (GCP), applicable regulatory requirements, and established safety monitoring procedures."
     },
     {
-        question: "4. Will I have to pay for participating in a clinical trial?",
-        answer: "The study sponsor typically covers costs related to research-specific procedures required by the clinical trial. Depending on the study protocol, participants may also receive reimbursement for travel and other approved expenses. The research team will explain all study-related costs before enrollment."
-    },
-    {
-        question: "5. How do I know if I am eligible for a clinical trial?",
+        question: "4. How do I know if I am eligible for a clinical trial?",
         answer: "Each clinical trial has specific eligibility criteria based on factors such as age, medical condition, treatment history, and overall health status. Our research team will conduct a screening assessment to determine whether a patient qualifies for a particular study."
     },
     {
-        question: "6. How can Sponsors and CROs collaborate with TX Hospitals?",
-        answer: "TX Hospitals offers experienced Investigators, dedicated research infrastructure, registered Ethics Committees, regulatory support, and access to diverse patient populations. Sponsors and CROs interested in conducting clinical trials may contact our Clinical Research Unit to discuss feasibility assessments, site capabilities, and collaboration opportunities."
+        question: "5. Will my personal and medical information remain confidential?",
+        answer: "Yes. Participant privacy and confidentiality are strictly protected. Personal information is handled in accordance with applicable ethical, regulatory, and data protection requirements. Information shared with sponsors is generally coded and does not directly identify participants."
+    },
+    {
+        question: "6. Will I be paid for participating in a clinical trial?",
+        answer: "The study sponsor typically covers costs related to research-specific procedures required by the clinical trial. Depending on the study protocol, participants may also receive reimbursement for travel and other approved expenses. The research team will explain all study-related costs before enrolment."
+    },
+    {
+        question: "7. What is informed consent?",
+        answer: "Informed consent is a process through which the research team explains the purpose of the study, procedures involved, potential risks and benefits, alternative treatment options, and participant rights. Participation begins only after you voluntarily agree and sign the informed consent document."
+    },
+    {
+        question: "8. How long does participation in a clinical trial last?",
+        answer: "The duration varies depending on the study. Some studies may involve a few visits over several weeks, while others may continue for months or years. The study schedule will be explained before enrolment."
+    },
+    {
+        question: "9. What happens if I experience a side effect during the study?",
+        answer: "Participants should immediately inform the research team about any symptoms or concerns. Medical care will be provided as required, and all adverse events will be monitored, documented, and reported according to regulatory requirements."
+    },
+    {
+        question: "10. How can I find out about ongoing clinical trials at TX Hospitals?",
+        answer: "Patients may contact the Clinical Research Unit directly or speak with their treating physician to learn about ongoing studies for which they may be eligible."
     }
 ];
 
