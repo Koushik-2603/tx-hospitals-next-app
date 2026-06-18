@@ -81,7 +81,7 @@ const MiyapurHero = () => {
             </div>
 
             <div
-                className="relative z-10 flex flex-col justify-between px-8 py-8 w-full lg:w-[45%] flex-shrink-0"
+                className="relative z-10 flex flex-col justify-between pl-8 pr-12 lg:pr-16 py-8 w-full lg:w-[45%] xl:w-[40%] flex-shrink-0"
                 style={{ background: 'linear-gradient(160deg, rgb(26, 5, 16) 0%, rgb(74, 18, 40) 100%)' }}
             >
                 <div>
