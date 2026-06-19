@@ -123,7 +123,7 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
                         ))}
                     </div>
                 </div>
-            ) : (
+            ) : isClinicalResearch ? null : (
                 // Right side desktop floating bar
                 <div className="hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-40 flex-col gap-1">
                     {/* Book Appointment */}

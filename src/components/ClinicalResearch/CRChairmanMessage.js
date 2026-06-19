@@ -20,47 +20,64 @@ export default function CRChairmanMessage() {
                 />
             </div>
             */}
-            
+
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 md:gap-24 relative items-start">
-                
-                <div className="w-full md:w-1/3 md:sticky md:top-32">
+
+                <div className="w-full md:w-1/3 md:sticky md:top-24 flex flex-col gap-4">
+                    <div>
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="flex items-center gap-3 mb-4"
+                        >
+                            <div className="w-1.5 h-1.5 rounded-full bg-pink-600"></div>
+                            <span className="text-pink-600 font-bold uppercase tracking-[0.2em] text-xs md:text-sm">
+                                LEADERSHIP
+                            </span>
+                        </motion.div>
+
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className={`font-serif leading-tight mb-6 ${isMobile ? 'text-3xl' : 'text-4xl'}`}
+                        >
+                            Chairman's<br />
+                            <span className="text-pink-600 italic">Message</span>
+                        </motion.h2>
+
+                        <motion.div
+                            initial={{ opacity: 0, width: 0 }}
+                            whileInView={{ opacity: 1, width: "3rem" }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2, duration: 0.5 }}
+                            className="h-[2px] bg-pink-700 mb-6"
+                        ></motion.div>
+                    </div>
+
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="flex items-center gap-3 mb-6"
+                        className="overflow-hidden rounded-2xl shadow-2xl border border-pink-950/20 max-w-[260px] w-full"
                     >
-                        <div className="w-1.5 h-1.5 rounded-full bg-pink-600"></div>
-                        <span className="text-pink-600 font-bold uppercase tracking-[0.2em] text-xs md:text-sm">
-                            LEADERSHIP
-                        </span>
+                        <Image
+                            src="/assets/Clinical-Research/Chairman  Sir _.png"
+                            alt="Chairman"
+                            width={260}
+                            height={325}
+                            className="w-full h-auto object-cover rounded-2xl"
+                        />
                     </motion.div>
-
-                    <motion.h2 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className={`font-serif leading-tight mb-8 ${isMobile ? 'text-4xl' : 'text-5xl md:text-6xl'}`}
-                    >
-                        Chairman's<br />
-                        <span className="text-pink-600 italic">Message</span>
-                    </motion.h2>
-
-                    <motion.div
-                        initial={{ opacity: 0, width: 0 }}
-                        whileInView={{ opacity: 1, width: "3rem" }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2, duration: 0.5 }}
-                        className="h-[2px] bg-pink-700 mb-8"
-                    ></motion.div>
 
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="text-gray-400 font-serif italic"
+                        className="text-gray-400 font-serif italic text-sm md:text-base max-w-[260px] w-full text-right"
                     >
                         — Chairman,<br />TX Hospitals
                     </motion.div>
@@ -120,7 +137,7 @@ export default function CRChairmanMessage() {
                 </div>
 
             </div>
-            
+
         </section>
     );
 }

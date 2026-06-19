@@ -18,8 +18,9 @@ export default function MiyapurPage() {
     return (
         <>
             <Head>
-                <title>Best Hospital in Miyapur, Hyderabad | TX Hospitals</title>
-                <meta name="description" content="Your nearest multi-specialty hospital with expert care, 50+ doctors, and 24/7 emergency services. Serving Miyapur and nearby areas in Hyderabad." />
+                <title>Best Hospital in Miyapur, Hyderabad | TX Hospitals Miyapur</title>
+                <meta name="description" content="TX Hospitals Miyapur is a leading multi-specialty hospital in Miyapur, Hyderabad, offering expert doctors, 24/7 emergency care, advanced treatments, ICU facilities services." />
+                <meta name="keywords" content="TX Hospitals Miyapur, Best Hospital in Miyapur, Multi Specialty Hospital in Miyapur, Hospital in Miyapur Hyderabad, Best Hospital Near Miyapur, Emergency Hospital in Miyapur, 24/7 Hospital in Miyapur, Healthcare Services in Miyapur, Best Doctors in Miyapur, Super Specialty Hospital in Miyapur, Cashless Hospital in Miyapur, Hospital Near Hafeezpet, Hospital Near Chandanagar, Hospital Near Madinaguda, Hospital Near Kukatpally, Hospital Near Nizampet, Advanced Healthcare in Miyapur" />
             </Head>
             <SecondaryLayout>
                 <main>

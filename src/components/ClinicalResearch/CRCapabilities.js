@@ -32,6 +32,16 @@ const capabilities = [
         category: "DEVICES",
         title: "Medical Device Research",
         desc: "Clinical evaluation and performance studies for medical devices under applicable regulatory frameworks."
+    },
+    {
+        category: "PREVENTIVE MEDICINE",
+        title: "Public Health & Prevention Research",
+        desc: "Studies focused on Patient reported outcomes, Quality of life, and Screening."
+    },
+    {
+        category: "ARTIFICIAL INTELLIGENCE",
+        title: "Digital Health & AI research",
+        desc: "Clinical evaluation of AI algorithms, Digital therapeutics, Clinical decision support systems, Wearables, Mobile health apps"
     }
 ];
 

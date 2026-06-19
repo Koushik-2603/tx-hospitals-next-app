@@ -53,8 +53,8 @@ const formatNumber = (num, suffix) => {
 
 const stats = [
     { number: 100, suffix: "+", title: "Investigators", desc: "Qualified Investigators delivering ethical, compliant, and patient-centric research.", icon: "/assets/WhyChooseUs/Docotor Icon.png" },
-    { number: 2, suffix: "", title: "Ethics Committee's", desc: "ECCTBEBA - ECR/2011/Inst/TG/2024\nECBHR - EC/NEW/INST/2025/5391", icon: "/assets/WhyChooseUs/International Patinet icon.png" },
-    { number: 1, suffix: "", title: "Clinical Trial Unit", desc: "Secure Pharmacy, Archival, Monitoring area, Document storage, and Sample Processing Areas with accredited labs & diagnostics Facilities.", icon: "/assets/WhyChooseUs/Surgery Icon.png" },
+    { number: 2, suffix: "", title: "Ethics Committee's", desc: "ECCTBEBA - ECR/2011/Inst/TG/2024\nECBHR - EC/NEW/INST/2025/5391", icon: "/assets/Clinical-Research/ethics committee.webp" },
+    { number: 1, suffix: "", title: "Clinical Trial Unit", desc: "Secure Pharmacy, Archival, Monitoring area, Document storage, and Sample Processing Areas with accredited labs & diagnostics Facilities.", icon: "/assets/Clinical-Research/clinical trial unit.webp" },
     { number: 4, suffix: "", title: "Locations", desc: "Delivering advanced, accessible care across Hyderabad.", icon: "/assets/WhyChooseUs/Location icon.png" },
     { number: 500, suffix: "+", title: "Beds", desc: "Modern facilities designed for comprehensive treatment.", icon: "/assets/WhyChooseUs/Bed.png" },
     { number: 100000, suffix: "+", title: "Happy Patients", desc: "A legacy of trust, healing and personalized care for patients and families.", icon: "/assets/WhyChooseUs/Happy Patient Icon.png" },
