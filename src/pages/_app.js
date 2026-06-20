@@ -2,6 +2,8 @@ import "@/styles/globals.css";
 import React, { useEffect } from "react";
 import { Montserrat, Inter } from "next/font/google";
 import Script from "next/script";
+import Head from "next/head";
+import { useRouter } from "next/router";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoogleTranslateLoader from "@/components/GoogleTranslateLoader";
@@ -20,6 +22,8 @@ const inter = Inter({
 });
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+
   useEffect(() => {
     const preventAction = (e) => e.preventDefault();
     document.addEventListener("copy", preventAction);
@@ -35,8 +39,27 @@ export default function App({ Component, pageProps }) {
     };
   }, []);
 
+  // Compute canonical URL dynamically
+  let path = router.asPath.split("#")[0].split("?")[0];
+  if (!path.startsWith("/")) {
+    path = "/" + path;
+  }
+  path = path.replace(/\/+/g, "/");
+
+  const hasExtension = /\.[a-z0-9]+$/i.test(path);
+  if (path !== "/" && !hasExtension) {
+    if (!path.endsWith("/")) {
+      path += "/";
+    }
+  }
+
+  const canonicalUrl = `https://txhospitals.in${path}`;
+
   return (
     <div className={`${montserrat.variable} ${inter.variable} font-sans`}>
+      <Head>
+        <link rel="canonical" href={canonicalUrl} key="canonical" />
+      </Head>
       <Script
         id="gtm-script"
         strategy="afterInteractive"
