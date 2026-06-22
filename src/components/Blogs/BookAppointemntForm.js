@@ -19,10 +19,27 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+        if (name === 'phone') {
+            const numericValue = value.replace(/\D/g, '').slice(0, 10);
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: numericValue,
+            }));
+        } else {
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
+        }
+    };
+
+    const getTomorrowDateString = () => {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
     };
 
     const handleSubmit = async (e) => {
@@ -33,6 +50,16 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
         if (!phoneRegex.test(formData.phone)) {
             toast.error("Please enter a valid 10-digit mobile number");
             return;
+        }
+
+        if (formData.date) {
+            const selectedDate = new Date(formData.date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (selectedDate <= today) {
+                toast.error("Please select a future date");
+                return;
+            }
         }
 
         setLoading(true);
@@ -159,6 +186,7 @@ const BookAppointmentForm = ({ showModal, setShowModal, redirectUrl = "/thank-yo
                                             required
                                             value={formData.date}
                                             onChange={handleChange}
+                                            min={getTomorrowDateString()}
                                             className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
                                         />
                                     </div>

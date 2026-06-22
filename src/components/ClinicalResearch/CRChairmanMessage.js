@@ -71,7 +71,6 @@ export default function CRChairmanMessage() {
                             className="w-full h-auto object-cover rounded-2xl"
                         />
                     </motion.div>
-
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -79,7 +78,7 @@ export default function CRChairmanMessage() {
                         transition={{ delay: 0.3 }}
                         className="text-gray-400 font-serif italic text-sm md:text-base max-w-[260px] w-full text-right"
                     >
-                        — Chairman,<br />TX Hospitals
+                        — Dr. Keerthikar Reddy K
                     </motion.div>
                 </div>
 

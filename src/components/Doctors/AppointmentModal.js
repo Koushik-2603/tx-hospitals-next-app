@@ -27,8 +27,10 @@ export default function AppointmentModal({ closeModal, doctorData }) {
         dob: "",
         gender: "",
     });
-    const [currentDate, setCurrentDate] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(new Date().getDate());
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const [currentDate, setCurrentDate] = useState(tomorrow);
+    const [selectedDate, setSelectedDate] = useState(tomorrow.getDate());
     const [doctorAvailability, setDoctorAvailability] = useState(null);
     const [bookedSlots, setBookedSlots] = useState([]);
 
@@ -146,6 +148,11 @@ export default function AppointmentModal({ closeModal, doctorData }) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const handleSendOtp = async () => {
+        const phoneRegex = /^[6-9]\d{9}$/;
+        if (!phoneRegex.test(mobileNumber)) {
+            toast.error("Please enter a valid 10-digit mobile number");
+            return;
+        }
         const otpCode = generateOtp();
         setGeneratedOtp(otpCode);
         const message = `Your verification code is ${otpCode} ,code is valid for 5 Mins. Team TX Hospitals`;
@@ -293,7 +300,9 @@ export default function AppointmentModal({ closeModal, doctorData }) {
                                             {calendarDays.map((day, index) => {
                                                 if (day === null) return <div key={index} />;
                                                 const dateObj = new Date(year, month, day);
-                                                const isPast = dateObj < new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate());
+                                                const todayMidnight = new Date();
+                                                todayMidnight.setHours(0, 0, 0, 0);
+                                                const isPast = dateObj <= todayMidnight;
                                                 const isSelected = selectedDate === day;
                                                 const isSun = isSundayDate(year, month, day);
 

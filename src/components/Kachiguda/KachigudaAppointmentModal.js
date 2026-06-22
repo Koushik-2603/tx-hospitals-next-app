@@ -17,7 +17,21 @@ export default function KachigudaAppointmentModal({ closeModal }) {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        if (name === 'phone') {
+            const numericValue = value.replace(/\D/g, '').slice(0, 10);
+            setFormData(prev => ({ ...prev, [name]: numericValue }));
+        } else {
+            setFormData(prev => ({ ...prev, [name]: value }));
+        }
+    };
+
+    const getTomorrowDateString = () => {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
     };
 
     const handleSubmit = async (e) => {
@@ -28,6 +42,16 @@ export default function KachigudaAppointmentModal({ closeModal }) {
         if (!phoneRegex.test(formData.phone)) {
             toast.error("Please enter a valid 10-digit mobile number");
             return;
+        }
+
+        if (formData.date) {
+            const selectedDate = new Date(formData.date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (selectedDate <= today) {
+                toast.error("Please select a future date");
+                return;
+            }
         }
 
         setLoading(true);
@@ -152,6 +176,7 @@ export default function KachigudaAppointmentModal({ closeModal }) {
                             name="date"
                             value={formData.date}
                             onChange={handleChange}
+                            min={getTomorrowDateString()}
                             className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl py-3 px-4 text-gray-900 font-bold text-gray-700 focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/5 transition-all text-sm"
                         />
                     </div>

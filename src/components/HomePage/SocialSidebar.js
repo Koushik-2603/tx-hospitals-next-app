@@ -1,14 +1,106 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { IoClose } from 'react-icons/io5';
-import { User, Phone, Stethoscope, CalendarDays } from 'lucide-react';
+import { User, Phone, Stethoscope, CalendarDays, MapPin, ChevronDown } from 'lucide-react';
 import CONFIG from '@/config';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const SearchableSelect = ({ label, placeholder, options, value, onChange, icon: Icon, disabled }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const containerRef = React.useRef(null);
+    const lastFocusTime = React.useRef(0);
+
+    useEffect(() => {
+        if (!isOpen) {
+            setSearchTerm('');
+        }
+    }, [isOpen]);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (containerRef.current && !containerRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const filteredOptions = options.filter(opt =>
+        opt.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    return (
+        <div className="space-y-1 relative" ref={containerRef}>
+            <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">{label}</label>
+            <div className="relative">
+                {Icon && <Icon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-[16px] h-[16px] z-10" />}
+                <input
+                    type="text"
+                    placeholder={placeholder}
+                    value={isOpen ? searchTerm : (value || '')}
+                    onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                        if (!isOpen) setIsOpen(true);
+                    }}
+                    onFocus={(e) => {
+                        lastFocusTime.current = Date.now();
+                        setIsOpen(true);
+                        const scrollContainer = e.target.closest('.custom-scrollbar');
+                        if (scrollContainer) {
+                            const fieldWrapper = e.target.closest('.space-y-1');
+                            if (fieldWrapper) {
+                                const containerRect = scrollContainer.getBoundingClientRect();
+                                const wrapperRect = fieldWrapper.getBoundingClientRect();
+                                const relativeTop = wrapperRect.top - containerRect.top + scrollContainer.scrollTop;
+                                scrollContainer.scrollTo({
+                                    top: relativeTop - 10,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }
+                    }}
+                    onClick={() => {
+                        if (Date.now() - lastFocusTime.current > 150) {
+                            setIsOpen(prev => !prev);
+                        }
+                    }}
+                    disabled={disabled}
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-10 pr-10 text-gray-950 focus:ring-4 focus:ring-opacity-20 outline-none transition-all text-sm font-semibold disabled:opacity-75 disabled:bg-gray-100 disabled:cursor-not-allowed cursor-pointer"
+                />
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-[16px] h-[16px] z-10 pointer-events-none" />
+                
+                {isOpen && !disabled && (
+                    <div className="absolute left-0 right-0 mt-1 max-h-60 overflow-y-auto bg-white border border-gray-200 rounded-xl shadow-xl z-50 py-1">
+                        {filteredOptions.length > 0 ? (
+                            filteredOptions.map((opt, idx) => (
+                                <button
+                                    key={idx}
+                                    type="button"
+                                    onClick={() => {
+                                        onChange({ target: { name: label.toLowerCase(), value: opt } });
+                                        setIsOpen(false);
+                                    }}
+                                    className="w-full text-left px-4 py-2.5 text-sm hover:bg-pink-50 hover:text-pink-700 transition-colors font-semibold text-gray-800"
+                                >
+                                    {opt}
+                                </button>
+                            ))
+                        ) : (
+                            <div className="px-4 py-2 text-sm text-gray-500 font-semibold font-inter">No options found</div>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
 
 export default function SocialSidebar({ isClinicalResearch = false }) {
     const isMobile = useIsMobile();
@@ -16,8 +108,69 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [activeTab, setActiveTab] = useState('appointment');
-    const [formData, setFormData] = useState({ name: '', phone: '', speciality: '', date: '' });
+    const [formData, setFormData] = useState({ name: '', phone: '', location: '', doctor: '', date: '' });
     const [loading, setLoading] = useState(false);
+    const [allDoctors, setAllDoctors] = useState([]);
+    const [secondOpinions, setSecondOpinions] = useState([]);
+    const [healthPackages, setHealthPackages] = useState([]);
+    const [isLocationReadOnly, setIsLocationReadOnly] = useState(false);
+
+    useEffect(() => {
+        const fetchAllData = async () => {
+            try {
+                // Fetch doctors
+                const resDoctors = await axios.get(`${CONFIG.API_BASE_URL}/getAllDoctors`);
+                if (resDoctors.data) {
+                    setAllDoctors(resDoctors.data);
+                }
+
+                // Fetch second opinions
+                const resSO = await axios.get(`${CONFIG.API_BASE_URL}/new-secondopinion/getAllSecondOpinion`);
+                if (resSO.data && resSO.data.Items) {
+                    const soNames = resSO.data.Items.map((item) => {
+                        const raw = item.url.replace(/\//g, "").replace(/-/g, " ");
+                        return raw
+                            .split(" ")
+                            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                            .join(" ");
+                    });
+                    setSecondOpinions(soNames);
+                }
+
+                // Fetch health packages
+                const resHP = await axios.get(`${CONFIG.API_BASE_URL}/new-healthpackages/getAllHealthPackages`);
+                if (resHP.data && resHP.data.Items) {
+                    const hpNames = resHP.data.Items.map(item => item.hpTitle);
+                    setHealthPackages(hpNames);
+                }
+            } catch (error) {
+                console.error("Error fetching options in SocialSidebar:", error);
+            }
+        };
+        fetchAllData();
+    }, []);
+
+    const getPageLocation = () => {
+        if (typeof window === 'undefined') return '';
+        const path = window.location.pathname.toLowerCase();
+        if (path.includes('banjara-hills')) return 'Banjara Hills';
+        if (path.includes('kachiguda')) return 'Kachiguda';
+        if (path.includes('miyapur')) return 'Miyapur';
+        if (path.includes('uppal')) return 'Uppal';
+        return '';
+    };
+
+    const getDoctorsForLocation = (loc) => {
+        if (!loc) return [];
+        return allDoctors.filter(doc => 
+            doc.location && doc.location.toLowerCase().includes(loc.toLowerCase())
+        );
+    };
+
+    const locationOptions = ["Banjara Hills", "Kachiguda", "Miyapur", "Uppal"];
+    const doctorOptions = getDoctorsForLocation(formData.location).map(doctor => 
+        `${doctor.name} - ${doctor.department || doctor.designation || 'Specialist'}`
+    );
 
     const mobileIcons = isClinicalResearch ? [
         { src: "/assets/FixedIcons/Call Icon .webp", alt: "Call Us", link: "tel:917674014388" },
@@ -32,11 +185,19 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
     const openForm = (tab) => {
         setActiveTab(tab);
         setIsOpen(true);
+        const autoLoc = getPageLocation();
+        setFormData({ name: '', phone: '', location: autoLoc, doctor: '', date: '' });
+        setIsLocationReadOnly(!!autoLoc);
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        if (name === 'phone') {
+            const numericValue = value.replace(/\D/g, '').slice(0, 10);
+            setFormData(prev => ({ ...prev, [name]: numericValue }));
+        } else {
+            setFormData(prev => ({ ...prev, [name]: value }));
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -47,8 +208,32 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
             return;
         }
 
+        if (formData.date) {
+            const selectedDate = new Date(formData.date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (selectedDate <= today) {
+                toast.error("Please select a future date");
+                return;
+            }
+        }
+
         setLoading(true);
         try {
+            const currentPath = typeof window !== 'undefined' ? window.location.pathname.toLowerCase() : '';
+            let redirectUrl = '/thank-you';
+            if (currentPath.includes('banjara-hills')) {
+                redirectUrl = '/thank-you-banjara-hills';
+            } else if (currentPath.includes('kachiguda')) {
+                redirectUrl = '/thank-you-kachiguda';
+            } else if (currentPath.includes('miyapur')) {
+                redirectUrl = '/thank-you-miyapur';
+            } else if (currentPath.includes('uppal')) {
+                redirectUrl = '/thank-you-uppal';
+            }
+
+            const selectedItemLabel = activeTab === 'appointment' ? 'Doctor' : activeTab === 'second-opinion' ? 'Second Opinion' : 'Health Package';
+
             const payload = {
                 to: "crm.txhospitals@gmail.com, venudas@txhospitals.in",
                 cc: "info.txhospitals@gmail.com",
@@ -58,23 +243,24 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
                     <p><strong>Type:</strong> ${activeTab}</p>
                     <p><strong>Name:</strong> ${formData.name}</p>
                     <p><strong>Mobile:</strong> ${formData.phone}</p>
-                    <p><strong>Department/Speciality:</strong> ${formData.speciality || 'Not Specified'}</p>
+                    <p><strong>Location:</strong> ${formData.location || 'Not Specified'}</p>
+                    <p><strong>${selectedItemLabel}:</strong> ${formData.doctor || 'Not Specified'}</p>
                     <p><strong>Preferred Date:</strong> ${formData.date || 'Not Specified'}</p>
-                    <p><strong>Location:</strong> TX Hospitals</p>
                     <p><strong>Page:</strong> ${document.title || "Landing Page"}</p>
                 `,
                 page: document.title || "Landing Page",
-                location: "TX Hospitals",
+                location: formData.location || "TX Hospitals",
                 name: formData.name,
                 mobile: formData.phone,
-                concern: formData.speciality,
+                concern: formData.doctor || "Not Specified",
+                doctor: formData.doctor || "Not Specified",
                 time: formData.date
             };
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
             toast.success("Request submitted successfully!");
             setIsOpen(false);
-            setFormData({ name: '', phone: '', speciality: '', date: '' });
-            router.push('/thank-you');
+            setFormData({ name: '', phone: '', location: '', doctor: '', date: '' });
+            router.push(redirectUrl);
         } catch (error) {
             console.error('Error submitting inquiry:', error);
             toast.error("Something went wrong. Please try again.");
@@ -91,6 +277,15 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
             default: return 'rgb(189, 56, 92)';
         }
     };
+    const getTomorrowDateString = () => {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+    };
+
     const activeColor = getTabColor(activeTab);
 
     return (
@@ -183,7 +378,7 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
                 {isOpen && (
                     <div className="fixed inset-0 flex items-center justify-center z-[9999] px-4 font-inter">
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsOpen(false)} className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-                        <motion.div initial={{ opacity: 0, scale: 0.98, y: 15 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98, y: 15 }} className="relative w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                        <motion.div initial={{ opacity: 0, scale: 0.98, y: 15 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98, y: 15 }} className="relative w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100 flex flex-col max-h-[90vh]">
                             <div className="py-5 px-8 text-white text-center relative transition-colors duration-300" style={{ background: activeColor }}>
                                 <h2 className="text-xl font-bold font-poppins">{activeTab === 'appointment' ? 'Book Appointment' : activeTab === 'second-opinion' ? 'Second Opinion' : 'Book Health Checkup'}</h2>
                                 <p className="text-white/80 text-[10px] font-bold uppercase tracking-[0.2em] mt-0.5">TX Hospitals</p>
@@ -191,13 +386,8 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
                                     <IoClose size={22} />
                                 </button>
                             </div>
-                            <div className="flex bg-gray-100 p-1.5 m-6 mb-2 rounded-xl">
-                                <button type="button" onClick={() => setActiveTab('appointment')} className="flex-1 py-2 text-xs font-semibold rounded-lg transition-all" style={{ background: activeTab === 'appointment' ? 'rgb(189, 56, 92)' : 'transparent', color: activeTab === 'appointment' ? '#fff' : '#4b5563' }}>Appointment</button>
-                                <button type="button" onClick={() => setActiveTab('second-opinion')} className="flex-1 py-2 text-xs font-semibold rounded-lg transition-all" style={{ background: activeTab === 'second-opinion' ? 'rgb(124, 58, 237)' : 'transparent', color: activeTab === 'second-opinion' ? '#fff' : '#4b5563' }}>Second Opinion</button>
-                                <button type="button" onClick={() => setActiveTab('health-checkup')} className="flex-1 py-2 text-xs font-semibold rounded-lg transition-all" style={{ background: activeTab === 'health-checkup' ? 'rgb(5, 150, 105)' : 'transparent', color: activeTab === 'health-checkup' ? '#fff' : '#4b5563' }}>Health Checkup</button>
-                            </div>
-                            <div className="p-6 pt-2">
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                            <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
+                                <div className="p-6 pt-6 overflow-y-auto flex-1 space-y-4 custom-scrollbar">
                                     <div className="space-y-1 relative">
                                         <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Patient Name</label>
                                         <div className="relative">
@@ -212,39 +402,96 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
                                             <input type="tel" name="phone" placeholder="Enter Phone" required value={formData.phone} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 focus:ring-4 focus:ring-opacity-20 outline-none transition-all text-sm font-semibold" />
                                         </div>
                                     </div>
-                                    <div className="space-y-1 relative">
-                                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Specialty / Doctor</label>
-                                        <div className="relative">
-                                            <Stethoscope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-[16px] h-[16px]" />
-                                            <select name="speciality" required value={formData.speciality} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-10 pr-8 text-gray-950 focus:ring-4 focus:ring-opacity-20 outline-none transition-all text-sm font-semibold appearance-none cursor-pointer">
-                                                <option value="" disabled>Select Doctor / Specialty</option>
-                                                <option value="Dr. Akhila Sunder – Orthopaedics">Dr. Akhila Sunder – Orthopaedics</option>
-                                                <option value="Dr. K Arun Kumar – Cardiology">Dr. K Arun Kumar – Cardiology</option>
-                                                <option value="Dr. Prasad Neelam – Surgical Gastroenterology">Dr. Prasad Neelam – Surgical Gastroenterology</option>
-                                                <option value="General Medicine">General Medicine</option>
-                                                <option value="Neurology">Neurology</option>
-                                                <option value="Gastroenterology">Gastroenterology</option>
-                                                <option value="Pulmonology">Pulmonology</option>
-                                                <option value="ENT">ENT</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
+                                    <SearchableSelect
+                                        label="Location"
+                                        placeholder="Select Location"
+                                        options={locationOptions}
+                                        value={formData.location}
+                                        onChange={(e) => {
+                                            setFormData(prev => ({ ...prev, location: e.target.value, doctor: '' }));
+                                        }}
+                                        icon={MapPin}
+                                        disabled={isLocationReadOnly}
+                                    />
+
+                                    {activeTab === 'appointment' && (
+                                        <SearchableSelect
+                                            label="Doctor"
+                                            placeholder={formData.location ? "Select Doctor" : "Select Location First"}
+                                            options={doctorOptions}
+                                            value={formData.doctor}
+                                            onChange={(e) => {
+                                                setFormData(prev => ({ ...prev, doctor: e.target.value }));
+                                            }}
+                                            icon={Stethoscope}
+                                            disabled={!formData.location}
+                                        />
+                                    )}
+
+                                    {activeTab === 'second-opinion' && (
+                                        <SearchableSelect
+                                            label="Second Opinion"
+                                            placeholder="Select Second Opinion"
+                                            options={secondOpinions}
+                                            value={formData.doctor}
+                                            onChange={(e) => {
+                                                setFormData(prev => ({ ...prev, doctor: e.target.value }));
+                                            }}
+                                            icon={Stethoscope}
+                                        />
+                                    )}
+
+                                    {activeTab === 'health-checkup' && (
+                                        <SearchableSelect
+                                            label="Health Package"
+                                            placeholder="Select Health Package"
+                                            options={healthPackages}
+                                            value={formData.doctor}
+                                            onChange={(e) => {
+                                                setFormData(prev => ({ ...prev, doctor: e.target.value }));
+                                            }}
+                                            icon={Stethoscope}
+                                        />
+                                    )}
+
                                     <div className="space-y-1 relative">
                                         <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Preferred Date</label>
                                         <div className="relative">
                                             <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-[16px] h-[16px]" />
-                                            <input type="date" name="date" required value={formData.date} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 focus:ring-4 focus:ring-opacity-20 outline-none transition-all text-sm font-semibold" />
+                                            <input type="date" name="date" required min={getTomorrowDateString()} value={formData.date} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 focus:ring-4 focus:ring-opacity-20 outline-none transition-all text-sm font-semibold" />
                                         </div>
                                     </div>
-                                    <button type="submit" disabled={loading} className="w-full text-white font-bold py-3.5 rounded-xl shadow-lg transition-all active:scale-98 text-xs uppercase tracking-[0.2em] mt-2 flex items-center justify-center hover:opacity-90" style={{ backgroundColor: activeColor }}>
+                                </div>
+                                <div className="p-4 bg-gray-50 border-t border-gray-100">
+                                    <button type="submit" disabled={loading} className="w-full text-white font-bold py-3.5 rounded-xl shadow-lg transition-all active:scale-98 text-xs uppercase tracking-[0.2em] flex items-center justify-center hover:opacity-90" style={{ backgroundColor: activeColor }}>
                                         {loading ? "Processing..." : (activeTab === 'appointment' ? 'Confirm Appointment' : activeTab === 'second-opinion' ? 'Request Second Opinion' : 'Book Health Checkup')}
                                     </button>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </motion.div>
                     </div>
                 )}
             </AnimatePresence>
+            <style jsx>{`
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: #cbd5e1;
+                    border-radius: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #94a3b8;
+                }
+                .custom-scrollbar {
+                    scrollbar-width: thin;
+                    scrollbar-color: #cbd5e1 transparent;
+                }
+            `}</style>
         </>
     );
 }
