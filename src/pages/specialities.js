@@ -20,9 +20,9 @@ export default function Specialities() {
     return (
         <>
             <Head>
-                <title>TX Hospitals – Leading Multi-Specialty Hospitals in Hyderabad</title>
-                <meta name="description" content="TX Hospitals offers world-class multi-specialty care in Hyderabad across Uppal, Kachiguda & Banjara Hills—with advanced diagnostics, expert doctors, and patient-centric services." />
-                <meta name="keywords" content="TX Hospitals Hyderabad, Multi-specialty hospital Hyderabad, Super specialty hospital Hyderabad, Best hospital in Hyderabad, Top Hospitals in Hyderabad" />
+                <title>Best Multi Speciality Hospitals in Hyderabad | Top Hospitals in India | TX Hospitals</title>
+                <meta name="description" content="Explore comprehensive medical specialities at TX Hospitals, including cardiology, neurology, orthopaedics, gastroenterology, pulmonology, nephrology, oncology, paediatrics, and more. Expert doctors and advanced treatments across multiple disciplines in Hyderabad." />
+                <meta name="keywords" content="Best Speciality Hospitals in Hyderabad" />
             </Head>
             <SecondaryLayout isClinicalResearch={isClinicalResearch}>
                 <div className={`ml-4 absolute z-20 ${isMobile ? "-mt-3" : "mt-8"}`}>

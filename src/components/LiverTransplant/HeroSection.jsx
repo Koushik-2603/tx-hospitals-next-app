@@ -43,7 +43,7 @@ const HeroSection = ({
                         <div className="absolute inset-0 flex items-center justify-center p-[15%]">
                             <Image
                                 src={bannerImage}
-                                alt="Kidney Transplantation Surgery Illustration"
+                                alt={highlightedTitle}
                                 width={300}
                                 height={300}
                                 className="w-full h-auto object-contain"
@@ -146,7 +146,7 @@ const HeroSection = ({
                         <div className="absolute inset-0 flex items-center justify-center p-[15%]">
                             <Image
                                 src={bannerImage}
-                                alt="Liver Transplantation Surgery Illustration"
+                                alt={highlightedTitle}
                                 width={450}
                                 height={450}
                                 className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
