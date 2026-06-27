@@ -5,7 +5,6 @@ import Image from 'next/image';
 const specialtiesList = [
     { name: 'Cardiology', icon: '/assets/Departments/Cardiac Sciences.png', path: '/specialities/cardiac-sciences' },
     { name: 'Orthopedics', icon: '/assets/Departments/Orthopaedics.png', path: '/specialities/orthopaedics' },
-    { name: 'Robotic Surgery', icon: '/assets/Departments/Robotics Sciences.png', path: '/specialities' },
     { name: 'General Medicine', icon: '/assets/Departments/Internal Medicine.png', path: '/specialities/internal-medicine' },
     { name: 'Gastroenterology', icon: '/assets/Departments/Gastro Sciences.png', path: '/specialities/gastro-sciences' },
     { name: 'Nephrology', icon: '/assets/Departments/Nephrology.png', path: '/specialities/nephrology' },
