@@ -1,15 +1,17 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Layout from '@/components/Layouts/Layout';
 import DiseaseSearch from '@/components/HomePage/DiseaseSearch';
 import Specialities from '@/components/HomePage/Specialities';
 import WhyChooseUs from '@/components/HomePage/WhyChooseUs';
-import HealthLibrary from '@/components/HomePage/HealthLibrary';
-import FAQ from '@/components/HomePage/FAQ';
 import LocationsBar from '@/components/HomePage/LocationsBar';
 import Head from "next/head";
-import SocialSidebar from '@/components/HomePage/SocialSidebar';
-import VideoSection from '@/components/HomePage/VideoSection';
-import OurLocations from '@/components/HomePage/OurLocations';
+
+const SocialSidebar = dynamic(() => import('@/components/HomePage/SocialSidebar'), { ssr: false });
+const VideoSection = dynamic(() => import('@/components/HomePage/VideoSection'), { ssr: false });
+const HealthLibrary = dynamic(() => import('@/components/HomePage/HealthLibrary'), { ssr: false });
+const FAQ = dynamic(() => import('@/components/HomePage/FAQ'), { ssr: false });
+const OurLocations = dynamic(() => import('@/components/HomePage/OurLocations'), { ssr: false });
 
 export default function HomePage() {
     const hospitalSchema = {

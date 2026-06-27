@@ -96,79 +96,79 @@ export default function Specialities() {
                     Experience world-class healthcare with medical expertise, modern technology and patient-first care under one roof.
                 </motion.p>
 
-                {isMobile ? (
-                    <div className="pb-4">
-                        <SpecialitiesCarousel specialities={specialities} />
-                        <div className="mt-8">
-                            <motion.button
-                                whileTap={{ scale: 0.95 }}
-                                onClick={handleViewMore}
-                                className="text-pink-700 font-bold underline decoration-2 underline-offset-4 hover:text-pink-800 transition-colors"
-                            >
-                                View All Specialities
-                            </motion.button>
-                        </div>
-                    </div>
-                ) : (
-                    <div>
-                        {/* Cards Grid (Original Columns/Alignment) */}
-                        <motion.div
-                            variants={containerVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-100px" }}
-                            className="grid grid-cols-4 gap-6 pt-16"
+                {/* Mobile view */}
+                <div className="block md:hidden pb-4">
+                    <SpecialitiesCarousel specialities={specialities} />
+                    <div className="mt-8">
+                        <motion.button
+                            whileTap={{ scale: 0.95 }}
+                            onClick={handleViewMore}
+                            className="text-pink-700 font-bold underline decoration-2 underline-offset-4 hover:text-pink-800 transition-colors"
                         >
-                            {specialities.map((item, index) => (
-                                <Link href={item.path} key={index} className="flex w-full max-w-[260px] mx-auto h-full">
-                                    <motion.div
-                                        variants={cardVariants}
-                                        whileHover={{ y: -10 }}
-                                        className="relative bg-white border border-gray-200 shadow-lg rounded-[2rem] overflow-visible w-full text-center pt-24 pb-6 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between h-full"
-                                    >
-                                        {/* Icon Container (Original Offset Look) */}
-                                        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-3xl overflow-hidden shadow-xl border-4 border-white transition-transform duration-500 group-hover:scale-105">
-                                            <Image
-                                                src={item.img}
-                                                alt={item.title}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </div>
-
-                                        <div className="p-4 flex flex-col items-center h-full justify-between">
-                                            <div className="flex flex-col items-center">
-                                                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                                                <p className="text-gray-600 text-sm leading-snug mb-6 line-clamp-3">
-                                                    {item.desc}
-                                                </p>
-                                            </div>
-
-                                            <motion.span
-                                                whileHover={{ scale: 1.1, rotate: 90 }}
-                                                whileTap={{ scale: 0.9 }}
-                                                className="flex items-center justify-center w-8 h-8 bg-pink-600 text-white rounded-full shadow-md hover:bg-pink-700 transition-colors mt-auto"
-                                            >
-                                                <FiChevronRight size={18} />
-                                            </motion.span>
-                                        </div>
-                                    </motion.div>
-                                </Link>
-                            ))}
-                        </motion.div>
-
-                        <div className="mt-16">
-                            <motion.button
-                                whileHover={{ scale: 1.05, backgroundColor: "#be185d", color: "#fff" }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={handleViewMore}
-                                className="text-pink-700 font-bold px-8 py-3 rounded-full border-2 border-pink-700 transition-all duration-300 shadow-sm"
-                            >
-                                View All Specialities
-                            </motion.button>
-                        </div>
+                            View All Specialities
+                        </motion.button>
                     </div>
-                )}
+                </div>
+
+                {/* Desktop view */}
+                <div className="hidden md:block">
+                    {/* Cards Grid (Original Columns/Alignment) */}
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="grid grid-cols-4 gap-6 pt-16"
+                    >
+                        {specialities.map((item, index) => (
+                            <Link href={item.path} key={index} className="flex w-full max-w-[260px] mx-auto h-full">
+                                <motion.div
+                                    variants={cardVariants}
+                                    whileHover={{ y: -10 }}
+                                    className="relative bg-white border border-gray-200 shadow-lg rounded-[2rem] overflow-visible w-full text-center pt-24 pb-6 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between h-full"
+                                >
+                                    {/* Icon Container (Original Offset Look) */}
+                                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-3xl overflow-hidden shadow-xl border-4 border-white transition-transform duration-500 group-hover:scale-105">
+                                        <Image
+                                            src={item.img}
+                                            alt={item.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
+
+                                    <div className="p-4 flex flex-col items-center h-full justify-between">
+                                        <div className="flex flex-col items-center">
+                                            <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                                            <p className="text-gray-600 text-sm leading-snug mb-6 line-clamp-3">
+                                                {item.desc}
+                                            </p>
+                                        </div>
+
+                                        <motion.span
+                                            whileHover={{ scale: 1.1, rotate: 90 }}
+                                            whileTap={{ scale: 0.9 }}
+                                            className="flex items-center justify-center w-8 h-8 bg-pink-600 text-white rounded-full shadow-md hover:bg-pink-700 transition-colors mt-auto"
+                                        >
+                                            <FiChevronRight size={18} />
+                                        </motion.span>
+                                    </div>
+                                </motion.div>
+                            </Link>
+                        ))}
+                    </motion.div>
+
+                    <div className="mt-16">
+                        <motion.button
+                            whileHover={{ scale: 1.05, backgroundColor: "#be185d", color: "#fff" }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={handleViewMore}
+                            className="text-pink-700 font-bold px-8 py-3 rounded-full border-2 border-pink-700 transition-all duration-300 shadow-sm"
+                        >
+                            View All Specialities
+                        </motion.button>
+                    </div>
+                </div>
             </div>
         </section>
     );

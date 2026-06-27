@@ -121,7 +121,7 @@ const RoboticSurgeons = ({ data, onBookNow }) => {
                                         className="flex flex-col items-center justify-center bg-pink-700 hover:bg-pink-800 text-white px-2 py-2 rounded-lg transition-colors shadow-md"
                                     >
                                         <div className="flex items-center gap-1 font-semibold text-[10px]">
-                                            <img src="/assets/surgeries/live-transplant/Book an Appointment  Icon 3.webp" className="w-4 h-4 object-contain brightness-0 invert" alt="" />
+                                            <img src="/assets/surgeries/live-transplant/Book an Appointment  Icon 3.webp" className="w-4 h-4 object-contain brightness-0 invert" alt="Appointment Icon" />
                                             <span>Book An Appointment</span>
                                         </div>
                                     </button>
@@ -235,7 +235,7 @@ const RoboticSurgeons = ({ data, onBookNow }) => {
                                         className="flex flex-col items-center justify-center bg-pink-700 hover:bg-pink-800 text-white px-2 py-2 rounded-xl transition-colors shadow-md group"
                                     >
                                         <div className="flex items-center gap-1 font-bold text-xs uppercase tracking-wider">
-                                            <img src="/assets/surgeries/live-transplant/Book an Appointment  Icon 3.webp" className="w-6 h-6 object-contain brightness-0 invert" alt="" />
+                                            <img src="/assets/surgeries/live-transplant/Book an Appointment  Icon 3.webp" className="w-6 h-6 object-contain brightness-0 invert" alt="Appointment Icon" />
                                             <span>Book An Appointment</span>
                                         </div>
                                     </button>

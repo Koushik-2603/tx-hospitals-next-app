@@ -196,6 +196,7 @@ export default function SODetailsPage({ surgeryData }) {
                             <div className="absolute inset-0">
                                 <Image
                                     src={surgeryData?.soField[0]?.image}
+                                    alt={surgeryData?.soField[0]?.heading || "Surgery Banner"}
                                     fill
                                     priority
                                     className="object-cover opacity-20"

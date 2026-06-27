@@ -35,7 +35,11 @@ export default function HospitalHero() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    if (isMobile === null) return null;
+    if (isMobile === null) {
+        return (
+            <div className="w-full bg-slate-950 h-[83vh] md:h-[95vh] animate-pulse" />
+        );
+    }
 
     return (
         <>
@@ -55,7 +59,7 @@ export default function HospitalHero() {
                             muted
                             loop
                             playsInline
-                            preload="auto"
+                            preload="metadata"
                         />
                         <HospitalNavbar
                             variant={isScrolled ? "secondary" : "primary"}
@@ -112,7 +116,7 @@ export default function HospitalHero() {
                             muted
                             loop
                             playsInline
-                            preload="auto"
+                            preload="metadata"
                         />
                         <div className="relative z-20 flex flex-col h-full justify-between p-2">
                             {/* Navbar */}
