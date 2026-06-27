@@ -58,6 +58,7 @@ export default function App({ Component, pageProps }) {
   return (
     <div className={`${montserrat.variable} ${inter.variable} font-sans`}>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={canonicalUrl} key="canonical" />
       </Head>
       <Script

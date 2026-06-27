@@ -185,19 +185,19 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className="flex space-x-4">
-                        <a href="#" aria-label="WhatsApp" className="text-green-500 rounded-full text-xl hover:opacity-75">
+                        <a href="https://wa.me/919144514459" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-green-500 rounded-full text-xl hover:opacity-75">
                             <Image src="/assets/Footer/whatsapp.webp" alt="WhatsApp" width={30} height={30} />
                         </a>
-                        <a href="#" aria-label="Facebook" className="text-blue-600 text-xl hover:opacity-75">
+                        <a href="https://www.facebook.com/TXHOSPITALS" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-blue-600 text-xl hover:opacity-75">
                             <Image src="/assets/Footer/facebook.webp" alt="Facebook" width={30} height={30} />
                         </a>
-                        <a href="#" aria-label="Instagram" className="text-pink-500 text-xl hover:opacity-75">
+                        <a href="https://www.instagram.com/txhospitals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-pink-500 text-xl hover:opacity-75">
                             <Image src="/assets/Footer/instagram.webp" alt="Instagram" width={30} height={30} />
                         </a>
-                        <a href="#" aria-label="LinkedIn" className="text-blue-400 text-xl hover:opacity-75">
+                        <a href="https://www.linkedin.com/company/tx-hospitals" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-blue-400 text-xl hover:opacity-75">
                             <Image src="/assets/Footer/linkedin.webp" alt="LinkedIn" width={30} height={30} />
                         </a>
-                        <a href="#" aria-label="YouTube" className="text-red-600 text-xl hover:opacity-75">
+                        <a href="https://www.youtube.com/@TXHOSPITALOfficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-red-600 text-xl hover:opacity-75">
                             <Image src="/assets/Footer/youtube.webp" alt="YouTube" width={30} height={30} />
                         </a>
                     </div>

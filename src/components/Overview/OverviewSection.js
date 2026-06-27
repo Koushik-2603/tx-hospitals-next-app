@@ -10,7 +10,7 @@ export default function OverviewSection() {
             {isMobile ? (
                 <section className="w-full -mt-8">
                     <div className="bg-gray-50 text-center py-3">
-                        <h2 className="text-2xl font-semibold text-pink-700">Overview</h2>
+                        <h1 className="text-2xl font-semibold text-pink-700">Overview</h1>
                     </div>
                     <div className="relative -mt-3">
                         <img
@@ -47,7 +47,7 @@ export default function OverviewSection() {
             ) : (
                 <section className="w-full">
                     <div className="bg-gray-50 pl-16 text-center py-8">
-                        <h2 className="text-4xl font-semibold text-pink-700">Overview</h2>
+                        <h1 className="text-4xl font-semibold text-pink-700">Overview</h1>
                     </div>
                     <div className="relative -mt-4 w-full h-[300px]">
                         <Image
