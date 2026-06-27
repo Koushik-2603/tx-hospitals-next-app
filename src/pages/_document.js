@@ -4,22 +4,6 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head>
-                {/* Google tag (gtag.js) */}
-                <script
-                    async
-                    src="https://www.googletagmanager.com/gtag/js?id=AW-18108940602"
-                ></script>
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-18108940602');
-            `,
-                    }}
-                ></script>
-
                 {/* Favicon */}
                 <link rel="icon" href="/TX-favicon.png" />
                 <link rel="apple-touch-icon" href="/TX-favicon.png" />
@@ -40,23 +24,6 @@ export default function Document() {
                     content="QVxFNHC6mE2GwL7GLkNYO4riWI7bS5ZKhSxeld0sbnY"
                 />
 
-                {/* Meta Pixel Code */}
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-              !function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-              n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];
-              s.parentNode.insertBefore(t,s)}(window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '26839929075649647');
-              fbq('track', 'PageView');
-            `,
-                    }}
-                />
                 <noscript>
                     <img
                         height="1"
@@ -66,7 +33,6 @@ export default function Document() {
                         alt=""
                     />
                 </noscript>
-                {/* End Meta Pixel Code */}
             </Head>
 
             <body>

@@ -142,6 +142,7 @@ export default function HospitalHero() {
                                             whileHover={{ scale: 1.1 }}
                                             whileTap={{ scale: 0.9 }}
                                             type="submit"
+                                            aria-label="Submit search query"
                                             className="absolute right-1 top-1/2 -translate-y-1/2 bg-pink-700 hover:bg-pink-800 text-white rounded-full w-8 h-8 flex items-center justify-center transition-colors"
                                         >
                                             <FiSearch size={15} />

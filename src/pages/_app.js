@@ -74,6 +74,43 @@ export default function App({ Component, pageProps }) {
           `,
         }}
       />
+      {/* Google tag (gtag.js) */}
+      <Script
+        id="gtag-load"
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=AW-18108940602"
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18108940602');
+          `,
+        }}
+      />
+      {/* Meta Pixel Code */}
+      <Script
+        id="fb-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '26839929075649647');
+            fbq('track', 'PageView');
+          `,
+        }}
+      />
       <GoogleTranslateLoader />
       <Component {...pageProps} />
       <ToastContainer position="top-right" autoClose={3000} />

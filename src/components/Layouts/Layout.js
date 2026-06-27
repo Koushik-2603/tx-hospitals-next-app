@@ -35,6 +35,7 @@ export default function Layout({ children }) {
             {showButton && (
                 <button
                     onClick={scrollToTop}
+                    aria-label="Scroll to top"
                     className={`fixed right-2 bg-pink-700 text-white rounded-full shadow-lg hover:bg-pink-800 transition-all flex items-center justify-center z-50 ${isMobile ? 'bottom-20 p-2' : 'bottom-2 p-3'}`}
                 >
                     <IoIosArrowUp size={24} />
