@@ -53,7 +53,7 @@ const UppalNewSpecialties = () => {
                             <div className="relative w-[60px] h-[60px] flex items-center justify-center">
                                 <Image
                                     src={item.icon}
-                                    alt={item.name}
+                                    alt={`${item.name} Department - TX Hospitals Uppal`}
                                     fill
                                     className="object-contain"
                                     sizes="60px"

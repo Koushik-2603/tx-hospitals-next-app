@@ -65,7 +65,7 @@ const UppalNewDoctors = () => {
                                         {/* Fallback to default if no image is present */}
                                         <img 
                                             src={doctor.image || "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/default-doctor.webp"} 
-                                            alt={doctor.name} 
+                                            alt={`${doctor.name} - Specialist Doctor at TX Hospitals Uppal`} 
                                             className="w-full h-full object-contain object-bottom" 
                                         />
                                     </div>

@@ -7,11 +7,18 @@ import WhyChooseUs from '@/components/HomePage/WhyChooseUs';
 import LocationsBar from '@/components/HomePage/LocationsBar';
 import Head from "next/head";
 
-const SocialSidebar = dynamic(() => import('@/components/HomePage/SocialSidebar'), { ssr: false });
-const VideoSection = dynamic(() => import('@/components/HomePage/VideoSection'), { ssr: false });
-const HealthLibrary = dynamic(() => import('@/components/HomePage/HealthLibrary'), { ssr: false });
-const FAQ = dynamic(() => import('@/components/HomePage/FAQ'), { ssr: false });
-const OurLocations = dynamic(() => import('@/components/HomePage/OurLocations'), { ssr: false });
+import HealthLibrary from '@/components/HomePage/HealthLibrary';
+import FAQ from '@/components/HomePage/FAQ';
+import OurLocations from '@/components/HomePage/OurLocations';
+
+const SocialSidebar = dynamic(() => import('@/components/HomePage/SocialSidebar'), { 
+    ssr: false,
+    loading: () => null
+});
+const VideoSection = dynamic(() => import('@/components/HomePage/VideoSection'), { 
+    ssr: false,
+    loading: () => <div className="w-full bg-[#fceef2] min-h-[400px] md:min-h-[500px] animate-pulse" />
+});
 
 export default function HomePage() {
     const hospitalSchema = {

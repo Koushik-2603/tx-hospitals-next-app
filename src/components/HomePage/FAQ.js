@@ -1,7 +1,6 @@
 // components/FAQ.js
 "use client";
-import { useState, useEffect } from "react";
-import useIsMobile from "@/hooks/useIsMobile";
+import { useState } from "react";
 import FAQSchema from "@/utils/FAQSchema";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -36,14 +35,13 @@ const faqs = [
 
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState(null);
-    const isMobile = useIsMobile();
 
     const toggleFAQ = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
     return (
-        <section className={`py-10 xl:py-12 px-6 overflow-hidden ${isMobile ? 'py-8 px-4' : ''}`}>
+        <section className="bg-pink-50/50 py-8 px-4 md:py-10 md:px-6 xl:py-12 xl:px-6 overflow-hidden">
             <div className="max-w-4xl mx-auto">
                 {/* Heading Block */}
                 <motion.div
@@ -55,7 +53,7 @@ export default function FAQ() {
                     <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-3 border border-pink-200">
                         Common Queries
                     </span>
-                    <h2 className={`font-extrabold text-gray-900  mb-4 ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
+                    <h2 className="font-extrabold text-gray-900 mb-4 text-4xl md:text-5xl">
                         Frequently Asked <span className="text-pink-700 relative">Questions
                             <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
                         </span>
@@ -82,7 +80,7 @@ export default function FAQ() {
                                         : "border-gray-100 text-gray-800 bg-white hover:border-pink-300 hover:shadow-md font-bold"
                                     }`}
                             >
-                                <span className={`pr-4 ${isMobile ? 'text-sm' : 'text-base'}`}>{faq.question}</span>
+                                <span className="pr-4 text-sm md:text-base">{faq.question}</span>
                                 <div className={`flex-shrink-0 transition-transform duration-300 ${openIndex === idx ? "rotate-180" : ""}`}>
                                     <svg
                                         className="w-6 h-6"
@@ -109,7 +107,7 @@ export default function FAQ() {
                                         transition={{ duration: 0.2, ease: "easeInOut" }}
                                         className="overflow-hidden"
                                     >
-                                        <div className={`px-8 py-6 text-gray-600 font-medium leading-relaxed bg-pink-50/50 mt-2 rounded-3xl border border-pink-100 ${isMobile ? 'text-xs px-6 py-4' : ''}`}>
+                                        <div className="px-6 py-4 text-xs md:px-8 md:py-6 md:text-sm text-gray-600 font-medium leading-relaxed bg-pink-50/50 mt-2 rounded-3xl border border-pink-100">
                                             {faq.answer}
                                         </div>
                                     </motion.div>

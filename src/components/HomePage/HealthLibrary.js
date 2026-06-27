@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import useIsMobile from "@/hooks/useIsMobile";
 import CONFIG from "@/config";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -24,7 +23,6 @@ const itemVariants = {
 export default function HealthLibrary() {
     const router = useRouter();
     const [blogs, setBlogs] = useState([]);
-    const isMobile = useIsMobile();
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -51,7 +49,7 @@ export default function HealthLibrary() {
     };
 
     return (
-        <section className={`bg-pink-50/50 py-10 xl:py-12 px-6 overflow-hidden ${isMobile ? 'py-8 px-4' : ''}`}>
+        <section className="bg-pink-50/50 py-8 px-4 md:py-10 md:px-6 xl:py-12 xl:px-6 overflow-hidden">
             <div className="max-w-6xl mx-auto text-center">
                 {/* Heading Block */}
                 <motion.div
@@ -63,12 +61,12 @@ export default function HealthLibrary() {
                     <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-[10px] font-bold uppercase tracking-widest mb-3 border border-pink-200">
                         Expert Articles
                     </span>
-                    <h2 className={`font-extrabold text-gray-900  mb-4 ${isMobile ? 'text-4xl' : 'text-5xl'}`}>
+                    <h2 className="font-extrabold text-gray-900 mb-4 text-4xl md:text-5xl">
                         Health <span className="text-pink-700 relative">Library
                             <span className="absolute -bottom-1 left-0 w-full h-1 bg-pink-200/50 rounded-full"></span>
                         </span>
                     </h2>
-                    <p className={`max-w-2xl mx-auto text-gray-600 font-medium leading-relaxed ${isMobile ? 'text-sm px-2' : 'text-lg'}`}>
+                    <p className="max-w-2xl mx-auto text-gray-600 font-medium leading-relaxed text-sm px-2 md:text-lg md:px-0">
                         A reliable resource of easy-to-read articles on diseases, symptoms and treatments for informed health decisions.
                     </p>
                 </motion.div>
@@ -79,7 +77,7 @@ export default function HealthLibrary() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className={`grid gap-6 ${isMobile ? 'grid-cols-2 gap-3' : 'grid-cols-3'}`}
+                    className="grid gap-3 grid-cols-2 md:grid-cols-3 md:gap-6"
                 >
                     {blogs.map((blog, idx) => (
                         <motion.div

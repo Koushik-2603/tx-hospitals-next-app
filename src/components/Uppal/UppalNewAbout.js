@@ -9,7 +9,7 @@ const UppalNewAbout = () => {
                     <div className="relative w-full h-full rounded-2xl overflow-hidden" style={{ borderRadius: '20px', minHeight: '350px' }}>
                         <Image
                             src="/assets/Uppal/Welcome-Uppal.jpg"
-                            alt="Welcome to TX Hospitals, Uppal"
+                            alt="Welcome to TX Hospitals Uppal Multispecialty Building Exterior"
                             layout="fill"
                             objectFit="cover"
                             className="rounded-2xl"

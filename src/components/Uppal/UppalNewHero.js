@@ -254,7 +254,7 @@ const UppalNewHero = () => {
                 <div className="absolute inset-0 bg-white">
                     <Image
                         src="/assets/Uppal/Uppal.png"
-                        alt="TX Hospitals Uppal"
+                        alt="TX Hospitals Uppal Branch Building and Reception Area"
                         layout="fill"
                         objectFit="cover"
                         priority

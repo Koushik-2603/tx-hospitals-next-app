@@ -36,7 +36,7 @@ const UppalNewCTScan = () => {
                     <div className="relative w-full h-full overflow-hidden" style={{ borderRadius: '20px', minHeight: '350px' }}>
                         <Image
                             src="/assets/Uppal/Advanced_CT_Scan.jpg"
-                            alt="Advanced CT Scan in Uppal"
+                            alt="Advanced 24/7 CT Scan Machine and Imaging Center at TX Hospitals Uppal"
                             layout="fill"
                             objectFit="cover"
                             className="rounded-2xl"

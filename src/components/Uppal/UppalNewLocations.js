@@ -21,7 +21,7 @@ const UppalNewLocations = () => {
                             {/* Location 1: Uppal */}
                             <div className="bg-white rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" style={{ border: '0.5px solid rgb(183, 183, 183)', boxShadow: 'rgba(0, 0, 0, 0.08) 0px 1px 1px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px' }}>
                                 <div className="overflow-hidden" style={{ height: '190px' }}>
-                                    <img src="/assets/Our Location/Uppal Location Image.png" alt="TX Hospitals, Uppal" className="w-full h-full object-cover bg-white" />
+                                    <img src="/assets/Our Location/Uppal Location Image.png" alt="TX Hospitals Uppal Branch Building Exterior" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
                                     <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
@@ -45,7 +45,7 @@ const UppalNewLocations = () => {
                             {/* Location 2: Kachiguda */}
                             <div className="bg-white rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" style={{ border: '0.5px solid rgb(183, 183, 183)', boxShadow: 'rgba(0, 0, 0, 0.08) 0px 1px 1px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px' }}>
                                 <div className="overflow-hidden" style={{ height: '190px' }}>
-                                    <img src="/assets/Our Location/Kachiguda Image.png" alt="TX Hospitals, Kachiguda" className="w-full h-full object-cover bg-white" />
+                                    <img src="/assets/Our Location/Kachiguda Image.png" alt="TX Hospitals Kachiguda Branch Building Exterior" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
                                     <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
@@ -69,7 +69,7 @@ const UppalNewLocations = () => {
                             {/* Location 3: Banjara Hills */}
                             <div className="bg-white rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" style={{ border: '0.5px solid rgb(183, 183, 183)', boxShadow: 'rgba(0, 0, 0, 0.08) 0px 1px 1px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px' }}>
                                 <div className="overflow-hidden" style={{ height: '190px' }}>
-                                    <img src="/assets/Our Location/Banjara Hills  Hospitals Image.png" alt="TX Hospitals, Banjara Hills" className="w-full h-full object-cover bg-white" />
+                                    <img src="/assets/Our Location/Banjara Hills  Hospitals Image.png" alt="TX Hospitals Banjara Hills Branch Building Exterior" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
                                     <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
@@ -93,7 +93,7 @@ const UppalNewLocations = () => {
                             {/* Location 4: Children Hospitals, Banjara Hills */}
                             <div className="bg-white rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" style={{ border: '0.5px solid rgb(183, 183, 183)', boxShadow: 'rgba(0, 0, 0, 0.08) 0px 1px 1px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px' }}>
                                 <div className="overflow-hidden" style={{ height: '190px' }}>
-                                    <img src="/assets/Our Location/Banjara Hills Children Image.png" alt="TX Children Hospitals, Banjara Hills" className="w-full h-full object-cover bg-white" />
+                                    <img src="/assets/Our Location/Banjara Hills Children Image.png" alt="TX Children Hospitals Banjara Hills Branch Building Exterior" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
                                     <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
@@ -117,7 +117,7 @@ const UppalNewLocations = () => {
                             {/* Location 5: Miyapur */}
                             <div className="bg-white rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" style={{ border: '0.5px solid rgb(183, 183, 183)', boxShadow: 'rgba(0, 0, 0, 0.08) 0px 1px 1px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px' }}>
                                 <div className="overflow-hidden" style={{ height: '190px' }}>
-                                    <img src="/assets/ContactUs/TX Hospitals Miyapur.webp" alt="TX Hospitals, Miyapur" className="w-full h-full object-cover bg-white" />
+                                    <img src="/assets/ContactUs/TX Hospitals Miyapur.webp" alt="TX Hospitals Miyapur Branch Building Exterior" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
                                     <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>

@@ -51,7 +51,7 @@ const UppalNewBlogs = () => {
                             <div className="overflow-hidden" style={{ height: '200px' }}>
                                 <img
                                     src={blog.image}
-                                    alt={blog.title}
+                                    alt={`Health Article: ${blog.title}`}
                                     className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
                                 />
                             </div>
