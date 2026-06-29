@@ -1,23 +1,26 @@
 import React from 'react';
 import Head from 'next/head';
 import SecondaryLayout from '@/components/Layouts/SecondaryLayout';
-import BanjaraHillsHero from '@/components/BanjaraHills/BanjaraHillsHero';
-import BanjaraHillsStats from '@/components/BanjaraHills/BanjaraHillsStats';
-import BanjaraHillsSpecialities from '@/components/BanjaraHills/BanjaraHillsSpecialities';
-import BanjaraHillsAdvancedHealthcare from '@/components/BanjaraHills/BanjaraHillsAdvancedHealthcare';
-import BanjaraHillsDoctors from '@/components/BanjaraHills/BanjaraHillsDoctors';
-import BanjaraHillsTreatmentsAndAreas from '@/components/BanjaraHills/BanjaraHillsTreatmentsAndAreas';
-import BanjaraHillsWhyChooseUs from '@/components/BanjaraHills/BanjaraHillsWhyChooseUs';
-import BanjaraHillsFaqsAndVisit from '@/components/BanjaraHills/BanjaraHillsFaqsAndVisit';
+import BanjaraHillsNewHero from '@/components/BanjaraHills/BanjaraHillsNewHero';
+import BanjaraHillsNewAbout from '@/components/BanjaraHills/BanjaraHillsNewAbout';
+import BanjaraHillsNewSpecialties from '@/components/BanjaraHills/BanjaraHillsNewSpecialties';
+import BanjaraHillsNewCTA from '@/components/BanjaraHills/BanjaraHillsNewCTA';
+import BanjaraHillsNewRoboticSurgery from '@/components/BanjaraHills/BanjaraHillsNewRoboticSurgery';
+import BanjaraHillsNewDoctors from '@/components/BanjaraHills/BanjaraHillsNewDoctors';
+import BanjaraHillsNewWhyChoose from '@/components/BanjaraHills/BanjaraHillsNewWhyChoose';
+import BanjaraHillsNewTestimonials from '@/components/BanjaraHills/BanjaraHillsNewTestimonials';
+import BanjaraHillsNewLocations from '@/components/BanjaraHills/BanjaraHillsNewLocations';
+import BanjaraHillsNewBlogs from '@/components/BanjaraHills/BanjaraHillsNewBlogs';
+import BanjaraHillsNewFAQ from '@/components/BanjaraHills/BanjaraHillsNewFAQ';
 
 export default function BanjaraHillsPage() {
     return (
         <>
             <Head>
                 <title>Best Multi Speciality Hospital in Banjara Hills, Hyderabad | TX Hospitals</title>
-                <meta 
-                    name="description" 
-                    content="Looking for the best hospital in Banjara Hills? TX Hospitals offers expert doctors, 24x7 emergency care, advanced ICU, cashless insurance, and specialist consultations. Book your free consultation today!" 
+                <meta
+                    name="description"
+                    content="Looking for the best hospital in Banjara Hills? TX Hospitals offers expert doctors, 24x7 emergency care, advanced ICU, cashless insurance, and specialist consultations. Book your free consultation today!"
                 />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
@@ -25,28 +28,37 @@ export default function BanjaraHillsPage() {
             <SecondaryLayout>
                 <main>
                     {/* First Section: Hero Section with Appointment Form & Background Image */}
-                    <BanjaraHillsHero />
-                    
-                    {/* Second Section: Dynamic Stats Counter Bar */}
-                    <BanjaraHillsStats />
+                    <BanjaraHillsNewHero />
+
+                    {/* Second Section: Welcome Section */}
+                    <BanjaraHillsNewAbout />
 
                     {/* Third Section: Our Specialities Grid */}
-                    <BanjaraHillsSpecialities />
+                    <BanjaraHillsNewSpecialties />
 
-                    {/* Fourth Section: Advanced Multispeciality Healthcare Grid */}
-                    <BanjaraHillsAdvancedHealthcare />
+                    {/* Fourth Section: Advanced Kidney & Liver Transplant Care CTA */}
+                    <BanjaraHillsNewCTA />
 
-                    {/* Fifth Section: Expert Doctors Row */}
-                    <BanjaraHillsDoctors />
+                    {/* Fifth Section: Advanced Robotic Surgery */}
+                    <BanjaraHillsNewRoboticSurgery />
 
-                    {/* Sixth Section: Treatments & Serving Areas Dual Grid */}
-                    <BanjaraHillsTreatmentsAndAreas />
+                    {/* Sixth Section: Expert Doctors Row */}
+                    <BanjaraHillsNewDoctors />
 
-                    {/* Seventh Section: Why Choose TX Hospitals & Google Reviews */}
-                    <BanjaraHillsWhyChooseUs />
+                    {/* Seventh Section: Why Choose TX Hospitals */}
+                    <BanjaraHillsNewWhyChoose />
 
-                    {/* Eighth Section: FAQs & Live Location Visit Details Card */}
-                    <BanjaraHillsFaqsAndVisit />
+                    {/* Eighth Section: Patient Testimonials */}
+                    <BanjaraHillsNewTestimonials />
+
+                    {/* Ninth Section: Our Locations */}
+                    <BanjaraHillsNewLocations />
+
+                    {/* Tenth Section: Health Insights & Articles */}
+                    <BanjaraHillsNewBlogs />
+
+                    {/* Eleventh Section: Frequently Asked Questions */}
+                    <BanjaraHillsNewFAQ />
                 </main>
             </SecondaryLayout>
         </>

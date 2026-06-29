@@ -31,12 +31,12 @@ const cleanDescription = (htmlText) => {
     return cleaned;
 };
 
-const MiyapurTestimonials = () => {
+const BanjaraHillsNewTestimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const locationName = "Miyapur";
+        const locationName = "Banjara Hills";
         fetch(`${CONFIG.API_BASE_URL}/patient-testimonials/location/${encodeURIComponent(locationName)}`)
             .then(res => res.json())
             .then(data => {
@@ -46,7 +46,7 @@ const MiyapurTestimonials = () => {
                         profileImg: item.patientImage || "",
                         text: cleanDescription(item.description),
                         name: item.patientName,
-                        location: item.patientLocation || "Miyapur, Hyderabad",
+                        location: item.patientLocation || "Banjara Hills, Hyderabad",
                         youtubeLink: item.youtubeLink
                     }));
                     setTestimonials(formatted);
@@ -56,7 +56,7 @@ const MiyapurTestimonials = () => {
                 setLoading(false);
             })
             .catch(err => {
-                console.error("Error fetching Miyapur testimonials:", err);
+                console.error("Error fetching Banjara Hills testimonials:", err);
                 setTestimonials([]);
                 setLoading(false);
             });
@@ -69,15 +69,15 @@ const MiyapurTestimonials = () => {
                 <div className="text-center mb-10">
                     <h2 
                         className="mb-3 text-2xl md:text-3xl lg:text-4xl font-bold font-poppins" 
-                        style={{ color: 'rgb(3, 2, 19)' }}
+                        style={{ color: 'rgb(189, 56, 92)' }}
                     >
-                        Real Stories from <span style={{ color: 'rgb(189, 56, 92)' }}>Real Patients</span>
+                        Patient Testimonials
                     </h2>
                     <p 
                         className="max-w-[700px] mx-auto text-sm md:text-base text-gray-700 leading-relaxed font-normal"
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
-                        Real experiences from patients who trusted TX Hospitals, Miyapur for their care, comfort and recovery.
+                        Every patient story reflects the trust, care and commitment we work for every day.
                     </p>
                 </div>
 
@@ -178,4 +178,4 @@ const MiyapurTestimonials = () => {
     );
 };
 
-export default MiyapurTestimonials;
+export default BanjaraHillsNewTestimonials;

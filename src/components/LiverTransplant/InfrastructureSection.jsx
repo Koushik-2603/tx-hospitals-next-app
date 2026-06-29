@@ -32,7 +32,7 @@ const InfrastructureSection = ({
                                     <div className={`${isMobile ? 'w-12 h-12 p-2' : 'w-16 h-16 p-3'} bg-[#B12C49] rounded-xl flex items-center justify-center flex-shrink-0`}>
                                         <Image
                                             src={`/assets/surgeries/live-transplant/${item.icon}`}
-                                            alt="Icon"
+                                            alt=""
                                             width={isMobile ? 32 : 40}
                                             height={isMobile ? 32 : 40}
                                             className="w-full h-full object-contain brightness-0 invert"
@@ -59,7 +59,7 @@ const InfrastructureSection = ({
                                     <div className={`${isMobile ? 'w-10 h-10 p-2' : 'w-12 h-12 p-2.5'} bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0`}>
                                         <Image
                                             src={`/assets/surgeries/live-transplant/${item.icon}`}
-                                            alt="Icon"
+                                            alt=""
                                             width={isMobile ? 24 : 30}
                                             height={isMobile ? 24 : 30}
                                             className="w-full h-full object-contain brightness-0 invert"

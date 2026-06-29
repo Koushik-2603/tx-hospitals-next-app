@@ -55,7 +55,9 @@ export default function DoctorsLandingPage() {
         );
     });
 
-    const uniqueCategories = [...new Set(filteredDoctors.map(doctor => doctor.category))];
+    const uniqueCategories = [...new Set(filteredDoctors.map(doctor => doctor.category))].filter(
+        (cat) => cat && cat !== "undefined" && cat !== "null" && cat.trim() !== ""
+    );
     const filteredCategories = uniqueCategories.length === 1 ? uniqueCategories : departments;
 
     const categoryOrder = [
@@ -123,12 +125,14 @@ export default function DoctorsLandingPage() {
                 }, {});
 
                 // Extract unique department names for dropdown
-                const uniqueDepartments = Object.keys(groupedDoctors);
+                const uniqueDepartments = Object.keys(groupedDoctors).filter(
+                    (dept) => dept && dept !== "undefined" && dept !== "null" && dept.trim() !== ""
+                );
 
                 // Flatten the array for filtering & display
                 const flatDoctorsArray = data.map((doctor) => ({
                     ...doctor,
-                    category: doctor.department,
+                    category: doctor.department || "",
                 }));
 
                 setDoctorsData(flatDoctorsArray);

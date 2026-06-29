@@ -28,7 +28,7 @@ export default function HomePage() {
         "url": "https://txhospitals.in/",
         "logo": "https://txhospitals.in/TXlogoWB.jpg",
         "image": "https://txhospitals.in/TXlogoWB.jpg",
-        "description": "TX Hospitals offers world-class multi-specialty care in Hyderabad across Uppal, Kachiguda & Banjara Hills—with advanced diagnostics, expert doctors, and patient-centric services.",
+        "description": "TX Hospitals offers world-class multi-specialty care in Hyderabad at Uppal, Kachiguda, Banjara Hills & Miyapur with expert doctors and advanced care.",
         "telephone": "+91 9144514459",
         "address": [
             {
@@ -54,6 +54,14 @@ export default function HomePage() {
                 "addressRegion": "Telangana",
                 "postalCode": "500028",
                 "addressCountry": "IN"
+            },
+            {
+                "@type": "PostalAddress",
+                "streetAddress": "Pillar No A 600, Plot 65 & 66, Miyapur Cross Road, Mathrusree Nagar, Hafeezpet",
+                "addressLocality": "Hyderabad",
+                "addressRegion": "Telangana",
+                "postalCode": "500059",
+                "addressCountry": "IN"
             }
         ],
         "geo": [
@@ -71,6 +79,11 @@ export default function HomePage() {
                 "@type": "GeoCoordinates",
                 "latitude": 17.4144,
                 "longitude": 78.4419
+            },
+            {
+                "@type": "GeoCoordinates",
+                "latitude": 17.4959,
+                "longitude": 78.3647
             }
         ],
         "openingHoursSpecification": {
@@ -99,22 +112,22 @@ export default function HomePage() {
     return (
         <>
             <Head>
-                <title>TX Hospitals – Leading Multi-Specialty Hospitals in Hyderabad</title>
-                <meta name="description" content="TX Hospitals offers world-class multi-specialty care in Hyderabad across Uppal, Kachiguda & Banjara Hills—with advanced diagnostics, expert doctors, and patient-centric services." />
+                <title>TX Hospitals | Leading Multi-Specialty Hospitals Hyderabad</title>
+                <meta name="description" content="TX Hospitals offers world-class multi-specialty care in Hyderabad at Uppal, Kachiguda, Banjara Hills & Miyapur with expert doctors and advanced care." />
                 <meta name="keywords" content="TX Hospitals Hyderabad, Multi-specialty hospital Hyderabad, Super specialty hospital Hyderabad, Best hospital in Hyderabad, Top Hospitals in Hyderabad" />
                 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="TX Hospitals – Leading Multi-Specialty Hospitals in Hyderabad" />
-                <meta property="og:description" content="TX Hospitals offers world-class multi-specialty care in Hyderabad across Uppal, Kachiguda & Banjara Hills—with advanced diagnostics, expert doctors, and patient-centric services." />
+                <meta property="og:title" content="TX Hospitals | Leading Multi-Specialty Hospitals Hyderabad" />
+                <meta property="og:description" content="TX Hospitals offers world-class multi-specialty care in Hyderabad at Uppal, Kachiguda, Banjara Hills & Miyapur with expert doctors and advanced care." />
                 <meta property="og:image" content="https://txhospitals.in/TXlogoWB.jpg" />
                 <meta property="og:url" content="https://txhospitals.in/" />
                 <meta property="og:site_name" content="TX Hospitals" />
 
                 {/* Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="TX Hospitals – Leading Multi-Specialty Hospitals in Hyderabad" />
-                <meta name="twitter:description" content="TX Hospitals offers world-class multi-specialty care in Hyderabad across Uppal, Kachiguda & Banjara Hills—with advanced diagnostics, expert doctors, and patient-centric services." />
+                <meta name="twitter:title" content="TX Hospitals | Leading Multi-Specialty Hospitals Hyderabad" />
+                <meta name="twitter:description" content="TX Hospitals offers world-class multi-specialty care in Hyderabad at Uppal, Kachiguda, Banjara Hills & Miyapur with expert doctors and advanced care." />
                 <meta name="twitter:image" content="https://txhospitals.in/TXlogoWB.jpg" />
                 <meta name="twitter:site" content="@txhospitals" />
 
@@ -125,7 +138,7 @@ export default function HomePage() {
                 />
             </Head>
             <Layout>
-                <h1 className="sr-only">TX Hospitals – Leading Multi-Specialty Hospitals in Hyderabad</h1>
+                <h1 className="sr-only">TX Hospitals | Leading Multi-Specialty Hospitals Hyderabad</h1>
                 <SocialSidebar />
                 <Specialities />
                 <DiseaseSearch />
