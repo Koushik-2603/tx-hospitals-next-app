@@ -30,7 +30,7 @@ export default function Document() {
                         width="1"
                         style={{ display: "none" }}
                         src="https://www.facebook.com/tr?id=26839929075649647&ev=PageView&noscript=1"
-                        alt=""
+                        alt="Facebook Pixel"
                     />
                 </noscript>
             </Head>
