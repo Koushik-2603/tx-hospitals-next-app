@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 
-const baseUrl = "https://txhospitals.in";
+const baseUrl = "https://www.txhospitals.in";
 const apiUrl = "https://api.txhospitals.vgworld.in";
 const publicDir = path.resolve(__dirname, "../public");
 let now = new Date().toISOString().replace(".000Z", "+00:00");

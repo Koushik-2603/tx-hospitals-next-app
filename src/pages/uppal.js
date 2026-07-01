@@ -135,7 +135,7 @@ export default function UppalPage() {
                             "priceRange": "₹₹",
                             "hasMap": "https://maps.google.com/?q=TX+Hospitals+Uppal+Hyderabad",
                             "sameAs": [
-                                "https://www.facebook.com/txhospitals",
+                                "https://www.facebook.com/txhospitals/",
                                 "https://www.instagram.com/txhospitals"
                             ]
                         })

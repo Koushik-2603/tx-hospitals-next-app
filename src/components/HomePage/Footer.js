@@ -188,7 +188,7 @@ export default function Footer() {
                         <a href="https://wa.me/919144514459" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-green-500 rounded-full text-xl hover:opacity-75">
                             <Image src="/assets/Footer/whatsapp.webp" alt="WhatsApp" width={30} height={30} />
                         </a>
-                        <a href="https://www.facebook.com/TXHOSPITALS" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-blue-600 text-xl hover:opacity-75">
+                        <a href="https://www.facebook.com/txhospitals/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-blue-600 text-xl hover:opacity-75">
                             <Image src="/assets/Footer/facebook.webp" alt="Facebook" width={30} height={30} />
                         </a>
                         <a href="https://www.instagram.com/txhospitals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-pink-500 text-xl hover:opacity-75">

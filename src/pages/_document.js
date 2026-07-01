@@ -16,7 +16,7 @@ export default function Document() {
                 <meta name="googlebot" content="index, follow" />
 
                 {/* OG */}
-                <meta property="og:url" content="https://txhospitals.in/" />
+                <meta property="og:url" content="https://www.txhospitals.in/" />
 
                 {/* Google Verification */}
                 <meta

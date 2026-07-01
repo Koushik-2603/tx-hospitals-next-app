@@ -101,7 +101,7 @@ export default function HomePage() {
             "closes": "23:59"
         },
         "sameAs": [
-            "https://www.facebook.com/TXHOSPITALS",
+            "https://www.facebook.com/txhospitals/",
             "https://www.instagram.com/txhospitals/",
             "https://www.youtube.com/@TXHOSPITALOfficial",
             "https://www.linkedin.com/company/tx-hospitals",
