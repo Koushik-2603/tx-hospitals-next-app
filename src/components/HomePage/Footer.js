@@ -2,7 +2,7 @@ import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'r
 import { MdOutlineEmail } from "react-icons/md";
 import { PiDeviceMobileThin } from "react-icons/pi";
 import { GrMapLocation } from "react-icons/gr";
-import { FaSquareWhatsapp } from "react-icons/fa6";
+import { FaSquareWhatsapp, FaXTwitter } from "react-icons/fa6";
 import Image from 'next/image';
 
 const aboutLinks = [
@@ -184,21 +184,24 @@ export default function Footer() {
                             <span># 8-2-680, Raichandani Construction, no:12, B Road, Sri Ram Nagar Colony, Banjara Hills, Hyderabad, Telangana 500028</span>
                         </div>
                     </div>
-                    <div className="flex space-x-4">
-                        <a href="https://wa.me/919144514459" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-green-500 rounded-full text-xl hover:opacity-75">
-                            <Image src="/assets/Footer/whatsapp.webp" alt="WhatsApp" width={30} height={30} />
+                    <div className="flex space-x-3 mt-4">
+                        <a href="https://wa.me/919144514459" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#25D366] hover:text-white text-[#25D366] transition-all duration-300 transform hover:scale-110">
+                            <FaWhatsapp size={20} />
                         </a>
-                        <a href="https://www.facebook.com/txhospitals/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-blue-600 text-xl hover:opacity-75">
-                            <Image src="/assets/Footer/facebook.webp" alt="Facebook" width={30} height={30} />
+                        <a href="https://www.facebook.com/txhospitals" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#1877F2] hover:text-white text-[#1877F2] transition-all duration-300 transform hover:scale-110">
+                            <FaFacebookF size={20} />
                         </a>
-                        <a href="https://www.instagram.com/txhospitals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-pink-500 text-xl hover:opacity-75">
-                            <Image src="/assets/Footer/instagram.webp" alt="Instagram" width={30} height={30} />
+                        <a href="https://www.instagram.com/txhospitals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#E4405F] hover:text-white text-[#E4405F] transition-all duration-300 transform hover:scale-110">
+                            <FaInstagram size={20} />
                         </a>
-                        <a href="https://www.linkedin.com/company/tx-hospitals" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-blue-400 text-xl hover:opacity-75">
-                            <Image src="/assets/Footer/linkedin.webp" alt="LinkedIn" width={30} height={30} />
+                        <a href="https://www.linkedin.com/company/tx-hospitals/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#0A66C2] hover:text-white text-[#0A66C2] transition-all duration-300 transform hover:scale-110">
+                            <FaLinkedinIn size={20} />
                         </a>
-                        <a href="https://www.youtube.com/@TXHOSPITALOfficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-red-600 text-xl hover:opacity-75">
-                            <Image src="/assets/Footer/youtube.webp" alt="YouTube" width={30} height={30} />
+                        <a href="https://x.com/txhospitals" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-black hover:text-white text-black transition-all duration-300 transform hover:scale-110">
+                            <FaXTwitter size={20} />
+                        </a>
+                        <a href="https://www.youtube.com/@txhospitalsofficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#FF0000] hover:text-white text-[#FF0000] transition-all duration-300 transform hover:scale-110">
+                            <FaYoutube size={20} />
                         </a>
                     </div>
                 </div>

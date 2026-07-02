@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import useIsMobile from "@/hooks/useIsMobile";
+import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function CallbackFooterSection() {
     const [footerData, setFooterData] = useState(null);
@@ -141,6 +143,35 @@ export default function CallbackFooterSection() {
                                 </>
                             )}
                         </div>
+                        
+                        {/* Social Media Bar Mobile */}
+                        {!loading && (
+                            <div className="mt-8 pt-6 border-t border-white/10 flex flex-col items-center">
+                                <div className="flex space-x-3 mb-4">
+                                    <a href="https://wa.me/919144514459" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md hover:bg-[#25D366] hover:text-white text-[#25D366] transition-all duration-300">
+                                        <FaWhatsapp size={16} />
+                                    </a>
+                                    <a href="https://www.facebook.com/txhospitals" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md hover:bg-[#1877F2] hover:text-white text-[#1877F2] transition-all duration-300">
+                                        <FaFacebookF size={16} />
+                                    </a>
+                                    <a href="https://www.instagram.com/txhospitals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md hover:bg-[#E4405F] hover:text-white text-[#E4405F] transition-all duration-300">
+                                        <FaInstagram size={16} />
+                                    </a>
+                                    <a href="https://www.linkedin.com/company/tx-hospitals/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md hover:bg-[#0A66C2] hover:text-white text-[#0A66C2] transition-all duration-300">
+                                        <FaLinkedinIn size={16} />
+                                    </a>
+                                    <a href="https://x.com/txhospitals" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md hover:bg-black hover:text-white text-black transition-all duration-300">
+                                        <FaXTwitter size={16} />
+                                    </a>
+                                    <a href="https://www.youtube.com/@txhospitalsofficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md hover:bg-[#FF0000] hover:text-white text-[#FF0000] transition-all duration-300">
+                                        <FaYoutube size={16} />
+                                    </a>
+                                </div>
+                                <p className="text-white/60 text-xs text-center">
+                                    &copy; {new Date().getFullYear()} TX Hospitals. All rights reserved.
+                                </p>
+                            </div>
+                        )}
                     </footer>
                 </div>
             ) : (
@@ -337,6 +368,33 @@ export default function CallbackFooterSection() {
                                                     </ul>
                                                 </div>
                                             ))}
+                                    </div>
+                                </div>
+                                
+                                {/* Social Media Bar */}
+                                <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between">
+                                    <p className="text-white/60 text-sm mb-4 md:mb-0">
+                                        &copy; {new Date().getFullYear()} TX Hospitals. All rights reserved.
+                                    </p>
+                                    <div className="flex space-x-3">
+                                        <a href="https://wa.me/919144514459" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#25D366] hover:text-white text-[#25D366] transition-all duration-300 transform hover:scale-110">
+                                            <FaWhatsapp size={20} />
+                                        </a>
+                                        <a href="https://www.facebook.com/txhospitals" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#1877F2] hover:text-white text-[#1877F2] transition-all duration-300 transform hover:scale-110">
+                                            <FaFacebookF size={20} />
+                                        </a>
+                                        <a href="https://www.instagram.com/txhospitals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#E4405F] hover:text-white text-[#E4405F] transition-all duration-300 transform hover:scale-110">
+                                            <FaInstagram size={20} />
+                                        </a>
+                                        <a href="https://www.linkedin.com/company/tx-hospitals/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#0A66C2] hover:text-white text-[#0A66C2] transition-all duration-300 transform hover:scale-110">
+                                            <FaLinkedinIn size={20} />
+                                        </a>
+                                        <a href="https://x.com/txhospitals" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-black hover:text-white text-black transition-all duration-300 transform hover:scale-110">
+                                            <FaXTwitter size={20} />
+                                        </a>
+                                        <a href="https://www.youtube.com/@txhospitalsofficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-[#FF0000] hover:text-white text-[#FF0000] transition-all duration-300 transform hover:scale-110">
+                                            <FaYoutube size={20} />
+                                        </a>
                                     </div>
                                 </div>
                             </>
