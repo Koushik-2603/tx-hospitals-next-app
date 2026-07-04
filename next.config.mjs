@@ -42,6 +42,21 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.txhospitals.in',
+          },
+        ],
+        destination: 'https://txhospitals.in/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
