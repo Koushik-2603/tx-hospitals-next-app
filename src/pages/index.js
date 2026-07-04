@@ -1,15 +1,25 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import Layout from '@/components/Layouts/Layout';
-import DiseaseSearch from '@/components/HomePage/DiseaseSearch';
 import Specialities from '@/components/HomePage/Specialities';
-import WhyChooseUs from '@/components/HomePage/WhyChooseUs';
 import LocationsBar from '@/components/HomePage/LocationsBar';
 import Head from "next/head";
 
-import HealthLibrary from '@/components/HomePage/HealthLibrary';
-import FAQ from '@/components/HomePage/FAQ';
-import OurLocations from '@/components/HomePage/OurLocations';
+const DiseaseSearch = dynamic(() => import('@/components/HomePage/DiseaseSearch'), { 
+    loading: () => <div className="w-full min-h-[100px] animate-pulse bg-gray-50" />
+});
+const WhyChooseUs = dynamic(() => import('@/components/HomePage/WhyChooseUs'), {
+    loading: () => <div className="w-full min-h-[200px] animate-pulse bg-white" />
+});
+const HealthLibrary = dynamic(() => import('@/components/HomePage/HealthLibrary'), {
+    loading: () => <div className="w-full min-h-[200px] animate-pulse bg-white" />
+});
+const FAQ = dynamic(() => import('@/components/HomePage/FAQ'), {
+    loading: () => <div className="w-full min-h-[200px] animate-pulse bg-white" />
+});
+const OurLocations = dynamic(() => import('@/components/HomePage/OurLocations'), {
+    loading: () => <div className="w-full min-h-[200px] animate-pulse bg-white" />
+});
 
 const SocialSidebar = dynamic(() => import('@/components/HomePage/SocialSidebar'), { 
     ssr: false,

@@ -15,9 +15,6 @@ export default function Document() {
                 <meta name="robots" content="index, follow" />
                 <meta name="googlebot" content="index, follow" />
 
-                {/* OG */}
-                <meta property="og:url" content="https://www.txhospitals.in/" />
-
                 {/* Google Verification */}
                 <meta
                     name="google-site-verification"
