@@ -7,7 +7,7 @@ const AcademicsSection2 = () => {
                 <div className="max-w-2xl">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink-700">Programs &amp; Seats</p>
                     <h2 className="mt-3 text-3xl font-semibold leading-tight md:text-4xl text-gray-900">Accredited pathways across every stage of a medical career.</h2>
-                    <p className="mt-4 text-gray-600">From DNB Board and Super Specialty tracks to fellowships and diplomas — explore current seats and accreditations across our campuses.</p>
+                    <p className="mt-4 text-gray-600">From DNB Broad and Super Specialty tracks to fellowships and diplomas — explore current seats and accreditations across our campuses.</p>
                 </div>
                 <div className="mt-12 space-y-8">
                     <article className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
@@ -23,7 +23,7 @@ const AcademicsSection2 = () => {
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-semibold md:text-2xl">DNB Board Specialty Courses</h3>
+                                    <h3 className="text-xl font-semibold md:text-2xl">DNB Broad Specialty Courses</h3>
                                     <p className="text-sm text-white/80">Broad-based specialty training with rigorous mentorship across core clinical disciplines.</p>
                                 </div>
                             </div>
@@ -265,9 +265,6 @@ const AcademicsSection2 = () => {
                                         <th className="px-6 py-3">Specialty</th>
                                         <th className="px-6 py-3">Accredited By</th>
                                         <th className="px-8 py-3 text-center min-w-[140px]">Banjara Hills</th>
-                                        <th className="px-6 py-3 text-center">Uppal</th>
-                                        <th className="px-6 py-3 text-center">KCG</th>
-                                        <th className="px-6 py-3 text-center">Miyapur</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 text-gray-700">
@@ -277,15 +274,6 @@ const AcademicsSection2 = () => {
                                         <td className="px-6 py-4 text-gray-500">Texila International Management</td>
                                         <td className="px-6 py-4 text-center">
                                             <span className="inline-flex h-7 min-w-[2rem] items-center justify-center rounded-md bg-pink-100 px-2 text-sm font-semibold text-pink-700">2</span>
-                                        </td>
-                                        <td className="px-6 py-4 text-center">
-                                            <span className="text-gray-400">—</span>
-                                        </td>
-                                        <td className="px-6 py-4 text-center">
-                                            <span className="text-gray-400">—</span>
-                                        </td>
-                                        <td className="px-6 py-4 text-center">
-                                            <span className="text-gray-400">—</span>
                                         </td>
                                     </tr>
                                 </tbody>

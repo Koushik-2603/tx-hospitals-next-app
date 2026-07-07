@@ -26,9 +26,9 @@ export const locations = [
     {
         id: 3,
         name: "TX Hospitals, Banjara Hills, Hyderabad",
-        address: "# 8-2-680, Raichandani Construction, no:12, B Road, Sri Ram Nagar Colony, Banjara Hills, Hyderabad, Telangana 500028",
+        address: "# 8-2-680/A,  Raichandani Construction, Road No: 12, Sri Ram Nagar Colony, Banjara Hills, Hyderabad, Telangana 500028",
         phone: "040-66529999",
-        mapCoords: [17.407846851900647, 78.44466631002469],
+        mapCoords: [17.408587026550897, 78.44449394391825],
         image: "/assets/ContactUs/BanjaraUnit1.jpg",
         slug: "banjara-hills1",
         seoTitle: "TX Hospitals Banjara Hills, Hyderabad | 24/7 Multi-Specialty Hospital",
@@ -38,9 +38,9 @@ export const locations = [
     {
         id: 4,
         name: "TX Children's Hospital, Banjara Hills, Hyderabad",
-        address: "# 8-2-680, Raichandani Construction, no:12, B Road, Sri Ram Nagar Colony, Banjara Hills, Hyderabad, Telangana 500028",
+        address: "# 8-2-679,  Raichandani Construction, Road No: 12, Sri Ram Nagar Colony, Banjara Hills, Hyderabad, Telangana 500028",
         phone: "040-66529999",
-        mapCoords: [17.407950683449737, 78.4449538935423],
+        mapCoords: [17.40854607691875, 78.44500892800298],
         image: "/assets/ContactUs/BanjaraUnit2.jpg",
         slug: "banjara-hills2",
         seoTitle: "TX Children’s Hospital Banjara Hills, Hyderabad | Best Pediatric & Neonatal Care",
