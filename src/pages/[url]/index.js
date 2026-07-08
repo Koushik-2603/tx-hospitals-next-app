@@ -44,10 +44,18 @@ export default function UniversalPage() {
                         return;
                     }
                     if (hint.type === 'doctor') {
-                        const res = await axios.get(`${CONFIG.API_BASE_URL}/doctors/${hint.id}`);
-                        setType("doctor");
-                        setData(res.data);
-                        setLoading(false);
+                        try {
+                            const res = await axios.get(`${CONFIG.API_BASE_URL}/doctors/${hint.id}`);
+                            if (!res.data || Object.keys(res.data).length === 0) {
+                                router.replace("/");
+                                return;
+                            }
+                            setType("doctor");
+                            setData(res.data);
+                            setLoading(false);
+                        } catch (err) {
+                            router.replace("/");
+                        }
                         return;
                     }
                 }
@@ -82,10 +90,18 @@ export default function UniversalPage() {
                 // Check Doctors
                 const matchDoctor = doctors.find(d => cleanUrl === d.url.replace(/^\/|\/$/g, ""));
                 if (matchDoctor) {
-                    const res = await axios.get(`${CONFIG.API_BASE_URL}/doctors/${matchDoctor.id}`);
-                    setType("doctor");
-                    setData(res.data);
-                    setLoading(false);
+                    try {
+                        const res = await axios.get(`${CONFIG.API_BASE_URL}/doctors/${matchDoctor.id}`);
+                        if (!res.data || Object.keys(res.data).length === 0) {
+                            router.replace("/");
+                            return;
+                        }
+                        setType("doctor");
+                        setData(res.data);
+                        setLoading(false);
+                    } catch (err) {
+                        router.replace("/");
+                    }
                     return;
                 }
 
@@ -96,6 +112,12 @@ export default function UniversalPage() {
                     setType("surgery");
                     setData(res?.data?.Item);
                     setLoading(false);
+                    return;
+                }
+
+                // If it looks like a doctor URL but no match was found, redirect to homepage
+                if (cleanUrl.startsWith("dr-")) {
+                    router.replace("/");
                     return;
                 }
 

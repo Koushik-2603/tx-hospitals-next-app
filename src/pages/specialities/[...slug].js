@@ -102,7 +102,7 @@ export default function CenterOfExcellencePage() {
         { name: "Diseases and Treatment", key: "disease-and-treatment" },
         { name: "Diagnostics", key: "diagnostics" },
         { name: "Procedures", key: "procedures" },
-        { name: "Doctors", key: "our-clinical-team" },
+        ...(department !== "mother-child-care" ? [{ name: "Doctors", key: "our-clinical-team" }] : []),
     ];
 
     const { title, image } = getDepartmentDetails(department);

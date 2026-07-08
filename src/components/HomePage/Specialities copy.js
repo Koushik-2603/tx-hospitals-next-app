@@ -92,6 +92,16 @@ const specialities = [
         title: "Internal Medicine",
         desc: "Preventive and chronic disease management for overall adult health.",
         img: "/assets/Header/Internal-Medicine.jpg",
+    },
+    {
+        title: "Gynecology",
+        desc: "Comprehensive care for women's health, pregnancy, fertility, and gynecological conditions.",
+        img: "/assets/specialities/Gynecology.webp",
+    },
+    {
+        title: "Pediatrics",
+        desc: "Expert healthcare for newborns, infants, children, and adolescents with compassionate care.",
+        img: "/assets/specialities/Pediatric.webp",
     }
 ];
 
