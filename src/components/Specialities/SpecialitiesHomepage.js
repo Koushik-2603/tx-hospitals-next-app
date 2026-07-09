@@ -37,10 +37,16 @@ const specialities = [
         path: "/specialities/urology"
     },
     {
-        title: "Mother & Child Care",
-        desc: "Safe maternity, fertility and paediatric care for every stage of life.",
-        img: "/assets/specialities/Mother & Child.webp",
-        path: "/specialities/mother-child-care"
+        title: "Gynecology",
+        desc: "Comprehensive care for women's health, pregnancy, fertility, and gynecological conditions.",
+        img: "/assets/specialities/Gynecology.webp",
+        path: "/specialities/gynecology-hospitals"
+    },
+    {
+        title: "Pediatrics",
+        desc: "Expert healthcare for newborns, infants, children, and adolescents with compassionate care.",
+        img: "/assets/specialities/Pediatric.webp",
+        path: "/specialities/pediatric-hospitals"
     },
     {
         title: "Transplant Medicine",
@@ -107,18 +113,6 @@ const specialities = [
         desc: "Precision diagnosis and treatment for vision and eye disorders.",
         img: "/assets/specialities/Eye.webp",
         path: "/specialities/eye-ophthalmology"
-    },
-    {
-        title: "Gynecology",
-        desc: "Comprehensive care for women's health, pregnancy, fertility, and gynecological conditions.",
-        img: "/assets/specialities/Gynecology.webp",
-        path: "/specialities/gynecology-hospitals"
-    },
-    {
-        title: "Pediatrics",
-        desc: "Expert healthcare for newborns, infants, children, and adolescents with compassionate care.",
-        img: "/assets/specialities/Pediatric.webp",
-        path: "/specialities/pediatric-hospitals"
     }
 ];
 

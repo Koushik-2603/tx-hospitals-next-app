@@ -93,7 +93,7 @@ export default function UniversalPage() {
                     try {
                         const res = await axios.get(`${CONFIG.API_BASE_URL}/doctors/${matchDoctor.id}`);
                         if (!res.data || Object.keys(res.data).length === 0) {
-                            router.replace("/");
+                            router.replace("/find-doctor/");
                             return;
                         }
                         setType("doctor");
@@ -117,7 +117,7 @@ export default function UniversalPage() {
 
                 // If it looks like a doctor URL but no match was found, redirect to homepage
                 if (cleanUrl.startsWith("dr-")) {
-                    router.replace("/");
+                    router.replace("/find-doctor/");
                     return;
                 }
 
