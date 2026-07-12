@@ -102,7 +102,7 @@ export const dropdowns = {
         { name: "Medical Technology", path: "" },
         { name: "Second Opinion", path: "/surgery-care" },
         { name: "Health Packages", path: "/health-package" },
-        { name: "News & Media", path: "" },
+        { name: "News & Media", path: "/news-and-media" },
     ],
 };
 
