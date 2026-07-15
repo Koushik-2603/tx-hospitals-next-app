@@ -37,6 +37,14 @@ and a culture of continuous improvement.`,
         },
         {
             id: "management-2",
+            name: "Dr. J Ravi Kiran",
+            qualification: "MBBS, MD - Paediatrics",
+            designation: "",
+            image: "/assets/Management/Dr. J Ravi Kiran.webp",
+            description: `Dr. J Ravi Kiran is a Consultant Neonatologist and Paediatrician with over 10 years of experience in child healthcare and newborn care. He is experienced in diagnosing and treating common and complex paediatric conditions in infants, children, and adolescents. His areas of care include newborn health, viral fever treatment, childhood infections, growth monitoring, vaccination guidance, and general paediatric care.`,
+        },
+        {
+            id: "management-3",
             name: "Dr. Srikanth Vodnala",
             qualification: "DMS, MBA- Healthcare, EGMP-IIMB, LLB",
             designation: "Group Chief Operating Officer",
@@ -51,7 +59,31 @@ and a culture of continuous improvement.`,
  the delivery of quality care to patients.`,
         },
         {
-            id: "management-3",
+            id: "management-4",
+            name: "Sudha Rani Paranam",
+            qualification: "FCA, DISA. Chartered Accountant",
+            designation: "TX Hospitals",
+            image: "/assets/Management/Sudha Rani Paranam.webp",
+            description: `A Chartered Accountant with over 14 years of experience spanning Healthcare, Automobile, Infrastructure, Real Estate, Retail, and Cooperative Societies. Proven track record of delivering strategic financial insights, automating reporting processes, and driving compliance across sectors.`,
+        },
+        {
+            id: "management-5",
+            name: "Shrikant Patnaik",
+            qualification: "M.com (Osmania University), Certification-M&A and Corporate Finance (Swayam)",
+            designation: "TX Hospitals",
+            image: "/assets/Management/Shrikant Patnaik.webp",
+            description: `Accomplished Finance and Accounting professional with 8+ years of experience across healthcare, hospitals, biotech, and diverse industries. Expertise in financial reporting, accounting operations, Forex management, statutory and regulatory compliance, and internal controls. Proven ability to optimize financial processes, ensure compliance, and deliver accurate, timely financial insights that support business growth and operational excellence.`,
+        },
+        {
+            id: "management-6",
+            name: "Dr. Naveen Meesala",
+            qualification: "Director - Tx Hospital, Uppal",
+            designation: "Operations & Business Development",
+            image: "/assets/Management/Dr. Naveen Meesala.webp",
+            description: `Hospital administrator with 25 years of experience across private and government sectors.`,
+        },
+        {
+            id: "management-7",
             name: "Navya Vani S",
             qualification: "MHM, LLB",
             designation: "",
@@ -65,21 +97,71 @@ in driving continuous improvement initiatives while ensuring the
 hospital adheres to regulatory standards, enhancing operational
  excellence.`,
         },
-//         {
-//             id: "management-4",
-//             name: " Dr. Asna Zain",
-//             qualification: "MBBS, MBA",
-//             designation: "",
-//             image: "/assets/Management/Dr. Asna Zain.webp",
-//             description: `Dr. Asna Zain is a young and accomplished healthcare professional
-//  with extensive experience in healthcare administration and operations.
-//  She has previously served as Associate Vice President of Operations
-//  at a renowned hospital group in Hyderabad and gained clinical
-//  experience in the USA. Dr. Zain holds a diploma in Medical Law and
-//  Ethics from the National Law School University of India. Her expertise
-//  lies in patient care management and hospital operations, focusing on
-//  enhancing both clinical and administrative efficiency.`,
-//         },
+        {
+            id: "management-8",
+            name: "Kishore Kumar Akula",
+            qualification: "",
+            designation: "TX Hospitals Uppal - COO",
+            image: "/assets/Management/Kishore Kumar Akula.webp",
+            description: `Mr Kishore Kumar Akula, a healthcare management professional with over 18 years of experience in hospital operations and administration. Had the privilege of working with several leading multi-specialty and specialty hospitals across India, holding key leadership roles in operations, administration, and business management. Expertise includes hospital operations, NABH accreditation, strategic planning, revenue growth, team development, and enhancing patient experience. committed to building efficient healthcare systems that deliver quality care while driving sustainable organizational growth.`,
+        },
+        {
+            id: "management-9",
+            name: "Vade Dileep Reddy",
+            qualification: "",
+            designation: "TX Hospitals Kachiguda - COO",
+            image: "/assets/Management/Vade Dileep Reddy.webp",
+            description: `Vade Dileep Reddy is a healthcare management professional with over 13 years of experience in hospital operations and administration. He holds a B.Tech degree and an MBA in Healthcare & Hospital Management from the University of Hyderabad.
+Over the course of his career, he has worked with several leading hospitals, gaining extensive expertise in hospital administration, operational excellence, quality management, patient experience, strategic planning, and healthcare service delivery. He has been instrumental in streamlining hospital processes, enhancing operational efficiency, and ensuring high standards of patient care.`,
+        },
+        {
+            id: "management-10",
+            name: "Chantati Padma Janardhana Rao",
+            qualification: "",
+            designation: "TX Hospitals Miyapur - COO",
+            image: "/assets/Management/Chantati Padma Janardhana Rao.webp",
+            description: `Mr. Janardhan is a seasoned healthcare management professional with over 22 years of experience in hospital operations, administration, and strategic business management. Throughout his career, he has held key leadership positions across reputed healthcare institutions, successfully driving operational excellence, business growth, and organizational transformation. His expertise includes hospital operations, strategic planning, process optimization, revenue enhancement, quality initiatives, team development, and delivering an exceptional patient experience. As the Chief Operating Officer at TX Hospitals, Miyapur, he is committed to building efficient healthcare systems, fostering a culture of excellence, and ensuring high-quality, patient-centric care while driving sustainable organizational growth.`,
+        },
+        {
+            id: "management-11",
+            name: "M.V.Padmalatha",
+            qualification: "MBA – HR",
+            designation: "TX Hospitals - HR",
+            image: "/assets/Management/M.V.Padmalatha.webp",
+            description: `Padmalatha is a visionary Human Resource professional holding 2 decades of HR experience. She is specialized in implementing data driven HR metrics, workforce planning, strategic employee relations, retention initiatives for frontline healthcare staff, grievance resolutions. She has developed various HR initiatives aligning overall clinical & non – clinical competencies. With her good people management skills she collaborates with senior management to create a positive work place culture, shaping organizational culture, supports employee development by initiating various training programs contributing to overall success & sustainability.`,
+        },
+        {
+            id: "management-12",
+            name: "M Manoj Reddy",
+            qualification: "PGDM",
+            designation: "TX Hospitals Banjara Hills - HR",
+            image: "/assets/Management/M Manoj Reddy.webp",
+            description: `I have 7 years of experience in HR Operations and Payroll. During this time, I have handled end-to-end HR activities, including recruitment, onboarding, attendance and leave management, payroll processing, employee records, statutory compliance, and employee relations.\n\nI have worked in NABH and JCI-accredited hospitals, where I gained hands-on experience in maintaining HR processes in line with healthcare quality standards. I have also been involved in manpower planning, performance management, HR documentation, policy implementation, and coordinating with different departments to ensure smooth day-to-day HR operations.`,
+        },
+        {
+            id: "management-13",
+            name: "P. Buchi Babu",
+            qualification: "MBA – Human Resources",
+            designation: "TX Hospitals Miyapur - HR",
+            image: "/assets/Management/P. Buchi Babu.webp",
+            description: `Buchi Babu is a dynamic Human Resource professional with over a decade of extensive HR and administrative experience across the pharmaceutical, automobile and biotechnology sectors. He specializes in talent acquisition, end-to-end recruitment lifecycle management, strategic contract labor management, and ensuring absolute statutory compliance with labor laws. He has successfully spearheaded employee engagement calendars, robust reward and recognition programs, and seamless payroll and exit processes. Equipped with strong analytical and conflict-resolution skills, Buchi Babu effectively bridges plant operations with corporate HR strategy, driving organizational compliance through rigorous internal and external audits while fostering a positive, safe, and collaborative workplace culture.`,
+        },
+        {
+            id: "management-14",
+            name: "Kambham Nagajyothi",
+            qualification: "MBA-HR & Finance",
+            designation: "TX Hospitals Kachiguda - HR",
+            image: "/assets/Management/Kambham Nagajyothi.webp",
+            description: `Nagajyothi has 2 years experience in IT sector. 3 years experience in health sector in the department of Human Resource. She is managed employee recruitment and onboarding process.checked resumes and coordinated interview, completed joining formalities, prepared appointment letters, maintained HR documentation and employee records.Handled employee queries regarding benefits and HR policies. she processed attendance, Leaves, payroll information in greythr app. Monitored employee performance appraisals process. prepared HR reports. Approaces department HODs on workforce planning. coordinated background verification collected the document. Managed exit formalities, full and final settlement. Provided still working, for exit employees provided Service and experience letters, Payslips.`,
+        },
+        {
+            id: "management-15",
+            name: "Mohammad Abdul Khayyum",
+            qualification: "MBA – Human Resource Management",
+            designation: "TX Hospitals Uppal - HR",
+            image: "/assets/Management/Mohammad Abdul Khayyum.webp",
+            description: `Abdul Khayyum is a dedicated Human Resource professional with over 6 years of experience in the healthcare industry. He has expertise in employee onboarding and joining formalities, payroll processing, attendance and leave management, HR documentation, statutory compliance, employee records management, and HR operations. He is committed to ensuring smooth HR processes while maintaining accuracy, compliance, and confidentiality.\n\nWith strong organizational and interpersonal skills, he effectively coordinates with department heads and employees to streamline HR functions, support workforce management, and enhance employee experience. He actively contributes to policy implementation, employee engagement initiatives, and maintaining HR systems to support organizational growth. His proactive approach, attention to detail, and commitment to operational excellence enable him to deliver efficient HR services and contribute to the overall success of the organization.`,
+        }
     ];
 
     return (

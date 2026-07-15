@@ -129,12 +129,12 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                 {/* Center: Dynamic content */}
                 <div className="flex-1 min-w-[250px] border-r border-gray-200 pr-4">
                     {hoveredAboutItem === "Management" && (
-                        <div className="flex flex-col gap-1">
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
                             {managementNames.map((name, i) => (
                                 <button
                                     key={i}
                                     onClick={() => handleMenuClick("/management", `management-${i}`)}
-                                    className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100 last:border-0"
+                                    className="text-left text-gray-700 hover:text-pink-700 py-2 px-2 transition-colors font-medium border-b border-gray-100"
                                 >
                                     {name}
                                 </button>
@@ -572,7 +572,7 @@ export default function HospitalNavbar({ variant = "primary", forceSecondary = f
                                                             </button>
 
                                                             {isSubOpen && (
-                                                                <ul className="ml-4 space-y-1 border-l border-gray-100 pl-3 py-1">
+                                                                <ul className="ml-4 space-y-1 border-l border-gray-100 pl-3 py-1 grid grid-cols-1 overflow-y-auto max-h-[250px]">
                                                                     {item === "Management" && managementNames.map((name, i) => (
                                                                         <li key={i}><button className="text-xs text-gray-500 py-1 text-left w-full" onClick={() => handleNavigate("/management")}>{name}</button></li>
                                                                     ))}
