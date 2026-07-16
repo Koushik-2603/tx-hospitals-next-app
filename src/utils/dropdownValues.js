@@ -109,7 +109,7 @@ export const dropdowns = {
 export const managementNames = [
     "Dr. Ghantasala Navaneeth",
     "L Panduranga Reddy",
-    "Dr. J Ravi Kiran",
+    "Dr. J. Ravi Kiran",
     "Dr. Srikanth Vodnala",
     "Sudha Rani Paranam",
     "Shrikant Patnaik",
