@@ -118,8 +118,8 @@ export const managementNames = [
     "Kishore Kumar Akula",
     "Vade Dileep Reddy",
     "Chantati Padma Janardhana Rao",
-    "M.V.Padmalatha",
-    "M Manoj Reddy",
+    "M. V. Padmalatha",
+    "M. Manoj Reddy",
     "P. Buchi Babu",
     "Kambham Nagajyothi",
     "Mohammad Abdul Khayyum"

@@ -72,22 +72,22 @@ of TX Hospitals.`,
                             className="bg-white shadow-md rounded-3xl p-6 md:p-10 flex flex-col md:flex-row items-center gap-8"
                         >
                             {/* Left: Image */}
-                            <div className="w-full md:w-[40%] flex justify-center">
-                                <div className="relative w-60 h-60 md:w-64 md:h-64">
+                            <div className="w-full md:w-[40%] flex justify-center pb-8 md:pb-0">
+                                <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
                                     <Image
                                         src="/assets/Board_of_Directors/Directors Back side Box B.webp"
                                         alt="Background"
                                         width={400}
                                         height={400}
-                                        className="object-cover mt-12 rounded-xl"
+                                        className="absolute w-full h-full object-contain mt-6 md:mt-10 rounded-xl"
                                     />
-                                    <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="relative z-10 md:-mb-1.5 mb-1.5 w-full h-full flex items-center justify-center">
                                         <Image
                                             src={director.image}
                                             alt={director.name}
-                                            width={250}
-                                            height={250}
-                                            className="rounded-xl object-cover"
+                                            width={300}
+                                            height={300}
+                                            className="w-full h-full object-contain rounded-xl"
                                         />
                                     </div>
                                 </div>

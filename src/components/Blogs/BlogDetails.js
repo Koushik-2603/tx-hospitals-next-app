@@ -3,9 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import useIsMobile from "@/hooks/useIsMobile";
-import { IoPlay, IoPause, IoStop, IoPlaySkipForward } from "react-icons/io5";
-import { FaChevronDown, FaChevronUp,FaTags } from "react-icons/fa";
-import { franc } from "franc";
+import { FaChevronDown, FaChevronUp, FaTags } from "react-icons/fa";
 import { motion } from "framer-motion";
 import DOMPurify from "dompurify";
 import ActionButtons from "@/components/Common/ActionButtons";
@@ -18,8 +16,6 @@ export default function BlogDetails({ blogData, departments }) {
     const isMobile = useIsMobile();
     const [currentUrl, setCurrentUrl] = useState("");
     const [showModal, setShowModal] = useState(false);
-    const [isSpeaking, setIsSpeaking] = useState(false);
-    const [isPaused, setIsPaused] = useState(false);
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -32,134 +28,7 @@ export default function BlogDetails({ blogData, departments }) {
         window.scrollTo({ left: document.body.scrollWidth, top: 0, behavior: "smooth" });
     }, []);
 
-    const getLangCode = (text) => {
-        const lang = franc(text);
-        const map = {
-            eng: "en-US",
-            hin: "hi-IN",
-            spa: "es-ES",
-            fra: "fr-FR",
-            deu: "de-DE",
-            tam: "ta-IN",
-            tel: "te-IN",
-        };
-        return map[lang] || "en-US";
-    };
 
-    const getFemaleVoice = (lang) => {
-        const voices = speechSynthesis.getVoices();
-
-        // Try to get a voice with 'female' indicators
-        const femaleVoices = voices.filter(voice =>
-            voice.lang.startsWith(lang) &&
-            /female|woman|zira|susan|karen|samantha|lucia|microsoft (.*) female/i.test(voice.name)
-        );
-
-        if (femaleVoices.length) return femaleVoices[0];
-
-        // Fallback to any voice in the desired language
-        return voices.find(voice => voice.lang.startsWith(lang));
-    };
-
-    // TTS play handler
-    const handlePlay = () => {
-        if (!blogData) return;
-
-        // Retry after voices load if not ready yet
-        if (!speechSynthesis.getVoices().length) {
-            speechSynthesis.onvoiceschanged = () => {
-                handlePlay();
-            };
-            return;
-        }
-
-        handleStop();
-
-        const utterances = [];
-        const title = blogData?.blogTitle;
-        const titleLang = getLangCode(title);
-        const utterTitle = new SpeechSynthesisUtterance(title);
-        utterTitle.lang = titleLang;
-        utterTitle.voice = getFemaleVoice(titleLang);
-        utterances.push(utterTitle);
-
-        blogData?.extraFields.forEach(field => {
-            const heading = field?.heading;
-            const description = field?.description?.replace(/<[^>]+>/g, '');
-
-            const headingLang = getLangCode(heading);
-            const descLang = getLangCode(description);
-
-            const utterHeading = new SpeechSynthesisUtterance(heading);
-            utterHeading.lang = headingLang;
-            utterHeading.voice = getFemaleVoice(headingLang);
-            utterances.push(utterHeading);
-
-            const utterDesc = new SpeechSynthesisUtterance(description);
-            utterDesc.lang = descLang;
-            utterDesc.voice = getFemaleVoice(descLang);
-            utterances.push(utterDesc);
-        });
-
-        let index = 0;
-        const speakNext = () => {
-            if (index < utterances.length) {
-                const utter = utterances[index];
-                utter.onend = () => {
-                    index++;
-                    speakNext();
-                };
-                speechSynthesis.speak(utter);
-            } else {
-                setIsSpeaking(false);
-                setIsPaused(false);
-            }
-        };
-
-        speakNext();
-        setIsSpeaking(true);
-        setIsPaused(false);
-    };
-
-    // Pause TTS
-    const handlePause = () => {
-        speechSynthesis.pause();
-        setIsPaused(true);
-    };
-
-    // Resume TTS
-    const handleResume = () => {
-        speechSynthesis.resume();
-        setIsPaused(false);
-    };
-
-    // Stop TTS
-    const handleStop = () => {
-        speechSynthesis.cancel();
-        setIsSpeaking(false);
-        setIsPaused(false);
-    };
-
-    // Load voices on mount and log them for debugging
-    useEffect(() => {
-        const loadVoices = () => {
-            const voices = speechSynthesis.getVoices();
-        };
-
-        speechSynthesis.onvoiceschanged = loadVoices;
-        loadVoices(); // in case voices are already available
-
-        return () => {
-            speechSynthesis.cancel();
-        };
-    }, []);
-
-    // Cleanup on unmount
-    useEffect(() => {
-        return () => {
-            speechSynthesis.cancel();
-        };
-    }, []);
 
     function fixOrderedListNumbering(html) {
         let parser = new DOMParser();
@@ -315,43 +184,7 @@ export default function BlogDetails({ blogData, departments }) {
                                     transition={{ duration: 0.5 }}
                                 />
                             </div>
-                            <div className="mt-2 flex gap-2 items-center">
-                                {!isSpeaking ? (
-                                    <button
-                                        onClick={handlePlay}
-                                        className="bg-pink-600 text-white px-2 py-1 rounded flex items-center gap-2"
-                                    >
-                                        <IoPlay size={18} />
-                                        Play
-                                    </button>
-                                ) : isPaused ? (
-                                    <button
-                                        onClick={handleResume}
-                                        className="bg-pink-600 text-white px-2 py-1 rounded flex items-center gap-2"
-                                    >
-                                        <IoPlaySkipForward size={18} />
-                                        Resume
-                                    </button>
-                                ) : (
-                                    <button
-                                        onClick={handlePause}
-                                        className="bg-pink-600 text-white px-2 py-1 rounded flex items-center gap-2"
-                                    >
-                                        <IoPause size={18} />
-                                        Pause
-                                    </button>
-                                )}
 
-                                {isSpeaking && (
-                                    <button
-                                        onClick={handleStop}
-                                        className="bg-pink-600 text-white px-4 py-2 rounded flex items-center gap-2"
-                                    >
-                                        <IoStop size={20} />
-                                        Stop
-                                    </button>
-                                )}
-                            </div>
                             {blogData?.extraFields?.map((field, index) => {
                                 const getHeadingTag = () => {
                                     if (index === 0 || index === 1) return 'h2';
@@ -424,43 +257,7 @@ export default function BlogDetails({ blogData, departments }) {
                                     />
                                 </div>
                                 <div className="pl-4">
-                                    <div className="mt-4 flex gap-4 items-center">
-                                        {!isSpeaking ? (
-                                            <button
-                                                onClick={handlePlay}
-                                                className="bg-pink-600 text-white px-4 py-2 rounded flex items-center gap-2"
-                                            >
-                                                <IoPlay size={20} />
-                                                Play
-                                            </button>
-                                        ) : isPaused ? (
-                                            <button
-                                                onClick={handleResume}
-                                                className="bg-pink-600 text-white px-4 py-2 rounded flex items-center gap-2"
-                                            >
-                                                <IoPlaySkipForward size={20} />
-                                                Resume
-                                            </button>
-                                        ) : (
-                                            <button
-                                                onClick={handlePause}
-                                                className="bg-pink-600 text-white px-4 py-2 rounded flex items-center gap-2"
-                                            >
-                                                <IoPause size={20} />
-                                                Pause
-                                            </button>
-                                        )}
 
-                                        {isSpeaking && (
-                                            <button
-                                                onClick={handleStop}
-                                                className="bg-pink-600 text-white px-4 py-2 rounded flex items-center gap-2"
-                                            >
-                                                <IoStop size={20} />
-                                                Stop
-                                            </button>
-                                        )}
-                                    </div>
                                     {blogData?.extraFields?.map((field, index) => {
                                         const getHeadingTag = () => {
                                             if (index === 0 || index === 1) return 'h2';

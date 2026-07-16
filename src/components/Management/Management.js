@@ -87,7 +87,7 @@ Dr. Ravi Kiran continues to deliver comprehensive paediatric care, and also Comm
             id: "management-7",
             name: "Navya Vani S",
             qualification: "MHM, LLB",
-            designation: "",
+            designation: "TX Hospitals Banjara Hills - COO",
             image: "/assets/Management/Navya Vani S.webp",
             description: `Navya Vani S is a distinguished healthcare management professional
  with over 19 years of experience in hospital operations, quality
@@ -124,19 +124,19 @@ hospital adheres to regulatory standards, enhancing operational
         },
         {
             id: "management-11",
-            name: "M.V.Padmalatha",
+            name: "M. V. Padmalatha",
             qualification: "MBA – HR",
-            designation: "TX Hospitals - HR",
+            designation: "Group Head – Human Resources, TX Hospitals",
             image: "/assets/Management/M.V.Padmalatha.webp",
-            description: `Padmalatha is a visionary Human Resource professional holding 2 decades of HR experience. She is specialized in implementing data driven HR metrics, workforce planning, strategic employee relations, retention initiatives for frontline healthcare staff, grievance resolutions. She has developed various HR initiatives aligning overall clinical & non – clinical competencies. With her good people management skills she collaborates with senior management to create a positive work place culture, shaping organizational culture, supports employee development by initiating various training programs contributing to overall success & sustainability.`,
+            description: `Ms. M. V. Padmalatha is a seasoned Human Resource leader with over 20 years of experience in strategic HR management. As the Group Head – Human Resources at TX Hospitals, she leads the HR function across all branches, driving workforce planning, talent acquisition, employee engagement, and organizational development. She specializes in implementing data-driven HR strategies, retention initiatives, grievance resolution, and competency development for both clinical and non-clinical teams. Working closely with senior leadership, she plays a key role in shaping organizational culture, strengthening people practices, and aligning HR initiatives with the hospital's long-term vision. Through structured training programs and effective people management, Ms. Padmalatha continues to build a skilled, motivated workforce that supports operational excellence and quality healthcare delivery.`,
         },
         {
             id: "management-12",
-            name: "M Manoj Reddy",
+            name: "M. Manoj Reddy",
             qualification: "PGDM",
-            designation: "TX Hospitals Banjara Hills - HR",
+            designation: "Human Resources – TX Hospitals, Banjara Hills",
             image: "/assets/Management/M Manoj Reddy.webp",
-            description: `I have 7 years of experience in HR Operations and Payroll. During this time, I have handled end-to-end HR activities, including recruitment, onboarding, attendance and leave management, payroll processing, employee records, statutory compliance, and employee relations.\n\nI have worked in NABH and JCI-accredited hospitals, where I gained hands-on experience in maintaining HR processes in line with healthcare quality standards. I have also been involved in manpower planning, performance management, HR documentation, policy implementation, and coordinating with different departments to ensure smooth day-to-day HR operations.`,
+            description: `Mr. M. Manoj Reddy is a Human Resource professional with over seven years of experience in HR operations and payroll management. At TX Hospitals, Banjara Hills, he oversees key HR functions, including recruitment, onboarding, payroll processing, attendance and leave management, employee relations, statutory compliance, and HR documentation. Having worked with NABH and JCI-accredited hospitals, he possesses strong expertise in implementing HR processes that align with national and international healthcare quality standards. He also supports manpower planning, performance management, policy implementation, and cross-functional coordination to ensure smooth day-to-day HR operations. His commitment to operational efficiency and employee engagement contributes to building a productive workforce and delivering quality healthcare services.`,
         },
         {
             id: "management-13",
@@ -149,18 +149,18 @@ hospital adheres to regulatory standards, enhancing operational
         {
             id: "management-14",
             name: "Kambham Nagajyothi",
-            qualification: "MBA-HR & Finance",
-            designation: "TX Hospitals Kachiguda - HR",
+            qualification: "MBA – HR & Finance",
+            designation: "Human Resources – TX Hospitals, Kachiguda",
             image: "/assets/Management/Kambham Nagajyothi.webp",
-            description: `Nagajyothi has 2 years experience in IT sector. 3 years experience in health sector in the department of Human Resource. She is managed employee recruitment and onboarding process.checked resumes and coordinated interview, completed joining formalities, prepared appointment letters, maintained HR documentation and employee records.Handled employee queries regarding benefits and HR policies. she processed attendance, Leaves, payroll information in greythr app. Monitored employee performance appraisals process. prepared HR reports. Approaces department HODs on workforce planning. coordinated background verification collected the document. Managed exit formalities, full and final settlement. Provided still working, for exit employees provided Service and experience letters, Payslips.`,
+            description: `Ms. Kambham Nagajyothi is an HR professional with five years of experience across the IT and healthcare sectors, including three years in hospital human resource management. At TX Hospitals, Kachiguda, she manages recruitment, onboarding, payroll coordination, employee records, attendance, performance appraisals, and workforce planning. She works closely with department heads to ensure efficient staffing and smooth HR operations. Her expertise also includes HR compliance, background verification, employee engagement, and exit management. With a people-centric approach, she contributes to building a productive workforce and fostering a positive workplace culture that supports quality healthcare delivery.`,
         },
         {
             id: "management-15",
             name: "Mohammad Abdul Khayyum",
             qualification: "MBA – Human Resource Management",
-            designation: "TX Hospitals Uppal - HR",
+            designation: "Human Resources – TX Hospitals, Uppal",
             image: "/assets/Management/Mohammad Abdul Khayyum.webp",
-            description: `Abdul Khayyum is a dedicated Human Resource professional with over 6 years of experience in the healthcare industry. He has expertise in employee onboarding and joining formalities, payroll processing, attendance and leave management, HR documentation, statutory compliance, employee records management, and HR operations. He is committed to ensuring smooth HR processes while maintaining accuracy, compliance, and confidentiality.\n\nWith strong organizational and interpersonal skills, he effectively coordinates with department heads and employees to streamline HR functions, support workforce management, and enhance employee experience. He actively contributes to policy implementation, employee engagement initiatives, and maintaining HR systems to support organizational growth. His proactive approach, attention to detail, and commitment to operational excellence enable him to deliver efficient HR services and contribute to the overall success of the organization.`,
+            description: `Mr. Mohammad Abdul Khayyum is a Human Resource professional with over six years of experience in the healthcare industry. At TX Hospitals, Uppal, he manages key HR functions, including recruitment, onboarding, payroll processing, attendance and leave management, HR documentation, and statutory compliance. He works closely with department heads to support workforce planning, employee engagement, and seamless HR operations. Known for his strong organizational and interpersonal skills, he is committed to maintaining efficient HR systems, ensuring regulatory compliance, and fostering a positive work environment that contributes to the hospital's operational excellence and long-term growth.`,
         }
     ];
 
@@ -179,22 +179,22 @@ hospital adheres to regulatory standards, enhancing operational
                             className="bg-white shadow-md rounded-3xl p-6 md:p-10 flex flex-col md:flex-row items-center gap-8"
                         >
                             {/* Left: Image */}
-                            <div className="w-full md:w-[40%] flex justify-center">
-                                <div className="relative w-60 h-60 md:w-64 md:h-64">
+                            <div className="w-full md:w-[40%] flex justify-center pb-8 md:pb-0">
+                                <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
                                     <Image
                                         src="/assets/Management/Mangement Person Backside Box 2.webp"
                                         alt="Background"
                                         width={400}
                                         height={400}
-                                        className="object-cover mt-12 rounded-xl"
+                                        className="absolute w-full h-full object-contain mt-6 md:mt-10 rounded-xl"
                                     />
-                                    <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="relative z-10 w-full md:-mb-1.5 mb-1.5 h-full flex items-center justify-center">
                                         <Image
                                             src={director.image}
                                             alt={director.name}
-                                            width={250}
-                                            height={250}
-                                            className="rounded-xl object-cover"
+                                            width={300}
+                                            height={300}
+                                            className="w-full h-full object-contain rounded-xl"
                                         />
                                     </div>
                                 </div>
