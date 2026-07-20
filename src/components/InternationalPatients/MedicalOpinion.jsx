@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { submitMyKareLead } from '@/utils/leadService';
+
 import useIsMobile from "@/hooks/useIsMobile";
 import { countryFlags } from "@/utils/countryFlags";
 import { useRouter } from "next/router";
@@ -75,6 +77,7 @@ export default function MedicalOpinion() {
                 },
                 body: JSON.stringify(formData),
             });
+            submitMyKareLead(formData);
 
             router.push("/thank-you/");
         } catch (err) {

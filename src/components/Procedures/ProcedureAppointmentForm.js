@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { submitMyKareLead } from '@/utils/leadService';
+
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import CONFIG from "@/config";
@@ -86,6 +88,7 @@ export default function ProcedureAppointmentForm({ heading }) {
                     body: JSON.stringify(formData),
                 }
             );
+            submitMyKareLead(formData);
 
             if (response.ok) {
                 router.push("/thank-you/");

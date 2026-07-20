@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { submitMyKareLead } from '@/utils/leadService';
+
 import Image from 'next/image';
 import { User, Phone, Stethoscope, CalendarDays, Calendar, Clock, Star, MapPin, ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/router';
@@ -237,6 +239,8 @@ const KachigudaNewHero = () => {
                 time: formData.date
             };
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
+            // Dispatch to MyKare lead API
+            submitMyKareLead(payload);
             toast.success("Appointment request submitted successfully!");
             setFormData({ name: '', phone: '', location: 'Kachiguda', doctor: '', date: '' });
             router.push('/thank-you-kachiguda');

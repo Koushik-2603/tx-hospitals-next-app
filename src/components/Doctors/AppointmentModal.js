@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { submitMyKareLead } from '@/utils/leadService';
+
 import { IoClose } from "react-icons/io5";
 import { GoChevronRight, GoChevronLeft } from "react-icons/go";
 import { format, addMinutes, parse, addDays } from "date-fns";
@@ -180,17 +182,19 @@ export default function AppointmentModal({ closeModal, doctorData }) {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${CONFIG.API_BASE_URL}/send-email/appointment-booking`, {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
+            const leadPayload = {
                     ...formData,
                     mobile: mobileNumber,
                     date: format(new Date(year, month, selectedDate), "EEE dd MMM"),
                     time: selectedSlot,
                     doctorName: doctorData?.name || "MD Specialist",
-                })
+                };
+            const response = await fetch(`${CONFIG.API_BASE_URL}/send-email/appointment-booking`, {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(leadPayload)
             });
+            submitMyKareLead(leadPayload);
 
             if (response.ok) {
                 router.push({

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { submitMyKareLead } from '@/utils/leadService';
+
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import CONFIG from '@/config';
@@ -46,6 +48,8 @@ const HerniaForm = () => {
             };
 
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
+            // Dispatch to MyKare lead API
+            submitMyKareLead(payload);
             router.push('/thank-you-uppal');
         } catch (error) {
             console.error("Submission error:", error);

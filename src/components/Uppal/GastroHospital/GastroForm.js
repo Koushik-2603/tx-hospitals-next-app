@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { submitMyKareLead } from '@/utils/leadService';
+
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import axios from 'axios';
@@ -53,6 +55,8 @@ const GastroForm = ({ redirectUrl = "/thank-you-uppal" }) => {
                 time: formData.time
             };
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
+            // Dispatch to MyKare lead API
+            submitMyKareLead(payload);
             toast.success("Consultation request submitted successfully!");
             router.push(redirectUrl);
         } catch (error) {

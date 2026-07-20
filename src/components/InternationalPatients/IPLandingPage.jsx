@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { submitMyKareLead } from '@/utils/leadService';
+
 import useIsMobile from "@/hooks/useIsMobile";
 import CONFIG from "@/config";
 import { useRouter } from "next/router";
@@ -50,6 +52,7 @@ export default function IPLandingPage() {
                 },
                 body: JSON.stringify(payload),
             });
+            submitMyKareLead(payload);
 
             router.push("/thank-you/");
         } catch (err) {

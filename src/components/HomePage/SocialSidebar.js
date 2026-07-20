@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { submitMyKareLead } from '@/utils/leadService';
+
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
 import { useRouter } from 'next/router';
@@ -75,7 +77,7 @@ const SearchableSelect = ({ label, placeholder, options, value, onChange, icon: 
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-10 pr-10 text-gray-950 focus:ring-4 focus:ring-opacity-20 outline-none transition-all text-sm font-semibold disabled:opacity-75 disabled:bg-gray-100 disabled:cursor-not-allowed cursor-pointer"
                 />
                 <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-[16px] h-[16px] z-10 pointer-events-none" />
-                
+
                 {isOpen && !disabled && (
                     <div className="absolute left-0 right-0 mt-1 max-h-60 overflow-y-auto bg-white border border-gray-200 rounded-xl shadow-xl z-50 py-1">
                         {filteredOptions.length > 0 ? (
@@ -150,6 +152,14 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
         fetchAllData();
     }, []);
 
+    useEffect(() => {
+        const handleOpenAppointmentModal = () => {
+            openForm('appointment');
+        };
+        window.addEventListener('open-appointment-modal', handleOpenAppointmentModal);
+        return () => window.removeEventListener('open-appointment-modal', handleOpenAppointmentModal);
+    }, []);
+
     const getPageLocation = () => {
         if (typeof window === 'undefined') return '';
         const path = window.location.pathname.toLowerCase();
@@ -162,13 +172,13 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
 
     const getDoctorsForLocation = (loc) => {
         if (!loc) return [];
-        return allDoctors.filter(doc => 
+        return allDoctors.filter(doc =>
             doc.location && doc.location.toLowerCase().includes(loc.toLowerCase())
         );
     };
 
     const locationOptions = ["Banjara Hills", "Kachiguda", "Miyapur", "Uppal"];
-    const doctorOptions = getDoctorsForLocation(formData.location).map(doctor => 
+    const doctorOptions = getDoctorsForLocation(formData.location).map(doctor =>
         `${doctor.name} - ${doctor.department || doctor.designation || 'Specialist'}`
     );
 
@@ -257,6 +267,8 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
                 time: formData.date
             };
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
+            // Dispatch to MyKare lead API
+            submitMyKareLead(payload);
             toast.success("Request submitted successfully!");
             setIsOpen(false);
             setFormData({ name: '', phone: '', location: '', doctor: '', date: '' });
@@ -357,7 +369,7 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
                             WhatsApp
                         </span>
                         <a href="https://wa.me/9144514459" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex items-center justify-center w-10 h-10 rounded-l-lg shadow-md transition-all hover:w-12 text-white" style={{ background: 'rgb(37, 211, 102)' }}>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.18 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966a9.9 9.9 0 0 0-6.98-2.853c-5.438 0-9.863 4.372-9.867 9.8.001 1.736.469 3.43 1.36 4.953l-.991 3.616 3.698-.97c1.54.845 3.201 1.289 4.841 1.289zm8.56-5.882c-.269-.134-1.594-.787-1.84-.878-.246-.09-.425-.135-.605.134-.18.27-.697.877-.854 1.057-.158.18-.314.203-.583.069-.269-.134-1.138-.419-2.167-1.338-.802-.714-1.344-1.597-1.501-1.867-.158-.269-.017-.415.118-.549.121-.12.269-.314.403-.472.135-.157.18-.27.27-.449.09-.18.045-.337-.023-.472-.067-.134-.605-1.457-.828-1.995-.218-.523-.458-.453-.628-.462-.162-.008-.348-.01-.534-.01-.186 0-.49.07-.746.348-.256.278-.978.956-.978 2.33 0 1.375.999 2.702 1.138 2.893.139.191 1.967 3.003 4.76 4.213.665.288 1.184.46 1.588.589.668.213 1.277.183 1.758.11.536-.08 1.594-.651 1.817-1.282.223-.63.223-1.17.157-1.282-.067-.112-.246-.18-.515-.314z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.18 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966a9.9 9.9 0 0 0-6.98-2.853c-5.438 0-9.863 4.372-9.867 9.8.001 1.736.469 3.43 1.36 4.953l-.991 3.616 3.698-.97c1.54.845 3.201 1.289 4.841 1.289zm8.56-5.882c-.269-.134-1.594-.787-1.84-.878-.246-.09-.425-.135-.605.134-.18.27-.697.877-.854 1.057-.158.18-.314.203-.583.069-.269-.134-1.138-.419-2.167-1.338-.802-.714-1.344-1.597-1.501-1.867-.158-.269-.017-.415.118-.549.121-.12.269-.314.403-.472.135-.157.18-.27.27-.449.09-.18.045-.337-.023-.472-.067-.134-.605-1.457-.828-1.995-.218-.523-.458-.453-.628-.462-.162-.008-.348-.01-.534-.01-.186 0-.49.07-.746.348-.256.278-.978.956-.978 2.33 0 1.375.999 2.702 1.138 2.893.139.191 1.967 3.003 4.76 4.213.665.288 1.184.46 1.588.589.668.213 1.277.183 1.758.11.536-.08 1.594-.651 1.817-1.282.223-.63.223-1.17.157-1.282-.067-.112-.246-.18-.515-.314z" /></svg>
                         </a>
                     </div>
 
@@ -402,7 +414,7 @@ export default function SocialSidebar({ isClinicalResearch = false }) {
                                             <input type="tel" name="phone" placeholder="Enter Phone" required value={formData.phone} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 focus:ring-4 focus:ring-opacity-20 outline-none transition-all text-sm font-semibold" />
                                         </div>
                                     </div>
-                                    
+
                                     <SearchableSelect
                                         label="Location"
                                         placeholder="Select Location"

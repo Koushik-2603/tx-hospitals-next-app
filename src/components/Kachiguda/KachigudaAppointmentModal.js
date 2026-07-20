@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { submitMyKareLead } from '@/utils/leadService';
+
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import axios from 'axios';
@@ -77,6 +79,8 @@ export default function KachigudaAppointmentModal({ closeModal }) {
                 time: formData.date
             };
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
+            // Dispatch to MyKare lead API
+            submitMyKareLead(payload);
             toast.success("Appointment request submitted successfully!");
             closeModal();
             router.push('/thank-you-kachiguda');

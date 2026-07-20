@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { submitMyKareLead } from '@/utils/leadService';
+
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -82,6 +84,8 @@ const BanjaraHillsHero = () => {
             };
 
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
+            // Dispatch to MyKare lead API
+            submitMyKareLead(payload);
             toast.success("Consultation request submitted successfully!");
             router.push('/thank-you-banjara-hills');
         } catch (error) {

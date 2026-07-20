@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import useIsMobile from "@/hooks/useIsMobile";
 import CONFIG from "@/config";
 import countryOptions from "@/utils/countryOptions";
+import { submitMyKareLead } from "@/utils/leadService";
 
 export default function AppointmentForm({ department, doctorName }) {
     const router = useRouter();
@@ -43,11 +44,13 @@ export default function AppointmentForm({ department, doctorName }) {
         e.preventDefault();
 
         try {
+            const leadPayload = { ...formData, department };
             const response = await fetch(`${CONFIG.API_BASE_URL}/send-email/COE`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...formData, department }),
+                body: JSON.stringify(leadPayload),
             });
+            submitMyKareLead(leadPayload);
 
             if (response.ok) {
                 router.push("/thank-you");

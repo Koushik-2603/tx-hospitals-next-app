@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { submitMyKareLead } from '@/utils/leadService';
+
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { IoClose } from 'react-icons/io5';
@@ -63,6 +65,8 @@ const MiyapurFloatingBar = () => {
                 time: formData.date
             };
             await axios.post(`${CONFIG.API_BASE_URL}/send-email/dynamic-form`, payload);
+            // Dispatch to MyKare lead API
+            submitMyKareLead(payload);
             toast.success("Request submitted successfully!");
             setIsOpen(false);
             setFormData({ name: '', phone: '', speciality: '', date: '' });

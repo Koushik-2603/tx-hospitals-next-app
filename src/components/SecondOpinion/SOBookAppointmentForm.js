@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { submitMyKareLead } from '@/utils/leadService';
+
 import useIsMobile from "@/hooks/useIsMobile";
 import { sendOtp, verifyOtp } from "@/utils/otpUtils";
 import CONFIG from "@/config";
@@ -51,6 +53,7 @@ export default function SOBookAppointemntForm() {
                     body: JSON.stringify(formData),
                 }
             );
+            submitMyKareLead(formData);
 
             if (response.ok) {
                 router.push("/thank-you/");
