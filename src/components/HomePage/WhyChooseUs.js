@@ -56,7 +56,7 @@ const stats = [
     { number: 4, suffix: "", title: "Locations", desc: "Delivering advanced, accessible care across Hyderabad.", icon: "/assets/WhyChooseUs/Location icon.png" },
     { number: 500, suffix: "+", title: "Beds", desc: "Modern facilities designed for comprehensive treatment.", icon: "/assets/WhyChooseUs/Bed.png" },
     { number: 100000, suffix: "+", title: "Happy Patients", desc: "A legacy of trust, healing and personalized care for patients and families.", icon: "/assets/WhyChooseUs/Happy Patient Icon.png" },
-    { number: 30000, suffix: "+", title: "Successful Surgeries", desc: "Expertise in complex, robotic and minimally invasive procedures.", icon: "/assets/WhyChooseUs/Surgery Icon.png" },
+    { number: 30000, suffix: "+", title: "Successful Surgeries", desc: "Expertise in complex, robotic and minimally invasive procedures.", icon: "/assets/WhyChooseUs/Surgery Icon.webp" },
     { number: 5000, suffix: "+", title: "International Patients", desc: "A trusted destination for patients from around the world.", icon: "/assets/WhyChooseUs/International Patinet icon.png" },
     { number: 200, suffix: "+", title: "Doctors", desc: "Experienced doctors dedicated to personalized and expert care.", icon: "/assets/WhyChooseUs/Docotor Icon.png" },
 ];
