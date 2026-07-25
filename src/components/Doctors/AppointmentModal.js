@@ -29,10 +29,15 @@ export default function AppointmentModal({ closeModal, doctorData }) {
         dob: "",
         gender: "",
     });
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const [currentDate, setCurrentDate] = useState(tomorrow);
-    const [selectedDate, setSelectedDate] = useState(tomorrow.getDate());
+
+    const initialDate = new Date();
+    initialDate.setDate(initialDate.getDate() + 1);
+    if (initialDate.getDay() === 0) {
+        initialDate.setDate(initialDate.getDate() + 1);
+    }
+
+    const [currentDate, setCurrentDate] = useState(initialDate);
+    const [selectedDate, setSelectedDate] = useState(initialDate.getDate());
     const [doctorAvailability, setDoctorAvailability] = useState(null);
     const [bookedSlots, setBookedSlots] = useState([]);
 
@@ -183,12 +188,12 @@ export default function AppointmentModal({ closeModal, doctorData }) {
         e.preventDefault();
         try {
             const leadPayload = {
-                    ...formData,
-                    mobile: mobileNumber,
-                    date: format(new Date(year, month, selectedDate), "EEE dd MMM"),
-                    time: selectedSlot,
-                    doctorName: doctorData?.name || "MD Specialist",
-                };
+                ...formData,
+                mobile: mobileNumber,
+                date: format(new Date(year, month, selectedDate), "EEE dd MMM"),
+                time: selectedSlot,
+                doctorName: doctorData?.name || "MD Specialist",
+            };
             const response = await fetch(`${CONFIG.API_BASE_URL}/send-email/appointment-booking`, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
