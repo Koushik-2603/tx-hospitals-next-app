@@ -7,6 +7,7 @@ import DiagnosticsAndWhenToSeeSection from './DiagnosticsAndWhenToSeeSection';
 import CTASection from './CTASection';
 import FAQSection from './FAQSection';
 import CONFIG from '@/config';
+import Head from 'next/head';
 
 const BranchSpecialityLanding = ({ location, speciality }) => {
     const [pageData, setPageData] = useState(null);
@@ -64,6 +65,14 @@ const BranchSpecialityLanding = ({ location, speciality }) => {
 
     return (
         <div className="w-full bg-white font-['Poppins']">
+            {pageData.seo && (
+                <Head>
+                    {pageData.seo.title && <title>{pageData.seo.title}</title>}
+                    {pageData.seo.metaDescription && <meta name="description" content={pageData.seo.metaDescription} key="description" />}
+                    {pageData.seo.keywords && <meta name="keywords" content={pageData.seo.keywords} key="keywords" />}
+                </Head>
+            )}
+
             {/* 1. Hero / Header Section */}
             <HeroSection pageData={content} location={location} speciality={speciality} />
 
