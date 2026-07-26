@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
+import FAQSchema from '@/utils/FAQSchema';
 
 const RoboticFAQ = ({ data }) => {
     const [activeIndex, setActiveIndex] = useState(0); // First FAQ open by default
@@ -17,6 +18,7 @@ const RoboticFAQ = ({ data }) => {
     if (isMobile) {
         return (
             <section className="py-6 px-4 font-inter bg-white">
+            <FAQSchema faqs={data} />
                 <div className="max-w-full">
                     <h2 className="text-[22px] leading-tight font-bold text-center mb-6 text-[#b02a44]">
                         Frequently Asked Questions (FAQs)

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import FAQSchema from '@/utils/FAQSchema';
 
 const KachigudaNewFAQ = () => {
     const [openIndex, setOpenIndex] = useState(-1);
@@ -41,6 +42,7 @@ const KachigudaNewFAQ = () => {
 
     return (
         <section id="faq" className="py-16" style={{ background: 'rgb(243, 243, 245)' }}>
+            <FAQSchema faqs={faqs} />
             <div className="max-w-[1170px] mx-auto px-6 lg:pr-11">
                 <div className="text-center mb-10">
                     <h2 className="mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>

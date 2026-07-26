@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import FAQSchema from '@/utils/FAQSchema';
 
 const faqs = [
     {
@@ -35,6 +36,7 @@ const UppalFAQ = () => {
 
     return (
         <section className="bg-white py-10 md:py-16 px-6 md:px-10 lg:px-12">
+            <FAQSchema faqs={faqs} />
             <div className="max-w-4xl mx-auto">
                 {/* Header Section */}
                 <div className="text-center mb-8 md:mb-12">

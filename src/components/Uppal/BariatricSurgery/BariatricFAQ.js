@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import WhatsAppButton from '../WhatsAppButton';
+import FAQSchema from '@/utils/FAQSchema';
 
 const BariatricFAQ = ({
     badge = "Your Questions Answered",
@@ -30,6 +31,7 @@ const BariatricFAQ = ({
 
     return (
         <section className="bg-gray-50 py-8 md:py-16 px-6 font-inter">
+            <FAQSchema faqs={faqs} />
             <div className="max-w-4xl mx-auto">
                 <div className="mb-8 text-center lg:text-left">
                     <span className="text-pink-700 font-bold text-xs md:text-sm uppercase tracking-widest block mb-2">

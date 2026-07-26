@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import FAQSchema from '@/utils/FAQSchema';
 
 const HerniaFAQ = () => {
     const [openIndex, setOpenIndex] = useState(-1);
@@ -26,6 +27,7 @@ const HerniaFAQ = () => {
 
     return (
         <section className="py-8 md:py-16 px-6 bg-gray-50 font-inter">
+            <FAQSchema faqs={faqs} />
             <div className="max-w-4xl mx-auto">
                 <div className="mb-12 text-center md:text-left">
                     <span className="text-[#be185d] font-bold text-xs md:text-sm uppercase tracking-widest block mb-2">

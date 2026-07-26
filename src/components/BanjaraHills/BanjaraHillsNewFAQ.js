@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import FAQSchema from '@/utils/FAQSchema';
 
 const BanjaraHillsNewFAQ = () => {
     const [openIndex, setOpenIndex] = useState(-1);
@@ -49,6 +50,7 @@ const BanjaraHillsNewFAQ = () => {
 
     return (
         <section className="py-10 md:py-12" style={{ background: 'rgb(243, 243, 245)' }}>
+            <FAQSchema faqs={faqs} />
             <div className="max-w-[1170px] mx-auto px-6">
                 <div className="text-center mb-10">
                     <h2 className="mb-3 text-2xl md:text-3xl lg:text-4xl font-bold font-poppins" style={{ color: 'rgb(3, 2, 19)' }}>

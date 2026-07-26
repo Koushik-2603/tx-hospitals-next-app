@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import CONFIG from "@/config";
 import { useRouter } from "next/router";
 import axios from "axios";
+import SearchableDropdown from "@/components/Common/SearchableDropdown";
 
 export default function SecondOpinionForm({ opinionType = "First" }) {
     const router = useRouter();
@@ -19,11 +20,6 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
         concern: "",
         agreed: false
     });
-
-    // Custom searchable specialty select state
-    const [isSpecialtyOpen, setIsSpecialtyOpen] = useState(false);
-    const [specialtySearch, setSpecialtySearch] = useState("");
-    const specialtyRef = useRef(null);
 
     // Dynamic branches array
     const branches = [
@@ -53,21 +49,7 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
         "Anaesthesia & Pain Management"
     ];
 
-    // Filter specialties based on search
-    const filteredSpecialties = specialtiesList.filter((item) =>
-        item.toLowerCase().includes(specialtySearch.toLowerCase())
-    );
 
-    // Close specialty dropdown when clicking outside
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (specialtyRef.current && !specialtyRef.current.contains(event.target)) {
-                setIsSpecialtyOpen(false);
-            }
-        }
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
 
     // Handle standard input changes
     const handleChange = (e) => {
@@ -194,77 +176,28 @@ export default function SecondOpinionForm({ opinionType = "First" }) {
                     />
                 </div>
 
-                {/* Select Branches */}
+                {/* Searchable Select Branches */}
                 <div>
-                    <select
+                    <SearchableDropdown
                         name="branch"
                         value={formData.branch}
                         onChange={handleChange}
-                        required
-                        className="w-full text-xs md:text-sm border border-gray-200 rounded-lg px-3.5 py-2 text-gray-750 bg-white focus:outline-none focus:ring-2 focus:ring-[#b01640]/25 focus:border-[#b01640] transition-all appearance-none cursor-pointer font-inter"
-                        style={{
-                            backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`,
-                            backgroundPosition: 'right 0.75rem center',
-                            backgroundSize: '1.25rem',
-                            backgroundRepeat: 'no-repeat',
-                        }}
-                    >
-                        <option value="" disabled>Select Branches</option>
-                        {branches.map((branch, idx) => (
-                            <option key={idx} value={branch}>
-                                {branch}
-                            </option>
-                        ))}
-                    </select>
+                        placeholder="Select Branches"
+                        options={branches.map(branch => ({ label: branch, value: branch }))}
+                        className="w-full text-xs md:text-sm border border-gray-200 rounded-lg px-3.5 py-2 text-gray-750 bg-white focus:outline-none focus:border-[#b01640] transition-all font-inter"
+                    />
                 </div>
 
                 {/* Searchable Select Specialty */}
-                <div className="relative" ref={specialtyRef}>
-                    <div
-                        onClick={() => setIsSpecialtyOpen(!isSpecialtyOpen)}
-                        className="w-full text-xs md:text-sm border border-gray-200 rounded-lg px-3.5 py-2 text-gray-700 bg-white cursor-pointer flex justify-between items-center transition-all focus:outline-none font-inter"
-                    >
-                        <span className={formData.specialty ? "text-gray-850" : "text-gray-400 font-inter"}>
-                            {formData.specialty || "Select Specialty"}
-                        </span>
-                        <svg className={`w-4 h-4 text-gray-400 transition-transform ${isSpecialtyOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </div>
-
-                    {isSpecialtyOpen && (
-                        <div className="absolute z-50 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-xl p-2">
-                            {/* Search box input inside dropdown */}
-                            <input
-                                type="text"
-                                placeholder="Search specialty..."
-                                value={specialtySearch}
-                                onChange={(e) => setSpecialtySearch(e.target.value)}
-                                className="w-full text-xs border border-gray-200 rounded-md px-3 py-1.5 mb-2 focus:outline-none focus:ring-2 focus:ring-[#b01640]/25 focus:border-[#b01640] outline-none font-inter"
-                            />
-
-                            {/* Options with custom scroll */}
-                            <div className="max-h-40 overflow-y-auto divide-y divide-gray-50 select-no-scrollbar">
-                                {filteredSpecialties.length > 0 ? (
-                                    filteredSpecialties.map((spec, idx) => (
-                                        <div
-                                            key={idx}
-                                            onClick={() => {
-                                                setFormData(prev => ({ ...prev, specialty: spec }));
-                                                setIsSpecialtyOpen(false);
-                                                setSpecialtySearch("");
-                                            }}
-                                            className="px-3 py-2 text-xs text-gray-700 hover:bg-pink-50 hover:text-[#b01640] rounded-md cursor-pointer transition-all font-inter"
-                                        >
-                                            {spec}
-                                        </div>
-                                    ))
-                                ) : (
-                                    <div className="px-3 py-2 text-xs text-gray-400 text-center font-inter">No specialties found</div>
-                                )}
-                            </div>
-                        </div>
-                    )}
+                <div className="relative">
+                    <SearchableDropdown
+                        name="specialty"
+                        value={formData.specialty}
+                        onChange={handleChange}
+                        placeholder="Select Specialty"
+                        options={specialtiesList.map(spec => ({ label: spec, value: spec }))}
+                        className="w-full text-xs md:text-sm border border-gray-200 rounded-lg px-3.5 py-2 text-gray-700 bg-white transition-all focus:outline-none font-inter"
+                    />
                 </div>
 
                 {/* Briefly describe concern */}

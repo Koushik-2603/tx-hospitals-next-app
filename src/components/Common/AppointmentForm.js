@@ -6,6 +6,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import CONFIG from "@/config";
 import countryOptions from "@/utils/countryOptions";
 import { submitMyKareLead } from "@/utils/leadService";
+import SearchableDropdown from "@/components/Common/SearchableDropdown";
 
 export default function AppointmentForm({ department, doctorName }) {
     const router = useRouter();
@@ -126,23 +127,23 @@ export default function AppointmentForm({ department, doctorName }) {
                     />
 
                     {country === "Other Countries" && (
-                        <select
-                            className={`w-full border focus:outline-pink-300 rounded-full ${isMobile ? "p-1 mt-2" : "px-3 py-2 mt-2"}`}
-                            value={selectedCountry.name}
+                        <SearchableDropdown
+                            className={`w-full border focus:border-pink-300 rounded-full ${isMobile ? "p-1 mt-2" : "px-3 py-2 mt-2"}`}
+                            name="country"
+                            value={selectedCountry?.name || ""}
+                            placeholder="Select Country"
+                            options={countryOptions
+                                .filter((c) => c.name !== "India")
+                                .map((country) => ({
+                                    label: `${country.name} (${country.code})`,
+                                    value: country.name
+                                }))}
                             onChange={(e) =>
                                 setSelectedCountry(
                                     countryOptions.find((c) => c.name === e.target.value)
                                 )
                             }
-                        >
-                            {countryOptions
-                                .filter((c) => c.name !== "India")
-                                .map((country) => (
-                                    <option key={country.code} value={country.name}>
-                                        {country.name} ({country.code})
-                                    </option>
-                                ))}
-                        </select>
+                        />
                     )}
 
                     {/* Phone Field */}

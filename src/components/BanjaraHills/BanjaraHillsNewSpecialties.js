@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-
-const specialtiesList = [
-    { name: 'Cardiology', icon: '/assets/Departments/Cardiac Sciences.png', path: '/specialities/cardiac-sciences' },
-    { name: 'Orthopedics', icon: '/assets/Departments/Orthopaedics.png', path: '/specialities/orthopaedics' },
-    { name: 'Robotic Surgery', icon: '/assets/Departments/Robotics Sciences.png', path: '/specialities' },
-    { name: 'General Medicine', icon: '/assets/Departments/Internal Medicine.png', path: '/specialities/internal-medicine' },
-    { name: 'Gastroenterology', icon: '/assets/Departments/Gastro Sciences.png', path: '/specialities/gastro-sciences' },
-    { name: 'Nephrology', icon: '/assets/Departments/Nephrology.png', path: '/specialities/nephrology' },
-    { name: 'Urology', icon: '/assets/Departments/Urology Icon.png', path: '/specialities/urology' },
-    { name: 'Neurology', icon: '/assets/Departments/Neuro Sciences.png', path: '/specialities/neuro-sciences' },
-    { name: 'ENT', icon: '/assets/Departments/ENT.png', path: '/specialities/ent' },
-    { name: 'Pulmonology', icon: '/assets/Departments/Pulmonology.png', path: '/specialities/pulmonology' },
-    { name: 'Obstetrics & Gynaecology', icon: '/assets/Departments/Mother & Child Care.png', path: '/specialities/gynaecology-and-obstetrics' },
-    { name: 'Paediatrics', icon: '/assets/Departments/Mother & Child Care.png', path: '/specialities/paediatrics' },
-    { name: 'Skin & Cosmetic Care', icon: '/assets/Departments/Dermatology & Cosmetic Care.png', path: '/specialities/dermatology' },
-    { name: 'Dental Care', icon: '/assets/Departments/Dental & Maxillofacial.png', path: '/specialities/dental-and-maxillofacial' },
-    { name: 'Oncology', icon: '/assets/Departments/Oncology.png', path: '/specialities/oncology' },
-    { name: 'Pain Management', icon: '/assets/Departments/Anaesthesia & Pain Management.png', path: '/specialities/pain-management' }
-];
+import CONFIG from '@/config';
 
 const BanjaraHillsNewSpecialties = () => {
+    const [specialtiesList, setSpecialtiesList] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [showAll, setShowAll] = useState(false);
     const router = useRouter();
+
+    useEffect(() => {
+        const fetchSpecialities = async () => {
+            try {
+                const response = await fetch(`${CONFIG.API_BASE_URL}/api/specialities/Banjara%20Hills`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setSpecialtiesList(data || []);
+                }
+            } catch (error) {
+                console.error("Failed to fetch specialities:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchSpecialities();
+    }, []);
 
     const visibleSpecialties = showAll ? specialtiesList : specialtiesList.slice(0, 8);
 
@@ -42,39 +44,58 @@ const BanjaraHillsNewSpecialties = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
-                    {visibleSpecialties.map((item, index) => (
-                        <div
-                            key={index}
-                            onClick={() => router.push(item.path)}
-                            className="flex flex-col items-center justify-center gap-4 p-5 rounded-xl bg-white cursor-pointer hover:shadow-md transition-shadow"
-                            style={{ border: '0.5px solid rgb(224, 208, 208)', boxShadow: 'rgba(0, 0, 0, 0.06) 0px 1px 3px', minHeight: '160px' }}
-                        >
-                            <div className="relative w-[60px] h-[60px] flex items-center justify-center">
-                                <Image
-                                    src={item.icon}
-                                    alt={`${item.name} Department - TX Hospitals Banjara Hills`}
-                                    fill
-                                    className="object-contain"
-                                    sizes="60px"
-                                />
-                            </div>
-                            <span className="text-center" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
-                                {item.name}
-                            </span>
+                {loading || specialtiesList.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-12 animate-pulse">
+                        <div className="w-12 h-12 border-4 border-pink-700 border-t-transparent rounded-full animate-spin mb-4"></div>
+                        <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '18px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
+                            Data coming soon...
+                        </p>
+                    </div>
+                ) : (
+                    <>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
+                            {visibleSpecialties.map((item, index) => {
+                                const seoUrl = item?.url;
+                                const path = seoUrl || `/Banjara%20Hills/specialities/${item.SpecialityName}`;
+                                return (
+                                    <div
+                                        key={index}
+                                        onClick={() => router.push(path)}
+                                        className="flex flex-col items-center justify-center gap-4 p-5 rounded-xl bg-white cursor-pointer hover:shadow-md transition-shadow"
+                                        style={{ border: '0.5px solid rgb(224, 208, 208)', boxShadow: 'rgba(0, 0, 0, 0.06) 0px 1px 3px', minHeight: '160px' }}
+                                    >
+                                        <div className="relative w-[60px] h-[60px] flex items-center justify-center">
+                                            {item.IconUrl && (
+                                                <Image
+                                                    src={item.IconUrl}
+                                                    alt={item.SpecialityName || "Speciality"}
+                                                    fill
+                                                    className="object-contain"
+                                                    sizes="60px"
+                                                />
+                                            )}
+                                        </div>
+                                        <span className="text-center" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                                            {item.SpecialityName}
+                                        </span>
+                                    </div>
+                                );
+                            })}
                         </div>
-                    ))}
-                </div>
 
-                <div className="text-center">
-                    <button
-                        onClick={() => setShowAll(!showAll)}
-                        className="px-8 py-2.5 rounded transition-opacity hover:opacity-90 font-medium"
-                        style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '15px', color: 'rgb(255, 255, 255)', border: 'none' }}
-                    >
-                        {showAll ? 'View Less' : 'View More'}
-                    </button>
-                </div>
+                        {specialtiesList.length > 8 && (
+                            <div className="text-center">
+                                <button
+                                    onClick={() => setShowAll(!showAll)}
+                                    className="px-8 py-2.5 rounded transition-opacity hover:opacity-90 font-medium"
+                                    style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '15px', color: 'rgb(255, 255, 255)', border: 'none' }}
+                                >
+                                    {showAll ? 'View Less' : 'View More'}
+                                </button>
+                            </div>
+                        )}
+                    </>
+                )}
             </div>
         </section>
     );

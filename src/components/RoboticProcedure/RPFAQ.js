@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import sanitize from "@/utils/sanitize";
 import useIsMobile from "@/hooks/useIsMobile";
+import FAQSchema from '@/utils/FAQSchema';
 
 const RPFAQ = ({ data }) => {
     const [activeIndex, setActiveIndex] = useState(null); // No FAQ open by default
@@ -16,6 +17,7 @@ const RPFAQ = ({ data }) => {
 
     return (
         <section className="py-6 px-6 md:px-12 font-inter bg-white">
+            <FAQSchema faqs={data} />
             <div className="container mx-auto max-w-4xl">
                 <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#b02a44]">
                     Frequently Asked Questions (FAQs)

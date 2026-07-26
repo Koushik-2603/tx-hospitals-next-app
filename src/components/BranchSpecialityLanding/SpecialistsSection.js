@@ -1,0 +1,179 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Award, MapPin, Calendar, Phone } from 'lucide-react';
+import BookAppointmentForm from '@/components/Blogs/BookAppointemntForm';
+import CONFIG from '@/config';
+
+const SpecialistsSection = ({ data, location, speciality }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [doctorsList, setDoctorsList] = useState([]);
+    const [showAll, setShowAll] = useState(false);
+
+    const formatString = (str) => {
+        if (!str) return '';
+        return str.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    };
+
+    const formattedLocation = formatString(location);
+    const formattedSpeciality = formatString(speciality);
+
+    useEffect(() => {
+        if (!formattedLocation || !formattedSpeciality) return;
+
+        const fetchDoctors = async () => {
+            try {
+                const res = await axios.get(`${CONFIG.API_BASE_URL}/getAllDoctors`);
+                if (res.data) {
+                    const filtered = res.data.filter(doc => {
+                        if (!doc.location || !doc.department) return false;
+                        const locMatch = doc.location.toLowerCase().includes(formattedLocation.toLowerCase());
+
+                        // Handle spelling variations like Orthopedics vs Orthopaedics
+                        const term1 = formattedSpeciality.toLowerCase().replace('paed', 'ped');
+                        const term2 = formattedSpeciality.toLowerCase().replace('ped', 'paed');
+
+                        const deptMatch = doc.department.toLowerCase().includes(term1) || doc.department.toLowerCase().includes(term2) || formattedSpeciality.toLowerCase().includes(doc.department.toLowerCase());
+
+                        return locMatch && deptMatch;
+                    });
+                    setDoctorsList(filtered);
+                }
+            } catch (error) {
+                console.error("Error fetching doctors:", error);
+            }
+        };
+        fetchDoctors();
+    }, [formattedLocation, formattedSpeciality]);
+
+    if (!data) return null;
+
+    const renderTitle = (title) => {
+        if (!title) return null;
+        const splitText = "TX Hospitals";
+        const splitIndex = title.indexOf(splitText);
+
+        if (splitIndex !== -1) {
+            const firstPart = title.substring(0, splitIndex);
+            const secondPart = title.substring(splitIndex);
+            return (
+                <>
+                    {firstPart}
+                    <span style={{ color: 'rgb(189, 56, 92)' }}>{secondPart}</span>
+                </>
+            );
+        }
+        return title;
+    };
+
+    return (
+        <section className="py-10 md:py-12" style={{ backgroundColor: '#fff1f3', fontFamily: 'Poppins, sans-serif' }}>
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Header Section */}
+                <div className="text-center mb-12 max-w-4xl mx-auto">
+                    {data.title && (
+                        <h2 className="text-2xl md:text-[34px] font-bold text-[#1e1e1e] leading-snug mb-5">
+                            {renderTitle(data.title)}
+                        </h2>
+                    )}
+                    {data.description && (
+                        <div
+                            className="text-[#3c3c3c] text-[15px] md:text-[16px] leading-relaxed flex flex-col gap-4 font-normal"
+                            dangerouslySetInnerHTML={{ __html: data.description }}
+                        />
+                    )}
+                </div>
+
+                {/* Doctors Grid */}
+                {doctorsList.length > 0 ? (
+                    <>
+                        <div className="flex flex-wrap justify-center gap-6">
+                            {(showAll ? doctorsList : doctorsList.slice(0, 3)).map((doctor, index) => (
+                                <div key={index} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-[380px] bg-white rounded-xl overflow-hidden flex flex-col" style={{ border: '0.5px solid rgb(220, 220, 220)', boxShadow: 'rgba(0, 0, 0, 0.08) 0px 4px 12px' }}>
+                                    <div className="w-full h-[240px] overflow-hidden bg-[#F5F7FA] pt-4 flex justify-center">
+                                        <img
+                                            src={doctor.image}
+                                            alt={doctor.name}
+                                            className="h-full w-auto object-contain object-bottom"
+                                            onError={(e) => {
+                                                e.target.src = "https://tx-hospital-doctor-images.s3.ap-south-2.amazonaws.com/doctors/placeholder.png";
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="flex flex-col gap-3 p-5 flex-1">
+                                        <div>
+                                            <h3 style={{ fontFamily: 'Poppins, sans-serif', fontSize: '17px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.3 }}>
+                                                {doctor.name}
+                                            </h3>
+                                            <p className="mt-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgb(30, 30, 30)', lineHeight: 1.5 }}>
+                                                {doctor.designation}
+                                            </p>
+                                            <p className="mt-1.5" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
+                                                {doctor.qualification}
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-col gap-1.5 mt-auto pt-3">
+                                            <div className="flex items-center gap-2">
+                                                <Award className="w-[14px] h-[14px] text-[#BD385C]" strokeWidth={2} />
+                                                <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
+                                                    Experience: <strong style={{ color: 'rgb(189, 56, 92)', fontWeight: 600 }}>{doctor.experience}</strong>
+                                                </span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <MapPin className="w-[14px] h-[14px] text-[#BD385C]" strokeWidth={2} />
+                                                <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
+                                                    {doctor.location}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-2 pt-4 border-t border-gray-100 mt-4">
+                                            <button
+                                                onClick={() => setIsModalOpen(true)}
+                                                className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded transition-opacity hover:opacity-90"
+                                                style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
+                                            >
+                                                <Calendar className="w-[14px] h-[14px]" />
+                                                Book
+                                            </button>
+                                            <a
+                                                href="tel:9144514459"
+                                                className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded transition-all hover:bg-[#BD385C] hover:text-white"
+                                                style={{ background: 'rgb(255, 255, 255)', fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgb(189, 56, 92)', border: '1px solid rgb(189, 56, 92)' }}
+                                            >
+                                                <Phone className="w-[14px] h-[14px]" />
+                                                Call
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        {doctorsList.length > 3 && (
+                            <div className="text-center mt-10">
+                                <button
+                                    onClick={() => setShowAll(!showAll)}
+                                    className="inline-block px-8 py-2.5 rounded transition-all hover:bg-[#BD385C] hover:text-white"
+                                    style={{ background: 'rgb(255, 255, 255)', fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 500, color: 'rgb(189, 56, 92)', border: '1.5px solid rgb(189, 56, 92)', cursor: 'pointer' }}
+                                >
+                                    {showAll ? 'View Less' : 'View More'}
+                                </button>
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    <div className="text-center py-10">
+                        <p className="text-gray-500 font-medium">Loading specialists...</p>
+                    </div>
+                )}
+            </div>
+
+            {isModalOpen && (
+                <BookAppointmentForm
+                    showModal={isModalOpen}
+                    setShowModal={setIsModalOpen}
+                />
+            )}
+        </section>
+    );
+};
+
+export default SpecialistsSection;

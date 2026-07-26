@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import CONFIG from '@/config';
 import { toast } from 'react-toastify';
+import SearchableDropdown from '@/components/Common/SearchableDropdown';
 
 const GastroForm = ({ redirectUrl = "/thank-you-uppal" }) => {
     const router = useRouter();
@@ -121,32 +122,26 @@ const GastroForm = ({ redirectUrl = "/thank-you-uppal" }) => {
 
                 <div className="space-y-1">
                     <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Your Concern</label>
-                    <select
+                    <SearchableDropdown
                         name="concern"
                         value={formData.concern}
                         onChange={handleChange}
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm appearance-none"
-                    >
-                        <option value="">Select your concern</option>
-                        {concernOptions.map((option, idx) => (
-                            <option key={idx} value={option}>{option}</option>
-                        ))}
-                    </select>
+                        placeholder="Select your concern"
+                        options={concernOptions.map(option => ({ label: option, value: option }))}
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
+                    />
                 </div>
 
                 <div className="space-y-1">
                     <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Preferred Time</label>
-                    <select
+                    <SearchableDropdown
                         name="time"
                         value={formData.time}
                         onChange={handleChange}
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm appearance-none"
-                    >
-                        <option value="">Select preferred time</option>
-                        {timeOptions.map((option, idx) => (
-                            <option key={idx} value={option}>{option}</option>
-                        ))}
-                    </select>
+                        placeholder="Select preferred time"
+                        options={timeOptions.map(option => ({ label: option, value: option }))}
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 text-gray-900 font-bold focus:ring-4 focus:ring-pink-500/5 outline-none transition-all text-sm"
+                    />
                 </div>
 
                 <button
