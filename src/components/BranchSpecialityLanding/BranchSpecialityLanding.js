@@ -18,7 +18,8 @@ const BranchSpecialityLanding = ({ location, speciality }) => {
 
         const fetchData = async () => {
             try {
-                const url = `${CONFIG.API_BASE_URL}/api/speciality-landing-pages/${location}/${speciality}`; // e.g. Miyapur/Orthopedics
+                const canonicalPath = `/${location}/specialties/${speciality}/`;
+                const url = `${CONFIG.API_BASE_URL}/api/speciality-landing-pages/by-url?url=${encodeURIComponent(canonicalPath)}`;
                 const response = await fetch(url);
                 if (response.ok) {
                     const data = await response.json();

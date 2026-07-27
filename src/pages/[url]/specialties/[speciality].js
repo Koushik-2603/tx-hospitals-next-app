@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import Navbar from '@/components/HomePage/HospitalNavbar';
-import Footer from '@/components/HomePage/Footer';
+import SecondaryLayout from '@/components/Layouts/SecondaryLayout';
 import HeroSection from '@/components/BranchSpecialityLanding/HeroSection';
 import TreatmentsSection from '@/components/BranchSpecialityLanding/TreatmentsSection';
 import ConditionsTreatedSection from '@/components/BranchSpecialityLanding/ConditionsTreatedSection';
@@ -51,44 +50,43 @@ const BranchSpecialtyPage = ({ pageData, error }) => {
                 {content?.seo?.keywords && <meta name="keywords" content={content.seo.keywords} key="keywords" />}
             </Head>
 
-            <Navbar />
+            <SecondaryLayout>
 
-            <main className="w-full bg-white font-['Poppins']">
-                {/* 1. Hero / Header Section */}
-                <HeroSection pageData={content} location={location} speciality={speciality} />
+                <main className="w-full bg-white font-['Poppins']">
+                    {/* 1. Hero / Header Section */}
+                    <HeroSection pageData={content} location={location} speciality={speciality} />
 
-                {/* 2. Treatments Section */}
-                {content.treatments && (
-                    <TreatmentsSection data={content.treatments} />
-                )}
+                    {/* 2. Treatments Section */}
+                    {content.treatments && (
+                        <TreatmentsSection data={content.treatments} />
+                    )}
 
-                {/* 3. Conditions Treated Section */}
-                {content.conditionsTreated && (
-                    <ConditionsTreatedSection data={content.conditionsTreated} />
-                )}
+                    {/* 3. Conditions Treated Section */}
+                    {content.conditionsTreated && (
+                        <ConditionsTreatedSection data={content.conditionsTreated} />
+                    )}
 
-                {/* 4. Specialists Section */}
-                {content.specialists && (
-                    <SpecialistsSection data={content.specialists} location={location} speciality={speciality} />
-                )}
+                    {/* 4. Specialists Section */}
+                    {content.specialists && (
+                        <SpecialistsSection data={content.specialists} location={location} speciality={speciality} />
+                    )}
 
-                {/* 5. Diagnostics and When To See Section */}
-                {(content.diagnostics || content.whenToSee) && (
-                    <DiagnosticsAndWhenToSeeSection diagnostics={content.diagnostics} whenToSee={content.whenToSee} speciality={speciality} />
-                )}
+                    {/* 5. Diagnostics and When To See Section */}
+                    {(content.diagnostics || content.whenToSee) && (
+                        <DiagnosticsAndWhenToSeeSection diagnostics={content.diagnostics} whenToSee={content.whenToSee} speciality={speciality} />
+                    )}
 
-                {/* 6. CTA Section */}
-                {content.cta && (
-                    <CTASection data={content.cta} />
-                )}
+                    {/* 6. CTA Section */}
+                    {content.cta && (
+                        <CTASection data={content.cta} />
+                    )}
 
-                {/* 7. FAQ Section */}
-                {content.faqs && (
-                    <FAQSection data={content.faqs} />
-                )}
-            </main>
-
-            <Footer />
+                    {/* 7. FAQ Section */}
+                    {content.faqs && (
+                        <FAQSection data={content.faqs} />
+                    )}
+                </main>
+            </SecondaryLayout>
         </>
     );
 };
@@ -99,8 +97,9 @@ export async function getServerSideProps(context) {
     let error = false;
 
     try {
-        const url = `${CONFIG.API_BASE_URL}/api/speciality-landing-pages/${location}/${speciality}`;
-        const res = await fetch(url);
+        const canonicalPath = `/${location}/specialties/${speciality}/`;
+        const apiUrl = `${CONFIG.API_BASE_URL}/api/speciality-landing-pages/by-url?url=${encodeURIComponent(canonicalPath)}`;
+        const res = await fetch(apiUrl);
         if (res.ok) {
             pageData = await res.json();
         } else {

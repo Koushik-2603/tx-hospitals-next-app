@@ -94,8 +94,9 @@ export async function getServerSideProps(context) {
     let error = false;
 
     try {
-        const url = `${CONFIG.API_BASE_URL}/api/speciality-landing-pages/${location}/${speciality}`;
-        const res = await fetch(url);
+        const canonicalPath = `/${location}/specialities/${speciality}/`;
+        const apiUrl = `${CONFIG.API_BASE_URL}/api/speciality-landing-pages/by-url?url=${encodeURIComponent(canonicalPath)}`;
+        const res = await fetch(apiUrl);
         if (res.ok) {
             pageData = await res.json();
         } else {
