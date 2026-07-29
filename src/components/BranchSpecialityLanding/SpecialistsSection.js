@@ -3,49 +3,56 @@ import axios from 'axios';
 import { Award, MapPin, Calendar, Phone } from 'lucide-react';
 import BookAppointmentForm from '@/components/Blogs/BookAppointemntForm';
 import CONFIG from '@/config';
+import { matchesDepartment } from '@/utils/specialityAliases';
 
 const SpecialistsSection = ({ data, location, speciality }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [doctorsList, setDoctorsList] = useState([]);
     const [showAll, setShowAll] = useState(false);
+    const [fetchLoading, setFetchLoading] = useState(true);
 
     const formatString = (str) => {
         if (!str) return '';
         return str.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     };
 
+    // Strip trailing facility-type words so e.g. "Orthopedic Hospital" → "Orthopedic"
+    const cleanSpeciality = (str) => {
+        if (!str) return '';
+        const stopWords = /\b(hospital|hospitals|centre|center|department|clinic|clinics|care|unit|services?)\b/gi;
+        return str.replace(stopWords, '').replace(/\s+/g, ' ').trim();
+    };
+
     const formattedLocation = formatString(location);
-    const formattedSpeciality = formatString(speciality);
+    const formattedSpeciality = cleanSpeciality(formatString(speciality));
 
     useEffect(() => {
         if (!formattedLocation || !formattedSpeciality) return;
 
+        setFetchLoading(true);
         const fetchDoctors = async () => {
             try {
                 const res = await axios.get(`${CONFIG.API_BASE_URL}/getAllDoctors`);
                 if (res.data) {
+                    const specKey = formattedSpeciality.toLowerCase();
                     const filtered = res.data.filter(doc => {
                         if (!doc.location || !doc.department) return false;
                         const locMatch = doc.location.toLowerCase().includes(formattedLocation.toLowerCase());
-
-                        // Handle spelling variations like Orthopedics vs Orthopaedics
-                        const term1 = formattedSpeciality.toLowerCase().replace('paed', 'ped');
-                        const term2 = formattedSpeciality.toLowerCase().replace('ped', 'paed');
-
-                        const deptMatch = doc.department.toLowerCase().includes(term1) || doc.department.toLowerCase().includes(term2) || formattedSpeciality.toLowerCase().includes(doc.department.toLowerCase());
-
+                        const deptMatch = matchesDepartment(specKey, doc.department.toLowerCase());
                         return locMatch && deptMatch;
                     });
                     setDoctorsList(filtered);
                 }
             } catch (error) {
                 console.error("Error fetching doctors:", error);
+            } finally {
+                setFetchLoading(false);
             }
         };
         fetchDoctors();
     }, [formattedLocation, formattedSpeciality]);
 
-    if (!data) return null;
+    if (!data && !formattedLocation && !formattedSpeciality) return null;
 
     const renderTitle = (title) => {
         if (!title) return null;
@@ -66,7 +73,7 @@ const SpecialistsSection = ({ data, location, speciality }) => {
     };
 
     return (
-        <section className="py-10 md:py-12" style={{ backgroundColor: '#fff1f3', fontFamily: 'Poppins, sans-serif' }}>
+        <section className="py-10 md:py-12" style={{ backgroundColor: '#fff1f3' }}>
             <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header Section */}
                 <div className="text-center mb-12 max-w-4xl mx-auto">
@@ -101,26 +108,26 @@ const SpecialistsSection = ({ data, location, speciality }) => {
                                     </div>
                                     <div className="flex flex-col gap-3 p-5 flex-1">
                                         <div>
-                                            <h3 style={{ fontFamily: 'Poppins, sans-serif', fontSize: '17px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.3 }}>
+                                            <h3 style={{ fontSize: '17px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.3 }}>
                                                 {doctor.name}
                                             </h3>
-                                            <p className="mt-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgb(30, 30, 30)', lineHeight: 1.5 }}>
+                                            <p className="mt-1" style={{ fontSize: '13px', fontWeight: 500, color: 'rgb(30, 30, 30)', lineHeight: 1.5 }}>
                                                 {doctor.designation}
                                             </p>
-                                            <p className="mt-1.5" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
+                                            <p className="mt-1.5" style={{ fontSize: '12px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
                                                 {doctor.qualification}
                                             </p>
                                         </div>
                                         <div className="flex flex-col gap-1.5 mt-auto pt-3">
                                             <div className="flex items-center gap-2">
                                                 <Award className="w-[14px] h-[14px] text-[#BD385C]" strokeWidth={2} />
-                                                <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
+                                                <span style={{ fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
                                                     Experience: <strong style={{ color: 'rgb(189, 56, 92)', fontWeight: 600 }}>{doctor.experience}</strong>
                                                 </span>
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 <MapPin className="w-[14px] h-[14px] text-[#BD385C]" strokeWidth={2} />
-                                                <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
+                                                <span style={{ fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
                                                     {doctor.location}
                                                 </span>
                                             </div>
@@ -129,7 +136,7 @@ const SpecialistsSection = ({ data, location, speciality }) => {
                                             <button
                                                 onClick={() => setIsModalOpen(true)}
                                                 className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded transition-opacity hover:opacity-90"
-                                                style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
+                                                style={{ background: 'rgb(189, 56, 92)', fontSize: '13px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
                                             >
                                                 <Calendar className="w-[14px] h-[14px]" />
                                                 Book
@@ -137,7 +144,7 @@ const SpecialistsSection = ({ data, location, speciality }) => {
                                             <a
                                                 href="tel:9144514459"
                                                 className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded transition-all hover:bg-[#BD385C] hover:text-white"
-                                                style={{ background: 'rgb(255, 255, 255)', fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgb(189, 56, 92)', border: '1px solid rgb(189, 56, 92)' }}
+                                                style={{ background: 'rgb(255, 255, 255)', fontSize: '13px', fontWeight: 500, color: 'rgb(189, 56, 92)', border: '1px solid rgb(189, 56, 92)' }}
                                             >
                                                 <Phone className="w-[14px] h-[14px]" />
                                                 Call
@@ -152,16 +159,20 @@ const SpecialistsSection = ({ data, location, speciality }) => {
                                 <button
                                     onClick={() => setShowAll(!showAll)}
                                     className="inline-block px-8 py-2.5 rounded transition-all hover:bg-[#BD385C] hover:text-white"
-                                    style={{ background: 'rgb(255, 255, 255)', fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 500, color: 'rgb(189, 56, 92)', border: '1.5px solid rgb(189, 56, 92)', cursor: 'pointer' }}
+                                    style={{ background: 'rgb(255, 255, 255)', fontSize: '15px', fontWeight: 500, color: 'rgb(189, 56, 92)', border: '1.5px solid rgb(189, 56, 92)', cursor: 'pointer' }}
                                 >
                                     {showAll ? 'View Less' : 'View More'}
                                 </button>
                             </div>
                         )}
                     </>
+                ) : fetchLoading ? (
+                    <div className="text-center py-10">
+                        <div className="w-10 h-10 border-4 border-[#BD385C] border-t-transparent rounded-full animate-spin mx-auto" />
+                    </div>
                 ) : (
                     <div className="text-center py-10">
-                        <p className="text-gray-500 font-medium">Loading specialists...</p>
+                        <p className="text-gray-500 font-medium">No specialists found for this location.</p>
                     </div>
                 )}
             </div>

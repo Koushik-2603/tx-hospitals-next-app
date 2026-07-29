@@ -12,7 +12,7 @@ const TreatmentsSection = ({ data }) => {
     const visibleList = showAll ? data.list : data.list.slice(0, initialCount);
 
     return (
-        <section className="py-8 md:py-10 bg-[#fcf5f7]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <section className="py-8 md:py-10 bg-[#fcf5f7]" style={{  }}>
             <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header Section */}
                 <div className="text-center space-y-3 mb-10 max-w-4xl mx-auto">

@@ -12,7 +12,7 @@ const FAQSection = ({ data }) => {
     };
 
     return (
-        <section className="py-10 md:py-12" style={{ background: '#f8f9fa', fontFamily: 'Poppins, sans-serif' }}>
+        <section className="py-10 md:py-12" style={{ background: '#f8f9fa' }}>
             <FAQSchema faqs={data} />
             <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
@@ -39,7 +39,7 @@ const FAQSection = ({ data }) => {
                                     style={{ background: isOpen ? 'rgb(189, 56, 92)' : 'rgb(255, 255, 255)' }}
                                     aria-expanded={isOpen}
                                 >
-                                    <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', md: '16px', fontWeight: 500, color: isOpen ? 'rgb(255, 255, 255)' : 'rgb(20, 20, 20)', lineHeight: 1.5, paddingRight: '1rem' }}>
+                                    <span style={{ fontSize: '15px', md: '16px', fontWeight: 500, color: isOpen ? 'rgb(255, 255, 255)' : 'rgb(20, 20, 20)', lineHeight: 1.5, paddingRight: '1rem' }}>
                                         {faq.question}
                                     </span>
                                     <ChevronDown

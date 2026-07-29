@@ -67,9 +67,7 @@ const BranchSpecialtyPage = ({ pageData, error }) => {
                     )}
 
                     {/* 4. Specialists Section */}
-                    {content.specialists && (
-                        <SpecialistsSection data={content.specialists} location={location} speciality={speciality} />
-                    )}
+                    <SpecialistsSection data={content.specialists || null} location={location} speciality={speciality} />
 
                     {/* 5. Diagnostics and When To See Section */}
                     {(content.diagnostics || content.whenToSee) && (

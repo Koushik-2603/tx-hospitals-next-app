@@ -8,7 +8,7 @@ const CTASection = ({ data }) => {
     if (!data) return null;
 
     return (
-        <section className="py-10 md:py-14" style={{ background: 'linear-gradient(135deg, #fdf8f9 0%, #f4f6f9 100%)', fontFamily: 'Poppins, sans-serif' }}>
+        <section className="py-10 md:py-14" style={{ background: 'linear-gradient(135deg, #fdf8f9 0%, #f4f6f9 100%)' }}>
             <div className="max-w-[1150px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div
                     className="rounded-2xl md:rounded-[24px] p-8 md:p-12 lg:p-16 text-center relative overflow-hidden"

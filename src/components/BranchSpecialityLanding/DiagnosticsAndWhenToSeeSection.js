@@ -43,7 +43,7 @@ const DiagnosticsAndWhenToSeeSection = ({ diagnostics, whenToSee, speciality }) 
     const startsWithVowel = /^[aeiou]/i.test(formattedSpeciality);
 
     return (
-        <section className="py-8 md:py-10 bg-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <section className="py-8 md:py-10 bg-white" style={{  }}>
             <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-14">
 

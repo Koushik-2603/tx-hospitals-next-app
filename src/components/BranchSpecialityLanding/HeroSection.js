@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { submitMyKareLead } from '@/utils/leadService';
 import CONFIG from '@/config';
+import { matchesDepartment } from '@/utils/specialityAliases';
 import { useRouter } from 'next/router';
 import SearchableDropdown from '@/components/Common/SearchableDropdown';
 import BookAppointmentForm from '@/components/Blogs/BookAppointemntForm';
@@ -16,8 +17,15 @@ const HeroSection = ({ pageData, location, speciality }) => {
         return str.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     };
 
+    // Strip trailing facility-type words so e.g. "Orthopedic Hospital" → "Orthopedic"
+    const cleanSpeciality = (str) => {
+        if (!str) return '';
+        const stopWords = /\b(hospital|hospitals|centre|center|department|clinic|clinics|care|unit|services?)\b/gi;
+        return str.replace(stopWords, '').replace(/\s+/g, ' ').trim();
+    };
+
     const formattedLocation = formatString(location);
-    const formattedSpeciality = formatString(speciality);
+    const formattedSpeciality = cleanSpeciality(formatString(speciality));
 
     const [patientType, setPatientType] = useState('India');
     const [formData, setFormData] = useState({
@@ -36,16 +44,11 @@ const HeroSection = ({ pageData, location, speciality }) => {
             try {
                 const res = await axios.get(`${CONFIG.API_BASE_URL}/getAllDoctors`);
                 if (res.data) {
+                    const specKey = formattedSpeciality.toLowerCase();
                     const filtered = res.data.filter(doc => {
                         if (!doc.location || !doc.department) return false;
                         const locMatch = doc.location.toLowerCase().includes(formattedLocation.toLowerCase());
-
-                        // Handle spelling variations like Orthopedics vs Orthopaedics
-                        const term1 = formattedSpeciality.toLowerCase().replace('paed', 'ped');
-                        const term2 = formattedSpeciality.toLowerCase().replace('ped', 'paed');
-
-                        const deptMatch = doc.department.toLowerCase().includes(term1) || doc.department.toLowerCase().includes(term2) || formattedSpeciality.toLowerCase().includes(doc.department.toLowerCase());
-
+                        const deptMatch = matchesDepartment(specKey, doc.department.toLowerCase());
                         return locMatch && deptMatch;
                     });
                     setDoctorsList(filtered);
@@ -129,7 +132,7 @@ const HeroSection = ({ pageData, location, speciality }) => {
     };
 
     return (
-        <section id="home" className="relative flex overflow-hidden w-full -mt-2 md:mt-4" style={{ minHeight: '600px', fontFamily: 'Poppins, sans-serif' }}>
+        <section id="home" className="relative flex w-full -mt-2 md:mt-4" style={{ minHeight: '600px' }}>
             {/* Full-width image background */}
             {pageData?.heroImage && (
                 <img
@@ -146,28 +149,28 @@ const HeroSection = ({ pageData, location, speciality }) => {
 
                 {/* Left Text Panel (65%) */}
                 <div className="flex-1 flex flex-col justify-center px-8 lg:px-14 py-12 lg:py-16 pb-[30px] max-w-[900px]">
-                    <h1 style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(30px, 3.5vw, 42px)', fontWeight: 700, color: 'rgb(255, 255, 255)', lineHeight: 1.25 }}>
+                    <h1 style={{ fontSize: 'clamp(30px, 3.5vw, 42px)', fontWeight: 700, color: 'rgb(255, 255, 255)', lineHeight: 1.25 }}>
                         {pageData?.title}
                     </h1>
-                    <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 700, fontStyle: 'italic', color: '#f23a6b', marginTop: '6px' }}>
+                    <p style={{ fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 700, fontStyle: 'italic', color: '#f23a6b', marginTop: '6px' }}>
                         {pageData?.badgeText}
                     </p>
                     <div
                         className="mt-5"
-                        style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.7, maxWidth: '650px' }}
+                        style={{ fontSize: '14px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.7, maxWidth: '650px' }}
                         dangerouslySetInnerHTML={{ __html: pageData?.description }}
                     />
                     <div className="flex flex-wrap gap-3 mt-8">
                         <button
                             onClick={() => router.push('/surgery-care/')}
-                            style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgba(255, 255, 255, 0.9)', background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.25)', padding: '8px 20px', borderRadius: '6px', transition: '0.2s', cursor: 'pointer' }}
+                            style={{ fontSize: '13px', fontWeight: 500, color: 'rgba(255, 255, 255, 0.9)', background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.25)', padding: '8px 20px', borderRadius: '6px', transition: '0.2s', cursor: 'pointer' }}
                             className="hover:bg-white/20"
                         >
                             Second Opinion
                         </button>
                         <button
                             onClick={() => setIsModalOpen(true)}
-                            style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 500, color: 'rgba(255, 255, 255, 0.9)', background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.25)', padding: '8px 20px', borderRadius: '6px', transition: '0.2s', cursor: 'pointer' }}
+                            style={{ fontSize: '13px', fontWeight: 500, color: 'rgba(255, 255, 255, 0.9)', background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.25)', padding: '8px 20px', borderRadius: '6px', transition: '0.2s', cursor: 'pointer' }}
                             className="hover:bg-white/20"
                         >
                             Book Health Checkup
@@ -177,11 +180,11 @@ const HeroSection = ({ pageData, location, speciality }) => {
 
                 {/* Right Form Panel (35%) */}
                 <div
-                    className="flex flex-col justify-center pl-8 pr-12 lg:pr-16 py-10 w-full lg:w-[35%] flex-shrink-0"
+                    className="flex flex-col justify-center pl-8 pr-12 lg:pr-16 py-10 w-full lg:w-[45%] flex-shrink-0"
                     style={{ background: 'rgba(26, 5, 16, 0.65)', backdropFilter: 'blur(12px)', borderLeft: '1px solid rgba(255, 255, 255, 0.08)' }}
                 >
                     <div className="bg-white/10 rounded-xl p-6 border border-white/15 backdrop-blur-md">
-                        <h2 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600, color: '#fff', fontSize: '16px', marginBottom: '14px' }}>
+                        <h2 style={{ fontWeight: 600, color: '#fff', fontSize: '16px', marginBottom: '14px' }}>
                             Talk to an {formattedSpeciality || 'Expert'} Doctor Today
                         </h2>
 
@@ -190,7 +193,7 @@ const HeroSection = ({ pageData, location, speciality }) => {
                                 type="button"
                                 onClick={() => setPatientType('India')}
                                 style={{
-                                    fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 500,
+                                    fontSize: '12px', fontWeight: 500,
                                     color: patientType === 'India' ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.65)',
                                     background: patientType === 'India' ? 'rgba(255, 255, 255, 0.2)' : 'transparent',
                                     border: patientType === 'India' ? '1px solid rgba(255, 255, 255, 0.4)' : '1px solid transparent',
@@ -203,7 +206,7 @@ const HeroSection = ({ pageData, location, speciality }) => {
                                 type="button"
                                 onClick={() => setPatientType('International')}
                                 style={{
-                                    fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 500,
+                                    fontSize: '12px', fontWeight: 500,
                                     color: patientType === 'International' ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.65)',
                                     background: patientType === 'International' ? 'rgba(255, 255, 255, 0.2)' : 'transparent',
                                     border: patientType === 'International' ? '1px solid rgba(255, 255, 255, 0.4)' : '1px solid transparent',
@@ -223,7 +226,7 @@ const HeroSection = ({ pageData, location, speciality }) => {
                                 placeholder="Patient Name"
                                 required
                                 className="w-full px-4 py-2.5 rounded-lg outline-none"
-                                style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(255, 255, 255)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
+                                style={{ fontSize: '13px', color: 'rgb(255, 255, 255)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
                             />
                             <input
                                 type="tel"
@@ -233,14 +236,14 @@ const HeroSection = ({ pageData, location, speciality }) => {
                                 placeholder="Mobile Number"
                                 required
                                 className="w-full px-4 py-2.5 rounded-lg outline-none"
-                                style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(255, 255, 255)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
+                                style={{ fontSize: '13px', color: 'rgb(255, 255, 255)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
                             />
                             <select
                                 name="location"
                                 value={formData.location}
                                 disabled
                                 className="w-full px-4 py-2.5 rounded-lg outline-none appearance-none cursor-not-allowed opacity-80"
-                                style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgba(255, 255, 255, 0.7)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
+                                style={{ fontSize: '13px', color: 'rgba(255, 255, 255, 0.7)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
                             >
                                 <option className="text-gray-900" value={formattedLocation}>{formattedLocation}</option>
                             </select>
@@ -251,13 +254,13 @@ const HeroSection = ({ pageData, location, speciality }) => {
                                 placeholder="Select Doctor"
                                 options={doctorsList.length > 0 ? doctorsList.map(doc => ({ label: doc.name, value: doc.name })) : [{ label: `${formattedSpeciality} Specialist`, value: formattedSpeciality }]}
                                 className="w-full px-4 py-2.5 rounded-lg outline-none"
-                                style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgba(255, 255, 255, 0.7)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
+                                style={{ fontSize: '13px', color: 'rgba(255, 255, 255, 0.7)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
                             />
                             <button
                                 type="submit"
                                 disabled={loading}
                                 className={`w-full flex items-center justify-center gap-2 py-3 mt-1 rounded-lg transition-opacity hover:opacity-90 cursor-pointer ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
-                                style={{ background: '#bd385c', fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: '#fff', border: 'none' }}
+                                style={{ background: '#bd385c', fontSize: '14px', fontWeight: 600, color: '#fff', border: 'none' }}
                             >
                                 {loading ? (
                                     <>
@@ -288,7 +291,7 @@ const HeroSection = ({ pageData, location, speciality }) => {
                                     </svg>
                                 ))}
                             </div>
-                            <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>
+                            <span style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>
                                 4.8 Google Ratings
                             </span>
                         </div>
@@ -301,16 +304,16 @@ const HeroSection = ({ pageData, location, speciality }) => {
                                 <polyline points="12 6 12 12 16 14" />
                             </svg>
                             <div>
-                                <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(255, 255, 255)' }}>Available 24/7</p>
-                                <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>Emergency Care</p>
+                                <p style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(255, 255, 255)' }}>Available 24/7</p>
+                                <p style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>Emergency Care</p>
                             </div>
                         </div>
 
                         <div style={{ width: '1px', height: '32px', background: 'rgba(255, 255, 255, 0.18)' }} />
 
                         <div>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(255, 255, 255)' }}>15+</p>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>Specialities</p>
+                            <p style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(255, 255, 255)' }}>15+</p>
+                            <p style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>Specialities</p>
                         </div>
                     </div>
                 </div>

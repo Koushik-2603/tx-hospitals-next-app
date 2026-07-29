@@ -85,11 +85,11 @@ const MiyapurSpecialties = () => {
                         {specialtiesList.length > 8 && (
                             <div className="text-center">
                                 <button
-                                    onClick={() => setShowAll(!showAll)}
-                                    className="px-8 py-2.5 rounded transition-opacity hover:opacity-90"
+                                    onClick={() => router.push('/miyapur/specialties/')}
+                                    className="px-8 py-2.5 rounded transition-opacity hover:opacity-90 cursor-pointer"
                                     style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
                                 >
-                                    {showAll ? 'View Less' : 'View More'}
+                                    View More
                                 </button>
                             </div>
                         )}

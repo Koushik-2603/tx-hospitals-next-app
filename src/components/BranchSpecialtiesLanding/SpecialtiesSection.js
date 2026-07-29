@@ -3,16 +3,23 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import CONFIG from '@/config';
 
-const UppalNewSpecialties = () => {
+const SpecialtiesSection = ({ location }) => {
     const [specialtiesList, setSpecialtiesList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showAll, setShowAll] = useState(false);
     const router = useRouter();
 
+    const formattedLocation = location
+        ? location.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+        : 'Miyapur';
+
     useEffect(() => {
         const fetchSpecialities = async () => {
+            if (!location) return;
             try {
-                const response = await fetch(`${CONFIG.API_BASE_URL}/api/specialities/Uppal`);
+                // Ensure correct case/formatting for API, assuming title case
+                const apiLocation = formattedLocation;
+                const response = await fetch(`${CONFIG.API_BASE_URL}/api/specialities/${encodeURIComponent(apiLocation)}`);
                 if (response.ok) {
                     const data = await response.json();
                     setSpecialtiesList(data || []);
@@ -25,37 +32,34 @@ const UppalNewSpecialties = () => {
         };
 
         fetchSpecialities();
-    }, []);
+    }, [location, formattedLocation]);
 
     const visibleSpecialties = showAll ? specialtiesList : specialtiesList.slice(0, 8);
 
     return (
         <section id="specialties" className="py-16" style={{ background: 'rgb(254, 236, 236)' }}>
-            <div className="max-w-[1170px] mx-auto px-6 lg:pr-11">
+            <div className="max-w-[1170px] mx-auto px-6">
                 <div className="text-center mb-10">
-                    <h2 className="mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: 'rgb(189, 56, 92)' }}>
-                        Specialties at TX Hospitals, Uppal
+                    <h2 className="mb-4" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: 'rgb(189, 56, 92)' }}>
+                        Our Specialties
                     </h2>
-                    <h3 className="mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
-                        Complete Medical Care, Close to You
+                    <h3 className="mb-4" style={{ fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
+                        Expert Care Across <span style={{ color: 'rgb(189, 56, 92)' }}>Major Medical Departments</span>
                     </h3>
-                    <p className="max-w-[850px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
-                        At TX Hospitals, Uppal, patients can consult experienced specialists across major departments. Our hospital brings together doctors, diagnostics, emergency care and treatment support in one convenient location.
-                    </p>
                 </div>
 
                 {loading || specialtiesList.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-12 animate-pulse">
                         <div className="w-12 h-12 border-4 border-pink-700 border-t-transparent rounded-full animate-spin mb-4"></div>
-                        <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '18px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
-                            Data coming soon...
+                        <p style={{ fontSize: '18px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
+                            Loading Specialties...
                         </p>
                     </div>
                 ) : (
                     <>
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
                             {visibleSpecialties.map((item, index) => {
-                                const path = item?.LandingPageUrl || `/Uppal/specialities/${item.SpecialityName}`;
+                                const path = item?.LandingPageUrl || `/${location}/specialties/${item.SpecialityName}`;
                                 return (
                                     <div
                                         key={index}
@@ -74,7 +78,7 @@ const UppalNewSpecialties = () => {
                                                 />
                                             )}
                                         </div>
-                                        <span className="text-center" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                                        <span className="text-center" style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                             {item.SpecialityName}
                                         </span>
                                     </div>
@@ -85,11 +89,11 @@ const UppalNewSpecialties = () => {
                         {specialtiesList.length > 8 && (
                             <div className="text-center">
                                 <button
-                                    onClick={() => router.push('/uppal/specialties/')}
-                                    className="px-8 py-2.5 rounded transition-opacity hover:opacity-90 cursor-pointer"
-                                    style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
+                                    onClick={() => setShowAll(!showAll)}
+                                    className="px-8 py-2.5 rounded transition-opacity hover:opacity-90"
+                                    style={{ background: 'rgb(189, 56, 92)', fontSize: '15px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
                                 >
-                                    View More
+                                    {showAll ? 'View Less' : 'View More'}
                                 </button>
                             </div>
                         )}
@@ -100,4 +104,4 @@ const UppalNewSpecialties = () => {
     );
 };
 
-export default UppalNewSpecialties;
+export default SpecialtiesSection;
