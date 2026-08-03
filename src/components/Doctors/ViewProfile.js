@@ -8,6 +8,7 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import DoctorDetails from "@/components/Doctors/DoctorDetails";
 import AppointmentModal from "@/components/Doctors/AppointmentModal";
 import { FaCalendarAlt, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
+import DoctorAvailability from "@/components/Common/DoctorAvailability";
 
 export default function ViewProfile({ doctorData }) {
     const router = useRouter();
@@ -70,6 +71,10 @@ export default function ViewProfile({ doctorData }) {
                                     <span className="bg-pink-100 text-[#b01752] px-3 py-1 rounded text-sm font-bold">
                                         Experience : {doctorData?.experience}
                                     </span>
+                                </div>
+
+                                <div className="mt-3 w-full max-w-sm mx-auto">
+                                    <DoctorAvailability doctorId={doctorData?.id} />
                                 </div>
 
                                 <div className="flex justify-center gap-6 mt-3 text-sm">
@@ -184,6 +189,10 @@ export default function ViewProfile({ doctorData }) {
                                     <span className="bg-pink-50 text-[#b01752] px-4 py-1.5 rounded-md text-base font-bold inline-block">
                                         Experience : {doctorData?.experience}
                                     </span>
+                                </div>
+
+                                <div className="mt-3 max-w-sm">
+                                    <DoctorAvailability doctorId={doctorData?.id} />
                                 </div>
 
                                 <div className="flex gap-12 mt-2">

@@ -8,6 +8,7 @@ import CONFIG from "@/config";
 import FiltersSidebar from "@/components/Doctors/FilterSidebar";
 import useIsMobile from "@/hooks/useIsMobile";
 import AppointmentModal from "@/components/Doctors/AppointmentModal";
+import DoctorAvailability from "@/components/Common/DoctorAvailability";
 
 const locations = [
     { value: "Uppal", label: "Uppal" },
@@ -265,6 +266,7 @@ export default function DoctorsLandingPage() {
                                                                     <div className="text-gray-700 text-xs font-bold">
                                                                         Experience: {doctor.experience}
                                                                     </div>
+                                                                    <DoctorAvailability doctorId={doctor.id} />
                                                                     <div className="flex items-center gap-3">
                                                                         <Image
                                                                             src="/assets/Doctors/Location Icon.webp"
@@ -390,6 +392,7 @@ export default function DoctorsLandingPage() {
                                                                     <div className="text-gray-700 text-sm font-bold">
                                                                         Experience: {doctor.experience}
                                                                     </div>
+                                                                    <DoctorAvailability doctorId={doctor.id} />
                                                                     <div className="flex items-center gap-3">
                                                                         <Image
                                                                             src="/assets/Doctors/Location Icon.webp"

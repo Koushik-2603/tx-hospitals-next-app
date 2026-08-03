@@ -1,6 +1,7 @@
 import React from 'react';
 import { Award, User } from 'lucide-react';
 import Link from 'next/link';
+import DoctorAvailability from './DoctorAvailability';
 
 const DoctorCard = ({
     name,
@@ -9,6 +10,7 @@ const DoctorCard = ({
     experience,
     imageSrc,
     profileLink = null,
+    doctorId,
     onBookClick
 }) => {
     return (
@@ -38,6 +40,8 @@ const DoctorCard = ({
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 line-clamp-2 leading-tight group-hover:text-pink-700 transition-colors duration-300">{name}</h3>
                 <p className="text-xs sm:text-sm text-gray-600 font-semibold mb-4 line-clamp-2">{designation}</p>
+
+                {doctorId && <DoctorAvailability doctorId={doctorId} />}
 
                 {/* Spacer pushes experience + button to the bottom */}
                 <div className="flex-grow" />
