@@ -12,7 +12,7 @@ const FAQSection = ({ location }) => {
 
     const formattedLocation = formatString(location) || 'Miyapur';
 
-    const faqs = [
+    const miyapurFaqs = [
         {
             question: `What specialties are available at TX Hospitals ${formattedLocation}?`,
             answer: `TX Hospitals ${formattedLocation} offers expert care in cardiology, orthopaedics, robotic surgery, gastroenterology, neurology, nephrology, urology, ENT, pulmonology, obstetrics & gynaecology, and other key specialties.`
@@ -46,6 +46,43 @@ const FAQSection = ({ location }) => {
             answer: `You can book a consultation with the required specialist at TX Hospitals by calling 9144514459 or by visiting official website.`
         }
     ];
+
+    const kachigudaFaqs = [
+        {
+            question: `Is TX Hospitals Kachiguda a multispeciality hospital?`,
+            answer: `Yes. TX Hospitals Kachiguda provides consultations, diagnostic support, medical care and surgical treatment across multiple specialties within one hospital.`
+        },
+        {
+            question: `What medical specialties are available at TX Hospitals Kachiguda?`,
+            answer: `TX Hospitals Kachiguda offers specialist care in Cardiology, Orthopaedics, Gastroenterology, Neurology, Nephrology, Urology, Pulmonology, ENT, Women’s Health, Paediatrics, Oncology and other major departments.`
+        },
+        {
+            question: `How do I choose the right specialist for my symptoms?`,
+            answer: `You can share your main symptoms with our appointment team. Based on your concern, they can guide you towards the most appropriate medical department.`
+        },
+        {
+            question: `Can I consult different specialists during the same treatment journey?`,
+            answer: `Yes. When a health condition requires expertise from multiple departments, our doctors can coordinate the patient’s evaluation and treatment plan.`
+        },
+        {
+            question: `Does TX Hospitals Kachiguda provide diagnostic services?`,
+            answer: `Yes. Diagnostic support is available to help specialists assess the patient’s condition and plan suitable treatment based on clinical requirements.`
+        },
+        {
+            question: `Is emergency care available at TX Hospitals Kachiguda?`,
+            answer: `Emergency medical support is available for patients who require urgent assessment, stabilisation and further treatment.`
+        },
+        {
+            question: `Which specialist treats joint pain and fractures?`,
+            answer: `An orthopaedic specialist evaluates and treats fractures, joint pain, arthritis, sports injuries and other bone or movement-related conditions.`
+        },
+        {
+            question: `How can I book an appointment at TX Hospitals Kachiguda?`,
+            answer: `You can schedule an appointment with the required specialist by calling 9144514459 or visiting the official TX Hospitals website.`
+        }
+    ];
+
+    const faqs = formattedLocation === 'Kachiguda' ? kachigudaFaqs : miyapurFaqs;
 
     const toggleFAQ = (index) => {
         setOpenIndex(openIndex === index ? -1 : index);

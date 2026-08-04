@@ -18,10 +18,14 @@ const CTASection = ({ location }) => {
         <section className="py-8 md:py-6 text-center text-white mx-4 md:mx-12 rounded-2xl" style={{ background: 'rgb(189, 56, 92)' }}>
             <div className="max-w-[900px] mx-auto px-6">
                 <h2 className="text-2xl md:text-4xl font-bold mb-6">
-                    Consult Our Doctors, Get Expert Care Closer to You
+                    {formattedLocation === 'Kachiguda'
+                        ? 'Find the Right Care Without Delay'
+                        : 'Consult Our Doctors, Get Expert Care Closer to You'}
                 </h2>
-                <p className="text-sm md:text-[15px] font-normal leading-relaxed mb-10 text-white/90 max-w-[800px] mx-auto">
-                    Your health deserves timely attention and the right specialist care. Whether you need a routine consultation, second opinion, diagnostic test, emergency support or specialty treatment, TX Hospitals {formattedLocation} is here to help.
+                <p className="text-sm md:text-[15px] font-normal leading-relaxed mb-10 text-white/90 max-w-[800px] mx-auto whitespace-pre-line">
+                    {formattedLocation === 'Kachiguda'
+                        ? `Persistent symptoms should not be ignored. Consulting the appropriate specialist at the right time can help identify the cause, begin treatment early and reduce the risk of complications.\n\nWhether you require a routine health consultation, specialist evaluation, advanced procedure or ongoing treatment, TX Hospitals Kachiguda is here to support your healthcare needs.`
+                        : `Your health deserves timely attention and the right specialist care. Whether you need a routine consultation, second opinion, diagnostic test, emergency support or specialty treatment, TX Hospitals ${formattedLocation} is here to help.`}
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">
@@ -31,7 +35,7 @@ const CTASection = ({ location }) => {
                         style={{ background: 'white', color: 'rgb(189, 56, 92)' }}
                     >
                         <Calendar className="w-5 h-5" />
-                        Book Appointment
+                        {formattedLocation === 'Kachiguda' ? 'Book Your Specialist Consultation Today' : 'Book Appointment'}
                     </button>
 
                     <a

@@ -7,6 +7,10 @@ const sitemaps = [
   "blogs.xml",
   "healthpackages.xml",
   "secondopinion.xml",
+  "localities-miyapur.xml",
+  "localities-uppal.xml",
+  "localities-kachiguda.xml",
+  "localities-banjara-hills.xml"
 ];
 
 export async function getServerSideProps({ res }) {

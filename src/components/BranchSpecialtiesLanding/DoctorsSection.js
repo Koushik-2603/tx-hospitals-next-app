@@ -63,7 +63,9 @@ const DoctorsSection = ({ location }) => {
                         Meet Our <span style={{ color: 'rgb(189, 56, 92)' }}>Doctors</span>
                     </h2>
                     <p className="max-w-[800px] mx-auto" style={{ fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
-                        At TX Hospitals {formattedLocation}, patients can consult experienced doctors across major medical specialties for diagnosis, second opinions, treatment planning and follow-up care. Our medical team provides clear guidance and personalized attention based on each patient's health condition. With access to some of the best doctors in {formattedLocation}, patients receive care that focuses on comfort, safety and better understanding of their treatment options at every step.
+                        {formattedLocation === 'Kachiguda'
+                            ? `Choosing the right doctor can make the healthcare journey easier and more reassuring. At TX Hospitals Kachiguda, patients can consult experienced doctors across major specialties for accurate evaluation, treatment planning and ongoing medical care. Our specialists take time to understand the patient’s symptoms, review available reports and explain the recommended next steps clearly. With access to some of the top doctors in Kachiguda, patients receive care focused on safety, comfort and informed decision-making.`
+                            : `At TX Hospitals ${formattedLocation}, patients can consult experienced doctors across major medical specialties for diagnosis, second opinions, treatment planning and follow-up care. Our medical team provides clear guidance and personalized attention based on each patient's health condition. With access to some of the best doctors in ${formattedLocation}, patients receive care that focuses on comfort, safety and better understanding of their treatment options at every step.`}
                     </p>
                 </div>
 
