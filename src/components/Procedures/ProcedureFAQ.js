@@ -14,7 +14,7 @@ const ProcedureFAQ = ({ faqs }) => {
 
     return (
         <section className="w-full px-4 md:px-12 py-8 font-inter">
-            <FAQSchema faqs={data} />
+            <FAQSchema faqs={faqs} />
             <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.25)] p-6 md:p-8">
                 <h2 className="text-2xl md:text-4xl font-bold text-[#C23358] mb-6 md:mb-12">
                     Frequently Asked Questions (FAQs)

@@ -416,9 +416,9 @@ export default function Doctors({ department: propDepartment }) {
                             </div>
                         </div>
                     </div>
-                    {Array.isArray(data.backlinkSchema) && data.backlinkSchema.length > 0 && (
+                    {Array.isArray(data?.backlinkSchema) && data?.backlinkSchema?.length > 0 && (
                         <div className="w-full p-2">
-                            <BacklinkSection backlinkSchema={data.backlinkSchema} />
+                            <BacklinkSection backlinkSchema={data?.backlinkSchema} />
                         </div>
                     )}
                 </div>

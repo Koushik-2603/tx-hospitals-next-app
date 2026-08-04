@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import CONFIG from "@/config";
 import DTHeroSection from "@/components/DiseaseAndTreatment/DTHeroSection";
@@ -22,11 +21,9 @@ import FAQDT from "@/components/DiseaseAndTreatment/FAQDT";
 
 export default function DTDDetailsPage({ url }) {
 
-    console.log("Received URL prop:", url);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const router = useRouter();
 
     useEffect(() => {
         if (!url) return;

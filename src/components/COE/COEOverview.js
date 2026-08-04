@@ -232,10 +232,10 @@ export default function COEOverview({ department: propDepartment }) {
                                 );
                             })}
                             <h2 className="text-2xl font-bold text-pink-700 mb-2">FAQs</h2>
-                            <FAQSchema faqs={data.faqs} />
+                            <FAQSchema faqs={data?.faqs} />
                             <div className="text-gray-700 leading-relaxed">
                                 <div className="space-y-4">
-                                    {data.faqs.map((faq, index) => (
+                                    {data?.faqs?.map((faq, index) => (
                                         <div
                                             key={index}
                                             className={`border-2 rounded-lg ${activeIndex === index
@@ -330,9 +330,9 @@ export default function COEOverview({ department: propDepartment }) {
                             </div>
                         </>
                     )}
-                    {Array.isArray(data.backlinkSchema) && data.backlinkSchema.length > 0 && (
+                    {Array.isArray(data?.backlinkSchema) && data?.backlinkSchema?.length > 0 && (
                         <div className="w-full font-inter mx-auto p-4">
-                            <BacklinkSection backlinkSchema={data.backlinkSchema} />
+                            <BacklinkSection backlinkSchema={data?.backlinkSchema} />
                         </div>
                     )}
                 </>
@@ -340,10 +340,10 @@ export default function COEOverview({ department: propDepartment }) {
                 <div className="p-2 font-inter">
                     <div className="pl-2">
                         {data?.extraFields?.map((field, index) => {
-                             const getHeadingTag = () => {
-                                 if (index === 0 || index === 1 || index === 2) return 'h2';
-                                 return 'h3';
-                             };
+                            const getHeadingTag = () => {
+                                if (index === 0 || index === 1 || index === 2) return 'h2';
+                                return 'h3';
+                            };
 
                             const HeadingTag = getHeadingTag();
                             return (
@@ -415,10 +415,10 @@ export default function COEOverview({ department: propDepartment }) {
                             </div>
                         )}
                         <h2 className="text-xl font-bold text-pink-700 mb-2">FAQs</h2>
-                        <FAQSchema faqs={data.faqs} />
+                        <FAQSchema faqs={data?.faqs} />
                         <div className="text-gray-700 leading-relaxed">
                             <div className="space-y-4">
-                                {data.faqs.map((faq, index) => (
+                                {data?.faqs?.map((faq, index) => (
                                     <div
                                         key={index}
                                         className={`border-2 rounded-lg ${activeIndex === index
@@ -469,9 +469,9 @@ export default function COEOverview({ department: propDepartment }) {
                             </div>
                         </>
                     )}
-                    {Array.isArray(data.backlinkSchema) && data.backlinkSchema.length > 0 && (
+                    {Array.isArray(data?.backlinkSchema) && data?.backlinkSchema?.length > 0 && (
                         <div className="w-full p-2">
-                            <BacklinkSection backlinkSchema={data.backlinkSchema} />
+                            <BacklinkSection backlinkSchema={data?.backlinkSchema} />
                         </div>
                     )}
                 </div>
