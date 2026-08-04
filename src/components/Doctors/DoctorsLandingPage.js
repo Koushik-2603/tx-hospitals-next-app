@@ -27,7 +27,7 @@ export default function DoctorsLandingPage() {
     const [departments, setDepartments] = useState([]);
     const [selectedLocation, setSelectedLocation] = useState("");
     const [selectedSpeciality, setSelectedSpeciality] = useState("");
-    const [visibleDoctors, setVisibleDoctors] = useState(9);
+    const [visibleDoctors, setVisibleDoctors] = useState(20);
     const isMobile = useIsMobile();
     const [locationSearch, setLocationSearch] = useState("");
     const [specialitySearch, setSpecialitySearch] = useState("");
@@ -102,7 +102,7 @@ export default function DoctorsLandingPage() {
     useEffect(() => {
         const handleScroll = () => {
             if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
-                setVisibleDoctors(prev => prev + 9);
+                setVisibleDoctors(prev => prev + 20);
             }
         };
 
