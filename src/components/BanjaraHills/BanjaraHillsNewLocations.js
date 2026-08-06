@@ -50,10 +50,10 @@ const BanjaraHillsNewLocations = () => {
                     
                     {/* Left text column */}
                     <div className="lg:w-[280px] flex-shrink-0">
-                        <h2 className="mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, color: 'rgb(189, 56, 92)', lineHeight: 1.15 }}>
+                        <h2 className="mb-4" style={{ fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, color: 'rgb(189, 56, 92)', lineHeight: 1.15 }}>
                             Our<br />Locations
                         </h2>
-                        <p className="mb-8 text-gray-700" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 400, lineHeight: 1.7 }}>
+                        <p className="mb-8 text-gray-700" style={{ fontSize: '15px', fontWeight: 400, lineHeight: 1.7 }}>
                             Find the world-class hospital nearest to you. TX Hospitals brings expert multispeciality care across Hyderabad.
                         </p>
                     </div>
@@ -76,18 +76,18 @@ const BanjaraHillsNewLocations = () => {
                                         />
                                     </div>
                                     <div className="p-4">
-                                        <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
+                                        <p style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
                                             {loc.name}
                                         </p>
                                         <div className="flex items-center gap-1 mt-1">
                                             <MapPin className="w-3 h-3 text-[#6C6C6C]" strokeWidth={2} />
-                                            <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
+                                            <span style={{ fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
                                                 {loc.address}
                                             </span>
                                         </div>
                                         <div className="flex items-center gap-1 mt-2">
                                             <Star className="w-3 h-3 text-[#BD385C]" fill="currentColor" strokeWidth={2} />
-                                            <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
+                                            <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
                                                 {loc.rating}
                                             </span>
                                         </div>

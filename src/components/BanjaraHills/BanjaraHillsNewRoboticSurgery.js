@@ -20,15 +20,15 @@ const BanjaraHillsNewRoboticSurgery = () => {
                 
                 {/* Left Content column */}
                 <div className="flex-1 flex flex-col justify-center order-2 lg:order-1">
-                    <h2 className="mb-4 text-gray-900" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 600, lineHeight: 1.3 }}>
+                    <h2 className="mb-4 text-gray-900" style={{ fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 600, lineHeight: 1.3 }}>
                         <span style={{ color: 'rgb(189, 56, 92)' }}>Advanced Robotic Surgery Hospitals in Banjara Hills</span> Precision Care for Better Recovery
                     </h2>
                     
-                    <p className="mb-3 text-gray-700" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14.5px', lineHeight: 1.7 }}>
+                    <p className="mb-3 text-gray-700" style={{ fontSize: '14.5px', lineHeight: 1.7 }}>
                         At TX Hospitals Banjara Hills, we offer advanced robotic-assisted surgeries across multiple specialties with better precision, smaller cuts and faster recovery support.
                     </p>
                     
-                    <p className="mb-4 text-gray-900 font-semibold" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14.5px' }}>
+                    <p className="mb-4 text-gray-900 font-semibold" style={{ fontSize: '14.5px' }}>
                         Our robotic surgery services include:
                     </p>
 
@@ -36,21 +36,21 @@ const BanjaraHillsNewRoboticSurgery = () => {
                         {roboticServices.map((service, index) => (
                             <li key={index} className="flex items-start gap-2.5">
                                 <CircleCheckBig className="flex-shrink-0 mt-0.5 w-[18px] h-[18px] text-[#BD385C]" strokeWidth={2.5} />
-                                <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 500, color: 'rgb(50, 50, 50)', lineHeight: 1.5 }}>
+                                <span style={{ fontSize: '14px', fontWeight: 500, color: 'rgb(50, 50, 50)', lineHeight: 1.5 }}>
                                     {service}
                                 </span>
                             </li>
                         ))}
                     </ul>
 
-                    <p className="mb-6 text-gray-700" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14.5px', lineHeight: 1.7 }}>
+                    <p className="mb-6 text-gray-700" style={{ fontSize: '14.5px', lineHeight: 1.7 }}>
                         With expert surgeons and advanced technology, we provide safe, precise and patient-friendly surgical care.
                     </p>
 
                     <button 
                         onClick={() => setIsModalOpen(true)} 
                         className="flex items-center gap-2 px-8 py-3 rounded-lg transition-opacity hover:opacity-90 shadow-md w-fit font-medium" 
-                        style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '15px', color: 'rgb(255, 255, 255)', border: 'none' }}
+                        style={{ background: 'rgb(189, 56, 92)', fontSize: '15px', color: 'rgb(255, 255, 255)', border: 'none' }}
                     >
                         <Calendar className="w-4 h-4" />
                         Book Appointment

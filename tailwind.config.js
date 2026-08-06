@@ -6,8 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
-        montserrat: ['Montserrat'],
+        sans: ['"Google Sans"', 'sans-serif'],
       },
       keyframes: {
         zoomBlink: {

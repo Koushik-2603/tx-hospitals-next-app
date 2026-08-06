@@ -104,7 +104,6 @@ const MiyapurFloatingBar = () => {
                     <span 
                         className="absolute right-full mr-2 whitespace-nowrap px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" 
                         style={{
-                            fontFamily: 'Poppins, sans-serif', 
                             fontSize: '12px', 
                             fontWeight: 500, 
                             color: 'rgb(255, 255, 255)', 
@@ -136,7 +135,6 @@ const MiyapurFloatingBar = () => {
                     <span 
                         className="absolute right-full mr-2 whitespace-nowrap px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" 
                         style={{
-                            fontFamily: 'Poppins, sans-serif', 
                             fontSize: '12px', 
                             fontWeight: 500, 
                             color: 'rgb(255, 255, 255)', 
@@ -168,7 +166,6 @@ const MiyapurFloatingBar = () => {
                     <span 
                         className="absolute right-full mr-2 whitespace-nowrap px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" 
                         style={{
-                            fontFamily: 'Poppins, sans-serif', 
                             fontSize: '12px', 
                             fontWeight: 500, 
                             color: 'rgb(255, 255, 255)', 
@@ -200,7 +197,6 @@ const MiyapurFloatingBar = () => {
                     <span 
                         className="absolute right-full mr-2 whitespace-nowrap px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" 
                         style={{
-                            fontFamily: 'Poppins, sans-serif', 
                             fontSize: '12px', 
                             fontWeight: 500, 
                             color: 'rgb(255, 255, 255)', 
@@ -234,7 +230,6 @@ const MiyapurFloatingBar = () => {
                     <span 
                         className="absolute right-full mr-2 whitespace-nowrap px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" 
                         style={{
-                            fontFamily: 'Poppins, sans-serif', 
                             fontSize: '12px', 
                             fontWeight: 500, 
                             color: 'rgb(255, 255, 255)', 

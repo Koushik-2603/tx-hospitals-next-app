@@ -7,10 +7,10 @@ const KachigudaNewLocations = () => {
             <div className="max-w-[1170px] mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-12 items-start">
                     <div className="lg:w-[280px] flex-shrink-0">
-                        <h2 className="mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, color: 'rgb(189, 56, 92)', lineHeight: 1.15 }}>
+                        <h2 className="mb-4" style={{ fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, color: 'rgb(189, 56, 92)', lineHeight: 1.15 }}>
                             Our<br />Locations
                         </h2>
-                        <p className="mb-8" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
+                        <p className="mb-8" style={{ fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
                             Find the world-class hospital nearest to you. TX Hospitals brings expert multispeciality care across Hyderabad.
                         </p>
                     </div>
@@ -24,18 +24,18 @@ const KachigudaNewLocations = () => {
                                     <img src="/assets/Our Location/Uppal Location Image.png" alt="TX Hospitals, Uppal" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
-                                    <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
+                                    <p style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
                                         TX Hospitals, Uppal
                                     </p>
                                     <div className="flex items-center gap-1 mt-1">
                                         <MapPin className="w-3 h-3 text-[#6C6C6C]" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
+                                        <span style={{ fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
                                             Uppal, Hyderabad
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-1 mt-2">
                                         <Star className="w-3 h-3 text-[#BD385C]" fill="currentColor" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
+                                        <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
                                             4.4
                                         </span>
                                     </div>
@@ -48,18 +48,18 @@ const KachigudaNewLocations = () => {
                                     <img src="/assets/Our Location/Kachiguda Image.png" alt="TX Hospitals, Kachiguda" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
-                                    <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
+                                    <p style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
                                         TX Hospitals, Kachiguda
                                     </p>
                                     <div className="flex items-center gap-1 mt-1">
                                         <MapPin className="w-3 h-3 text-[#6C6C6C]" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
+                                        <span style={{ fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
                                             Kachiguda, Hyderabad
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-1 mt-2">
                                         <Star className="w-3 h-3 text-[#BD385C]" fill="currentColor" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
+                                        <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
                                             4.5
                                         </span>
                                     </div>
@@ -72,18 +72,18 @@ const KachigudaNewLocations = () => {
                                     <img src="/assets/Our Location/Banjara Hills  Hospitals Image.png" alt="TX Hospitals, Banjara Hills" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
-                                    <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
+                                    <p style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
                                         TX Hospitals, Banjara Hills
                                     </p>
                                     <div className="flex items-center gap-1 mt-1">
                                         <MapPin className="w-3 h-3 text-[#6C6C6C]" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
+                                        <span style={{ fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
                                             Banjara Hills, Hyderabad
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-1 mt-2">
                                         <Star className="w-3 h-3 text-[#BD385C]" fill="currentColor" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
+                                        <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
                                             4.4
                                         </span>
                                     </div>
@@ -96,18 +96,18 @@ const KachigudaNewLocations = () => {
                                     <img src="/assets/Our Location/Banjara Hills Children Image.png" alt="TX Children Hospitals, Banjara Hills" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
-                                    <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
+                                    <p style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
                                         TX Children Hospitals, Banjara Hills
                                     </p>
                                     <div className="flex items-center gap-1 mt-1">
                                         <MapPin className="w-3 h-3 text-[#6C6C6C]" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
+                                        <span style={{ fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
                                             Banjara Hills, Hyderabad
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-1 mt-2">
                                         <Star className="w-3 h-3 text-[#BD385C]" fill="currentColor" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
+                                        <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
                                             4.6
                                         </span>
                                     </div>
@@ -120,18 +120,18 @@ const KachigudaNewLocations = () => {
                                     <img src="/assets/ContactUs/TX Hospitals Miyapur.webp" alt="TX Hospitals, Miyapur" className="w-full h-full object-cover bg-white" />
                                 </div>
                                 <div className="p-4">
-                                    <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
+                                    <p style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.35 }}>
                                         TX Hospitals, Miyapur
                                     </p>
                                     <div className="flex items-center gap-1 mt-1">
                                         <MapPin className="w-3 h-3 text-[#6C6C6C]" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
+                                        <span style={{ fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
                                             Miyapur, Hyderabad
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-1 mt-2">
                                         <Star className="w-3 h-3 text-[#BD385C]" fill="currentColor" strokeWidth={2} />
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
+                                        <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
                                             4.8
                                         </span>
                                     </div>

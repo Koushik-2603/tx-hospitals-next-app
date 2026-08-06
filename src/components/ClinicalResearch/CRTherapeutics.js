@@ -67,7 +67,7 @@ export default function CRTherapeutics() {
                                     className="object-contain"
                                 />
                             </div>
-                            <span className="text-center" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <span className="text-center" style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 {item.name}
                             </span>
                         </div>
@@ -78,7 +78,7 @@ export default function CRTherapeutics() {
                     <button
                         onClick={() => setShowAll(!showAll)}
                         className="px-8 py-2.5 rounded transition-opacity hover:opacity-90"
-                        style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
+                        style={{ background: 'rgb(189, 56, 92)', fontSize: '15px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
                     >
                         {showAll ? 'View Less' : 'View All Specialties'}
                     </button>

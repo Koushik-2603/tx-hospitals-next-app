@@ -65,7 +65,7 @@ const BranchSpecialityLanding = ({ location, speciality }) => {
     const content = pageData.PageData || {};
 
     return (
-        <div className="w-full bg-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <div className="w-full bg-white" >
             {pageData.seo && (
                 <Head>
                     {pageData.seo.title && <title>{pageData.seo.title}</title>}

@@ -6,10 +6,10 @@ const MiyapurWhyChoose = () => {
         <section id="why-choose" className="py-16" style={{ background: 'rgb(254, 236, 236)' }}>
             <div className="max-w-[1170px] mx-auto px-6">
                 <div className="text-center mb-10">
-                    <h2 className="mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
+                    <h2 className="mb-3" style={{ fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
                         Why Choose <span style={{ color: 'rgb(189, 56, 92)' }}>TX Hospitals Miyapur?</span>
                     </h2>
-                    <p className="max-w-[580px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
+                    <p className="max-w-[580px] mx-auto" style={{ fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
                         Quality care, advanced technology and a compassionate team — all under one roof, right here in Miyapur, Hyderabad.
                     </p>
                 </div>
@@ -21,10 +21,10 @@ const MiyapurWhyChoose = () => {
                             <Stethoscope className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 Multispeciality Care
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Get care for different health needs under one roof with expert doctors.
                             </p>
                         </div>
@@ -36,10 +36,10 @@ const MiyapurWhyChoose = () => {
                             <Cpu className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 Advanced Technology & Infrastructure
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Modern facilities help in better diagnosis, treatment, and patient care.
                             </p>
                         </div>
@@ -51,10 +51,10 @@ const MiyapurWhyChoose = () => {
                             <MapPin className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 Easy Access in Miyapur
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Conveniently located for patients from Miyapur and nearby areas.
                             </p>
                         </div>
@@ -66,10 +66,10 @@ const MiyapurWhyChoose = () => {
                             <Clock className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 24/7 Services
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Emergency and medical support available round the clock.
                             </p>
                         </div>
@@ -81,10 +81,10 @@ const MiyapurWhyChoose = () => {
                             <UserCheck className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 Patient-Friendly Care
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Simple appointment process, smooth admission, and helpful support throughout.
                             </p>
                         </div>
@@ -96,10 +96,10 @@ const MiyapurWhyChoose = () => {
                             <Building2 className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 Experienced Team
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Skilled doctors, nurses, and staff focused on safe and compassionate care.
                             </p>
                         </div>

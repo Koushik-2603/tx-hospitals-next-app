@@ -73,13 +73,13 @@ const BanjaraHillsNewDoctors = () => {
                 <div className="text-center mb-10">
                     <h2
                         className="mb-3 text-2xl md:text-3xl lg:text-4xl font-bold"
-                        style={{ fontFamily: 'Poppins, sans-serif', color: 'rgb(3, 2, 19)' }}
+                        style={{ color: 'rgb(3, 2, 19)' }}
                     >
                         Top Specialists at <span style={{ color: 'rgb(189, 56, 92)' }}>TX Hospitals Banjara Hills</span>
                     </h2>
                     <p
                         className="max-w-[1000px] mx-auto text-sm md:text-base leading-relaxed text-gray-700"
-                        style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400 }}
+                        style={{ fontWeight: 400 }}
                     >
                         At TX Hospitals Banjara Hills, patients are cared for by experienced senior specialists across cardiac surgery, robotic gastro surgery, GI cancer surgery, neurosurgery and advanced surgical care.
                     </p>
@@ -107,13 +107,13 @@ const BanjaraHillsNewDoctors = () => {
                                     </div>
                                     <div className="flex flex-col gap-3 p-5 flex-1 justify-between">
                                         <div>
-                                            <h3 style={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.3 }}>
+                                            <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.3 }}>
                                                 {doctor.name}
                                             </h3>
-                                            <p className="mt-1 font-semibold text-gray-700" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', lineHeight: 1.4 }}>
+                                            <p className="mt-1 font-semibold text-gray-700" style={{ fontSize: '13px', lineHeight: 1.4 }}>
                                                 {doctor.designation}
                                             </p>
-                                            <p className="mt-1.5 text-gray-500" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11.5px', lineHeight: 1.45 }}>
+                                            <p className="mt-1.5 text-gray-500" style={{ fontSize: '11.5px', lineHeight: 1.45 }}>
                                                 {doctor.qualification}
                                             </p>
                                         </div>
@@ -122,13 +122,13 @@ const BanjaraHillsNewDoctors = () => {
                                             <div className="flex flex-col gap-1.5 mt-4 pt-4 border-t border-gray-100">
                                                 <div className="flex items-center gap-2">
                                                     <Award className="w-[13px] h-[13px] text-[#BD385C]" strokeWidth={2.5} />
-                                                    <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
+                                                    <span style={{ fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
                                                         Experience: <strong style={{ color: 'rgb(189, 56, 92)' }}>{doctor.experience}</strong>
                                                     </span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <MapPin className="w-[13px] h-[13px] text-[#BD385C]" strokeWidth={2.5} />
-                                                    <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
+                                                    <span style={{ fontSize: '13px', color: 'rgb(30, 30, 30)' }}>
                                                         {doctor.location}
                                                     </span>
                                                 </div>
@@ -138,7 +138,7 @@ const BanjaraHillsNewDoctors = () => {
                                                 <button
                                                     onClick={() => setIsModalOpen(true)}
                                                     className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded transition-opacity hover:opacity-90 font-semibold"
-                                                    style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(255, 255, 255)', border: 'none' }}
+                                                    style={{ background: 'rgb(189, 56, 92)', fontSize: '13px', color: 'rgb(255, 255, 255)', border: 'none' }}
                                                 >
                                                     <Calendar className="w-[13px] h-[13px]" />
                                                     Book
@@ -146,7 +146,7 @@ const BanjaraHillsNewDoctors = () => {
                                                 <a
                                                     href="tel:9144514459"
                                                     className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded transition-all hover:bg-[#BD385C] hover:text-white font-semibold"
-                                                    style={{ background: 'rgb(255, 255, 255)', fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(189, 56, 92)', border: '1px solid rgb(189, 56, 92)' }}
+                                                    style={{ background: 'rgb(255, 255, 255)', fontSize: '13px', color: 'rgb(189, 56, 92)', border: '1px solid rgb(189, 56, 92)' }}
                                                 >
                                                     <Phone className="w-[13px] h-[13px]" />
                                                     Call
@@ -162,7 +162,7 @@ const BanjaraHillsNewDoctors = () => {
                             <a
                                 href="/find-doctor?location=Banjara%20Hills"
                                 className="inline-block px-8 py-2.5 rounded transition-all hover:bg-[#BD385C] hover:text-white font-medium"
-                                style={{ background: 'rgb(255, 255, 255)', fontFamily: 'Poppins, sans-serif', fontSize: '14px', color: 'rgb(189, 56, 92)', border: '1.5px solid rgb(189, 56, 92)' }}
+                                style={{ background: 'rgb(255, 255, 255)', fontSize: '14px', color: 'rgb(189, 56, 92)', border: '1.5px solid rgb(189, 56, 92)' }}
                             >
                                 View All Doctors
                             </a>

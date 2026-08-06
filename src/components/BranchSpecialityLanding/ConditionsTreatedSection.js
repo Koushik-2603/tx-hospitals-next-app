@@ -41,7 +41,7 @@ const ConditionsTreatedSection = ({ data }) => {
     };
 
     return (
-        <section className="py-8 md:py-10 bg-white" style={{  }}>
+        <section className="py-8 md:py-10 bg-white" >
             <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
 

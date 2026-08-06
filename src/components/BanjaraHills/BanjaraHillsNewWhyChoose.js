@@ -39,10 +39,10 @@ const BanjaraHillsNewWhyChoose = () => {
         <section id="why-choose" className="py-10 md:py-12" style={{ background: '#FFEBEB' }}>
             <div className="max-w-[1170px] mx-auto px-6">
                 <div className="text-center mb-10">
-                    <h2 className="mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
+                    <h2 className="mb-3" style={{ fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
                         Why Choose <span style={{ color: 'rgb(189, 56, 92)' }}>TX Hospitals Banjara Hills?</span>
                     </h2>
-                    <p className="max-w-[850px] mx-auto text-gray-700" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14.5px', fontWeight: 400, lineHeight: 1.7 }}>
+                    <p className="max-w-[850px] mx-auto text-gray-700" style={{ fontSize: '14.5px', fontWeight: 400, lineHeight: 1.7 }}>
                         TX Hospitals Banjara Hills is a NABH-accredited multispeciality hospital offering safe, trusted and patient-focused care with experienced doctors, advanced diagnostics, emergency support, and modern facilities.
                     </p>
                 </div>
@@ -60,10 +60,10 @@ const BanjaraHillsNewWhyChoose = () => {
                                     <IconComponent className="w-5 h-5 text-[#BD385C]" strokeWidth={2} />
                                 </div>
                                 <div>
-                                    <h3 className="mb-1 text-gray-900" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14.5px', fontWeight: 600, lineHeight: 1.4 }}>
+                                    <h3 className="mb-1 text-gray-900" style={{ fontSize: '14.5px', fontWeight: 600, lineHeight: 1.4 }}>
                                         {point.title}
                                     </h3>
-                                    <p className="text-gray-600" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, lineHeight: 1.6, margin: 0 }}>
+                                    <p className="text-gray-600" style={{ fontSize: '13px', fontWeight: 400, lineHeight: 1.6, margin: 0 }}>
                                         {point.desc}
                                     </p>
                                 </div>

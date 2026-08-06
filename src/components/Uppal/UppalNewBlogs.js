@@ -37,10 +37,10 @@ const UppalNewBlogs = () => {
         <section id="blogs" className="py-16" style={{ background: 'rgb(243, 243, 245)' }}>
             <div className="max-w-[1170px] mx-auto px-6">
                 <div className="text-center mb-10">
-                    <h2 className="mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
+                    <h2 className="mb-3" style={{ fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
                         Health Insights &amp; <span style={{ color: 'rgb(189, 56, 92)' }}>Articles</span>
                     </h2>
-                    <p className="max-w-[560px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
+                    <p className="max-w-[560px] mx-auto" style={{ fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
                         Explore easy-to-read health articles from TX Hospitals specialists for informed and confident care decisions.
                     </p>
                 </div>
@@ -57,24 +57,24 @@ const UppalNewBlogs = () => {
                             </div>
                             <div className="flex flex-col flex-1 p-5 gap-3">
                                 <div className="flex items-center justify-between">
-                                    <span className="px-2.5 py-0.5 rounded-full" style={{ background: 'rgb(240, 223, 229)', fontFamily: 'Poppins, sans-serif', fontSize: '11px', fontWeight: 500, color: 'rgb(189, 56, 92)' }}>
+                                    <span className="px-2.5 py-0.5 rounded-full" style={{ background: 'rgb(240, 223, 229)', fontSize: '11px', fontWeight: 500, color: 'rgb(189, 56, 92)' }}>
                                         {blog.category}
                                     </span>
-                                    <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', color: 'rgb(108, 108, 108)' }}>
+                                    <span style={{ fontSize: '11px', color: 'rgb(108, 108, 108)' }}>
                                         {blog.readTime}
                                     </span>
                                 </div>
-                                <h3 style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.5, margin: '0px' }}>
+                                <h3 style={{ fontSize: '15px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.5, margin: '0px' }}>
                                     {blog.title}
                                 </h3>
-                                <p className="flex-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.65, margin: '0px' }}>
+                                <p className="flex-1" style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.65, margin: '0px' }}>
                                     {blog.description}
                                 </p>
                                 <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgb(240, 223, 229)' }}>
-                                    <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', color: 'rgb(108, 108, 108)' }}>
+                                    <span style={{ fontSize: '12px', color: 'rgb(108, 108, 108)' }}>
                                         {blog.date}
                                     </span>
-                                    <span className="flex items-center gap-1 group-hover:gap-2 transition-all" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 500, color: 'rgb(189, 56, 92)' }}>
+                                    <span className="flex items-center gap-1 group-hover:gap-2 transition-all" style={{ fontSize: '12px', fontWeight: 500, color: 'rgb(189, 56, 92)' }}>
                                         Read More <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
                                     </span>
                                 </div>

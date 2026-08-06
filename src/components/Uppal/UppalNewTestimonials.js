@@ -75,7 +75,7 @@ const UppalNewTestimonials = () => {
                     </h2>
                     <p 
                         className="max-w-[700px] mx-auto text-sm md:text-base text-gray-700 leading-relaxed font-normal"
-                        style={{ fontFamily: 'Poppins, sans-serif' }}
+                        
                     >
                         Hear from patients and families who trusted TX Hospitals, Uppal for consultations, emergency care, diagnostic services, surgeries and recovery support.
                     </p>
@@ -116,7 +116,7 @@ const UppalNewTestimonials = () => {
                                         </div>
                                     </div>
                                     <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded" style={{ background: 'rgba(0, 0, 0, 0.65)' }}>
-                                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', fontWeight: 500, color: 'rgb(255, 255, 255)' }}>Video</span>
+                                        <span style={{ fontSize: '11px', fontWeight: 500, color: 'rgb(255, 255, 255)' }}>Video</span>
                                     </div>
                                 </div>
 
@@ -129,7 +129,7 @@ const UppalNewTestimonials = () => {
                                             ))}
                                         </div>
                                         <div 
-                                            style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}
+                                            style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}
                                             dangerouslySetInnerHTML={{ __html: item.text }}
                                         />
                                     </div>
@@ -147,10 +147,10 @@ const UppalNewTestimonials = () => {
                                             </div>
                                         )}
                                         <div>
-                                            <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
+                                            <div style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
                                                 {item.name}
                                             </div>
-                                            <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
+                                            <div style={{ fontSize: '11px', fontWeight: 400, color: 'rgb(108, 108, 108)' }}>
                                                 {item.location}
                                             </div>
                                         </div>
@@ -164,10 +164,10 @@ const UppalNewTestimonials = () => {
                         <div className="w-16 h-16 rounded-full bg-pink-50 flex items-center justify-center mb-4 text-[#BD385C]">
                             <Play className="w-8 h-8 ml-0.5" fill="currentColor" />
                         </div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-1" >
                             Testimonials Coming Soon
                         </h3>
-                        <p className="text-sm text-gray-500 max-w-[320px]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                        <p className="text-sm text-gray-500 max-w-[320px]" >
                             We are in the process of gathering inspiring stories from our patients. Stay tuned!
                         </p>
                     </div>

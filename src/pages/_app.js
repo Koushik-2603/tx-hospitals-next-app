@@ -1,25 +1,11 @@
 import "@/styles/globals.css";
 import React, { useEffect } from "react";
-import { Montserrat, Inter } from "next/font/google";
 import Script from "next/script";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoogleTranslateLoader from "@/components/GoogleTranslateLoader";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -56,7 +42,7 @@ export default function App({ Component, pageProps }) {
   const canonicalUrl = `https://txhospitals.in${path}`;
 
   return (
-    <div className={`${montserrat.variable} ${inter.variable} font-sans`}>
+    <div className="font-sans">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={canonicalUrl} key="canonical" />

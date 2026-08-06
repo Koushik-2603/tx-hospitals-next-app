@@ -18,14 +18,14 @@ const UppalNewEmergency = () => {
                 <div className="relative z-10">
                     <h2 
                         className="mb-6 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight"
-                        style={{ fontFamily: 'Poppins, sans-serif' }}
+                        
                     >
                         24/7 Emergency Care in Uppal, Ready When You Need Us Most
                     </h2>
                     
                     <p 
                         className="max-w-[850px] mx-auto text-sm md:text-base leading-relaxed mb-8 text-white/90"
-                        style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400 }}
+                        style={{ fontWeight: 400 }}
                     >
                         TX Hospitals, Uppal offers 24/7 emergency care for accidents, injuries, chest pain, breathing difficulties, high fever and other urgent health concerns. Our expert team, ICU support, diagnostics and ambulance services ensure quick medical attention.
                     </p>
@@ -34,7 +34,7 @@ const UppalNewEmergency = () => {
                         <button
                             onClick={() => setIsModalOpen(true)}
                             className="flex items-center justify-center gap-2 bg-white text-[#BD385C] px-6 py-3 rounded-lg hover:bg-white/90 transition-all duration-200 w-full sm:w-auto shadow-md font-semibold text-sm md:text-base border border-transparent"
-                            style={{ fontFamily: 'Poppins, sans-serif' }}
+                            
                         >
                             <Calendar className="w-[18px] h-[18px]" />
                             Book Appointment
@@ -43,7 +43,7 @@ const UppalNewEmergency = () => {
                         <a
                             href="tel:9144514459"
                             className="flex items-center justify-center gap-2 border border-white text-white px-6 py-3 rounded-lg hover:bg-white/10 transition-all duration-200 w-full sm:w-auto font-semibold text-sm md:text-base"
-                            style={{ fontFamily: 'Poppins, sans-serif' }}
+                            
                         >
                             <Phone className="w-[18px] h-[18px]" />
                             Call 91445 14459
@@ -52,7 +52,7 @@ const UppalNewEmergency = () => {
                         <button
                             onClick={() => setIsModalOpen(true)}
                             className="flex items-center justify-center gap-2 border border-white text-white px-6 py-3 rounded-lg hover:bg-white/10 transition-all duration-200 w-full sm:w-auto font-semibold text-sm md:text-base"
-                            style={{ fontFamily: 'Poppins, sans-serif' }}
+                            
                         >
                             <Heart className="w-[18px] h-[18px]" />
                             Book Health Check Up

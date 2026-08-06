@@ -68,7 +68,7 @@ const BanjaraHillsNewFAQ = () => {
                                     className="w-full flex items-center justify-between px-6 py-4 text-left transition-colors" 
                                     style={{ background: isOpen ? 'rgb(189, 56, 92)' : 'rgb(255, 255, 255)' }}
                                 >
-                                    <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 500, color: isOpen ? 'rgb(255, 255, 255)' : 'rgb(3, 2, 19)', lineHeight: 1.5 }}>
+                                    <span style={{ fontSize: '15px', fontWeight: 500, color: isOpen ? 'rgb(255, 255, 255)' : 'rgb(3, 2, 19)', lineHeight: 1.5 }}>
                                         {faq.question}
                                     </span>
                                     <ChevronDown 
@@ -81,7 +81,7 @@ const BanjaraHillsNewFAQ = () => {
                                 
                                 {isOpen && (
                                     <div className="px-6 py-4" style={{ background: 'rgb(254, 236, 236)' }}>
-                                        <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7, margin: 0 }}>
+                                        <p style={{ fontSize: '14px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7, margin: 0 }}>
                                             {faq.answer}
                                         </p>
                                     </div>

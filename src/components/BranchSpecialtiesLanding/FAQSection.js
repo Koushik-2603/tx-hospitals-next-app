@@ -89,7 +89,7 @@ const FAQSection = ({ location }) => {
     };
 
     return (
-        <section className="py-10 md:py-12" style={{ background: 'rgb(243, 243, 245)', fontFamily: 'Poppins, sans-serif' }}>
+        <section className="py-10 md:py-12" style={{ background: 'rgb(243, 243, 245)' }}>
             <FAQSchema faqs={faqs} />
             <div className="max-w-[1170px] mx-auto px-6">
                 <div className="text-center mb-10">

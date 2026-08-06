@@ -11,7 +11,7 @@ const HeroSection = ({ location }) => {
         : 'Miyapur'; // Default or dynamic location
 
     return (
-        <section className="relative w-full flex flex-col md:flex-row" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <section className="relative w-full flex flex-col md:flex-row" >
             {/* Left Box */}
             <div
                 className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 py-12 md:py-24"

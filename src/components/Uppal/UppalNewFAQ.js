@@ -37,7 +37,7 @@ const UppalNewFAQ = () => {
             <FAQSchema faqs={faqs} />
             <div className="max-w-[1170px] mx-auto px-6 lg:pr-11">
                 <div className="text-center mb-10">
-                    <h2 className="mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
+                    <h2 className="mb-3" style={{ fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
                         Frequently Asked <span style={{ color: 'rgb(189, 56, 92)' }}>Questions</span>
                     </h2>
                 </div>
@@ -52,7 +52,7 @@ const UppalNewFAQ = () => {
                                     className="w-full flex items-center justify-between px-6 py-4 text-left transition-colors" 
                                     style={{ background: isOpen ? 'rgb(189, 56, 92)' : 'rgb(255, 255, 255)' }}
                                 >
-                                    <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 500, color: isOpen ? 'rgb(255, 255, 255)' : 'rgb(3, 2, 19)', lineHeight: 1.5 }}>
+                                    <span style={{ fontSize: '15px', fontWeight: 500, color: isOpen ? 'rgb(255, 255, 255)' : 'rgb(3, 2, 19)', lineHeight: 1.5 }}>
                                         {faq.question}
                                     </span>
                                     <ChevronDown 
@@ -65,7 +65,7 @@ const UppalNewFAQ = () => {
                                 
                                 {isOpen && (
                                     <div className="px-6 py-4" style={{ background: 'rgb(254, 236, 236)' }}>
-                                        <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7, margin: 0 }}>
+                                        <p style={{ fontSize: '14px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7, margin: 0 }}>
                                             {faq.answer}
                                         </p>
                                     </div>

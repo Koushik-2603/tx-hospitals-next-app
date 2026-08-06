@@ -42,7 +42,7 @@ const SearchableDropdown = ({ name, value, onChange, options, placeholder, disab
             </div>
 
             {isOpen && (
-                <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden text-gray-900" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden text-gray-900" >
                     <div className="p-2 border-b border-gray-100 bg-gray-50">
                         <input
                             type="text"

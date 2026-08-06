@@ -271,10 +271,10 @@ const MiyapurHero = () => {
                 style={{ background: 'linear-gradient(160deg, rgb(26, 5, 16) 0%, rgb(74, 18, 40) 100%)' }}
             >
                 <div>
-                    <h1 className="mb-0.5" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(22px, 2.8vw, 34px)', fontWeight: 600, color: 'rgb(255, 255, 255)', lineHeight: 1.25 }}>
+                    <h1 className="mb-0.5" style={{ fontSize: 'clamp(22px, 2.8vw, 34px)', fontWeight: 600, color: 'rgb(255, 255, 255)', lineHeight: 1.25 }}>
                         TX Hospitals,
                     </h1>
-                    <p className="mb-5" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 700, color: 'rgb(242, 58, 107)', lineHeight: 1.2 }}>
+                    <p className="mb-5" style={{ fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 700, color: 'rgb(242, 58, 107)', lineHeight: 1.2 }}>
                         Miyapur, Hyderabad
                     </p>
 
@@ -282,7 +282,7 @@ const MiyapurHero = () => {
                         <button
                             onClick={() => handleTabChange('appointment')}
                             style={{
-                                fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 500,
+                                fontSize: '12px', fontWeight: 500,
                                 color: activeTab === 'appointment' ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.7)',
                                 background: activeTab === 'appointment' ? getTabColor('appointment') : 'rgba(255, 255, 255, 0.08)',
                                 border: activeTab === 'appointment' ? 'none' : '1px solid rgba(255, 255, 255, 0.2)',
@@ -294,7 +294,7 @@ const MiyapurHero = () => {
                         <button
                             onClick={() => handleTabChange('second-opinion')}
                             style={{
-                                fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 500,
+                                fontSize: '12px', fontWeight: 500,
                                 color: activeTab === 'second-opinion' ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.7)',
                                 background: activeTab === 'second-opinion' ? getTabColor('second-opinion') : 'rgba(255, 255, 255, 0.08)',
                                 border: activeTab === 'second-opinion' ? 'none' : '1px solid rgba(255, 255, 255, 0.2)',
@@ -306,7 +306,7 @@ const MiyapurHero = () => {
                         <button
                             onClick={() => handleTabChange('health-checkup')}
                             style={{
-                                fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 500,
+                                fontSize: '12px', fontWeight: 500,
                                 color: activeTab === 'health-checkup' ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.7)',
                                 background: activeTab === 'health-checkup' ? getTabColor('health-checkup') : 'rgba(255, 255, 255, 0.08)',
                                 border: activeTab === 'health-checkup' ? 'none' : '1px solid rgba(255, 255, 255, 0.2)',
@@ -324,7 +324,7 @@ const MiyapurHero = () => {
                                 type="text" name="name" required placeholder="Full Name"
                                 value={formData.name} onChange={handleChange}
                                 className="w-full pl-9 pr-3 py-2.5 rounded-lg outline-none"
-                                style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(255, 255, 255)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
+                                style={{ fontSize: '13px', color: 'rgb(255, 255, 255)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
                             />
                         </div>
 
@@ -334,7 +334,7 @@ const MiyapurHero = () => {
                                 type="tel" name="phone" required placeholder="Phone Number"
                                 value={formData.phone} onChange={handleChange}
                                 className="w-full pl-9 pr-3 py-2.5 rounded-lg outline-none"
-                                style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgb(255, 255, 255)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
+                                style={{ fontSize: '13px', color: 'rgb(255, 255, 255)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
                             />
                         </div>
 
@@ -387,7 +387,7 @@ const MiyapurHero = () => {
                                 type="date" name="date" required min={getTomorrowDateString()}
                                 value={formData.date} onChange={handleChange}
                                 className="w-full pl-9 pr-3 py-2.5 rounded-lg outline-none"
-                                style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', color: 'rgba(255, 255, 255, 0.5)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
+                                style={{ fontSize: '13px', color: 'rgba(255, 255, 255, 0.5)', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.25)' }}
                             />
                         </div>
 
@@ -395,7 +395,7 @@ const MiyapurHero = () => {
                             type="submit"
                             disabled={loading}
                             className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-lg transition-opacity hover:opacity-90 ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
-                            style={{ background: activeColor, fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(255, 255, 255)', border: 'none' }}
+                            style={{ background: activeColor, fontSize: '14px', fontWeight: 600, color: 'rgb(255, 255, 255)', border: 'none' }}
                         >
                             {loading ? (
                                 <>
@@ -419,7 +419,7 @@ const MiyapurHero = () => {
                                 <Star key={star} className="w-3 h-3 fill-[#BD385C] text-[#BD385C]" />
                             ))}
                         </div>
-                        <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>
+                        <span style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>
                             4.8 Google Ratings
                         </span>
                     </div>
@@ -429,10 +429,10 @@ const MiyapurHero = () => {
                     <div className="flex items-center gap-2">
                         <Clock className="w-4 h-4 text-[#BD385C]" />
                         <div>
-                            <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(255, 255, 255)' }}>
+                            <div style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(255, 255, 255)' }}>
                                 Available 24/7
                             </div>
-                            <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>
+                            <div style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>
                                 Emergency Care
                             </div>
                         </div>
@@ -441,10 +441,10 @@ const MiyapurHero = () => {
                     <div style={{ width: '1px', height: '32px', background: 'rgba(255, 255, 255, 0.18)' }}></div>
 
                     <div>
-                        <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: 'rgb(255, 255, 255)' }}>
+                        <div style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(255, 255, 255)' }}>
                             15+
                         </div>
-                        <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>
+                        <div style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.65)' }}>
                             Specialities
                         </div>
                     </div>

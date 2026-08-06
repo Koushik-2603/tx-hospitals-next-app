@@ -6,10 +6,10 @@ const KachigudaNewWhyChoose = () => {
         <section id="why-choose" className="py-16" style={{ background: 'rgb(254, 236, 236)' }}>
             <div className="max-w-[1170px] mx-auto px-6">
                 <div className="text-center mb-10">
-                    <h2 className="mb-3" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
+                    <h2 className="mb-3" style={{ fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
                         Why Choose <span style={{ color: 'rgb(189, 56, 92)' }}>TX Hospitals Kachiguda?</span>
                     </h2>
-                    <p className="max-w-[800px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
+                    <p className="max-w-[800px] mx-auto" style={{ fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
                         TX Hospitals Kachiguda is a NABH-accredited multispeciality hospital offering safe, trusted and patient-focused care with experienced doctors, advanced diagnostics, emergency support, and modern facilities.
                     </p>
                 </div>
@@ -21,10 +21,10 @@ const KachigudaNewWhyChoose = () => {
                             <Award className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 NABH-Accredited Care
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Quality care with patient safety standards.
                             </p>
                         </div>
@@ -36,10 +36,10 @@ const KachigudaNewWhyChoose = () => {
                             <Stethoscope className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 Expert Doctors
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Experienced specialists across major departments.
                             </p>
                         </div>
@@ -51,10 +51,10 @@ const KachigudaNewWhyChoose = () => {
                             <Cpu className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 Advanced Diagnostics
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Accurate testing for faster treatment decisions.
                             </p>
                         </div>
@@ -66,10 +66,10 @@ const KachigudaNewWhyChoose = () => {
                             <Clock className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 24/7 Emergency Support
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Ready care for urgent medical needs.
                             </p>
                         </div>
@@ -81,10 +81,10 @@ const KachigudaNewWhyChoose = () => {
                             <MapPin className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 Easy Location Access
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Conveniently located near Kachiguda Station Road.
                             </p>
                         </div>
@@ -96,10 +96,10 @@ const KachigudaNewWhyChoose = () => {
                             <UserCheck className="w-5 h-5 text-[#BD385C]" strokeWidth={1.8} />
                         </div>
                         <div>
-                            <h3 className="mb-1" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                            <h3 className="mb-1" style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                 Patient-First Approach
                             </h3>
-                            <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgb(108, 108, 108)', lineHeight: 1.6, margin: 0 }}>
                                 Clear guidance, comfort, and compassionate care.
                             </p>
                         </div>

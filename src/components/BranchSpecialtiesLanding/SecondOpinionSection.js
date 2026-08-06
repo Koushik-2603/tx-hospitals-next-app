@@ -18,7 +18,7 @@ const SecondOpinionSection = ({ location }) => {
     const imagePath = `/assets/${formattedLocation || 'Miyapur'}/SOS.jpg`;
 
     return (
-        <section className="py-16 overflow-hidden relative" style={{ background: 'linear-gradient(90deg, rgb(250, 232, 239) 0%, rgb(228, 235, 245) 100%)', fontFamily: 'Poppins, sans-serif' }}>
+        <section className="py-16 overflow-hidden relative" style={{ background: 'linear-gradient(90deg, rgb(250, 232, 239) 0%, rgb(228, 235, 245) 100%)' }}>
             <div className="max-w-[1170px] mx-auto px-6 relative z-10">
                 <div className="bg-white rounded-xl shadow-md p-5 md:p-12 border border-gray-100 flex flex-col md:flex-row items-center gap-6 md:gap-10">
 

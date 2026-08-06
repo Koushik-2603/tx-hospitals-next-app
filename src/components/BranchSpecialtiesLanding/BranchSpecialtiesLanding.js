@@ -8,7 +8,7 @@ import FAQSection from './FAQSection';
 
 const BranchSpecialtiesLanding = ({ location }) => {
     return (
-        <div className="w-full flex flex-col" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <div className="w-full flex flex-col" >
             {/* 1. Hero Section */}
             <HeroSection location={location} />
 

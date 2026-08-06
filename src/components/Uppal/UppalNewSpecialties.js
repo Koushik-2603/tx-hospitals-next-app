@@ -33,13 +33,13 @@ const UppalNewSpecialties = () => {
         <section id="specialties" className="py-16" style={{ background: 'rgb(254, 236, 236)' }}>
             <div className="max-w-[1170px] mx-auto px-6 lg:pr-11">
                 <div className="text-center mb-10">
-                    <h2 className="mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: 'rgb(189, 56, 92)' }}>
+                    <h2 className="mb-4" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: 'rgb(189, 56, 92)' }}>
                         Specialties at TX Hospitals, Uppal
                     </h2>
-                    <h3 className="mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
+                    <h3 className="mb-4" style={{ fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 600, color: 'rgb(3, 2, 19)' }}>
                         Complete Medical Care, Close to You
                     </h3>
-                    <p className="max-w-[850px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
+                    <p className="max-w-[850px] mx-auto" style={{ fontSize: '15px', fontWeight: 400, color: 'rgb(30, 30, 30)', lineHeight: 1.7 }}>
                         At TX Hospitals, Uppal, patients can consult experienced specialists across major departments. Our hospital brings together doctors, diagnostics, emergency care and treatment support in one convenient location.
                     </p>
                 </div>
@@ -47,7 +47,7 @@ const UppalNewSpecialties = () => {
                 {loading || specialtiesList.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-12 animate-pulse">
                         <div className="w-12 h-12 border-4 border-pink-700 border-t-transparent rounded-full animate-spin mb-4"></div>
-                        <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '18px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
+                        <p style={{ fontSize: '18px', fontWeight: 600, color: 'rgb(189, 56, 92)' }}>
                             Data coming soon...
                         </p>
                     </div>
@@ -74,7 +74,7 @@ const UppalNewSpecialties = () => {
                                                 />
                                             )}
                                         </div>
-                                        <span className="text-center" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
+                                        <span className="text-center" style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(3, 2, 19)', lineHeight: 1.4 }}>
                                             {item.SpecialityName}
                                         </span>
                                     </div>
@@ -87,7 +87,7 @@ const UppalNewSpecialties = () => {
                                 <button
                                     onClick={() => router.push('/uppal/specialties/')}
                                     className="px-8 py-2.5 rounded transition-opacity hover:opacity-90 cursor-pointer"
-                                    style={{ background: 'rgb(189, 56, 92)', fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
+                                    style={{ background: 'rgb(189, 56, 92)', fontSize: '15px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
                                 >
                                     View More
                                 </button>
