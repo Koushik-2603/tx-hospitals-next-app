@@ -26,7 +26,6 @@ export default function HPLandingPage() {
         "Basic",
         "Comprehensive",
         "Executive",
-        "Specialized",
     ];
 
     useEffect(() => {
@@ -50,6 +49,14 @@ export default function HPLandingPage() {
     const handleCall = () => {
         window.location.href = "tel:9144514459";
     };
+
+    const filteredPackages = packages.filter((pkg) => {
+        const price = Number(pkg.offerPrice) || 0;
+        if (active === "Basic") return price < 2000;
+        if (active === "Comprehensive") return price >= 2000 && price <= 10000;
+        if (active === "Executive") return price > 10000;
+        return true;
+    });
 
     return (
         <>
@@ -99,7 +106,7 @@ export default function HPLandingPage() {
                             </p>
                         ) : (
                             <div className="grid grid-cols-1 gap-4 items-stretch">
-                                {[...packages]
+                                {[...filteredPackages]
                                     .sort((a, b) => Number(b.offerPrice) - Number(a.offerPrice))
                                     .map((pkg) => (
                                         <HealthPackageCard
@@ -207,7 +214,7 @@ export default function HPLandingPage() {
                             </p>
                         ) : (
                             <div className="grid grid-cols-3 gap-8 items-stretch">
-                                {[...packages]
+                                {[...filteredPackages]
                                     .sort((a, b) => Number(b.offerPrice) - Number(a.offerPrice))
                                     .map((pkg) => (
                                         <HealthPackageCard
