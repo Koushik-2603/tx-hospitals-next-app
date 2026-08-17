@@ -3,6 +3,7 @@ import HeroSection from './HeroSection';
 import SpecialtiesSection from './SpecialtiesSection';
 import DoctorsSection from './DoctorsSection';
 import SecondOpinionSection from './SecondOpinionSection';
+import EmergencySection from './EmergencySection';
 import CTASection from './CTASection';
 import FAQSection from './FAQSection';
 
@@ -20,6 +21,11 @@ const BranchSpecialtiesLanding = ({ location }) => {
 
             {/* 4. Second Opinion Support Section */}
             <SecondOpinionSection location={location} />
+
+            {/* 4.5 Emergency Section for Uppal */}
+            {location?.toLowerCase() === 'uppal' && (
+                <EmergencySection location={location} />
+            )}
 
             {/* 5. CTA Section */}
             <CTASection location={location} />

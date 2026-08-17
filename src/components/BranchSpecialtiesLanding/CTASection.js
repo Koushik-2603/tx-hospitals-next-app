@@ -20,12 +20,18 @@ const CTASection = ({ location }) => {
                 <h2 className="text-2xl md:text-4xl font-bold mb-6">
                     {formattedLocation === 'Kachiguda'
                         ? 'Find the Right Care Without Delay'
-                        : 'Consult Our Doctors, Get Expert Care Closer to You'}
+                        : formattedLocation === 'Uppal'
+                            ? 'Looking for the Right Hospital in Uppal?'
+                            : 'Consult Our Doctors, Get Expert Care Closer to You'}
                 </h2>
                 <p className="text-sm md:text-[15px] font-normal leading-relaxed mb-10 text-white/90 max-w-[800px] mx-auto whitespace-pre-line">
                     {formattedLocation === 'Kachiguda'
                         ? `Persistent symptoms should not be ignored. Consulting the appropriate specialist at the right time can help identify the cause, begin treatment early and reduce the risk of complications.\n\nWhether you require a routine health consultation, specialist evaluation, advanced procedure or ongoing treatment, TX Hospitals Kachiguda is here to support your healthcare needs.`
-                        : `Your health deserves timely attention and the right specialist care. Whether you need a routine consultation, second opinion, diagnostic test, emergency support or specialty treatment, TX Hospitals ${formattedLocation} is here to help.`}
+                        : formattedLocation === 'Uppal'
+                            ? `Do not let persistent or worsening symptoms go unchecked.
+Whether you need a routine consultation, specialist opinion, emergency treatment, diagnostic evaluation or ongoing medical care, our team can help connect you with the appropriate department.
+Book a consultation at TX Hospitals Uppal today.`
+                            : `Your health deserves timely attention and the right specialist care. Whether you need a routine consultation, second opinion, diagnostic test, emergency support or specialty treatment, TX Hospitals ${formattedLocation} is here to help.`}
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">

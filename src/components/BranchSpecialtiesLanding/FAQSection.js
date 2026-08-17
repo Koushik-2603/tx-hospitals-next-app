@@ -82,7 +82,54 @@ const FAQSection = ({ location }) => {
         }
     ];
 
-    const faqs = formattedLocation === 'Kachiguda' ? kachigudaFaqs : miyapurFaqs;
+    const uppalFaqs = [
+        {
+            question: "Is TX Hospitals Uppal a multispeciality hospital?",
+            answer: "Yes. TX Hospitals Uppal provides specialist consultations, diagnostic services, medical treatment, surgical care and critical care support across multiple departments."
+        },
+        {
+            question: "What specialties are available at TX Hospitals Uppal?",
+            answer: "TX Hospitals Uppal provides care across Cardiology, Orthopedics, Neurology, Gastroenterology, Pulmonology, Oncology, Urology, Nephrology, Internal Medicine, General Medicine, ENT, Obstetrics & Gynaecology, Paediatrics, Anaesthesia & Pain Management and Critical Care."
+        },
+        {
+            question: "How can I know which specialist I should consult?",
+            answer: "If you are unsure about the right department, share your symptoms with the TX Hospitals appointment team. They can help direct you to the appropriate specialty based on your healthcare concern."
+        },
+        {
+            question: "Can I consult more than one specialist at TX Hospitals Uppal?",
+            answer: "Yes. When a medical condition requires evaluation by doctors from different specialties, coordinated consultations can be arranged depending on the patient’s clinical needs."
+        },
+        {
+            question: "Does TX Hospitals Uppal provide diagnostic facilities?",
+            answer: "Yes. Diagnostic support is available to help doctors evaluate medical conditions and plan further treatment based on the patient’s symptoms and clinical findings."
+        },
+        {
+            question: "Which doctor should I consult for chest pain or heart problems?",
+            answer: "A cardiologist evaluates symptoms such as chest pain, palpitations, high blood pressure, shortness of breath and other heart-related concerns."
+        },
+        {
+            question: "Which specialist treats joint pain, fractures and arthritis?",
+            answer: "An orthopedic specialist evaluates and treats joint pain, fractures, arthritis, sports injuries, ligament problems and other bone and joint conditions."
+        },
+        {
+            question: "Which doctor should I consult for breathing problems?",
+            answer: "A pulmonologist treats conditions affecting the lungs and respiratory system, including asthma, COPD, pneumonia, persistent cough and breathing difficulty."
+        },
+        {
+            question: "Is critical care available at TX Hospitals Uppal?",
+            answer: "Yes. Critical Care services are available for patients who require close monitoring, intensive medical management and specialised support."
+        },
+        {
+            question: "How can I book an appointment with a specialist at TX Hospitals Uppal?",
+            answer: "You can book a consultation by calling 9144514459 or through the official TX Hospitals website."
+        }
+    ];
+
+    const faqs = formattedLocation === 'Kachiguda'
+        ? kachigudaFaqs
+        : formattedLocation === 'Uppal'
+            ? uppalFaqs
+            : miyapurFaqs;
 
     const toggleFAQ = (index) => {
         setOpenIndex(openIndex === index ? -1 : index);
@@ -93,7 +140,7 @@ const FAQSection = ({ location }) => {
             <FAQSchema faqs={faqs} />
             <div className="max-w-[1170px] mx-auto px-6">
                 <div className="text-center mb-10">
-                    <h2 className="mb-3 text-2xl md:text-3xl lg:text-4xl font-bold font-poppins" style={{ color: 'rgb(3, 2, 19)' }}>
+                    <h2 className="mb-3 text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: 'rgb(3, 2, 19)' }}>
                         Frequently Asked <span style={{ color: 'rgb(189, 56, 92)' }}>Questions</span>
                     </h2>
                 </div>

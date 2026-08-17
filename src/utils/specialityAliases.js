@@ -14,19 +14,24 @@
 export const SPECIALITY_ALIASES = {
     'cardiology': ['cardiac sciences', 'cardiology'],
     'cardiac': ['cardiac sciences'],
-    'cardiologist': ['cardiac sciences'],
+    'cardiologist': ['cardiac sciences', 'cardiology'],
     'heart': ['cardiac sciences'],
     'gastroenterology': ['gastroenterology'],
     'gastro': ['gastroenterology'],
+    'gastroenterologist': ['gastroenterology'],
     'neurology': ['neuro sciences', 'neurology'],
     'neuro': ['neuro sciences', 'neurology'],
+    'neurologist': ['neuro sciences', 'neurology'],
     'neurosurgery': ['neuro sciences'],
+    'neurosurgeon': ['neuro sciences'],
     'orthopaedics': ['orthopaedics', 'orthopedics'],
     'orthopedics': ['orthopaedics', 'orthopedics'],
     'orthopedic': ['orthopaedics', 'orthopedics'],
     'orthopaedic': ['orthopaedics', 'orthopedics'],
     'urology': ['urology'],
+    'urologist': ['urology'],
     'nephrology': ['nephrology'],
+    'nephrologist': ['nephrology'],
     'kidney': ['nephrology', 'urology'],
     'pulmonology': ['pulmonology'],
     'pulmonologist': ['pulmonology'],
@@ -34,10 +39,15 @@ export const SPECIALITY_ALIASES = {
     'ent': ['ent'],
     'paediatrics': ['paediatrics'],
     'pediatrics': ['paediatrics'],
+    'pediatrician': ['paediatrics'],
+    'paediatrician': ['paediatrics'],
     'gynaecology': ['gynaecology'],
     'gynecology': ['gynaecology'],
+    'gynecologist': ['gynaecology'],
+    'gynaecologist': ['gynaecology'],
     'obstetrics': ['gynaecology'],
     'oncology': ['oncology'],
+    'oncologist': ['oncology'],
     'cancer': ['oncology'],
     'plastic': ['plastic surgery', 'cosmetic', 'dermatology', 'skin'],
     'cosmetic': ['cosmetic', 'plastic surgery', 'dermatology', 'skin'],
@@ -60,6 +70,17 @@ export const SPECIALITY_ALIASES = {
 };
 
 /**
+ * Helper to check if text contains term as a whole word (specifically for short codes like 'ent')
+ */
+function containsWholeWord(text, term) {
+    if (term === 'ent') {
+        const regex = new RegExp('\\bent\\b', 'i');
+        return regex.test(text);
+    }
+    return text.includes(term);
+}
+
+/**
  * Resolves a speciality slug to matching department terms using the alias map.
  * Falls back to the slug itself if no alias is defined.
  *
@@ -70,15 +91,14 @@ export const SPECIALITY_ALIASES = {
 export function matchesDepartment(specKey, deptLower) {
     const aliasTerms = SPECIALITY_ALIASES[specKey] || null;
     if (aliasTerms) {
-        return aliasTerms.some(alias => deptLower.includes(alias));
+        return aliasTerms.some(alias => containsWholeWord(deptLower, alias));
     }
     // Fallback: direct substring + paed <-> ped spelling variant check
     const term1 = specKey.replace(/paed/g, 'ped');
     const term2 = specKey.replace(/\bped\b/g, 'paed');
     return (
-        deptLower.includes(specKey) ||
-        deptLower.includes(term1) ||
-        deptLower.includes(term2) ||
-        specKey.includes(deptLower)
+        containsWholeWord(deptLower, specKey) ||
+        containsWholeWord(deptLower, term1) ||
+        containsWholeWord(deptLower, term2)
     );
 }

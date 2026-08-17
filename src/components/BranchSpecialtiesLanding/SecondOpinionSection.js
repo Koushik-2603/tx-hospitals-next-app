@@ -25,15 +25,31 @@ const SecondOpinionSection = ({ location }) => {
                     {/* Left side text content */}
                     <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
                         <h2 className="text-[clamp(24px,3vw,34px)] font-bold mb-6 text-gray-900 leading-tight">
-                            {formattedLocation === 'Kachiguda'
-                                ? <span className="text-[#BD385C]">Not Sure Which Specialist to Consult?</span>
-                                : <><span className="text-[#BD385C]">Second Opinion</span> Support</>}
+                            {formattedLocation === 'Kachiguda' ? (
+                                <span className="text-[#BD385C]">Not Sure Which Specialist to Consult?</span>
+                            ) : formattedLocation === 'Uppal' ? (
+                                <>Diagnostics and Treatment in <span className="text-[#BD385C]">One Place</span></>
+                            ) : (
+                                <><span className="text-[#BD385C]">Second Opinion</span> Support</>
+                            )}
                         </h2>
-                        <p className="text-[15px] font-normal text-gray-700 leading-relaxed max-w-[500px] mb-8 whitespace-pre-line">
-                            {formattedLocation === 'Kachiguda'
-                                ? 'Symptoms such as pain, fatigue, dizziness, breathing difficulty or digestive discomfort may sometimes be linked to different medical conditions.\nShare your symptoms with our appointment team and we will help connect you with the appropriate department based on your healthcare concern.\nGet help choosing the right specialist and schedule your consultation without delay.'
-                                : `When treatment decisions feel confusing, our specialists help you understand your diagnosis, reports and available treatment options with clarity. At TX Hospitals ${formattedLocation}, patients can consult experienced doctors for trusted second opinion support before surgery, advanced treatment or long-term care.`}
-                        </p>
+                        <div className="text-[15px] font-normal text-gray-700 leading-relaxed max-w-[500px] mb-8 flex flex-col gap-4">
+                            {formattedLocation === 'Kachiguda' ? (
+                                <p className="whitespace-pre-line">
+                                    {'Symptoms such as pain, fatigue, dizziness, breathing difficulty or digestive discomfort may sometimes be linked to different medical conditions.\nShare your symptoms with our appointment team and we will help connect you with the appropriate department based on your healthcare concern.\nGet help choosing the right specialist and schedule your consultation without delay.'}
+                                </p>
+                            ) : formattedLocation === 'Uppal' ? (
+                                <>
+                                    <p>A specialist consultation often needs the support of appropriate investigations before a treatment decision can be made.</p>
+                                    <p>TX Hospitals Uppal offers diagnostic and hospital-based support that enables doctors to evaluate patients efficiently and plan further treatment based on clinical requirements.</p>
+                                    <p>Having consultations, diagnostics and treatment services within the same healthcare setting helps make the patient journey more convenient and organised.</p>
+                                </>
+                            ) : (
+                                <p>
+                                    {`When treatment decisions feel confusing, our specialists help you understand your diagnosis, reports and available treatment options with clarity. At TX Hospitals ${formattedLocation}, patients can consult experienced doctors for trusted second opinion support before surgery, advanced treatment or long-term care.`}
+                                </p>
+                            )}
+                        </div>
 
                         <button
                             onClick={() => setIsModalOpen(true)}

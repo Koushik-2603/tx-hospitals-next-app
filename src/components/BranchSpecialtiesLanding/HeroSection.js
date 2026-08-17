@@ -19,13 +19,15 @@ const HeroSection = ({ location }) => {
             >
                 <div>
                     <h1 className="text-white text-4xl md:text-5xl font-bold leading-tight">
-                        {formattedLocation === 'Kachiguda' ? 'Medical Specialties at' : 'Specialties at'}<br />
+                        {formattedLocation === 'Kachiguda' || formattedLocation === 'Uppal' ? 'Medical Specialties at' : 'Specialties at'}<br />
                         <span className="text-[#bd385c]">TX Hospitals {formattedLocation}</span>
                     </h1>
                     <p className="text-gray-200 mt-6 text-base md:text-sm leading-relaxed max-w-xl">
                         {formattedLocation === 'Kachiguda'
                             ? `As a trusted best multispeciality hospital in Kachiguda, TX Hospitals offers expert consultations, modern diagnostics and personalised treatment across major medical departments. Our specialists work together to provide timely and well-coordinated care for every patient.`
-                            : `At TX Hospitals ${formattedLocation}, patients can access expert consultation, advanced diagnostics and specialised treatment support across major medical departments. For families searching for Top hospitals near ${formattedLocation}, we offer organised, patient-focused care in a convenient location.`}
+                            : formattedLocation === 'Uppal'
+                                ? `TX Hospitals Uppal offers specialised care across multiple medical departments with experienced doctors and modern treatment support. Recognised as a top superspecialty hospital in Uppal, we provide timely consultations, advanced diagnostics and personalised treatment for a wide range of health needs.`
+                                : `At TX Hospitals ${formattedLocation}, patients can access expert consultation, advanced diagnostics and specialised treatment support across major medical departments. For families searching for Top hospitals near ${formattedLocation}, we offer organised, patient-focused care in a convenient location.`}
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center md:items-start gap-4 mt-8">
