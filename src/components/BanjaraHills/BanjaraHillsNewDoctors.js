@@ -141,7 +141,7 @@ const BanjaraHillsNewDoctors = () => {
                                                     style={{ background: 'rgb(189, 56, 92)', fontSize: '13px', color: 'rgb(255, 255, 255)', border: 'none' }}
                                                 >
                                                     <Calendar className="w-[13px] h-[13px]" />
-                                                    Book
+                                                    Book Now
                                                 </button>
                                                 <a
                                                     href="tel:9144514459"

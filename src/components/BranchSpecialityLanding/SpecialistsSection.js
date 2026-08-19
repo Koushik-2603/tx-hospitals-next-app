@@ -139,7 +139,7 @@ const SpecialistsSection = ({ data, location, speciality }) => {
                                                 style={{ background: 'rgb(189, 56, 92)', fontSize: '13px', fontWeight: 500, color: 'rgb(255, 255, 255)', border: 'none' }}
                                             >
                                                 <Calendar className="w-[14px] h-[14px]" />
-                                                Book
+                                                Book Now
                                             </button>
                                             <a
                                                 href="tel:9144514459"
